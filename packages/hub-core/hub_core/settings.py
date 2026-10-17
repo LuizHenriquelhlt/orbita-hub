@@ -106,10 +106,30 @@ class Settings(BaseSettings):
     storage_backend: BackendStorage = "postgres"
     lock_backend: BackendLock = "postgres"
 
+    executor_fallback_simulado: bool = True
+    """Desvia para o executor simulado quando a imagem nao existe e a automacao
+    declara roteiro. Ver `hub_core.executor.reserva`.
+
+    Ligado por padrao porque o ambiente padrao deste repositorio e o de
+    demonstracao. Em producao deve ser `false`: ali, imagem ausente e um
+    incidente, e mascara-lo com execucao simulada esconde o que precisa ser
+    visto."""
+
     rabbitmq_url: str = "amqp://orbita:orbita_dev@localhost:5672/"
     redis_url: str = "redis://localhost:6379/0"
 
     s3_endpoint_url: str | None = None
+
+    s3_endpoint_publico: str | None = None
+    """Endereço do object storage como o *navegador* o alcança.
+
+    Só precisa ser definido quando difere de `s3_endpoint_url`, o que é o caso
+    dentro de uma rede do Docker: o serviço fala com `armazenamento:8333`, nome
+    que não existe fora dessa rede, e é esse nome que entraria na URL assinada
+    de download. Em S3 de verdade os dois endereços são o mesmo e isto fica
+    vazio. Ver `hub_core.storage.s3`.
+    """
+
     s3_access_key: str = ""
     s3_secret_key: str = ""
     s3_bucket: str = "orbita-artefatos"

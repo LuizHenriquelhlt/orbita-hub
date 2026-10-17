@@ -1,6 +1,6 @@
 """Tabelas de infraestrutura da plataforma (schema `plataforma`).
 
-Não são tabelas de domínio: são o que substitui RabbitMQ e MinIO quando eles
+Não são tabelas de domínio: são o que substitui RabbitMQ e o object storage quando eles
 não existem. Ficam aqui, e não no schema de um serviço, porque pertencem ao
 mecanismo, e porque isso deixa claro que podem ser truncadas sem perder
 nenhuma informação de negócio.
@@ -177,7 +177,7 @@ class Auditoria(BasePlataforma):  # type: ignore[valid-type, misc]
 class ArtefatoBlob(BasePlataforma):  # type: ignore[valid-type, misc]
     """Conteúdo de um artefato guardado no próprio banco.
 
-    Substitui o MinIO/S3 onde não há object storage. Com teto de tamanho
+    Substitui o object storage onde não há um. Com teto de tamanho
     (`ARTEFATO_TAMANHO_MAXIMO_BYTES`), porque `bytea` em um plano gratuito de
     0,5 GB não é lugar para arquivo grande, e porque o PostgreSQL carrega o
     valor inteiro em memória ao ler, diferente de um `GET` paginado no S3.

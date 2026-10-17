@@ -210,9 +210,17 @@ async def cartao_de_estado(request: HttpRequest, execucao_id: str) -> HttpRespon
     é acrescentado), enquanto o estado é **substituído** a cada atualização.
     Misturar os dois em um fragmento faria o log inteiro ser retransmitido a
     cada 2 s só para atualizar o rótulo de status.
+
+    `trocar_contexto` faz a resposta carregar também o bloco de contexto, fora
+    de banda, porque três campos dele mudam depois que a página carrega e ele
+    não pertence a nenhum fragmento que se renova. Ver `_contexto.html`.
     """
     execucao = await bff.de(request).execucao(execucao_id, desde_sequencia=10**9)
-    return render(request, "execucoes/_estado.html", {"execucao": execucao})
+    return render(
+        request,
+        "execucoes/_estado.html",
+        {"execucao": execucao, "trocar_contexto": True},
+    )
 
 
 @exige("execucao:cancelar")
@@ -222,7 +230,11 @@ async def cancelar(request: HttpRequest, execucao_id: str) -> HttpResponse:
     messages.success(request, "Execução cancelada.")
     if e_htmx(request):
         execucao = await bff.de(request).execucao(execucao_id, desde_sequencia=10**9)
-        return render(request, "execucoes/_estado.html", {"execucao": execucao})
+        return render(
+            request,
+            "execucoes/_estado.html",
+            {"execucao": execucao, "trocar_contexto": True},
+        )
     return redirect("execucoes:detalhe", execucao_id=execucao_id)
 
 

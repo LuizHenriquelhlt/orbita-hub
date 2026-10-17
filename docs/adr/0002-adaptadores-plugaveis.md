@@ -11,7 +11,7 @@ A plataforma precisa rodar em dois ambientes com restrições opostas:
 |---|---|---|
 | Fila | RabbitMQ | nada além de PostgreSQL |
 | Execução | containers Docker | sem acesso ao Docker Engine |
-| Artefatos | MinIO / S3 | sem object storage |
+| Artefatos | SeaweedFS / S3 | sem object storage |
 | Lock | Redis | sem Redis |
 | Memória | o que for preciso | 512 MB |
 

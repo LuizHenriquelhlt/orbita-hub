@@ -5,7 +5,7 @@ relatório, o PDF do ofício, o CSV de erros. É dado de saída, não de domíni
 por isso não mora em tabela de negócio.
 
 A interface tem uma assimetria deliberada: `url_para_download` pode devolver
-`None`. Com S3/MinIO existe URL pré-assinada, e o navegador baixa direto do
+`None`. Com S3 existe URL pré-assinada, e o navegador baixa direto do
 object storage sem passar pela aplicação. Com artefato em PostgreSQL não existe
 equivalente, o download tem de passar pelo serviço, que faz streaming do
 `bytea`. Em vez de inventar uma URL falsa para uniformizar, a porta admite que

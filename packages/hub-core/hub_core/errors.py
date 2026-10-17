@@ -66,3 +66,19 @@ class DependenciaIndisponivel(ErroOrbita):
 
     codigo = "dependencia_indisponivel"
     status_http = 503
+
+
+class ImagemIndisponivel(DependenciaIndisponivel):
+    """O executor nao conseguiu obter a imagem da automacao.
+
+    Subclasse de `DependenciaIndisponivel` e nao de um erro de automacao,
+    porque e exatamente isso: a automacao nao teve a sua chance. O registry
+    pode estar fora do ar, a credencial pode ter expirado, a tag pode ter sido
+    removida. Nenhum desses casos e culpa do codigo da automacao, e todos
+    podem passar sozinhos, entao a mensagem deve voltar para a fila.
+
+    Tem classe propria para que o executor de reserva possa reconhece-la sem
+    inspecionar texto de mensagem.
+    """
+
+    codigo = "imagem_indisponivel"

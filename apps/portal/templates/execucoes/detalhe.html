@@ -77,20 +77,6 @@
     {% endif %}
   </section>
 
-  <section class="cartao">
-    <h2 class="cartao__titulo">Contexto</h2>
-    <dl class="definicoes" style="margin-top: var(--e-4)">
-      <div><dt>Disparada por</dt><dd>{{ execucao.usuario_nome|default:"-" }}</dd></div>
-      <div><dt>Origem</dt><dd>{{ execucao.origem }}</dd></div>
-      <div><dt>Fila</dt><dd class="mono pequeno">{{ execucao.fila }}</dd></div>
-      <div><dt>Tentativa</dt><dd class="numerico">{{ execucao.tentativa }}</dd></div>
-      <div><dt>Enfileirada</dt><dd>{{ execucao.enfileirada_em|data_e_hora }}</dd></div>
-      <div><dt>Iniciada</dt><dd>{{ execucao.iniciada_em|data_e_hora }}</dd></div>
-      <div><dt>Finalizada</dt><dd>{{ execucao.finalizada_em|data_e_hora }}</dd></div>
-      {% if execucao.codigo_saida != None %}
-        <div><dt>Código de saída</dt><dd class="numerico">{{ execucao.codigo_saida }}</dd></div>
-      {% endif %}
-    </dl>
-  </section>
+  {% include "execucoes/_contexto.html" %}
 </div>
 {% endblock %}

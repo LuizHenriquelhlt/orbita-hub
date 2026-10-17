@@ -22,6 +22,7 @@ Toda ADR declara o que se **perdeu** ao escolher. Decisão sem custo declarado
 | [0011](0011-imagem-unica.md) | Uma imagem Docker para os cinco artefatos | Cada container carrega dependência que não usa |
 | [0012](0012-portal-em-django.md) | Portal em Django, sem banco próprio | Dois frameworks web no projeto |
 | [0013](0013-polling-em-vez-de-websocket.md) | Polling com ponteiro de sequência | Latência de até 2 s |
+| [0014](0014-sistema-de-arquivos-do-container.md) | Volumes, e não tmpfs, para falar com o container | Acoplamento a detalhe da API do Docker |
 
 ## As três que mais mudam a forma do sistema
 

@@ -1,0 +1,31 @@
+# O SDK e instalavel por conta propria, separado do monorepo.
+#
+# Faz sentido pelo que ele e: a unica parte deste projeto que entra no
+# container de terceiro. Uma automacao escrita por outro time depende do SDK,
+# nao da plataforma, e nao deveria precisar instalar `orbita-hub` inteiro,
+# com FastAPI, SQLAlchemy e Django, para formatar algumas linhas de JSON.
+#
+# E o que permite a imagem da automacao fazer `pip install ./sdk`, em vez de
+# copiar o diretorio e torcer para o `sys.path` cooperar. Ver o Dockerfile de
+# automations/relatorio-outorgas-mensal, e o comentario la sobre `python -I`.
+
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hub-sdk"
+version = "0.1.0"
+description = "SDK de automacao do Orbita: conveniencia tipada sobre o protocolo de stdout"
+readme = "../README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+
+# Nenhuma dependencia, de proposito. O contrato com a plataforma e imprimir
+# linhas no stdout; qualquer dependencia aqui seria peso imposto a toda
+# automacao que usa o SDK.
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["hub_sdk*"]

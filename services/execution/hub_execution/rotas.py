@@ -179,7 +179,7 @@ async def baixar_artefato(
     capacidades diferentes, e a porta `ArtefatoStore` admite isso em vez de
     fingir uniformidade (ver `hub_core.storage.base`):
 
-    * **com S3/MinIO** há URL pré-assinada: responde 307 e o navegador baixa
+    * **com S3** há URL pré-assinada: responde 307 e o navegador baixa
       direto do object storage. Uma planilha de 50 MB não atravessa este
       processo;
     * **com artefato no PostgreSQL** não existe equivalente, então o arquivo é

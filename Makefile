@@ -4,13 +4,13 @@
 COMPOSE := docker compose -f infra/docker-compose.yml --env-file .env
 
 .DEFAULT_GOAL := ajuda
-.PHONY: ajuda up down logs clean seed migrar teste lint fmt tipos mono
+.PHONY: ajuda up down logs clean seed migrar teste lint fmt tipos mono imagens
 
 ajuda:  ## Lista os alvos disponíveis
 	@grep -hE '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
 	 | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-12s\033[0m %s\n", $$1, $$2}'
 
-up:  ## Sobe o ambiente distribuído completo (5 serviços + pg + rabbit + redis + minio)
+up: imagens  ## Sobe o ambiente distribuído completo (5 serviços + pg + rabbit + redis + minio)
 	@test -f .env || cp .env.example .env
 	$(COMPOSE) up -d --build
 
@@ -22,6 +22,12 @@ clean:  ## Remove containers E volumes (apaga o banco local)
 
 logs:  ## Acompanha os logs de todos os serviços
 	$(COMPOSE) logs -f
+
+imagens:  ## Constrói as imagens das automações que rodam em container
+	@echo "construindo local/relatorio-outorgas-mensal..."
+	docker build -f automations/relatorio-outorgas-mensal/Dockerfile 	             -t local/relatorio-outorgas-mensal .
+	@echo "pronto. As demais automações do catálogo são de demonstração e"
+	@echo "caem no roteiro declarado (ver hub_core/executor/reserva.py)."
 
 migrar:  ## Aplica as migrações do Alembic em todos os schemas
 	$(COMPOSE) run --rm identity alembic upgrade head

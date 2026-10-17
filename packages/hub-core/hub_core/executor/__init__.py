@@ -14,6 +14,7 @@ from hub_core.executor.base import (
     StatusExecucao,
     interpretar_linha,
 )
+from hub_core.executor.reserva import ExecutorComReserva
 from hub_core.executor.simulado import ExecutorSimulado
 from hub_core.executor.subprocesso import ExecutorSubprocesso
 from hub_core.settings import Settings
@@ -24,6 +25,7 @@ __all__ = [
     "ArtefatoProduzido",
     "ComandoDeProtocolo",
     "Executor",
+    "ExecutorComReserva",
     "ExecutorSimulado",
     "ExecutorSubprocesso",
     "LimitesDeRecurso",
@@ -41,8 +43,15 @@ def construir_executor(settings: Settings) -> Executor:
         case "docker":
             from hub_core.executor.docker_exec import ExecutorDocker
 
-            return ExecutorDocker()
+            principal: Executor = ExecutorDocker()
         case "subprocess":
-            return ExecutorSubprocesso()
+            principal = ExecutorSubprocesso()
         case _:
+            # O simulado nao precisa de reserva: ele ja e a reserva.
             return ExecutorSimulado()
+
+    if settings.executor_fallback_simulado:
+        from hub_core.executor.reserva import ExecutorComReserva
+
+        return ExecutorComReserva(principal)
+    return principal

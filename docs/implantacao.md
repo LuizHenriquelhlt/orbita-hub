@@ -120,12 +120,33 @@ Na tela de entrada, **ver a demonstração** entra sem senha assumindo um papel.
 | Processos | 5 | 1 |
 | Fila | RabbitMQ | tabela PostgreSQL |
 | Executor | Docker | simulado |
-| Artefatos | MinIO | `bytea`, teto de 1 MB |
+| Artefatos | SeaweedFS | `bytea`, teto de 1 MB |
 | Lock | Redis | advisory lock |
 | Concorrência do runner | 2 | 1 |
 
 **É o mesmo código.** As diferenças são variáveis de ambiente, ver
 [ADR 0002](adr/0002-adaptadores-plugaveis.md).
+
+### Uma variável que só o object storage exige
+
+Com `STORAGE_BACKEND=s3`, o download de artefato responde 307 para uma URL
+pré-assinada e o navegador baixa direto do storage, sem atravessar o serviço.
+A assinatura SigV4 cobre o header `Host`, então a URL tem de ser assinada já
+com o endereço que o **cliente** vai usar: trocar o host depois de assinar
+produz `SignatureDoesNotMatch`.
+
+Isso importa sempre que o endereço interno e o externo diferem, que é o caso
+do `make up`: os serviços falam com `http://armazenamento:8333`, nome que só
+existe dentro da rede do Docker, e o navegador roda fora dela. Daí
+`S3_ENDPOINT_PUBLICO`, usado apenas para assinar:
+
+```
+S3_ENDPOINT_URL=http://armazenamento:8333     # os serviços leem e gravam aqui
+S3_ENDPOINT_PUBLICO=http://localhost:8333     # o navegador baixa daqui
+```
+
+Em S3 de verdade os dois endereços coincidem e `S3_ENDPOINT_PUBLICO` fica
+vazio. No Render, onde o storage é o PostgreSQL, a variável não é usada.
 
 ---
 

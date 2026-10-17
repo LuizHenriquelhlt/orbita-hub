@@ -135,3 +135,9 @@ antes.
     </a>
   </div>
 </div>
+
+{% if trocar_contexto %}
+  {% comment %} Fora de banda: o HTMX aplica pelo `id`, sem segundo polling.
+     Ver o cabecalho de `_contexto.html`. {% endcomment %}
+  {% include "execucoes/_contexto.html" with oob=True %}
+{% endif %}

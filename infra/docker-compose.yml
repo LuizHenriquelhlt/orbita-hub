@@ -22,9 +22,13 @@ x-ambiente-comum: &ambiente-comum
   STORAGE_BACKEND: s3
   RABBITMQ_URL: amqp://${RABBITMQ_USER:-orbita}:${RABBITMQ_PASSWORD:-orbita_dev}@rabbitmq:5672/
   REDIS_URL: redis://redis:6379/0
-  S3_ENDPOINT_URL: http://minio:9000
-  S3_ACCESS_KEY: ${MINIO_ROOT_USER:-orbita_admin}
-  S3_SECRET_KEY: ${MINIO_ROOT_PASSWORD:-orbita_dev_password}
+  S3_ENDPOINT_URL: http://armazenamento:8333
+  # O endereco que o NAVEGADOR alcanca, e nao o que os servicos usam. A URL de
+  # download e assinada com ele; `armazenamento` so existe dentro desta rede.
+  # Ver hub_core.storage.s3.
+  S3_ENDPOINT_PUBLICO: http://localhost:${S3_PORT:-8333}
+  S3_ACCESS_KEY: ${S3_ACCESS_KEY:-orbita_admin}
+  S3_SECRET_KEY: ${S3_SECRET_KEY:-orbita_dev_password}
   S3_BUCKET: ${S3_BUCKET:-orbita-artefatos}
   JWT_SECRET: ${JWT_SECRET:-desenvolvimento-apenas-troque-isto}
   INTERNAL_SHARED_SECRET: ${INTERNAL_SHARED_SECRET:-desenvolvimento-apenas-troque-este-segredo-interno}
@@ -50,7 +54,7 @@ x-servico-comum: &servico-comum
       condition: service_healthy
     redis:
       condition: service_started
-    minio:
+    armazenamento:
       condition: service_started
   # O código é montado como volume para que `--reload` do uvicorn funcione sem
   # rebuild. Em produção a imagem é imutável e não há volume.
@@ -111,18 +115,32 @@ services:
     ports:
       - "${REDIS_PORT:-6379}:6379"
 
-  minio:
-    image: minio/minio:latest
+  # Armazenamento de objetos compativel com S3.
+  #
+  # Era MinIO ate 2025, quando a imagem da comunidade deixou de ser
+  # livremente baixavel (o Docker Hub nega o pull e o quay.io passou a exigir
+  # autenticacao). SeaweedFS ocupa o mesmo lugar, e com uma vantagem: e
+  # software de armazenamento de verdade, nao um emulador de desenvolvimento.
+  #
+  # Para a plataforma, a troca e invisivel: o adaptador fala S3 com assinatura
+  # v4, e quem muda e so o endpoint. E o ponto da porta plugavel, aplicado
+  # a uma troca que nao foi planejada.
+  armazenamento:
+    image: chrislusf/seaweedfs:3.97
     restart: unless-stopped
-    command: ["server", "/data", "--console-address", ":9001"]
-    environment:
-      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-orbita_admin}
-      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-orbita_dev_password}
+    command:
+      - server
+      - -dir=/data
+      - -s3
+      - -s3.port=8333
+      - -s3.config=/etc/seaweedfs/s3.json
+      - -master.volumeSizeLimitMB=256
     ports:
-      - "${MINIO_PORT:-9000}:9000"
-      - "${MINIO_CONSOLE_PORT:-9001}:9001"
+      - "${S3_PORT:-8333}:8333"
+      - "${S3_UI_PORT:-8888}:8888"
     volumes:
-      - dados-minio:/data
+      - dados-armazenamento:/data
+      - ./seaweedfs/s3.json:/etc/seaweedfs/s3.json:ro
 
   # ── Migrações ──────────────────────────────────────────────────────────────
   migracoes:
@@ -154,6 +172,12 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      redis:
+        condition: service_started
+      armazenamento:
+        condition: service_started
       migracoes:
         condition: service_completed_successfully
 
@@ -173,6 +197,14 @@ services:
     ports:
       - "${CATALOG_SERVICE_PORT:-8002}:8002"
     depends_on:
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      redis:
+        condition: service_started
+      armazenamento:
+        condition: service_started
       migracoes:
         condition: service_completed_successfully
 
@@ -192,6 +224,14 @@ services:
     ports:
       - "${EXECUTION_SERVICE_PORT:-8003}:8003"
     depends_on:
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      redis:
+        condition: service_started
+      armazenamento:
+        condition: service_started
       migracoes:
         condition: service_completed_successfully
 
@@ -200,7 +240,13 @@ services:
     environment:
       <<: *ambiente-comum
       PORTA: "8004"
-      EXECUTOR_BACKEND: docker
+      # Configuravel para que dar uma olhada no projeto nao exija editar este
+      # arquivo: RUNNER_EXECUTOR=simulated no .env roda tudo sem imagem.
+      EXECUTOR_BACKEND: ${RUNNER_EXECUTOR:-docker}
+      # Desvia para o roteiro declarado quando a imagem nao existe. Em
+      # producao deve ser false: ali, imagem ausente e incidente, nao detalhe.
+      # Ver hub_core/executor/reserva.py.
+      EXECUTOR_FALLBACK_SIMULADO: ${EXECUTOR_FALLBACK_SIMULADO:-true}
       RUNNER_MAX_CONCORRENTES: "2"
     command:
       - uvicorn
@@ -218,10 +264,33 @@ services:
     # banco de domínio dos outros serviços, ver o docstring de
     # `hub_runner.app`. Em Kubernetes, isto vira uma ServiceAccount com
     # permissão de criar Jobs, que é bem mais restrito.
+    # Roda como root, e isso merece explicacao em vez de ficar implicito.
+    #
+    # O socket do Docker pertence a root no host, e o Dockerfile define uid
+    # 1000, entao o cliente morre com PermissionError antes de atender a
+    # primeira requisicao. As saidas usuais sao `group_add` com o gid do
+    # socket (que muda de host para host, e no Docker Desktop nem existe) ou
+    # rodar como root.
+    #
+    # Root aqui nao piora a postura de seguranca de forma significativa, e
+    # vale entender por que: quem monta o socket do Docker ja tem poder
+    # equivalente a root no host, podendo criar um container privilegiado com
+    # o sistema de arquivos montado. O risco esta no `volumes` abaixo, nao no
+    # `user`. E por isso que em Kubernetes este servico usa uma
+    # ServiceAccount com permissao de criar Jobs, e nao um socket.
+    user: root
     volumes:
       - ..:/app
       - /var/run/docker.sock:/var/run/docker.sock
     depends_on:
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      redis:
+        condition: service_started
+      armazenamento:
+        condition: service_started
       migracoes:
         condition: service_completed_successfully
 
@@ -263,4 +332,4 @@ services:
 volumes:
   dados-postgres:
   dados-rabbitmq:
-  dados-minio:
+  dados-armazenamento:

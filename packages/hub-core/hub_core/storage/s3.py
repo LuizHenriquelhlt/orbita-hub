@@ -1,4 +1,4 @@
-"""Artefatos em object storage compatível com S3 (MinIO local, S3 em produção).
+"""Artefatos em object storage compatível com S3 (SeaweedFS local, S3 em produção).
 
 O `boto3` é síncrono e não tem versão assíncrona oficial. Chamá-lo direto de um
 handler `async` bloquearia o event loop, e com um upload de alguns megabytes
@@ -38,16 +38,36 @@ class ArtefatoStoreS3(ArtefatoStore):
             ) from erro
 
         self._bucket = settings.s3_bucket
-        self._cliente: Any = boto3.client(
-            "s3",
-            endpoint_url=settings.s3_endpoint_url,
-            aws_access_key_id=settings.s3_access_key,
-            aws_secret_access_key=settings.s3_secret_key,
-            region_name=settings.s3_region,
-            # `path` em vez de `virtual` porque o MinIO local não resolve
-            # `bucket.host`; em S3 de verdade os dois funcionam.
-            config=Config(signature_version="s3v4", s3={"addressing_style": "path"}),
-        )
+
+        def _montar(endpoint: str | None) -> Any:
+            return boto3.client(
+                "s3",
+                endpoint_url=endpoint,
+                aws_access_key_id=settings.s3_access_key,
+                aws_secret_access_key=settings.s3_secret_key,
+                region_name=settings.s3_region,
+                # `path` em vez de `virtual` porque o object storage local não
+                # resolve `bucket.host`; em S3 de verdade os dois funcionam.
+                config=Config(signature_version="s3v4", s3={"addressing_style": "path"}),
+            )
+
+        self._cliente: Any = _montar(settings.s3_endpoint_url)
+
+        # Um segundo cliente, só para assinar URL de download, e só quando o
+        # endereço que o navegador alcança é diferente do que o serviço usa.
+        #
+        # É o caso de qualquer object storage dentro de uma rede do Docker: o
+        # serviço fala com `http://armazenamento:8333`, nome que só existe
+        # naquela rede, e o navegador do usuário roda fora dela. A URL assinada
+        # com esse host é válida e inalcançável ao mesmo tempo.
+        #
+        # Não dá para assinar e depois trocar o host: a assinatura SigV4 cobre
+        # o header `Host`, e o servidor recalcula o HMAC com o Host que recebeu.
+        # Qualquer troca posterior produz `SignatureDoesNotMatch`. Por isso o
+        # endereço público entra na *assinatura*, e não na URL já pronta.
+        self._cliente_publico: Any = self._cliente
+        if settings.s3_endpoint_publico:
+            self._cliente_publico = _montar(settings.s3_endpoint_publico)
 
     async def iniciar(self) -> None:
         """Garante que o bucket existe. Idempotente."""
@@ -169,10 +189,13 @@ class ArtefatoStoreS3(ArtefatoStore):
 
         É a vantagem real deste adaptador sobre o PostgreSQL, uma planilha de
         50 MB não atravessa o processo da aplicação.
+
+        Assina com `_cliente_publico`, que é o mesmo cliente a menos que
+        `S3_ENDPOINT_PUBLICO` esteja definido. Ver o comentário em `__init__`.
         """
         caminho = validar_caminho(caminho)
         return await asyncio.to_thread(  # type: ignore[no-any-return]
-            self._cliente.generate_presigned_url,
+            self._cliente_publico.generate_presigned_url,
             "get_object",
             Params={"Bucket": self._bucket, "Key": caminho},
             ExpiresIn=validade_segundos,

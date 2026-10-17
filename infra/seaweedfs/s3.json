@@ -1,0 +1,14 @@
+{
+  "identities": [
+    {
+      "name": "orbita",
+      "credentials": [
+        {
+          "accessKey": "orbita_admin",
+          "secretKey": "orbita_dev_password"
+        }
+      ],
+      "actions": ["Admin", "Read", "Write", "List", "Tagging"]
+    }
+  ]
+}

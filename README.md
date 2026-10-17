@@ -12,7 +12,7 @@ disparo, fila, execução isolada, acompanhamento ao vivo, artefatos, auditoria
 imutável e agendamento, em quatro serviços e um portal.
 
 O ponto do projeto não é a lista de funcionalidades. É que **o mesmo código
-roda de dois jeitos**: cinco processos com RabbitMQ, Redis, MinIO e containers
+roda de dois jeitos**: cinco processos com RabbitMQ, Redis, SeaweedFS e containers
 Docker de verdade, ou um único processo que não precisa de nada além de um
 PostgreSQL. Trocar entre os dois é uma variável de ambiente, e não existe um
 `if` sobre o modo em nenhuma regra de negócio.
@@ -126,7 +126,7 @@ A plataforma precisa rodar em dois lugares com restrições opostas:
 | Processos | 5 | 1 |
 | Fila | RabbitMQ | tabela PostgreSQL |
 | Execução | containers Docker | roteiro simulado |
-| Artefatos | MinIO / S3 | `bytea` no PostgreSQL |
+| Artefatos | SeaweedFS / S3 | `bytea` no PostgreSQL |
 | Lock | Redis | advisory lock |
 | Memória | o que for preciso | 512 MB |
 
@@ -359,7 +359,7 @@ Precisa de Docker com Compose v2.
 
 ```bash
 cp .env.example .env
-make up          # pg + rabbit + redis + minio + 4 serviços + portal
+make up          # pg + rabbit + redis + seaweedfs + 4 serviços + portal + imagens
 make seed        # cenário fictício do INRH
 ```
 
@@ -368,7 +368,8 @@ make seed        # cenário fictício do INRH
 | Portal | http://localhost:3000 |
 | identity / catalog / execution / runner | :8001 … :8004 (`/docs` em cada) |
 | RabbitMQ | http://localhost:15672 |
-| MinIO | http://localhost:9001 |
+| SeaweedFS (S3) | http://localhost:8333 |
+| SeaweedFS (painel) | http://localhost:8888 |
 
 ### Modo monolito - um processo, como no free tier
 
