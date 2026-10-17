@@ -37,3 +37,7 @@ desktop.ini
 
 # Saídas das automações de exemplo
 /automations/**/saida/
+
+# Configuração local de ferramenta de desenvolvimento (caminho do venv é
+# específico da máquina).
+.claude/
