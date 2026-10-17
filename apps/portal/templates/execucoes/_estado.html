@@ -1,0 +1,137 @@
+{% load orbita %}
+{% comment %}
+Cartão de estado da execução.
+
+Igual ao fragmento de log, este **inclui o próprio invólucro** e se substitui
+por inteiro (`outerHTML`). O motivo é o mesmo: os atributos de polling vivem no
+invólucro, e é a ausência deles na resposta que faz a atualização parar quando
+a execução termina.
+
+A alternativa — invólucro fixo em `detalhe.html` e troca de `innerHTML` — teria
+um defeito silencioso: os atributos de gatilho foram renderizados quando a
+página carregou, com a execução em andamento, e continuariam lá para sempre.
+A tela seguiria pedindo atualização a cada 2 s de uma execução encerrada horas
+antes.
+{% endcomment %}
+
+<div id="estado-da-execucao"
+     {% if execucao.em_andamento %}
+       hx-get="{% url 'execucoes:estado' execucao_id=execucao.id %}"
+       hx-trigger="every {{ INTERVALO_POLL_MS }}ms"
+       hx-swap="outerHTML"
+     {% endif %}>
+
+  <div class="grade grade--indicadores">
+    <div class="indicador indicador--{{ execucao.status|cor_de_status }}">
+      <span class="indicador__rotulo">Situação</span>
+      <span class="indicador__valor" style="font-size: 1.1rem">
+        <span class="etiqueta etiqueta--{{ execucao.status|cor_de_status }}" style="font-size: 0.85rem">
+          <span class="etiqueta__ponto" aria-hidden="true"></span>
+          {{ execucao.status|rotulo_de_status }}
+        </span>
+      </span>
+      {% if execucao.resultado_resumo %}
+        <span class="indicador__nota">{{ execucao.resultado_resumo }}</span>
+      {% endif %}
+    </div>
+
+    <div class="indicador">
+      <span class="indicador__rotulo">Duração</span>
+      <span class="indicador__valor">{{ execucao.duracao_ms|duracao }}</span>
+      <span class="indicador__nota">na fila: {{ execucao.espera_ms|duracao }}</span>
+    </div>
+
+    <div class="indicador">
+      <span class="indicador__rotulo">Executor</span>
+      <span class="indicador__valor" style="font-size: 1.1rem">{{ execucao.executor|default:"—" }}</span>
+      {% if execucao.simulada %}
+        {% comment %} Rótulo obrigatório, não decorativo: número de consumo simulado
+           apresentado como real é a única parte de uma demonstração que seria
+           desonesta. {% endcomment %}
+        <span class="indicador__nota">
+          <span class="etiqueta etiqueta--aviso">simulada</span>
+          consumo reproduzido, não medido
+        </span>
+      {% elif execucao.consumo.memoria_pico_mb %}
+        <span class="indicador__nota">pico de {{ execucao.consumo.memoria_pico_mb }} MB</span>
+      {% endif %}
+    </div>
+
+    {% if execucao.metricas %}
+      <div class="indicador">
+        <span class="indicador__rotulo">Métricas emitidas</span>
+        <span class="indicador__valor">{{ execucao.metricas|length }}</span>
+        <span class="indicador__nota">pela própria automação</span>
+      </div>
+    {% endif %}
+  </div>
+
+  {% if execucao.erro %}
+    <div class="alerta alerta--erro" role="alert" style="margin-top: var(--e-4)">
+      <svg class="alerta__icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <circle cx="12" cy="12" r="9"/><path d="M12 8v4m0 4h.01"/>
+      </svg>
+      <div class="alerta__corpo">
+        <p class="alerta__titulo">A execução falhou</p>
+        <p class="sem-margem quebra-tudo">{{ execucao.erro }}</p>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if execucao.metricas or execucao.artefatos %}
+    <div class="grade grade--2" style="margin-top: var(--e-4)">
+      {% if execucao.metricas %}
+        <section class="cartao cartao--compacto">
+          <h3 class="cartao__titulo">Métricas da automação</h3>
+          <ul class="lista-simples" style="margin-top: var(--e-3)">
+            {% for nome, valor in execucao.metricas.items %}
+              <li><code>{{ nome }}</code><strong class="numerico">{{ valor|numero:2 }}</strong></li>
+            {% endfor %}
+          </ul>
+        </section>
+      {% endif %}
+
+      {% if execucao.artefatos %}
+        <section class="cartao cartao--compacto">
+          <h3 class="cartao__titulo">Artefatos</h3>
+          <ul class="lista-simples" style="margin-top: var(--e-3)">
+            {% for artefato in execucao.artefatos %}
+              <li>
+                <a href="{% url 'execucoes:baixar_artefato' execucao_id=execucao.id artefato_id=artefato.id %}">
+                  {{ artefato.nome_arquivo }}
+                </a>
+                <span class="tenue pequeno numerico">{{ artefato.tamanho_bytes|tamanho_de_arquivo }}</span>
+              </li>
+            {% endfor %}
+          </ul>
+        </section>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <div class="linha" style="margin-top: var(--e-4)">
+    {% if execucao.em_andamento and quem.pode_cancelar %}
+      <button class="botao botao--perigo botao--pequeno"
+              hx-post="{% url 'execucoes:cancelar' execucao_id=execucao.id %}"
+              hx-target="#estado-da-execucao"
+              hx-swap="outerHTML"
+              hx-confirm="Cancelar esta execução?">
+        Cancelar execução
+      </button>
+    {% endif %}
+
+    {% if not execucao.em_andamento and quem.pode_reexecutar %}
+      <form method="post" action="{% url 'execucoes:reexecutar' execucao_id=execucao.id %}">
+        {% csrf_token %}
+        <button type="submit" class="botao botao--secundario botao--pequeno">
+          Executar de novo com os mesmos parâmetros
+        </button>
+      </form>
+    {% endif %}
+
+    <a class="botao botao--fantasma botao--pequeno"
+       href="{% url 'marketplace:ficha' slug=execucao.automacao_slug %}">
+      Ver a automação
+    </a>
+  </div>
+</div>

@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% load orbita %}
+
+{% block titulo %}Meu perfil{% endblock %}
+
+{% block conteudo %}
+
+<div class="pagina__cabecalho">
+  <div class="linha" style="gap: var(--e-4)">
+    <span class="avatar" style="width:52px;height:52px;font-size:1.1rem" aria-hidden="true">
+      {{ quem.iniciais }}
+    </span>
+    <div>
+      <h1 class="pagina__titulo">{{ detalhe.nome }}</h1>
+      <p class="pagina__descricao sem-margem">
+        {{ detalhe.email }}
+        {% if detalhe.unidade %} · {{ detalhe.unidade.sigla }} — {{ detalhe.unidade.nome }}{% endif %}
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="grade grade--2">
+  <section class="cartao">
+    <h2 class="cartao__titulo">Conta</h2>
+    <dl class="definicoes" style="margin-top: var(--e-4)">
+      <div><dt>CPF</dt><dd class="mono">{{ detalhe.cpf }}</dd></div>
+      <div><dt>Matrícula</dt><dd class="mono">{{ detalhe.matricula|default:"—" }}</dd></div>
+      <div><dt>Situação</dt>
+        <dd>
+          {% if detalhe.ativo %}
+            <span class="etiqueta etiqueta--sucesso">ativa</span>
+          {% else %}
+            <span class="etiqueta etiqueta--inativo">inativa</span>
+          {% endif %}
+        </dd>
+      </div>
+      <div><dt>Último acesso</dt><dd>{{ detalhe.ultimo_login|quando }}</dd></div>
+      <div><dt>Conta criada</dt><dd>{{ detalhe.criado_em|quando }}</dd></div>
+    </dl>
+
+    {% if detalhe.grupos %}
+      <hr>
+      <h3 class="cartao__titulo">Grupos</h3>
+      <ul class="lista-simples" style="margin-top: var(--e-3)">
+        {% for grupo in detalhe.grupos %}
+          <li>
+            <span>
+              <strong>{{ grupo.nome }}</strong>
+              {% if grupo.descricao %}<div class="tabela__secundario">{{ grupo.descricao }}</div>{% endif %}
+            </span>
+            <span class="etiqueta etiqueta--contorno">{{ grupo.tipo }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+      <p class="pequeno tenue" style="margin-top: var(--e-3)">
+        Papéis concedidos a um grupo valem para todos os seus membros. Os papéis
+        abaixo são a união dos diretos com os herdados de grupo.
+      </p>
+    {% endif %}
+  </section>
+
+  <section class="cartao">
+    <h2 class="cartao__titulo">Papéis e permissões</h2>
+
+    <div class="linha" style="margin-top: var(--e-3)">
+      {% for papel in detalhe.papeis %}
+        <span class="etiqueta {% if papel == 'admin' %}etiqueta--primaria{% elif papel == 'auditor' %}etiqueta--aviso{% endif %}">
+          {{ papel }}
+        </span>
+      {% empty %}
+        <span class="tenue pequeno">Nenhum papel concedido.</span>
+      {% endfor %}
+    </div>
+
+    <p class="pequeno tenue" style="margin-top: var(--e-4)">
+      A matriz de papel para permissão vive no código-fonte, não em tabela: ela
+      é política de segurança, e mudança de política deve passar por revisão de
+      código. O que é dado, e fica no banco, é a quem cada papel foi concedido.
+    </p>
+
+    {% if detalhe.permissoes %}
+      <details style="margin-top: var(--e-4)">
+        <summary class="pequeno" style="cursor:pointer">
+          {{ detalhe.permissoes|length }} permissões efetivas
+        </summary>
+        <div class="linha" style="margin-top: var(--e-3)">
+          {% for permissao in detalhe.permissoes %}
+            <code class="pequeno">{{ permissao }}</code>
+          {% endfor %}
+        </div>
+      </details>
+    {% endif %}
+  </section>
+</div>
+
+{% if quem.demonstracao %}
+  <section class="cartao" style="margin-top: var(--e-5)">
+    <h2 class="cartao__titulo">Trocar de papel</h2>
+    <p class="suave pequeno">
+      Você está em uma sessão de demonstração. Saia e entre com outro papel para
+      ver a plataforma do ponto de vista dele — a diferença entre
+      <strong>auditor</strong> e <strong>operador</strong> é o exemplo mais
+      ilustrativo: o auditor lê a trilha inteira e não dispara nada, o operador
+      dispara e não vê a trilha.
+    </p>
+    <form method="post" action="{% url 'contas:sair' %}">
+      {% csrf_token %}
+      <button type="submit" class="botao botao--secundario">Sair e escolher outro papel</button>
+    </form>
+  </section>
+{% endif %}
+{% endblock %}

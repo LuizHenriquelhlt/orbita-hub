@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block titulo %}Cadastrar automação{% endblock %}
+
+{% block conteudo %}
+
+<nav class="trilha" aria-label="Trilha de navegação">
+  <a href="{% url 'marketplace:catalogo' %}">Catálogo</a>
+  <span class="trilha__separador">/</span>
+  <span>Cadastrar automação</span>
+</nav>
+
+<div class="pagina__cabecalho">
+  <div>
+    <h1 class="pagina__titulo">Cadastrar automação</h1>
+    <p class="pagina__descricao">
+      Cole o <code>automation.yaml</code> da automação. É o contrato de
+      extensão da plataforma: nenhuma alteração no código do Órbita é
+      necessária para registrar uma automação nova — nem para uma escrita em
+      outra linguagem.
+    </p>
+  </div>
+</div>
+
+{% if erro %}
+  {% include "componentes/alerta.html" with tipo="erro" titulo="O manifesto não atende ao contrato" mensagem=erro problemas=problemas %}
+{% endif %}
+
+<div class="grade grade--2">
+  <form method="post" action="{% url 'marketplace:importar' %}" class="cartao">
+    {% csrf_token %}
+
+    <div class="campo">
+      <label class="campo__rotulo" for="manifesto_yaml">
+        automation.yaml <span class="campo__obrigatorio">*</span>
+      </label>
+      <textarea id="manifesto_yaml" name="manifesto_yaml" class="mono" rows="24"
+                spellcheck="false" required
+                {% if erro %}aria-invalid="true"{% endif %}
+                placeholder="apiVersion: orbita.inrh/v1&#10;kind: Automacao&#10;metadata:&#10;  nome: minha-automacao&#10;  ...">{{ yaml }}</textarea>
+      <span class="campo__ajuda">
+        O schema completo está em
+        <a href="/api/catalog/manifestos/schema" target="_blank" rel="noopener">
+          /api/catalog/manifestos/schema</a> — aponte o seu editor para ele e
+        ele autocompleta enquanto você digita.
+      </span>
+    </div>
+
+    {% if quem.pode_publicar %}
+      <label class="caixa">
+        <input type="checkbox" name="publicar" {% if publicar %}checked{% endif %}>
+        <span class="caixa__texto">
+          <span class="caixa__titulo">Publicar imediatamente</span>
+          <span class="caixa__ajuda">
+            Sem marcar, a automação entra como rascunho e passa pelo ciclo de
+            homologação. Só é publicada se cumprir os requisitos.
+          </span>
+        </span>
+      </label>
+    {% endif %}
+
+    <div class="formulario__acoes">
+      <button type="submit" class="botao">Validar e cadastrar</button>
+      <a class="botao botao--fantasma" href="{% url 'marketplace:catalogo' %}">Cancelar</a>
+    </div>
+  </form>
+
+  <aside class="pilha">
+    <section class="cartao">
+      <h2 class="cartao__titulo">Como funciona</h2>
+      <ol class="pequeno suave" style="padding-left: var(--e-5); line-height: 1.7">
+        <li>O manifesto é validado contra o contrato. Campo desconhecido é
+            recusado, não ignorado — manifesto com erro de digitação que
+            "funciona pela metade" é pior do que manifesto recusado.</li>
+        <li>A automação é criada ou <strong>atualizada</strong> pelo
+            identificador. Reimportar não duplica, o que permite ao pipeline da
+            automação rodar a importação a cada release.</li>
+        <li>Os gatilhos são substituídos pelos declarados: um agendamento
+            retirado do arquivo deixa de disparar.</li>
+        <li>Permissões concedidas na tela de acesso <strong>sobrevivem</strong>
+            à reimportação. Elas são decisão operacional, e um <code>git
+            push</code> não deve revogá-las.</li>
+      </ol>
+    </section>
+
+    <section class="cartao">
+      <h2 class="cartao__titulo">Exemplo mínimo</h2>
+      <pre class="mono pequeno" style="overflow-x:auto; margin:0"><code>apiVersion: orbita.inrh/v1
+kind: Automacao
+metadata:
+  nome: meu-relatorio
+  titulo: Meu relatório
+  versao: 1.0.0
+  categoria: relatorios
+  descricao: &gt;-
+    Descrição com ao menos 40 caracteres,
+    exigida para poder publicar.
+  responsavel_tecnico: Equipe X
+  responsavel_negocio: Área Y
+spec:
+  tipo: batch
+  imagem: local/meu-relatorio
+  entrypoint: [python, -I, main.py]
+  recursos:
+    cpus: 0.5
+    memoria_mb: 512
+    timeout_segundos: 300
+  parametros:
+    - nome: competencia
+      rotulo: Competência
+      tipo: mes
+      obrigatorio: true
+  gatilhos:
+    - tipo: manual
+  permissoes:
+    - escopo: todos
+      nivel: executar</code></pre>
+    </section>
+  </aside>
+</div>
+{% endblock %}

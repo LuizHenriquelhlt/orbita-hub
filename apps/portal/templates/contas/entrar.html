@@ -1,0 +1,105 @@
+{% load static %}<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entrar · Órbita</title>
+  <meta name="color-scheme" content="light dark">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("orbita-tema");
+        if (t) document.documentElement.dataset.tema = t;
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="{% static 'css/orbita.css' %}">
+  <link rel="icon" href="{% static 'img/favicon.svg' %}" type="image/svg+xml">
+</head>
+
+<body class="entrada">
+  <main class="entrada__caixa">
+    <div class="entrada__marca">
+      <span class="barra__simbolo" aria-hidden="true">Ó</span>
+      <div>
+        <div class="entrada__nome">Órbita</div>
+        <div class="entrada__subtitulo">Orquestração de automações corporativas</div>
+      </div>
+    </div>
+
+    {% if expirou %}
+      {% include "componentes/alerta.html" with tipo="aviso" mensagem="Sua sessão expirou. Entre novamente." %}
+    {% endif %}
+
+    {% if erro %}
+      {% include "componentes/alerta.html" with tipo="erro" mensagem=erro %}
+    {% endif %}
+
+    <form method="post" action="{% url 'contas:entrar' %}" novalidate>
+      {% csrf_token %}
+      <input type="hidden" name="proximo" value="{{ proximo }}">
+
+      <div class="campo">
+        <label class="campo__rotulo" for="cpf">CPF</label>
+        <input id="cpf" name="cpf" type="text" value="{{ cpf|default:'' }}"
+               inputmode="numeric" autocomplete="username" required
+               placeholder="000.000.000-00" maxlength="14"
+               {% if erro %}aria-invalid="true"{% endif %}>
+        <span class="campo__ajuda">Com ou sem pontuação.</span>
+      </div>
+
+      <div class="campo">
+        <label class="campo__rotulo" for="senha">Senha</label>
+        <input id="senha" name="senha" type="password"
+               autocomplete="current-password" required
+               {% if erro %}aria-invalid="true"{% endif %}>
+      </div>
+
+      <button type="submit" class="botao botao--grande botao--bloco">Entrar</button>
+    </form>
+
+    {% if DEMO_MODE and papeis %}
+      <div class="entrada__separador">ou veja a demonstração</div>
+
+      <p class="pequeno tenue" style="margin-bottom: var(--e-3)">
+        Entre sem senha assumindo um papel. Cada um vê a plataforma de forma
+        diferente — o número entre parênteses é quantas permissões ele concede.
+      </p>
+
+      <div class="papeis">
+        {% for papel in papeis %}
+          <form method="post" action="{% url 'contas:entrar_demonstracao' %}">
+            {% csrf_token %}
+            <input type="hidden" name="papel" value="{{ papel.valor }}">
+            <input type="hidden" name="proximo" value="{{ proximo }}">
+            <button type="submit" class="papel">
+              <span>
+                <span class="papel__nome">{{ papel.rotulo }}</span>
+                <span class="papel__descricao">{{ papel.descricao }}</span>
+              </span>
+              <span class="papel__contador">{{ papel.permissoes|length }}</span>
+            </button>
+          </form>
+        {% endfor %}
+      </div>
+
+      <div class="credenciais">
+        <p class="sem-margem"><strong>Para entrar com CPF e senha</strong></p>
+        <p class="sem-margem tenue" style="margin-top: var(--e-2)">
+          Use qualquer CPF do cenário fictício com a senha
+          <code>Orbita@Demo2026</code>. O comando
+          <code>python -m scripts.seed</code> imprime a lista completa.
+        </p>
+        <p class="sem-margem tenue" style="margin-top: var(--e-2)">
+          Exemplo (administrador): <code>000.466.421-37</code>
+        </p>
+      </div>
+    {% endif %}
+
+    <p class="pequeno tenue" style="margin-top: var(--e-5); text-align: center">
+      Dados sintéticos. O INRH é um órgão fictício criado para este projeto —
+      nenhuma pessoa, unidade ou outorga corresponde a algo real.
+    </p>
+  </main>
+</body>
+</html>

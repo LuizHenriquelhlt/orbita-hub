@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load orbita %}
+
+{% block titulo %}Filas{% endblock %}
+
+{% block conteudo %}
+
+<div class="pagina__cabecalho">
+  <div>
+    <h1 class="pagina__titulo">Filas de execução</h1>
+    <p class="pagina__descricao">
+      Três filas por prioridade operacional, atendidas em ordem:
+      <strong>interativa</strong> → <strong>padrão</strong> →
+      <strong>lote</strong>. É inanição por desenho: um relatório mensal pesado
+      nunca atrasa a automação que alguém está esperando na tela.
+    </p>
+  </div>
+</div>
+
+<div class="grade grade--indicadores">
+  {% for fila in filas %}
+    <div class="indicador{% if fila.morta %} indicador--erro{% elif fila.pendente %} indicador--ativo{% endif %}">
+      <span class="indicador__rotulo">{{ fila.fila|cut:"execucoes." }}</span>
+      <span class="indicador__valor">{{ fila.pendente|numero }}</span>
+      <span class="indicador__nota">
+        pendentes · {{ fila.processando }} em curso
+        {% if fila.morta %} · <strong>{{ fila.morta }} mortas</strong>{% endif %}
+      </span>
+    </div>
+  {% endfor %}
+</div>
+
+<section class="cartao" style="margin-top: var(--e-5)">
+  <div class="cartao__cabecalho">
+    <h2 class="cartao__titulo">Mensagens mortas</h2>
+    <span class="cartao__legenda">
+      esgotaram as tentativas e saíram do fluxo normal
+    </span>
+  </div>
+
+  {% if aviso_dlq %}
+    {% include "componentes/alerta.html" with tipo="info" mensagem=aviso_dlq %}
+  {% elif mortas %}
+    <p class="pequeno tenue">
+      Uma mensagem chega aqui depois de falhar o número máximo de tentativas,
+      com backoff exponencial entre elas — 5 s, 10 s, 20 s. Revivê-la zera o
+      contador e a devolve à fila; antes disso, vale conferir se a causa foi
+      corrigida.
+    </p>
+
+    <div class="tabela-envoltorio" style="margin-top: var(--e-3)">
+      <table class="tabela">
+        <thead>
+          <tr>
+            <th>Fila</th>
+            <th>Execução</th>
+            <th class="tabela__numero">Tentativas</th>
+            <th>Último erro</th>
+            <th>Quando</th>
+            {% if quem.pode_administrar_filas %}
+              <th class="tabela__acoes"><span class="so-leitor">Ações</span></th>
+            {% endif %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for mensagem in mortas %}
+            <tr>
+              <td><span class="etiqueta etiqueta--contorno">{{ mensagem.fila|cut:"execucoes." }}</span></td>
+              <td class="mono pequeno quebra-tudo">
+                {{ mensagem.corpo.automacao_slug|default:"—" }}
+                <div class="tabela__secundario">{{ mensagem.corpo.execucao_id|default:""|truncatechars:14 }}</div>
+              </td>
+              <td class="tabela__numero">{{ mensagem.tentativas }}</td>
+              <td class="pequeno quebra-tudo" style="max-width: 34ch">
+                {{ mensagem.ultimo_erro|default:"—"|truncatechars:150 }}
+              </td>
+              <td class="pequeno">{{ mensagem.finalizado_em|quando }}</td>
+              {% if quem.pode_administrar_filas %}
+                <td class="tabela__acoes">
+                  <form method="post" action="{% url 'administracao:reviver' mensagem_id=mensagem.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="botao botao--secundario botao--pequeno">Reviver</button>
+                  </form>
+                </td>
+              {% endif %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    {% include "componentes/vazio.html" with titulo="Nenhuma mensagem morta" texto="Nada esgotou as tentativas. Para ver este caminho em ação, dispare a automação `sincroniza-cadastro-funcional`, que falha de propósito." %}
+  {% endif %}
+</section>
+
+<section class="cartao" style="margin-top: var(--e-5)">
+  <h2 class="cartao__titulo">Como a fila funciona neste ambiente</h2>
+  <p class="suave pequeno" style="margin-top: var(--e-3)">
+    O adaptador em uso é <code>{{ HUB_MODE }}</code>. Com
+    <code>BROKER_BACKEND=postgres</code>, a fila é uma tabela consultada com
+    <code>SELECT … FOR UPDATE SKIP LOCKED</code>: dois workers concorrentes
+    pegam lotes distintos sem esperar um pelo outro. <em>Visibility timeout</em>
+    vira uma coluna <code>invisivel_ate</code> mais um recuperador periódico;
+    retry é <code>disponivel_em</code> no futuro; a fila de mortas é um estado.
+  </p>
+  <p class="suave pequeno">
+    Com <code>BROKER_BACKEND=rabbitmq</code>, as mesmas garantias vêm do broker,
+    e o atraso do retry é obtido com filas de espera por faixa de TTL — não com
+    TTL por mensagem, que sofreria bloqueio de cabeça de fila.
+  </p>
+</section>
+{% endblock %}

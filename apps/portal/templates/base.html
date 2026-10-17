@@ -1,0 +1,220 @@
+{% load static orbita %}<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block titulo %}Órbita{% endblock %} · Órbita</title>
+  <meta name="description" content="{% block descricao %}Plataforma de orquestração de automações corporativas.{% endblock %}">
+  <meta name="color-scheme" content="light dark">
+
+  {% comment %} O tema é aplicado antes do CSS para que não haja um instante de tela
+     clara antes de o escuro entrar — o "flash of incorrect theme". É o único
+     script que precisa ser inline e bloqueante. {% endcomment %}
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("orbita-tema");
+        if (t) document.documentElement.dataset.tema = t;
+      } catch (e) { /* localStorage bloqueado: segue o prefers-color-scheme */ }
+    })();
+  </script>
+
+  <link rel="stylesheet" href="{% static 'css/orbita.css' %}">
+  <link rel="icon" href="{% static 'img/favicon.svg' %}" type="image/svg+xml">
+
+  {% comment %} HTMX servido pelo próprio projeto (`static/js/htmx.min.js`, v2.0.4), não
+     por CDN. Três motivos: a página funciona sem rede externa; o WhiteNoise
+     põe hash no nome e serve com cache imutável, o que é mais rápido que um
+     CDN de terceiro depois do primeiro acesso; e não há requisição a outro
+     domínio, que em sistema institucional costuma ser bloqueada por política
+     de rede. O custo é atualizar à mão — aceitável para uma dependência que
+     muda de versão poucas vezes por ano. {% endcomment %}
+  <script src="{% static 'js/htmx.min.js' %}" defer></script>
+  <script src="{% static 'js/orbita.js' %}" defer></script>
+</head>
+
+<body hx-headers='{"x-csrftoken": "{{ csrf_token }}"}'>
+
+{% comment %} O HTMX precisa do token CSRF em toda requisição que altera estado. Declarar
+   em `<body>` com `hx-headers` faz todos os descendentes herdarem — a
+   alternativa é repetir o token em cada `hx-post` e esquecer em um deles. {% endcomment %}
+
+<div class="aplicacao">
+
+  <header class="barra">
+    <a class="barra__marca" href="{% url 'marketplace:catalogo' %}">
+      <span class="barra__simbolo" aria-hidden="true">Ó</span>
+      <span>Órbita</span>
+    </a>
+
+    {% if AMBIENTE != "producao" %}
+      <span class="barra__faixa" title="Ambiente e modo de composição em uso">
+        {{ AMBIENTE }} · {{ HUB_MODE }}
+      </span>
+    {% endif %}
+
+    <span class="barra__espaco"></span>
+
+    <div class="barra__acoes">
+      <button type="button" class="botao botao--barra" data-alternar-tema
+              aria-label="Alternar tema claro e escuro">
+        <svg class="botao__icone" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" aria-hidden="true">
+          <path d="M12 3v1m0 16v1m9-10h-1M4 12H3m15.364-6.364-.707.707M6.343 17.657l-.707.707m12.728 0-.707-.707M6.343 6.343l-.707-.707"/>
+          <circle cx="12" cy="12" r="4"/>
+        </svg>
+        <span class="so-leitor">Alternar tema</span>
+      </button>
+
+      {% if quem.autenticado %}
+        <a class="barra__usuario" href="{% url 'contas:perfil' %}">
+          <span class="avatar" aria-hidden="true">{{ quem.iniciais }}</span>
+          <span class="barra__identidade">
+            <strong>{{ quem.primeiro_nome }}</strong>
+            <span>{{ quem.papel_principal }}{% if quem.unidade_sigla %} · {{ quem.unidade_sigla }}{% endif %}</span>
+          </span>
+        </a>
+        <form method="post" action="{% url 'contas:sair' %}">
+          {% csrf_token %}
+          <button type="submit" class="botao botao--barra">Sair</button>
+        </form>
+      {% else %}
+        <a class="botao botao--barra" href="{% url 'contas:entrar' %}">Entrar</a>
+      {% endif %}
+    </div>
+  </header>
+
+  {% comment %} A seção ativa vem da própria rota resolvida pelo Django, não de uma
+     variável que cada view precisa lembrar de passar — e que um dia alguém
+     esquece, deixando o menu sem destaque. `app_name` identifica o grupo e
+     `url_name` o item dentro da administração. {% endcomment %}
+  {% with app_atual=request.resolver_match.app_name rota_atual=request.resolver_match.url_name %}
+  <nav class="lateral" aria-label="Navegação principal">
+    <div class="lateral__grupo">
+      <p class="lateral__titulo">Plataforma</p>
+
+      <a class="lateral__item {% if app_atual == 'marketplace' %}lateral__item--ativo{% endif %}"
+         href="{% url 'marketplace:catalogo' %}">
+        <svg class="lateral__icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+          <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+        </svg>
+        Catálogo
+      </a>
+
+      <a class="lateral__item {% if app_atual == 'execucoes' %}lateral__item--ativo{% endif %}"
+         href="{% url 'execucoes:listar' %}">
+        <svg class="lateral__icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/>
+        </svg>
+        Execuções
+      </a>
+
+      {% if quem.pode_ver_painel %}
+        <a class="lateral__item {% if app_atual == 'painel' %}lateral__item--ativo{% endif %}"
+           href="{% url 'painel:painel' %}">
+          <svg class="lateral__icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M4 20V10m5 10V4m5 16v-7m5 7V8"/>
+          </svg>
+          Painel
+        </a>
+      {% endif %}
+    </div>
+
+    {% if quem.tem_area_administrativa %}
+      <div class="lateral__grupo">
+        <p class="lateral__titulo">Administração</p>
+
+        {% if quem.pode_ver_usuarios %}
+          <a class="lateral__item {% if rota_atual == 'pessoas' %}lateral__item--ativo{% endif %}"
+             href="{% url 'administracao:pessoas' %}">
+            <svg class="lateral__icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="9" cy="8" r="3.5"/><path d="M3 20a6 6 0 0 1 12 0"/>
+              <path d="M16 11a3 3 0 1 0 0-6"/><path d="M18 20a5 5 0 0 0-3-4.6"/>
+            </svg>
+            Pessoas
+          </a>
+        {% endif %}
+
+        {% if quem.pode_ver_filas %}
+          <a class="lateral__item {% if rota_atual == 'filas' or rota_atual == 'reviver' %}lateral__item--ativo{% endif %}"
+             href="{% url 'administracao:filas' %}">
+            <svg class="lateral__icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h10"/>
+            </svg>
+            Filas
+          </a>
+        {% endif %}
+
+        {% if quem.pode_ver_runners %}
+          <a class="lateral__item {% if rota_atual == 'runners' %}lateral__item--ativo{% endif %}"
+             href="{% url 'administracao:runners' %}">
+            <svg class="lateral__icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/>
+              <path d="M7 7.5h.01M7 16.5h.01"/>
+            </svg>
+            Runners
+          </a>
+        {% endif %}
+
+        {% if quem.pode_ver_auditoria %}
+          <a class="lateral__item {% if rota_atual == 'auditoria' %}lateral__item--ativo{% endif %}"
+             href="{% url 'administracao:auditoria' %}">
+            <svg class="lateral__icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M5 3h9l5 5v13H5z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/>
+            </svg>
+            Auditoria
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="lateral__grupo">
+      <p class="lateral__titulo">Referência</p>
+      <a class="lateral__item" href="/_plataforma/docs" target="_blank" rel="noopener">
+        <svg class="lateral__icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5z"/>
+        </svg>
+        API dos serviços
+      </a>
+      <a class="lateral__item" href="/api/catalog/manifestos/schema" target="_blank" rel="noopener">
+        <svg class="lateral__icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="m9 18-6-6 6-6M15 6l6 6-6 6"/>
+        </svg>
+        Contrato de plugin
+      </a>
+    </div>
+  </nav>
+  {% endwith %}
+
+  <main class="conteudo" id="conteudo">
+    {% if quem.demonstracao %}
+      <div class="aviso-demo" role="status">
+        <strong>Sessão de demonstração</strong> como {{ quem.papel_principal|lower }}.
+        Cadastros são somente leitura; disparar automação e acompanhar execução estão liberados.
+      </div>
+    {% endif %}
+
+    {% if messages %}
+      {% for mensagem in messages %}
+        {% include "componentes/alerta.html" with tipo=mensagem.tags mensagem=mensagem %}
+      {% endfor %}
+    {% endif %}
+
+    {% block conteudo %}{% endblock %}
+
+    <footer class="rodape">
+      <span><strong>Órbita</strong> — orquestração de automações corporativas</span>
+      <span class="rodape__separador">·</span>
+      <span>Dados sintéticos. O INRH é um órgão fictício.</span>
+      <span class="rodape__separador">·</span>
+      <span>modo <code>{{ HUB_MODE }}</code></span>
+      <span class="barra__espaco"></span>
+      <a href="https://github.com/" rel="noopener">Código-fonte</a>
+    </footer>
+  </main>
+</div>
+
+{% block fim_do_corpo %}{% endblock %}
+</body>
+</html>

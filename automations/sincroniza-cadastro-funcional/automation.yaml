@@ -1,0 +1,113 @@
+# Automação que FALHA de propósito.
+#
+# Existe para demonstrar o caminho de erro da plataforma, que é a parte que
+# nenhuma demonstração mostra e toda operação precisa: a execução falha, a
+# mensagem volta para a fila com backoff exponencial (5 s, 10 s, 20 s), e após
+# a terceira tentativa vai para a fila de mensagens mortas, de onde um
+# administrador pode revivê-la pela área de Filas.
+#
+# Sem uma automação assim, o retry, o backoff e a DLQ ficariam como código
+# testado e nunca visto.
+
+apiVersion: orbita.inrh/v1
+kind: Automacao
+
+metadata:
+  nome: sincroniza-cadastro-funcional
+  titulo: Sincronização do cadastro funcional
+  versao: 0.9.3
+  categoria: integracao
+  descricao: >-
+    Sincroniza o cadastro funcional dos servidores a partir do sistema de
+    recursos humanos. Esta versão está em homologação e falha de propósito na
+    etapa de conciliação — serve para exercitar o caminho de erro da
+    plataforma: nova tentativa com backoff e fila de mensagens mortas.
+  tags: [integracao, rh, homologacao, falha-proposital]
+  responsavel_tecnico: Núcleo de Integrações
+  responsavel_negocio: Coordenação de Gestão de Pessoas
+  unidade: CGESP
+
+spec:
+  tipo: api
+  imagem: registry.interno/orbita/sincroniza-cadastro-funcional:0.9.3
+  entrypoint: [python, -I, sincronizar.py]
+
+  rede_habilitada: true
+
+  recursos:
+    cpus: 0.25
+    memoria_mb: 256
+    timeout_segundos: 120
+
+  max_execucoes_concorrentes: 1
+
+  consumo_estimado:
+    duracao_media_segundos: 20
+
+  variaveis_ambiente:
+    - nome: RH_BASE_URL
+      obrigatorio: true
+      segredo_ref: rh-base-url
+    - nome: RH_CLIENT_SECRET
+      obrigatorio: true
+      segredo_ref: rh-client-secret
+
+  parametros:
+    - nome: desde
+      rotulo: Sincronizar alterações desde
+      tipo: data
+      obrigatorio: true
+      mascara: AAAA-MM-DD
+
+  gatilhos:
+    - tipo: manual
+
+  permissoes:
+    - escopo: todos
+      nivel: executar
+
+  roteiro_simulado:
+    - espera_ms: 500
+      log: Obtendo token no provedor de identidade do RH
+
+    - espera_ms: 800
+      log: 1 284 matrículas com alteração desde a data informada
+      metrica: { matriculas_recebidas: 1284 }
+
+    - espera_ms: 1200
+      log: Conciliando matrículas com a base local
+      metrica: { matriculas_conciliadas: 1182 }
+
+    - espera_ms: 600
+      nivel: WARNING
+      log: 102 matrículas sem correspondência local
+
+    - espera_ms: 700
+      falha: >-
+        conciliação abortada: 102 matrículas sem correspondência excedem o
+        limite tolerado de 50. Revise o mapeamento de unidades antes de
+        sincronizar.
+      codigo_saida: 2
+
+  readme: |
+    **Esta automação falha de propósito.** Está no catálogo em homologação para
+    demonstrar o caminho de erro da plataforma, que é o que normalmente fica
+    invisível:
+
+    1. a execução falha com código de saída 2 e mensagem explicativa;
+    2. a mensagem volta para a fila com backoff exponencial — 5 s, depois 10 s,
+       depois 20 s;
+    3. esgotadas as três tentativas, vai para a **fila de mensagens mortas**;
+    4. em *Filas → Mensagens mortas*, um administrador pode revivê-la, o que
+       zera o contador de tentativas.
+
+    Repare na distinção que o worker faz: isto é **falha de automação**, então a
+    execução é finalizada com status de falha e a mensagem recebe `ack`. O
+    `nack` com nova tentativa é para falha de **infraestrutura** — imagem
+    indisponível, Docker fora do ar, motor sem resposta. Reexecutar três vezes
+    uma automação que falha de forma determinística só gastaria capacidade.
+
+    A nova tentativa aqui é acionada pela falta de confirmação em um cenário de
+    infraestrutura; para ver o backoff em ação, use a área de Filas com o
+    `BROKER_BACKEND=postgres`, onde a tabela `plataforma.fila_mensagens` mostra
+    `tentativas`, `disponivel_em` e `ultimo_erro` de cada mensagem.

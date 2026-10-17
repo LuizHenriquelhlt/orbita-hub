@@ -1,0 +1,71 @@
+{% load orbita %}
+
+<div id="tabela-de-auditoria">
+  {% if itens %}
+    <div class="tabela-envoltorio">
+      <table class="tabela">
+        <thead>
+          <tr>
+            <th>Quando</th>
+            <th>Ação</th>
+            <th>Quem</th>
+            <th>Recurso</th>
+            <th>Resultado</th>
+            <th>Detalhes</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for registro in itens %}
+            <tr>
+              <td class="pequeno" title="{{ registro.ocorrido_em|data_e_hora }}">
+                {{ registro.ocorrido_em|quando }}
+              </td>
+
+              <td>
+                <span class="tabela__principal mono pequeno">{{ registro.acao }}</span>
+                {% if registro.trace_id %}
+                  <div class="tabela__secundario mono">rastreio {{ registro.trace_id|truncatechars:14 }}</div>
+                {% endif %}
+              </td>
+
+              <td class="pequeno">
+                {{ registro.ator_nome|default:"—" }}
+                {% if registro.ator_cpf %}
+                  <div class="tabela__secundario mono">{{ registro.ator_cpf }}</div>
+                {% endif %}
+              </td>
+
+              <td class="mono pequeno quebra-tudo">{{ registro.recurso|default:"—" }}</td>
+
+              <td>
+                {% if registro.resultado == "sucesso" %}
+                  <span class="etiqueta etiqueta--sucesso">sucesso</span>
+                {% elif registro.resultado == "recusado" %}
+                  <span class="etiqueta etiqueta--aviso">recusado</span>
+                {% else %}
+                  <span class="etiqueta etiqueta--erro">{{ registro.resultado }}</span>
+                {% endif %}
+              </td>
+
+              <td>
+                {% if registro.detalhes %}
+                  {# `<details>` nativo: expandir e recolher sem JavaScript. #}
+                  <details>
+                    <summary class="pequeno" style="cursor: pointer">ver</summary>
+                    <pre class="mono pequeno" style="margin: var(--e-2) 0 0; max-width: 42ch; overflow-x: auto">{{ registro.detalhes }}</pre>
+                  </details>
+                {% else %}
+                  <span class="tenue">—</span>
+                {% endif %}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    {% include "componentes/paginacao.html" with rotulo="registros" %}
+  {% else %}
+    {% include "componentes/vazio.html" with icone="busca" titulo="Nenhum registro" texto="Nenhuma ação corresponde aos filtros. A trilha registra entradas, disparos, mudanças de ciclo de vida e concessões de acesso." %}
+  {% endif %}
+</div>

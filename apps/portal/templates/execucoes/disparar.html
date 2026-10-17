@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+{% load orbita %}
+
+{% block titulo %}Executar {{ automacao.nome }}{% endblock %}
+
+{% block conteudo %}
+
+<nav class="trilha" aria-label="Trilha de navegação">
+  <a href="{% url 'marketplace:catalogo' %}">Catálogo</a>
+  <span class="trilha__separador">/</span>
+  <a href="{% url 'marketplace:ficha' slug=automacao.slug %}">{{ automacao.nome }}</a>
+  <span class="trilha__separador">/</span>
+  <span>Executar</span>
+</nav>
+
+<div class="pagina__cabecalho">
+  <div>
+    <h1 class="pagina__titulo">Executar {{ automacao.nome }}</h1>
+    <p class="pagina__descricao">{{ automacao.descricao|truncatechars:220 }}</p>
+  </div>
+</div>
+
+{% if erro %}
+  {% include "componentes/alerta.html" with tipo="erro" mensagem=erro %}
+{% endif %}
+
+<div class="grade grade--2">
+  <form method="post" class="cartao" novalidate>
+    {% csrf_token %}
+
+    {% if automacao.parametros %}
+      <h2 class="cartao__titulo">Parâmetros</h2>
+      <p class="pequeno tenue" style="margin-bottom: var(--e-4)">
+        Os campos abaixo são gerados a partir do manifesto da automação. Nenhuma
+        tela foi escrita para ela.
+      </p>
+
+      {% for parametro in automacao.parametros %}
+        {% with valor=valores|chave:parametro.nome problema=campos_com_erro|chave:parametro.nome %}
+        <div class="campo">
+          <label class="campo__rotulo" for="p-{{ parametro.nome }}">
+            {{ parametro.rotulo }}
+            {% if parametro.obrigatorio %}<span class="campo__obrigatorio" aria-hidden="true">*</span>{% endif %}
+          </label>
+
+          {% if parametro.tipo == "booleano" %}
+            <label class="caixa">
+              <input type="checkbox" id="p-{{ parametro.nome }}" name="{{ parametro.nome }}"
+                     {% if valor or parametro.padrao %}checked{% endif %}>
+              <span class="caixa__texto">
+                <span class="caixa__ajuda">{{ parametro.ajuda|default:"Marque para ativar." }}</span>
+              </span>
+            </label>
+
+          {% elif parametro.tipo == "opcao" %}
+            <select id="p-{{ parametro.nome }}" name="{{ parametro.nome }}"
+                    {% if parametro.obrigatorio %}required{% endif %}
+                    {% if problema %}aria-invalid="true"{% endif %}>
+              {% if not parametro.obrigatorio %}<option value="">—</option>{% endif %}
+              {% for opcao in parametro.opcoes %}
+                <option value="{{ opcao.valor }}"
+                        {% if valor == opcao.valor or not valor and parametro.padrao == opcao.valor %}selected{% endif %}>
+                  {{ opcao.rotulo }}
+                </option>
+              {% endfor %}
+            </select>
+
+          {% elif parametro.tipo == "multiopcao" %}
+            <div class="grupo-de-caixas">
+              {% for opcao in parametro.opcoes %}
+                <label class="caixa">
+                  <input type="checkbox" name="{{ parametro.nome }}" value="{{ opcao.valor }}"
+                         {% if opcao.valor in valor %}checked{% endif %}>
+                  <span class="caixa__texto"><span class="caixa__titulo">{{ opcao.rotulo }}</span></span>
+                </label>
+              {% endfor %}
+            </div>
+
+          {% elif parametro.tipo == "texto_longo" %}
+            <textarea id="p-{{ parametro.nome }}" name="{{ parametro.nome }}" rows="4"
+                      {% if parametro.obrigatorio %}required{% endif %}
+                      {% if problema %}aria-invalid="true"{% endif %}>{{ valor|default:parametro.padrao|default:"" }}</textarea>
+
+          {% else %}
+            {% comment %} `mes` usa `month`, `data` usa `date`, numéricos usam `number`. O
+               navegador então oferece o teclado e o seletor certos, e valida o
+               formato antes de a requisição sair. {% endcomment %}
+            <input id="p-{{ parametro.nome }}" name="{{ parametro.nome }}"
+                   type="{% if parametro.tipo == 'mes' %}month{% elif parametro.tipo == 'data' %}date{% elif parametro.tipo == 'numero_inteiro' or parametro.tipo == 'numero_decimal' %}number{% else %}text{% endif %}"
+                   value="{{ valor|default:parametro.padrao|default:'' }}"
+                   {% if parametro.tipo == "numero_decimal" %}step="any"{% endif %}
+                   {% if parametro.minimo != None %}min="{{ parametro.minimo }}"{% endif %}
+                   {% if parametro.maximo != None %}max="{{ parametro.maximo }}"{% endif %}
+                   {% if parametro.mascara %}placeholder="{{ parametro.mascara }}"{% endif %}
+                   {% if parametro.obrigatorio %}required{% endif %}
+                   {% if problema %}aria-invalid="true"{% endif %}>
+          {% endif %}
+
+          {% if problema %}
+            <span class="campo__erro">
+              <svg class="botao__icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="12" cy="12" r="9"/><path d="M12 8v4m0 4h.01"/>
+              </svg>
+              {{ problema }}
+            </span>
+          {% elif parametro.ajuda and parametro.tipo != "booleano" %}
+            <span class="campo__ajuda">{{ parametro.ajuda }}</span>
+          {% endif %}
+        </div>
+        {% endwith %}
+      {% endfor %}
+    {% else %}
+      <h2 class="cartao__titulo">Sem parâmetros</h2>
+      <p class="suave">Esta automação não recebe parâmetros de entrada.</p>
+    {% endif %}
+
+    <div class="formulario__acoes">
+      <button type="submit" class="botao botao--grande">
+        <svg class="botao__icone" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.14v13.72L19 12z"/></svg>
+        Executar agora
+      </button>
+      <a class="botao botao--fantasma" href="{% url 'marketplace:ficha' slug=automacao.slug %}">Cancelar</a>
+    </div>
+  </form>
+
+  <aside class="pilha">
+    <section class="cartao">
+      <h2 class="cartao__titulo">O que vai acontecer</h2>
+      <ol class="pequeno suave" style="padding-left: var(--e-5); line-height: 1.8">
+        <li>Os parâmetros são validados contra a declaração do manifesto.</li>
+        <li>O controle de admissão confere o limite de
+            <strong>{{ automacao.max_execucoes_concorrentes }}</strong>
+            execução{{ automacao.max_execucoes_concorrentes|pluralize:"ões" }}
+            simultânea{{ automacao.max_execucoes_concorrentes|pluralize:"s" }}.</li>
+        <li>A execução entra na fila e você é levado à tela de acompanhamento,
+            onde o log aparece conforme é produzido.</li>
+      </ol>
+    </section>
+
+    <section class="cartao">
+      <h2 class="cartao__titulo">Limites desta execução</h2>
+      <dl class="definicoes" style="margin-top: var(--e-4)">
+        <div><dt>CPU</dt><dd class="numerico">{{ automacao.limites.cpus }}</dd></div>
+        <div><dt>Memória</dt><dd class="numerico">{{ automacao.limites.memoria_mb }} MB</dd></div>
+        <div><dt>Tempo máximo</dt><dd class="numerico">{{ automacao.limites.timeout_segundos }} s</dd></div>
+        <div>
+          <dt>Rede</dt>
+          <dd>{% if automacao.rede_habilitada %}habilitada{% else %}desligada{% endif %}</dd>
+        </div>
+      </dl>
+      {% if automacao.consumo_estimado.duracao_media_segundos %}
+        <p class="pequeno tenue" style="margin-top: var(--e-4)">
+          Duração média estimada: {{ automacao.consumo_estimado.duracao_media_segundos }} s.
+        </p>
+      {% endif %}
+    </section>
+  </aside>
+</div>
+{% endblock %}

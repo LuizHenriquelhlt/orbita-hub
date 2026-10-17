@@ -1,0 +1,67 @@
+{% load orbita %}
+
+<div id="tabela-de-pessoas">
+  {% if itens %}
+    <div class="tabela-envoltorio">
+      <table class="tabela">
+        <thead>
+          <tr>
+            <th>Pessoa</th>
+            <th>CPF</th>
+            <th>Unidade</th>
+            <th>Papéis</th>
+            <th>Último acesso</th>
+            <th>Situação</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for pessoa in itens %}
+            <tr>
+              <td>
+                <div class="linha" style="gap: var(--e-3); flex-wrap: nowrap">
+                  <span class="avatar" aria-hidden="true">{{ pessoa.nome|slice:":1"|upper }}</span>
+                  <span style="min-width:0">
+                    <span class="tabela__principal">{{ pessoa.nome }}</span>
+                    <div class="tabela__secundario quebra-tudo">{{ pessoa.email }}</div>
+                  </span>
+                </div>
+              </td>
+              <td class="mono pequeno">{{ pessoa.cpf }}</td>
+              <td class="pequeno">
+                {% if pessoa.unidade %}
+                  <span class="tabela__principal">{{ pessoa.unidade.sigla }}</span>
+                  <div class="tabela__secundario">{{ pessoa.unidade.nome|truncatechars:34 }}</div>
+                {% else %}
+                  <span class="tenue">—</span>
+                {% endif %}
+              </td>
+              <td>
+                <div class="linha" style="gap: var(--e-1)">
+                  {% for papel in pessoa.papeis %}
+                    <span class="etiqueta {% if papel == 'admin' %}etiqueta--primaria{% elif papel == 'auditor' %}etiqueta--aviso{% endif %}">{{ papel }}</span>
+                  {% empty %}
+                    <span class="tenue pequeno">sem papel</span>
+                  {% endfor %}
+                </div>
+              </td>
+              <td class="pequeno" title="{{ pessoa.ultimo_login|data_e_hora }}">
+                {{ pessoa.ultimo_login|quando }}
+              </td>
+              <td>
+                {% if pessoa.ativo %}
+                  <span class="etiqueta etiqueta--sucesso">ativa</span>
+                {% else %}
+                  <span class="etiqueta etiqueta--inativo">inativa</span>
+                {% endif %}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    {% include "componentes/paginacao.html" with rotulo="pessoas" %}
+  {% else %}
+    {% include "componentes/vazio.html" with icone="busca" titulo="Nenhuma pessoa encontrada" texto="Ajuste os filtros, ou rode `python -m scripts.seed` para carregar o cenário fictício do INRH." %}
+  {% endif %}
+</div>

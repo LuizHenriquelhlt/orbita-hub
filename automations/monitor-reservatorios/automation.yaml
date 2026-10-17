@@ -1,0 +1,144 @@
+# Automação de demonstração: roda no ExecutorSimulado.
+#
+# O `roteiro_simulado` é o que o simulador reproduz. Está aqui, em texto, no
+# repositório — e a plataforma persiste em cada execução qual executor a rodou,
+# que aparece rotulado na interface. Nada é apresentado como real sem ser.
+#
+# Para que ela rode de verdade, bastaria trocar `imagem` por uma imagem
+# publicada e escrever o código: o manifesto não mudaria em mais nada.
+
+apiVersion: orbita.inrh/v1
+kind: Automacao
+
+metadata:
+  nome: monitor-reservatorios
+  titulo: Monitor de nível dos reservatórios
+  versao: 2.1.0
+  categoria: monitoramento
+  descricao: >-
+    Consulta a telemetria dos reservatórios monitorados, compara o nível atual
+    com a faixa operacional de cada um e emite alerta para os que estão abaixo
+    do volume de alerta. Gera o boletim diário em CSV.
+  tags: [monitoramento, telemetria, alerta, diario]
+  responsavel_tecnico: Núcleo de Dados e Automação
+  responsavel_negocio: Diretoria de Operações
+  unidade: DIROP
+
+spec:
+  tipo: api
+  imagem: registry.interno/orbita/monitor-reservatorios:2.1.0
+  entrypoint: [python, -I, monitorar.py]
+
+  modo_visual: false
+  # Esta precisa de rede: consulta a API de telemetria. Declarado aqui, e
+  # visível na ficha da automação — é a diferença entre "pode acessar a rede"
+  # como decisão registrada e como padrão invisível.
+  rede_habilitada: true
+
+  recursos:
+    cpus: 0.25
+    memoria_mb: 256
+    timeout_segundos: 180
+
+  max_execucoes_concorrentes: 1
+
+  consumo_estimado:
+    duracao_media_segundos: 35
+
+  variaveis_ambiente:
+    - nome: TELEMETRIA_BASE_URL
+      obrigatorio: true
+      descricao: Endpoint da API de telemetria dos reservatórios.
+      segredo_ref: telemetria-base-url
+    - nome: TELEMETRIA_TOKEN
+      obrigatorio: true
+      descricao: Token de leitura da telemetria.
+      segredo_ref: telemetria-token
+
+  parametros:
+    - nome: limiar_alerta
+      rotulo: Limiar de alerta (% do volume útil)
+      tipo: numero_inteiro
+      obrigatorio: false
+      padrao: 30
+      minimo: 5
+      maximo: 95
+      ajuda: Reservatórios abaixo deste percentual entram no alerta.
+
+    - nome: bacias
+      rotulo: Bacias
+      tipo: multiopcao
+      obrigatorio: false
+      opcoes:
+        - { valor: sao-francisco, rotulo: São Francisco }
+        - { valor: parana, rotulo: Paraná }
+        - { valor: tocantins, rotulo: Tocantins }
+        - { valor: atlantico-leste, rotulo: Atlântico Leste }
+
+  gatilhos:
+    - tipo: manual
+    - tipo: cron
+      expressao: "15 7 * * *"
+      fila: execucoes.padrao
+    - tipo: webhook
+      expressao: /webhooks/monitor-reservatorios
+      fila: execucoes.interativa
+
+  permissoes:
+    - escopo: todos
+      nivel: executar
+
+  # ── Roteiro do simulador ───────────────────────────────────────────────────
+  # Cada passo pode esperar, registrar log, publicar métrica, gerar artefato
+  # ou falhar. Os dados do artefato são gerados por um PRNG semeado pelo id da
+  # execução: duas execuções produzem arquivos diferentes, e reexecutar com o
+  # mesmo id produz o mesmo arquivo — o que mantém o teste determinístico.
+  roteiro_simulado:
+    - espera_ms: 600
+      log: Autenticando na API de telemetria
+
+    - espera_ms: 900
+      log: 42 reservatórios monitorados nas bacias selecionadas
+      metrica: { reservatorios_consultados: 42 }
+
+    - espera_ms: 1400
+      log: Lendo as medições das últimas 24 h
+
+    - espera_ms: 500
+      nivel: WARNING
+      log: 3 reservatórios sem medição nas últimas 6 h — marcados como indisponíveis
+      metrica: { reservatorios_sem_medicao: 3 }
+
+    - espera_ms: 1100
+      log: Comparando com a faixa operacional de cada reservatório
+      metrica: { reservatorios_em_alerta: 7, volume_util_medio_pct: 48.6 }
+
+    - espera_ms: 400
+      artefato:
+        caminho: boletim-reservatorios.csv
+        formato: csv
+        linhas: 42
+        colunas: [reservatorio, uf, bacia, volume_util_pct, situacao, data_medicao]
+
+    - espera_ms: 300
+      artefato:
+        caminho: alertas.csv
+        formato: csv
+        linhas: 7
+        colunas: [reservatorio, uf, volume_util_pct, situacao]
+
+    - espera_ms: 200
+      resumo: 42 reservatórios lidos, 7 em alerta, 3 sem medição
+
+  readme: |
+    Lê a telemetria, compara com a faixa operacional e emite o boletim diário.
+
+    **Esta automação roda no executor simulado** no ambiente de demonstração: o
+    `roteiro_simulado` do manifesto é reproduzido passo a passo. O mecanismo da
+    plataforma — fila, motor, log ao vivo, métricas, artefatos baixáveis — é
+    real; o que está encenado é o trecho que normalmente estaria dentro do
+    container de terceiro.
+
+    A execução é marcada com o executor que a rodou, e a interface rotula as
+    simuladas. Para rodar de verdade, basta publicar a imagem e apontar
+    `spec.imagem` para ela.

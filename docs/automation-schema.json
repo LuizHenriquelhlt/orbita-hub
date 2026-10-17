@@ -1,0 +1,553 @@
+{
+  "$defs": {
+    "EspecificacaoDoManifesto": {
+      "additionalProperties": false,
+      "properties": {
+        "consumo_estimado": {
+          "additionalProperties": true,
+          "title": "Consumo Estimado",
+          "type": "object"
+        },
+        "entrypoint": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 20,
+          "title": "Entrypoint",
+          "type": "array"
+        },
+        "gatilhos": {
+          "items": {
+            "$ref": "#/$defs/GatilhoDeclarado"
+          },
+          "maxItems": 10,
+          "title": "Gatilhos",
+          "type": "array"
+        },
+        "imagem": {
+          "maxLength": 300,
+          "title": "Imagem",
+          "type": "string"
+        },
+        "max_execucoes_concorrentes": {
+          "default": 1,
+          "maximum": 50,
+          "minimum": 1,
+          "title": "Max Execucoes Concorrentes",
+          "type": "integer"
+        },
+        "modo_visual": {
+          "default": false,
+          "title": "Modo Visual",
+          "type": "boolean"
+        },
+        "parametros": {
+          "items": {
+            "$ref": "#/$defs/ParametroDeclarado"
+          },
+          "maxItems": 30,
+          "title": "Parametros",
+          "type": "array"
+        },
+        "permissoes": {
+          "items": {
+            "$ref": "#/$defs/PermissaoDeclarada"
+          },
+          "maxItems": 50,
+          "title": "Permissoes",
+          "type": "array"
+        },
+        "readme": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Readme"
+        },
+        "recursos": {
+          "$ref": "#/$defs/Recursos"
+        },
+        "rede_habilitada": {
+          "default": false,
+          "title": "Rede Habilitada",
+          "type": "boolean"
+        },
+        "roteiro_simulado": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "maxItems": 40,
+          "title": "Roteiro Simulado",
+          "type": "array"
+        },
+        "tipo": {
+          "enum": [
+            "batch",
+            "web",
+            "api",
+            "ia",
+            "crawler",
+            "rpa",
+            "workflow"
+          ],
+          "title": "Tipo",
+          "type": "string"
+        },
+        "variaveis_ambiente": {
+          "items": {
+            "$ref": "#/$defs/VariavelDeAmbiente"
+          },
+          "maxItems": 30,
+          "title": "Variaveis Ambiente",
+          "type": "array"
+        }
+      },
+      "required": [
+        "tipo",
+        "imagem"
+      ],
+      "title": "EspecificacaoDoManifesto",
+      "type": "object"
+    },
+    "GatilhoDeclarado": {
+      "additionalProperties": false,
+      "properties": {
+        "expressao": {
+          "anyOf": [
+            {
+              "maxLength": 120,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Expressao"
+        },
+        "fila": {
+          "default": "execucoes.padrao",
+          "enum": [
+            "execucoes.interativa",
+            "execucoes.padrao",
+            "execucoes.lote"
+          ],
+          "title": "Fila",
+          "type": "string"
+        },
+        "parametros_padrao": {
+          "additionalProperties": true,
+          "title": "Parametros Padrao",
+          "type": "object"
+        },
+        "tipo": {
+          "default": "manual",
+          "enum": [
+            "manual",
+            "cron",
+            "webhook",
+            "api"
+          ],
+          "title": "Tipo",
+          "type": "string"
+        }
+      },
+      "title": "GatilhoDeclarado",
+      "type": "object"
+    },
+    "MetadadosDoManifesto": {
+      "additionalProperties": false,
+      "properties": {
+        "categoria": {
+          "enum": [
+            "relatorios",
+            "cadastro",
+            "fiscalizacao",
+            "integracao",
+            "monitoramento",
+            "documentos"
+          ],
+          "title": "Categoria",
+          "type": "string"
+        },
+        "changelog": {
+          "anyOf": [
+            {
+              "maxLength": 2000,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Changelog"
+        },
+        "descricao": {
+          "default": "",
+          "maxLength": 4000,
+          "title": "Descricao",
+          "type": "string"
+        },
+        "nome": {
+          "pattern": "^[a-z0-9][a-z0-9-]{1,78}[a-z0-9]$",
+          "title": "Nome",
+          "type": "string"
+        },
+        "responsavel_negocio": {
+          "anyOf": [
+            {
+              "maxLength": 160,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Responsavel Negocio"
+        },
+        "responsavel_tecnico": {
+          "anyOf": [
+            {
+              "maxLength": 160,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Responsavel Tecnico"
+        },
+        "tags": {
+          "items": {
+            "maxLength": 40,
+            "pattern": "^[a-z0-9][a-z0-9-]*$",
+            "type": "string"
+          },
+          "maxItems": 12,
+          "title": "Tags",
+          "type": "array"
+        },
+        "titulo": {
+          "maxLength": 160,
+          "title": "Titulo",
+          "type": "string"
+        },
+        "unidade": {
+          "anyOf": [
+            {
+              "maxLength": 20,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unidade"
+        },
+        "versao": {
+          "pattern": "^\\d+\\.\\d+\\.\\d+(-[0-9a-z.]+)?$",
+          "title": "Versao",
+          "type": "string"
+        }
+      },
+      "required": [
+        "nome",
+        "titulo",
+        "versao",
+        "categoria"
+      ],
+      "title": "MetadadosDoManifesto",
+      "type": "object"
+    },
+    "OpcaoDeParametro": {
+      "additionalProperties": false,
+      "properties": {
+        "rotulo": {
+          "title": "Rotulo",
+          "type": "string"
+        },
+        "valor": {
+          "title": "Valor",
+          "type": "string"
+        }
+      },
+      "required": [
+        "valor",
+        "rotulo"
+      ],
+      "title": "OpcaoDeParametro",
+      "type": "object"
+    },
+    "ParametroDeclarado": {
+      "additionalProperties": false,
+      "description": "Um parâmetro de entrada da automação.\n\nO portal gera o campo do formulário a partir disto, e o\n`execution-service` valida o que foi enviado contra isto. Ter os dois lados\nlendo a mesma declaração é o que impede a divergência clássica: um campo\nque a interface oferece e o motor rejeita.",
+      "properties": {
+        "ajuda": {
+          "anyOf": [
+            {
+              "maxLength": 300,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ajuda"
+        },
+        "mascara": {
+          "anyOf": [
+            {
+              "maxLength": 60,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Mascara"
+        },
+        "maximo": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Maximo"
+        },
+        "minimo": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Minimo"
+        },
+        "nome": {
+          "pattern": "^[a-z][a-z0-9_]{0,39}$",
+          "title": "Nome",
+          "type": "string"
+        },
+        "obrigatorio": {
+          "default": false,
+          "title": "Obrigatorio",
+          "type": "boolean"
+        },
+        "opcoes": {
+          "items": {
+            "$ref": "#/$defs/OpcaoDeParametro"
+          },
+          "title": "Opcoes",
+          "type": "array"
+        },
+        "padrao": {
+          "default": null,
+          "title": "Padrao"
+        },
+        "rotulo": {
+          "maxLength": 120,
+          "title": "Rotulo",
+          "type": "string"
+        },
+        "tipo": {
+          "default": "texto",
+          "enum": [
+            "texto",
+            "texto_longo",
+            "numero_inteiro",
+            "numero_decimal",
+            "booleano",
+            "data",
+            "mes",
+            "opcao",
+            "multiopcao"
+          ],
+          "title": "Tipo",
+          "type": "string"
+        }
+      },
+      "required": [
+        "nome",
+        "rotulo"
+      ],
+      "title": "ParametroDeclarado",
+      "type": "object"
+    },
+    "PermissaoDeclarada": {
+      "additionalProperties": false,
+      "properties": {
+        "escopo": {
+          "default": "todos",
+          "enum": [
+            "usuario",
+            "equipe",
+            "unidade",
+            "todos"
+          ],
+          "title": "Escopo",
+          "type": "string"
+        },
+        "identificador": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Identificador"
+        },
+        "nivel": {
+          "default": "executar",
+          "enum": [
+            "visualizar",
+            "executar",
+            "configurar"
+          ],
+          "title": "Nivel",
+          "type": "string"
+        }
+      },
+      "title": "PermissaoDeclarada",
+      "type": "object"
+    },
+    "Recursos": {
+      "additionalProperties": false,
+      "properties": {
+        "cpus": {
+          "default": 0.5,
+          "exclusiveMinimum": 0,
+          "maximum": 8,
+          "title": "Cpus",
+          "type": "number"
+        },
+        "disco_mb": {
+          "default": 256,
+          "maximum": 4096,
+          "minimum": 16,
+          "title": "Disco Mb",
+          "type": "integer"
+        },
+        "memoria_mb": {
+          "default": 512,
+          "maximum": 8192,
+          "minimum": 64,
+          "title": "Memoria Mb",
+          "type": "integer"
+        },
+        "timeout_segundos": {
+          "default": 900,
+          "maximum": 14400,
+          "minimum": 5,
+          "title": "Timeout Segundos",
+          "type": "integer"
+        }
+      },
+      "title": "Recursos",
+      "type": "object"
+    },
+    "VariavelDeAmbiente": {
+      "additionalProperties": false,
+      "description": "Variável que a automação espera receber.\n\n`segredo_ref` é o **nome** do segredo, nunca o valor. O valor é resolvido\npelo runner, a partir do ambiente dele, no momento de montar o container —\ne nunca passa pelo banco, pela API nem pela interface. Um manifesto com\nvalor de segredo é recusado por `_sem_valor_de_segredo`.",
+      "properties": {
+        "descricao": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Descricao"
+        },
+        "nome": {
+          "pattern": "^[A-Z][A-Z0-9_]{0,59}$",
+          "title": "Nome",
+          "type": "string"
+        },
+        "obrigatorio": {
+          "default": false,
+          "title": "Obrigatorio",
+          "type": "boolean"
+        },
+        "segredo_ref": {
+          "anyOf": [
+            {
+              "maxLength": 80,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Segredo Ref"
+        },
+        "valor": {
+          "default": null,
+          "description": "Não use. Existe apenas para recusar o manifesto com mensagem clara.",
+          "title": "Valor"
+        }
+      },
+      "required": [
+        "nome"
+      ],
+      "title": "VariavelDeAmbiente",
+      "type": "object"
+    }
+  },
+  "$id": "https://github.com/orbita-hub/docs/automation-schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Um `automation.yaml` validado.",
+  "properties": {
+    "apiVersion": {
+      "const": "orbita.inrh/v1",
+      "default": "orbita.inrh/v1",
+      "title": "Apiversion",
+      "type": "string"
+    },
+    "kind": {
+      "const": "Automacao",
+      "default": "Automacao",
+      "title": "Kind",
+      "type": "string"
+    },
+    "metadata": {
+      "$ref": "#/$defs/MetadadosDoManifesto"
+    },
+    "spec": {
+      "$ref": "#/$defs/EspecificacaoDoManifesto"
+    }
+  },
+  "required": [
+    "metadata",
+    "spec"
+  ],
+  "title": "Manifesto de automação Órbita",
+  "type": "object"
+}

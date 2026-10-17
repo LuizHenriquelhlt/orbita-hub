@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block titulo %}Não encontrado{% endblock %}
+
+{% block conteudo %}
+<div class="cartao" style="max-width: 640px">
+  <h1>Não encontramos esta página</h1>
+  <p class="suave">
+    {{ mensagem|default:"O endereço não existe, ou o item foi removido." }}
+  </p>
+  <p class="pequeno tenue">
+    Se você chegou aqui por um link de dentro da plataforma, pode ser que o
+    item exista mas esteja fora do seu acesso — a plataforma responde 404 em vez
+    de 403 nesse caso, para não revelar a existência de automações a que você
+    não tem acesso.
+  </p>
+  <div class="formulario__acoes">
+    <a class="botao" href="{% url 'marketplace:catalogo' %}">Ir para o catálogo</a>
+    <a class="botao botao--secundario" href="{% url 'execucoes:listar' %}">Minhas execuções</a>
+  </div>
+</div>
+{% endblock %}

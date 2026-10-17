@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% load orbita %}
+
+{% block titulo %}Catálogo{% endblock %}
+{% block descricao %}Automações disponíveis na plataforma, com busca e filtros.{% endblock %}
+
+{% block conteudo %}
+<div class="pagina__cabecalho">
+  <div>
+    <h1 class="pagina__titulo">Catálogo de automações</h1>
+    <p class="pagina__descricao">
+      Tudo que a plataforma sabe executar. Cada automação é uma imagem mais um
+      manifesto declarativo — registrar uma nova não exige alteração no código
+      da plataforma.
+    </p>
+  </div>
+
+  {% if quem.pode_criar_automacao %}
+    <div class="pagina__acoes">
+      <a class="botao" href="{% url 'marketplace:importar' %}">
+        <svg class="botao__icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M12 5v14M5 12h14"/>
+        </svg>
+        Cadastrar automação
+      </a>
+    </div>
+  {% endif %}
+</div>
+
+{% comment %} A busca dispara a cada 350 ms de inatividade, trocando apenas a grade. O
+   `hx-push-url` mantém a URL em sincronia, então recarregar a página ou
+   compartilhar o link preserva a busca. {% endcomment %}
+<form class="filtros" method="get" action="{% url 'marketplace:catalogo' %}"
+      hx-get="{% url 'marketplace:catalogo' %}"
+      hx-target="#grade-de-automacoes"
+      hx-select="#grade-de-automacoes"
+      hx-swap="outerHTML"
+      hx-trigger="input from:#busca changed delay:350ms, change from:select, submit"
+      hx-push-url="true"
+      hx-indicator="#buscando">
+
+  <div class="filtros__campo filtros__campo--largo">
+    <label class="filtros__rotulo" for="busca">Buscar</label>
+    <input id="busca" name="busca" type="search" value="{{ filtros.busca|default:'' }}"
+           placeholder="nome, descrição ou identificador" autocomplete="off">
+  </div>
+
+  <div class="filtros__campo">
+    <label class="filtros__rotulo" for="categoria">Categoria</label>
+    <select id="categoria" name="categoria">
+      <option value="">Todas</option>
+      {% for valor, total in facetas.categoria.items %}
+        <option value="{{ valor }}" {% if filtros.categoria == valor %}selected{% endif %}>
+          {{ valor|rotulo_de_categoria }} ({{ total }})
+        </option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="filtros__campo">
+    <label class="filtros__rotulo" for="tipo">Tipo</label>
+    <select id="tipo" name="tipo">
+      <option value="">Todos</option>
+      {% for valor, total in facetas.tipo.items %}
+        <option value="{{ valor }}" {% if filtros.tipo == valor %}selected{% endif %}>
+          {{ valor|rotulo_de_tipo }} ({{ total }})
+        </option>
+      {% endfor %}
+    </select>
+  </div>
+
+  {% if quem.pode_editar_automacao %}
+    <div class="filtros__campo">
+      <label class="filtros__rotulo" for="status">Situação</label>
+      <select id="status" name="status">
+        <option value="">Todas</option>
+        <option value="rascunho" {% if filtros.status == "rascunho" %}selected{% endif %}>Rascunho</option>
+        <option value="homologacao" {% if filtros.status == "homologacao" %}selected{% endif %}>Em homologação</option>
+        <option value="publicada" {% if filtros.status == "publicada" %}selected{% endif %}>Publicada</option>
+        <option value="depreciada" {% if filtros.status == "depreciada" %}selected{% endif %}>Depreciada</option>
+        <option value="arquivada" {% if filtros.status == "arquivada" %}selected{% endif %}>Arquivada</option>
+      </select>
+    </div>
+  {% endif %}
+
+  <div class="filtros__acoes">
+    <span id="buscando" class="indicando tenue pequeno">
+      <svg class="botao__icone girando" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M21 12a9 9 0 1 1-6.2-8.6"/>
+      </svg>
+      buscando
+    </span>
+    <noscript><button type="submit" class="botao botao--secundario botao--pequeno">Filtrar</button></noscript>
+    {% if tem_filtro %}
+      <a class="botao botao--fantasma botao--pequeno" href="{% url 'marketplace:catalogo' %}">Limpar</a>
+    {% endif %}
+  </div>
+</form>
+
+{% include "marketplace/_grade.html" %}
+{% endblock %}

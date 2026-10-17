@@ -1,0 +1,44 @@
+<div class="alerta alerta--{{ classe }}" role="{% if classe == 'erro' %}alert{% else %}status{% endif %}">
+  <svg class="alerta__icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+    {% if classe == "sucesso" %}
+      <path d="m5 13 4 4L19 7"/>
+    {% elif classe == "erro" %}
+      <circle cx="12" cy="12" r="9"/><path d="M12 8v4m0 4h.01"/>
+    {% elif classe == "aviso" %}
+      <path d="M12 4 3 20h18z"/><path d="M12 10v4m0 3h.01"/>
+    {% else %}
+      <circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/>
+    {% endif %}
+  </svg>
+
+  <div class="alerta__corpo">
+    {% if titulo %}<p class="alerta__titulo">{{ titulo }}</p>{% endif %}
+    <p class="sem-margem">{{ mensagem }}</p>
+
+    {% if problemas %}
+      <ul class="alerta__lista">
+        {% for problema in problemas %}
+          <li><code>{{ problema.campo|default:"—" }}</code> — {{ problema.problema }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% if detalhes.faltando %}
+      <ul class="alerta__lista">
+        {% for item in detalhes.faltando %}<li>{{ item }}</li>{% endfor %}
+      </ul>
+    {% endif %}
+
+    {% if detalhes.campos %}
+      <ul class="alerta__lista">
+        {% for campo in detalhes.campos %}
+          <li><strong>{{ campo.campo }}</strong>: {{ campo.problema }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% if detalhes.dica %}
+      <p class="sem-margem pequeno">{{ detalhes.dica }}</p>
+    {% endif %}
+  </div>
+</div>

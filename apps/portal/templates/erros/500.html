@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block titulo %}Erro interno{% endblock %}
+
+{% block conteudo %}
+<div class="cartao" style="max-width: 640px">
+  <h1>Algo deu errado do nosso lado</h1>
+  <p class="suave">
+    O erro foi registrado com um identificador de rastreio. Tente novamente;
+    se persistir, informe o horário aproximado a quem administra a plataforma.
+  </p>
+  <div class="formulario__acoes">
+    <a class="botao" href="{% url 'marketplace:catalogo' %}">Voltar ao catálogo</a>
+  </div>
+</div>
+{% endblock %}

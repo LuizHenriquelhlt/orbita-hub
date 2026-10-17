@@ -1,0 +1,59 @@
+{% load orbita %}
+{% comment %}
+Fragmento de log incremental — o coração do acompanhamento ao vivo.
+
+É um **fragmento que se substitui**: ele troca o próprio `#fim-do-log` por
+linhas novas mais um novo `#fim-do-log`, já com o `desde` atualizado. Com isso:
+
+  - só as linhas novas trafegam (o ponteiro `desde` faz o serviço devolver
+    apenas o que veio depois);
+  - o próximo pedido já sai com o ponteiro certo, sem estado no navegador;
+  - quando a execução termina, o novo `#fim-do-log` vem **sem** o atributo de
+    gatilho — e o polling simplesmente para.
+
+Esse último ponto evita o bug clássico de polling: um laço que continua pedindo
+para sempre depois de a execução acabar. Quem decide parar é o servidor, que é
+quem conhece o estado.
+
+O aviso de "aguardando" também mora aqui, e não no template da página, para
+desaparecer na primeira atualização em vez de ficar acima das linhas novas.
+{% endcomment %}
+
+{% for linha in linhas %}
+  <div class="log__linha">
+    <span class="log__sequencia">{{ linha.sequencia }}</span>
+    <span class="log__nivel log__nivel--{{ linha.nivel|cor_de_nivel }}">{{ linha.nivel }}</span>
+    <span class="log__mensagem">{{ linha.mensagem }}</span>
+  </div>
+{% endfor %}
+
+<div id="fim-do-log"
+     {% if execucao.em_andamento %}
+       hx-get="{% url 'execucoes:log' execucao_id=execucao.id %}?desde={{ desde }}"
+       hx-trigger="every {{ INTERVALO_POLL_MS }}ms"
+       hx-swap="outerHTML"
+     {% endif %}>
+
+  {% if not desde %}
+    <p class="log__vazio">
+      {% if execucao.em_andamento %}
+        aguardando o runner retirar da fila…
+      {% else %}
+        sem linhas de log.
+      {% endif %}
+    </p>
+  {% endif %}
+
+  <div class="log__fim" aria-hidden="true"></div>
+
+  {% if not execucao.em_andamento and desde %}
+    <div class="log__linha" style="margin-top: var(--e-2); opacity: 0.7">
+      <span class="log__sequencia">—</span>
+      <span class="log__nivel log__nivel--debug">FIM</span>
+      <span class="log__mensagem">
+        execução {{ execucao.status|rotulo_de_status|lower }} em
+        {{ execucao.duracao_ms|duracao }}
+      </span>
+    </div>
+  {% endif %}
+</div>

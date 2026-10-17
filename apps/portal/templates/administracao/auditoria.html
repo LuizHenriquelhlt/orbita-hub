@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block titulo %}Auditoria{% endblock %}
+
+{% block conteudo %}
+
+<div class="pagina__cabecalho">
+  <div>
+    <h1 class="pagina__titulo">Trilha de auditoria</h1>
+    <p class="pagina__descricao">
+      Somente inserção, garantida por <em>trigger</em> no banco — nem a própria
+      aplicação consegue alterar ou apagar um registro. Cada linha é gravada na
+      mesma transação da ação que a originou: ou as duas coisas aconteceram, ou
+      nenhuma.
+    </p>
+  </div>
+</div>
+
+<form class="filtros" method="get" action="{% url 'administracao:auditoria' %}"
+      hx-get="{% url 'administracao:auditoria' %}"
+      hx-target="#tabela-de-auditoria"
+      hx-select="#tabela-de-auditoria"
+      hx-swap="outerHTML"
+      hx-trigger="input from:#acao changed delay:350ms, change from:select, submit"
+      hx-push-url="true">
+
+  <div class="filtros__campo filtros__campo--largo">
+    <label class="filtros__rotulo" for="acao">Ação</label>
+    <input id="acao" name="acao" type="search" value="{{ filtros.acao|default:'' }}"
+           placeholder="prefixo: execucao, login, automacao…" autocomplete="off" list="acoes">
+    <datalist id="acoes">
+      {% for prefixo, rotulo in acoes_comuns %}<option value="{{ prefixo }}">{{ rotulo }}</option>{% endfor %}
+    </datalist>
+  </div>
+
+  <div class="filtros__campo">
+    <label class="filtros__rotulo" for="resultado">Resultado</label>
+    <select id="resultado" name="resultado">
+      <option value="">Todos</option>
+      <option value="sucesso" {% if filtros.resultado == "sucesso" %}selected{% endif %}>Sucesso</option>
+      <option value="falha" {% if filtros.resultado == "falha" %}selected{% endif %}>Falha</option>
+      <option value="recusado" {% if filtros.resultado == "recusado" %}selected{% endif %}>Recusado</option>
+    </select>
+  </div>
+
+  <div class="filtros__campo filtros__campo--largo">
+    <label class="filtros__rotulo" for="recurso">Recurso</label>
+    <input id="recurso" name="recurso" type="search" value="{{ filtros.recurso|default:'' }}"
+           placeholder="identificador exato" autocomplete="off">
+  </div>
+
+  <div class="filtros__acoes">
+    <noscript><button type="submit" class="botao botao--secundario botao--pequeno">Filtrar</button></noscript>
+    <a class="botao botao--fantasma botao--pequeno" href="{% url 'administracao:auditoria' %}">Limpar</a>
+  </div>
+</form>
+
+<div class="linha" style="margin-bottom: var(--e-4)">
+  {% for prefixo, rotulo in acoes_comuns %}
+    <a class="etiqueta {% if filtros.acao == prefixo %}etiqueta--primaria{% endif %}"
+       href="?acao={{ prefixo }}">{{ rotulo }}</a>
+  {% endfor %}
+</div>
+
+{% include "administracao/_auditoria_tabela.html" %}
+{% endblock %}

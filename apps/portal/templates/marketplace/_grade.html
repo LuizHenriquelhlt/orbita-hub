@@ -1,0 +1,66 @@
+{% load orbita %}
+{% comment %}
+Fragmento da grade. Devolvido isolado quando a requisição vem do HTMX — é o que
+faz a busca atualizar a lista sem recarregar cabeçalho, filtros e menu.
+
+O `id` é o alvo do `hx-target`; mudá-lo exige mudar `catalogo.html` também.
+{% endcomment %}
+
+<div id="grade-de-automacoes">
+  {% if itens %}
+    <div class="grade grade--automacoes">
+      {% for automacao in itens %}
+        <article class="automacao">
+          <div class="automacao__topo">
+            <div style="min-width:0">
+              <h2 class="automacao__nome">
+                <a href="{% url 'marketplace:ficha' slug=automacao.slug %}">{{ automacao.nome }}</a>
+              </h2>
+              <span class="automacao__slug">{{ automacao.slug }}</span>
+            </div>
+            <span class="etiqueta etiqueta--{{ automacao.status_cor|default:'neutro' }}">
+              {{ automacao.status_rotulo }}
+            </span>
+          </div>
+
+          <p class="automacao__descricao">{{ automacao.descricao|default:"Sem descrição." }}</p>
+
+          <div class="automacao__meta">
+            <span class="etiqueta etiqueta--contorno">{{ automacao.categoria|rotulo_de_categoria }}</span>
+            <span class="etiqueta etiqueta--contorno">{{ automacao.tipo|rotulo_de_tipo }}</span>
+            {% if automacao.versao_atual %}
+              <span class="etiqueta etiqueta--contorno">v{{ automacao.versao_atual }}</span>
+            {% endif %}
+            {% for tag in automacao.tags|slice:":3" %}
+              <a class="etiqueta" href="?tag={{ tag }}">{{ tag }}</a>
+            {% endfor %}
+          </div>
+
+          <div class="automacao__rodape">
+            <a class="pequeno" href="{% url 'marketplace:ficha' slug=automacao.slug %}">Ver ficha</a>
+
+            {% if automacao.pode_executar %}
+              <a class="botao botao--pequeno" href="{% url 'execucoes:disparar' slug=automacao.slug %}">
+                <svg class="botao__icone" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M8 5.14v13.72L19 12z"/>
+                </svg>
+                Executar
+              </a>
+            {% else %}
+              <span class="etiqueta etiqueta--inativo" title="Seu papel ou o acesso desta automação não permitem executá-la">
+                sem acesso de execução
+              </span>
+            {% endif %}
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+
+    {% include "componentes/paginacao.html" with rotulo="automações" %}
+
+  {% elif tem_filtro %}
+    {% include "componentes/vazio.html" with icone="busca" titulo="Nenhuma automação encontrada" texto="Nenhuma automação atende aos filtros aplicados. Tente um termo mais curto ou limpe os filtros." acao_url="/" acao_texto="Limpar filtros" %}
+  {% else %}
+    {% include "componentes/vazio.html" with titulo="O catálogo está vazio" texto="Nenhuma automação foi publicada ainda. Rode `python -m scripts.seed` para carregar o cenário fictício, ou cadastre uma automação a partir do automation.yaml dela." %}
+  {% endif %}
+</div>

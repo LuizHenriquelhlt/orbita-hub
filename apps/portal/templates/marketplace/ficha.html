@@ -1,0 +1,316 @@
+{% extends "base.html" %}
+{% load orbita %}
+
+{% block titulo %}{{ automacao.nome }}{% endblock %}
+{% block descricao %}{{ automacao.descricao|truncatechars:150 }}{% endblock %}
+
+{% block conteudo %}
+
+<nav class="trilha" aria-label="Trilha de navegação">
+  <a href="{% url 'marketplace:catalogo' %}">Catálogo</a>
+  <span class="trilha__separador">/</span>
+  <span>{{ automacao.nome }}</span>
+</nav>
+
+<div class="pagina__cabecalho">
+  <div>
+    <h1 class="pagina__titulo">{{ automacao.nome }}</h1>
+    <p class="linha" style="margin-top: var(--e-2)">
+      <code>{{ automacao.slug }}</code>
+      <span class="etiqueta etiqueta--{{ automacao.status_cor|default:'neutro' }}">{{ automacao.status_rotulo }}</span>
+      <span class="etiqueta etiqueta--contorno">{{ automacao.categoria|rotulo_de_categoria }}</span>
+      <span class="etiqueta etiqueta--contorno">{{ automacao.tipo|rotulo_de_tipo }}</span>
+      {% if automacao.versao_atual %}<span class="etiqueta etiqueta--primaria">v{{ automacao.versao_atual }}</span>{% endif %}
+      {% if not automacao.rede_habilitada %}
+        <span class="etiqueta etiqueta--sucesso" title="O container roda com a interface de rede desligada">sem rede</span>
+      {% else %}
+        <span class="etiqueta etiqueta--aviso" title="Esta automação declara que precisa de acesso à rede">usa rede</span>
+      {% endif %}
+    </p>
+  </div>
+
+  <div class="pagina__acoes">
+    {% if automacao.pode_executar %}
+      <a class="botao botao--grande" href="{% url 'execucoes:disparar' slug=automacao.slug %}">
+        <svg class="botao__icone" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.14v13.72L19 12z"/></svg>
+        Executar
+      </a>
+    {% endif %}
+    <a class="botao botao--secundario" href="{% url 'execucoes:listar' %}?automacao={{ automacao.slug }}">
+      Histórico
+    </a>
+  </div>
+</div>
+
+{% if automacao.requisitos_pendentes %}
+  {% include "componentes/alerta.html" with tipo="aviso" titulo="Falta isto para publicar" problemas=None detalhes=None mensagem="Esta automação não atende ainda aos requisitos de publicação." %}
+  <div class="cartao cartao--compacto" style="margin-top: calc(var(--e-4) * -1); margin-bottom: var(--e-4)">
+    <ul class="pequeno sem-margem">
+      {% for requisito in automacao.requisitos_pendentes %}<li>{{ requisito }}</li>{% endfor %}
+    </ul>
+  </div>
+{% endif %}
+
+<div class="grade grade--2">
+
+  {# ── Coluna principal ──────────────────────────────────────────────────── #}
+  <div class="pilha">
+
+    <section class="cartao">
+      <h2 class="cartao__titulo">O que ela faz</h2>
+      <p class="suave" style="margin-top: var(--e-3)">{{ automacao.descricao|default:"Sem descrição." }}</p>
+
+      {% if automacao.readme %}
+        <hr>
+        <div class="marcacao">{{ automacao.readme|linebreaks }}</div>
+      {% endif %}
+    </section>
+
+    {% if automacao.parametros %}
+      <section class="cartao">
+        <h2 class="cartao__titulo">Parâmetros de entrada</h2>
+        <p class="pequeno tenue">
+          Declarados no manifesto. O formulário de execução é gerado a partir
+          desta lista, e o motor valida a entrada contra ela — não existe campo
+          que a tela ofereça e o serviço recuse.
+        </p>
+        <div class="tabela-envoltorio" style="margin-top: var(--e-3)">
+          <table class="tabela">
+            <thead>
+              <tr><th>Parâmetro</th><th>Tipo</th><th>Obrigatório</th><th>Padrão</th></tr>
+            </thead>
+            <tbody>
+              {% for parametro in automacao.parametros %}
+                <tr>
+                  <td>
+                    <div class="tabela__principal">{{ parametro.rotulo }}</div>
+                    <div class="tabela__secundario"><code>{{ parametro.nome }}</code></div>
+                    {% if parametro.ajuda %}<div class="tabela__secundario">{{ parametro.ajuda }}</div>{% endif %}
+                  </td>
+                  <td>
+                    <span class="etiqueta etiqueta--contorno">{{ parametro.tipo }}</span>
+                    {% if parametro.opcoes %}
+                      <div class="tabela__secundario">{{ parametro.opcoes|length }} opções</div>
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if parametro.obrigatorio %}
+                      <span class="etiqueta etiqueta--aviso">sim</span>
+                    {% else %}
+                      <span class="tenue">não</span>
+                    {% endif %}
+                  </td>
+                  <td class="mono pequeno">{{ parametro.padrao|default:"—" }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    {% endif %}
+
+    {% if execucoes %}
+      <section class="cartao">
+        <div class="cartao__cabecalho">
+          <h2 class="cartao__titulo">Últimas execuções</h2>
+          <a class="pequeno" href="{% url 'execucoes:listar' %}?automacao={{ automacao.slug }}">ver todas</a>
+        </div>
+
+        <div class="tabela-envoltorio">
+          <table class="tabela">
+            <thead>
+              <tr><th>Quando</th><th>Quem</th><th>Situação</th><th class="tabela__numero">Duração</th></tr>
+            </thead>
+            <tbody>
+              {% for execucao in execucoes %}
+                <tr>
+                  <td>
+                    <a href="{% url 'execucoes:detalhe' execucao_id=execucao.id %}">{{ execucao.enfileirada_em|quando }}</a>
+                    {% if execucao.origem == "agendada" %}
+                      <span class="etiqueta etiqueta--contorno">agendada</span>
+                    {% endif %}
+                  </td>
+                  <td class="pequeno">{{ execucao.usuario_nome|default:"—" }}</td>
+                  <td>
+                    <span class="etiqueta etiqueta--{{ execucao.status|cor_de_status }}">
+                      <span class="etiqueta__ponto" aria-hidden="true"></span>
+                      {{ execucao.status|rotulo_de_status }}
+                    </span>
+                  </td>
+                  <td class="tabela__numero">{{ execucao.duracao_ms|duracao }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    {% endif %}
+  </div>
+
+  {# ── Coluna lateral ────────────────────────────────────────────────────── #}
+  <div class="pilha">
+
+    {% if estatisticas.total %}
+      <section class="cartao">
+        <h2 class="cartao__titulo">Como tem se comportado</h2>
+        <p class="pequeno tenue">
+          Estes números vêm do <code>execution-service</code>, não do catálogo —
+          o catálogo não sabe quantas vezes uma automação rodou.
+        </p>
+
+        <dl class="definicoes" style="margin-top: var(--e-4)">
+          <div>
+            <dt>Execuções</dt>
+            <dd class="numerico">{{ estatisticas.total|numero }}</dd>
+          </div>
+          <div>
+            <dt>Taxa de sucesso</dt>
+            <dd class="numerico">{{ estatisticas.taxa_de_sucesso|porcentagem }}</dd>
+          </div>
+          <div>
+            <dt>Duração média</dt>
+            <dd class="numerico">{{ estatisticas.duracao_media_ms|duracao }}</dd>
+          </div>
+          <div>
+            <dt>Última</dt>
+            <dd>{{ estatisticas.ultima_em|quando }}</dd>
+          </div>
+        </dl>
+
+        {% if estatisticas.taxa_de_sucesso != None %}
+          <div class="proporcao" style="margin-top: var(--e-4)">
+            <div class="proporcao__preenchimento{% if estatisticas.taxa_de_sucesso < 50 %} proporcao__preenchimento--ruim{% elif estatisticas.taxa_de_sucesso < 85 %} proporcao__preenchimento--atencao{% endif %}"
+                 style="width: {{ estatisticas.taxa_de_sucesso }}%"></div>
+          </div>
+          <p class="pequeno tenue" style="margin-top: var(--e-2)">
+            {{ estatisticas.sucessos|numero }} sucessos · {{ estatisticas.falhas|numero }} falhas
+            {% if estatisticas.ativas %} · {{ estatisticas.ativas }} em andamento{% endif %}
+          </p>
+        {% endif %}
+      </section>
+    {% endif %}
+
+    <section class="cartao">
+      <h2 class="cartao__titulo">Execução</h2>
+      <dl class="definicoes" style="margin-top: var(--e-4)">
+        <div>
+          <dt>Imagem</dt>
+          <dd class="mono pequeno quebra-tudo">{{ automacao.imagem|default:"—" }}</dd>
+        </div>
+        <div>
+          <dt>Simultâneas</dt>
+          <dd class="numerico">{{ automacao.max_execucoes_concorrentes }}</dd>
+        </div>
+        <div>
+          <dt>CPU / memória</dt>
+          <dd class="numerico">{{ automacao.limites.cpus }} / {{ automacao.limites.memoria_mb }} MB</dd>
+        </div>
+        <div>
+          <dt>Tempo máximo</dt>
+          <dd class="numerico">{{ automacao.limites.timeout_segundos }} s</dd>
+        </div>
+      </dl>
+    </section>
+
+    {% if automacao.gatilhos %}
+      <section class="cartao">
+        <h2 class="cartao__titulo">Como é disparada</h2>
+        <ul class="lista-simples" style="margin-top: var(--e-3)">
+          {% for gatilho in automacao.gatilhos %}
+            <li>
+              <span>
+                <strong>{{ gatilho.tipo|title }}</strong>
+                {% if gatilho.expressao %}
+                  <div class="tabela__secundario mono">{{ gatilho.expressao }}</div>
+                {% endif %}
+              </span>
+              <span class="etiqueta etiqueta--contorno">{{ gatilho.fila|cut:"execucoes." }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+    {% endif %}
+
+    <section class="cartao">
+      <h2 class="cartao__titulo">Responsabilidade</h2>
+      <dl class="definicoes" style="margin-top: var(--e-4)">
+        <div>
+          <dt>Técnico</dt>
+          <dd>{{ automacao.responsavel_tecnico|default:"—" }}</dd>
+        </div>
+        <div>
+          <dt>Negócio</dt>
+          <dd>{{ automacao.responsavel_negocio|default:"—" }}</dd>
+        </div>
+        <div>
+          <dt>Publicada em</dt>
+          <dd>{{ automacao.publicado_em|default:"—" }}</dd>
+        </div>
+      </dl>
+    </section>
+
+    {% if automacao.variaveis_ambiente %}
+      <section class="cartao">
+        <h2 class="cartao__titulo">Variáveis de ambiente</h2>
+        <p class="pequeno tenue">
+          O manifesto declara o <strong>nome</strong> do segredo, nunca o valor.
+          O valor é resolvido pelo runner no momento de montar o container e não
+          passa pelo banco, pela API nem por esta tela.
+        </p>
+        <ul class="lista-simples" style="margin-top: var(--e-3)">
+          {% for variavel in automacao.variaveis_ambiente %}
+            <li>
+              <code>{{ variavel.nome }}</code>
+              <span>
+                {% if variavel.obrigatorio %}<span class="etiqueta etiqueta--aviso">obrigatória</span>{% endif %}
+                {% if variavel.segredo_ref %}<span class="etiqueta etiqueta--contorno">segredo</span>{% endif %}
+              </span>
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+    {% endif %}
+
+    {% if automacao.versoes %}
+      <section class="cartao">
+        <h2 class="cartao__titulo">Versões</h2>
+        <ul class="lista-simples" style="margin-top: var(--e-3)">
+          {% for versao in automacao.versoes|slice:":5" %}
+            <li>
+              <span>
+                <strong>v{{ versao.versao }}</strong>
+                {% if versao.changelog %}
+                  <div class="tabela__secundario">{{ versao.changelog|truncatechars:110 }}</div>
+                {% endif %}
+              </span>
+              <span class="tenue pequeno">{{ versao.criado_em|quando }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+    {% endif %}
+
+    {% if automacao.acoes_disponiveis %}
+      <section class="cartao">
+        <h2 class="cartao__titulo">Ciclo de vida</h2>
+        <p class="pequeno tenue">
+          Só aparecem as transições que a sua permissão alcança a partir da
+          situação atual — a lista vem do serviço, já filtrada.
+        </p>
+        <div class="pilha pilha--apertada" style="margin-top: var(--e-3)">
+          {% for acao in automacao.acoes_disponiveis %}
+            <form method="post" action="{% url 'marketplace:transicionar' slug=automacao.slug %}">
+              {% csrf_token %}
+              <input type="hidden" name="para" value="{{ acao.para }}">
+              <button type="submit"
+                      class="botao botao--bloco {% if acao.para == 'arquivada' %}botao--perigo{% elif acao.para == 'publicada' %}botao--sucesso{% else %}botao--secundario{% endif %}">
+                {{ acao.acao }}
+              </button>
+            </form>
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

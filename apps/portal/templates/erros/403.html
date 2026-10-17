@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block titulo %}Sem permissão{% endblock %}
+
+{% block conteudo %}
+<div class="cartao" style="max-width: 640px">
+  <h1>Você não tem acesso a esta tela</h1>
+  <p class="suave">
+    {{ mensagem|default:"Seu papel na plataforma não inclui a permissão necessária." }}
+  </p>
+
+  {% if permissoes_faltando %}
+    <p class="pequeno tenue sem-margem">Permissões exigidas e não concedidas:</p>
+    <ul class="pequeno">
+      {% for permissao in permissoes_faltando %}<li><code>{{ permissao }}</code></li>{% endfor %}
+    </ul>
+  {% endif %}
+
+  {% if quem.autenticado %}
+    <p class="pequeno tenue">
+      Você está como <strong>{{ quem.papel_principal|lower }}</strong>.
+      {% if DEMO_MODE %}
+        Na demonstração, saia e entre com outro papel para ver esta área.
+      {% else %}
+        Peça a um administrador para revisar os seus papéis.
+      {% endif %}
+    </p>
+  {% endif %}
+
+  <div class="formulario__acoes">
+    <a class="botao" href="{% url 'marketplace:catalogo' %}">Ir para o catálogo</a>
+    {% if DEMO_MODE %}
+      <form method="post" action="{% url 'contas:sair' %}">
+        {% csrf_token %}
+        <button type="submit" class="botao botao--secundario">Trocar de papel</button>
+      </form>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

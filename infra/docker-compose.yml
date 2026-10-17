@@ -1,0 +1,266 @@
+# Ambiente de desenvolvimento: o desenho distribuído completo.
+#
+#   HUB_MODE=distributed  — cinco processos, HTTP de verdade entre eles
+#   BROKER_BACKEND=rabbitmq, LOCK_BACKEND=redis, STORAGE_BACKEND=s3
+#   EXECUTOR_BACKEND=docker — containers reais
+#
+# É o oposto do que roda no free tier (um processo, PostgreSQL para tudo). O
+# ponto do projeto é que **o mesmo código** atende os dois: ver
+# `hub_core.clients` e docs/adr/0002.
+#
+#   make up     sobe tudo
+#   make seed   popula o cenário fictício do INRH
+#   make mono   roda o modo monolito, sem Docker, para comparar
+
+name: orbita
+
+x-ambiente-comum: &ambiente-comum
+  HUB_MODE: distributed
+  DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-orbita}:${POSTGRES_PASSWORD:-orbita_dev}@postgres:5432/${POSTGRES_DB:-orbita}
+  BROKER_BACKEND: rabbitmq
+  LOCK_BACKEND: redis
+  STORAGE_BACKEND: s3
+  RABBITMQ_URL: amqp://${RABBITMQ_USER:-orbita}:${RABBITMQ_PASSWORD:-orbita_dev}@rabbitmq:5672/
+  REDIS_URL: redis://redis:6379/0
+  S3_ENDPOINT_URL: http://minio:9000
+  S3_ACCESS_KEY: ${MINIO_ROOT_USER:-orbita_admin}
+  S3_SECRET_KEY: ${MINIO_ROOT_PASSWORD:-orbita_dev_password}
+  S3_BUCKET: ${S3_BUCKET:-orbita-artefatos}
+  JWT_SECRET: ${JWT_SECRET:-desenvolvimento-apenas-troque-isto}
+  INTERNAL_SHARED_SECRET: ${INTERNAL_SHARED_SECRET:-desenvolvimento-apenas-troque-este-segredo-interno}
+  IDENTITY_SERVICE_URL: http://identity:8001
+  CATALOG_SERVICE_URL: http://catalog:8002
+  EXECUTION_SERVICE_URL: http://execution:8003
+  RUNNER_SERVICE_URL: http://runner:8004
+  AMBIENTE: local
+  DEMO_MODE: ${DEMO_MODE:-true}
+  LOG_NIVEL: ${LOG_NIVEL:-INFO}
+  TZ: America/Sao_Paulo
+
+x-servico-comum: &servico-comum
+  build:
+    context: ..
+    dockerfile: infra/Dockerfile
+  image: orbita-hub:dev
+  restart: unless-stopped
+  depends_on:
+    postgres:
+      condition: service_healthy
+    rabbitmq:
+      condition: service_healthy
+    redis:
+      condition: service_started
+    minio:
+      condition: service_started
+  # O código é montado como volume para que `--reload` do uvicorn funcione sem
+  # rebuild. Em produção a imagem é imutável e não há volume.
+  volumes:
+    - ..:/app
+
+services:
+  # ── Infraestrutura ─────────────────────────────────────────────────────────
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-orbita}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-orbita_dev}
+      POSTGRES_DB: ${POSTGRES_DB:-orbita}
+      # Acelera o banco de desenvolvimento ao custo de durabilidade — aceitável
+      # aqui e inaceitável em produção, por isso está escrito em voz alta.
+      POSTGRES_INITDB_ARGS: "--data-checksums"
+    command:
+      - postgres
+      - -c
+      - fsync=off
+      - -c
+      - synchronous_commit=off
+      - -c
+      - log_min_duration_statement=500
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - dados-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-orbita} -d ${POSTGRES_DB:-orbita}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  rabbitmq:
+    image: rabbitmq:3.13-management-alpine
+    restart: unless-stopped
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER:-orbita}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:-orbita_dev}
+    ports:
+      - "${RABBITMQ_PORT:-5672}:5672"
+      - "${RABBITMQ_MGMT_PORT:-15672}:15672"
+    volumes:
+      - dados-rabbitmq:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "check_running"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+
+  minio:
+    image: minio/minio:latest
+    restart: unless-stopped
+    command: ["server", "/data", "--console-address", ":9001"]
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-orbita_admin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-orbita_dev_password}
+    ports:
+      - "${MINIO_PORT:-9000}:9000"
+      - "${MINIO_CONSOLE_PORT:-9001}:9001"
+    volumes:
+      - dados-minio:/data
+
+  # ── Migrações ──────────────────────────────────────────────────────────────
+  migracoes:
+    <<: *servico-comum
+    restart: "no"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      <<: *ambiente-comum
+    command: ["alembic", "upgrade", "head"]
+
+  # ── Serviços ───────────────────────────────────────────────────────────────
+  identity:
+    <<: *servico-comum
+    environment:
+      <<: *ambiente-comum
+      PORTA: "8001"
+    command:
+      - uvicorn
+      - hub_identity.app:app
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8001"
+      - --reload
+    ports:
+      - "${IDENTITY_SERVICE_PORT:-8001}:8001"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      migracoes:
+        condition: service_completed_successfully
+
+  catalog:
+    <<: *servico-comum
+    environment:
+      <<: *ambiente-comum
+      PORTA: "8002"
+    command:
+      - uvicorn
+      - hub_catalog.app:app
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8002"
+      - --reload
+    ports:
+      - "${CATALOG_SERVICE_PORT:-8002}:8002"
+    depends_on:
+      migracoes:
+        condition: service_completed_successfully
+
+  execution:
+    <<: *servico-comum
+    environment:
+      <<: *ambiente-comum
+      PORTA: "8003"
+    command:
+      - uvicorn
+      - hub_execution.app:app
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8003"
+      - --reload
+    ports:
+      - "${EXECUTION_SERVICE_PORT:-8003}:8003"
+    depends_on:
+      migracoes:
+        condition: service_completed_successfully
+
+  runner:
+    <<: *servico-comum
+    environment:
+      <<: *ambiente-comum
+      PORTA: "8004"
+      EXECUTOR_BACKEND: docker
+      RUNNER_MAX_CONCORRENTES: "2"
+    command:
+      - uvicorn
+      - hub_runner.app:app
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8004"
+      - --reload
+    ports:
+      - "${RUNNER_SERVICE_PORT:-8004}:8004"
+    # O socket do Docker. É o privilégio mais perigoso do compose: quem tem
+    # acesso a ele é efetivamente root no host. Está aqui porque o runner
+    # precisa criar containers, e é por isso que o runner não tem acesso ao
+    # banco de domínio dos outros serviços — ver o docstring de
+    # `hub_runner.app`. Em Kubernetes, isto vira uma ServiceAccount com
+    # permissão de criar Jobs, que é bem mais restrito.
+    volumes:
+      - ..:/app
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      migracoes:
+        condition: service_completed_successfully
+
+  portal:
+    <<: *servico-comum
+    environment:
+      <<: *ambiente-comum
+      PORTA: "3000"
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY:-desenvolvimento-apenas-troque-esta-chave}
+      DJANGO_DEBUG: ${DJANGO_DEBUG:-true}
+      DJANGO_ALLOWED_HOSTS: localhost,127.0.0.1,portal
+    command:
+      - python
+      - -m
+      - uvicorn
+      - portal.asgi:application
+      - --host
+      - 0.0.0.0
+      - --port
+      - "3000"
+      - --reload
+      - --app-dir
+      - apps/portal
+    ports:
+      - "${PORTAL_PORT:-3000}:3000"
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:3000/saude"]
+      interval: 20s
+      timeout: 5s
+      retries: 3
+    depends_on:
+      identity:
+        condition: service_started
+      catalog:
+        condition: service_started
+      execution:
+        condition: service_started
+
+volumes:
+  dados-postgres:
+  dados-rabbitmq:
+  dados-minio:

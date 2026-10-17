@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block titulo %}Painel{% endblock %}
+
+{% block conteudo %}
+
+<div class="pagina__cabecalho">
+  <div>
+    <h1 class="pagina__titulo">Painel da plataforma</h1>
+    <p class="pagina__descricao">
+      Cada número aqui responde a uma pergunta operacional concreta: a
+      plataforma está dando conta agora, a fila está acumulando, alguma
+      automação passou a falhar, e a tendência é de piora.
+    </p>
+  </div>
+</div>
+
+{% include "painel/_conteudo.html" %}
+{% endblock %}

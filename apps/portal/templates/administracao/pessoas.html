@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block titulo %}Pessoas{% endblock %}
+
+{% block conteudo %}
+
+<div class="pagina__cabecalho">
+  <div>
+    <h1 class="pagina__titulo">Pessoas</h1>
+    <p class="pagina__descricao">
+      Quem tem acesso à plataforma, com os papéis efetivos — diretos e
+      herdados de grupo.
+      {% if not quem.pode_ver_dado_sensivel %}
+        CPF e e-mail aparecem mascarados: ver o dado sem máscara é uma
+        permissão separada de ver a lista.
+      {% endif %}
+    </p>
+  </div>
+</div>
+
+<form class="filtros" method="get" action="{% url 'administracao:pessoas' %}"
+      hx-get="{% url 'administracao:pessoas' %}"
+      hx-target="#tabela-de-pessoas"
+      hx-select="#tabela-de-pessoas"
+      hx-swap="outerHTML"
+      hx-trigger="input from:#busca changed delay:350ms, change from:select, submit"
+      hx-push-url="true">
+
+  <div class="filtros__campo filtros__campo--largo">
+    <label class="filtros__rotulo" for="busca">Buscar</label>
+    <input id="busca" name="busca" type="search" value="{{ filtros.busca|default:'' }}"
+           placeholder="nome, e-mail ou CPF" autocomplete="off">
+  </div>
+
+  <div class="filtros__campo">
+    <label class="filtros__rotulo" for="papel">Papel</label>
+    <select id="papel" name="papel">
+      <option value="">Todos</option>
+      <option value="admin" {% if filtros.papel == "admin" %}selected{% endif %}>Administrador</option>
+      <option value="gestor" {% if filtros.papel == "gestor" %}selected{% endif %}>Gestor</option>
+      <option value="supervisor" {% if filtros.papel == "supervisor" %}selected{% endif %}>Supervisor</option>
+      <option value="operador" {% if filtros.papel == "operador" %}selected{% endif %}>Operador</option>
+      <option value="usuario" {% if filtros.papel == "usuario" %}selected{% endif %}>Usuário</option>
+      <option value="auditor" {% if filtros.papel == "auditor" %}selected{% endif %}>Auditor</option>
+    </select>
+  </div>
+
+  <div class="filtros__campo">
+    <label class="filtros__rotulo" for="unidade_id">Unidade</label>
+    <select id="unidade_id" name="unidade_id">
+      <option value="">Todas</option>
+      {% for unidade in unidades %}
+        <option value="{{ unidade.id }}" {% if filtros.unidade_id == unidade.id|stringformat:"s" %}selected{% endif %}>
+          {{ unidade.sigla }} — {{ unidade.nome|truncatechars:38 }}
+        </option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="filtros__acoes">
+    <noscript><button type="submit" class="botao botao--secundario botao--pequeno">Filtrar</button></noscript>
+    <a class="botao botao--fantasma botao--pequeno" href="{% url 'administracao:pessoas' %}">Limpar</a>
+  </div>
+</form>
+
+{% include "administracao/_pessoas_tabela.html" %}
+{% endblock %}

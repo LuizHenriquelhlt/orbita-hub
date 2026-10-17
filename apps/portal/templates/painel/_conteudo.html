@@ -1,0 +1,245 @@
+{% load orbita %}
+{% comment %}
+Conteúdo do painel. Auto-substituível, com o gatilho presente apenas quando há
+execução em andamento — um painel sem atividade não fica consultando o banco a
+cada poucos segundos sem motivo.
+{% endcomment %}
+
+<div id="conteudo-do-painel"
+     {% if tem_ativa %}
+       hx-get="{% url 'painel:painel' %}"
+       hx-trigger="every 6s"
+       hx-select="#conteudo-do-painel"
+       hx-swap="outerHTML"
+     {% endif %}>
+
+{# ── Indicadores ─────────────────────────────────────────────────────────── #}
+<div class="grade grade--indicadores">
+  <div class="indicador{% if ind.ativas %} indicador--ativo{% endif %}">
+    <span class="indicador__rotulo">Em andamento</span>
+    <span class="indicador__valor">{{ ind.ativas|numero }}</span>
+    <span class="indicador__nota">
+      {% if ind.ativas %}enfileiradas ou executando agora{% else %}nada rodando{% endif %}
+    </span>
+  </div>
+
+  <div class="indicador">
+    <span class="indicador__rotulo">Hoje</span>
+    <span class="indicador__valor">{{ ind.hoje|numero }}</span>
+    <span class="indicador__nota">{{ ind.total|numero }} no total</span>
+  </div>
+
+  <div class="indicador{% if ind.taxa_de_sucesso_7d >= 90 %} indicador--sucesso{% elif ind.taxa_de_sucesso_7d < 70 %} indicador--erro{% endif %}">
+    <span class="indicador__rotulo">Sucesso (7 dias)</span>
+    <span class="indicador__valor">{{ ind.taxa_de_sucesso_7d|porcentagem }}</span>
+    <span class="indicador__nota">
+      {{ ind.sucesso_7d|numero }} ok · {{ ind.falha_7d|numero }} com falha
+    </span>
+  </div>
+
+  <div class="indicador">
+    <span class="indicador__rotulo">Duração média</span>
+    <span class="indicador__valor">{{ ind.duracao_media_ms|duracao }}</span>
+    <span class="indicador__nota">das execuções bem-sucedidas</span>
+  </div>
+
+  <div class="indicador{% if ind.espera_media_ms > 30000 %} indicador--erro{% endif %}">
+    <span class="indicador__rotulo">Espera na fila</span>
+    <span class="indicador__valor">{{ ind.espera_media_ms|duracao }}</span>
+    <span class="indicador__nota">
+      {% if ind.espera_media_ms > 30000 %}acima do esperado{% else %}média{% endif %}
+    </span>
+  </div>
+</div>
+
+{# ── Gráfico ─────────────────────────────────────────────────────────────── #}
+<section class="cartao" style="margin-top: var(--e-5)">
+  <div class="cartao__cabecalho">
+    <h2 class="cartao__titulo">Execuções nos últimos 14 dias</h2>
+    <span class="cartao__legenda">
+      todos os dias aparecem, inclusive os sem execução
+    </span>
+  </div>
+
+  {% comment %} Barras desenhadas com `div` e CSS, sem biblioteca de gráficos. Para uma
+     série de 14 pontos, um pacote de gráficos custaria mais bytes do que a
+     página inteira — e o resultado é acessível e imprime bem. {% endcomment %}
+  <div class="grafico" role="img"
+       aria-label="Gráfico de barras com as execuções dos últimos 14 dias, separadas por sucesso e falha">
+    {% for dia in serie %}
+      {% with total=dia.sucesso|add:dia.falha|add:dia.outras %}
+      <div class="grafico__coluna"
+           title="{{ dia.dia }} — {{ dia.sucesso }} sucesso, {{ dia.falha }} falha{% if dia.outras %}, {{ dia.outras }} outras{% endif %}">
+        {% if dia.outras %}
+          <div class="grafico__barra grafico__barra--outras"
+               style="height: {{ dia.outras|barra:maximo_da_serie }}%"></div>
+        {% endif %}
+        {% if dia.falha %}
+          <div class="grafico__barra grafico__barra--falha"
+               style="height: {{ dia.falha|barra:maximo_da_serie }}%"></div>
+        {% endif %}
+        {% if dia.sucesso %}
+          <div class="grafico__barra grafico__barra--sucesso"
+               style="height: {{ dia.sucesso|barra:maximo_da_serie }}%"></div>
+        {% endif %}
+        {% if not total %}
+          {% comment %} Dia sem execução: um traço de 2 px, para a coluna existir
+             visualmente. Sem isso, o dia desaparece e o gráfico sugere
+             continuidade onde não houve nada. {% endcomment %}
+          <div class="grafico__barra grafico__barra--outras" style="height: 2px"></div>
+        {% endif %}
+      </div>
+      {% endwith %}
+    {% endfor %}
+  </div>
+
+  <div class="linha" style="gap: 0; margin-top: var(--e-1)">
+    {% for dia in serie %}
+      <div class="grafico__dia" style="flex: 1; min-width: 0">
+        {{ dia.dia|slice:"5:"|cut:"-" }}
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="grafico__legenda">
+    <span class="grafico__chave">
+      <span class="grafico__amostra" style="background: var(--sucesso)"></span> sucesso
+    </span>
+    <span class="grafico__chave">
+      <span class="grafico__amostra" style="background: var(--erro)"></span> falha ou tempo esgotado
+    </span>
+    <span class="grafico__chave">
+      <span class="grafico__amostra" style="background: var(--texto-tenue); opacity:.5"></span> outras
+    </span>
+  </div>
+</section>
+
+<div class="grade grade--2" style="margin-top: var(--e-5)">
+
+  {# ── Filas ────────────────────────────────────────────────────────────── #}
+  {% if ind.filas %}
+    <section class="cartao">
+      <div class="cartao__cabecalho">
+        <h2 class="cartao__titulo">Filas</h2>
+        {% if quem.pode_ver_filas %}
+          <a class="pequeno" href="{% url 'administracao:filas' %}">administrar</a>
+        {% endif %}
+      </div>
+
+      <div class="tabela-envoltorio">
+        <table class="tabela">
+          <thead>
+            <tr>
+              <th>Fila</th>
+              <th class="tabela__numero">Pendentes</th>
+              <th class="tabela__numero">Em curso</th>
+              <th class="tabela__numero">Mortas</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for fila in ind.filas %}
+              <tr>
+                <td>
+                  <span class="tabela__principal">{{ fila.fila|cut:"execucoes." }}</span>
+                  <div class="tabela__secundario mono">{{ fila.fila }}</div>
+                </td>
+                <td class="tabela__numero">{{ fila.pendente|numero }}</td>
+                <td class="tabela__numero">{{ fila.processando|numero }}</td>
+                <td class="tabela__numero">
+                  {% if fila.morta %}
+                    <span class="etiqueta etiqueta--erro">{{ fila.morta }}</span>
+                  {% else %}
+                    <span class="tenue">0</span>
+                  {% endif %}
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <p class="pequeno tenue" style="margin-top: var(--e-3)">
+        A ordem de atendimento é interativa → padrão → lote. Um relatório mensal
+        pesado nunca atrasa a automação que alguém está esperando na tela.
+      </p>
+    </section>
+  {% endif %}
+
+  {# ── Mais usadas ──────────────────────────────────────────────────────── #}
+  {% if ind.mais_usadas %}
+    <section class="cartao">
+      <h2 class="cartao__titulo">Mais executadas (30 dias)</h2>
+
+      <ul class="lista-simples" style="margin-top: var(--e-3)">
+        {% for automacao in ind.mais_usadas %}
+          <li style="flex-direction: column; align-items: stretch; gap: var(--e-2)">
+            <div class="linha linha--entre" style="gap: var(--e-3)">
+              <a href="{% url 'marketplace:ficha' slug=automacao.slug %}">{{ automacao.nome }}</a>
+              <span class="pequeno numerico tenue">
+                {{ automacao.execucoes|numero }} ·
+                {{ automacao.taxa_de_sucesso|porcentagem }} ·
+                {{ automacao.duracao_media_ms|duracao }}
+              </span>
+            </div>
+            <div class="proporcao">
+              <div class="proporcao__preenchimento{% if automacao.taxa_de_sucesso < 50 %} proporcao__preenchimento--ruim{% elif automacao.taxa_de_sucesso < 85 %} proporcao__preenchimento--atencao{% endif %}"
+                   style="width: {{ automacao.taxa_de_sucesso }}%"></div>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+
+  {# ── Agendamentos ─────────────────────────────────────────────────────── #}
+  {% if ind.agendamentos %}
+    <section class="cartao" style="grid-column: 1 / -1">
+      <div class="cartao__cabecalho">
+        <h2 class="cartao__titulo">Agendamentos</h2>
+        <span class="cartao__legenda">
+          expressões cron interpretadas no fuso America/Sao_Paulo
+        </span>
+      </div>
+
+      <div class="tabela-envoltorio">
+        <table class="tabela">
+          <thead>
+            <tr>
+              <th>Automação</th>
+              <th>Quando</th>
+              <th>Fila</th>
+              <th>Última</th>
+              <th>Próxima</th>
+              <th class="tabela__numero">Disparos</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for agendamento in ind.agendamentos %}
+              <tr>
+                <td>
+                  <a class="tabela__principal" href="{% url 'marketplace:ficha' slug=agendamento.automacao_slug %}">
+                    {{ agendamento.automacao_slug }}
+                  </a>
+                </td>
+                <td>
+                  {{ agendamento.descricao }}
+                  <div class="tabela__secundario mono">{{ agendamento.expressao }}</div>
+                </td>
+                <td><span class="etiqueta etiqueta--contorno">{{ agendamento.fila|cut:"execucoes." }}</span></td>
+                <td class="pequeno">{{ agendamento.ultima_execucao_em|quando }}</td>
+                <td class="pequeno">{{ agendamento.proxima_em|quando }}</td>
+                <td class="tabela__numero">{{ agendamento.disparos|numero }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <p class="pequeno tenue" style="margin-top: var(--e-3)">
+        O agendador roda em todas as réplicas do motor, mas um lock distribuído
+        garante que cada agendamento dispare uma vez só.
+      </p>
+    </section>
+  {% endif %}
+</div>
+</div>

@@ -1,0 +1,1421 @@
+﻿processo;uf;regiao;municipio;finalidade;situacao;vazao_m3_s;volume_anual_m3;vencimento;corpo_hidrico
+39312.2017-00000;SE;Nordeste;Vila Serrana;irrigação;pendente de analise;2,545;80259120;2026-02-11;Rio Pardo Novo
+93125.2021-00001;PR;Bacia do Paraná;Santa Rita da Serra;irrigação;vigente;0,901;28413936;2031-06-25;Rio Araguari
+63741.2026-00002;SP;Bacia do Paraná;Riacho Fundo Velho;lazer;vigente;0,960;30274560;2031-04-15;Rio Taquari-Mirim
+71860.2025-00003;PR;Sul;Alto Paraíso do Norte;termoelétrica;vigente;0,515;16241040;2028-09-19;Rio Formoso
+10029.2017-00004;MG;Bacia do São Francisco;Campo Novo do Oeste;aquicultura;vencida;0,195;6149520;2024-10-12;Córrego Santa Luzia
+63643.2020-00005;TO;Norte;Campo Novo do Oeste;mineração;vigente;0,199;6275664;2030-11-14;Rio Araguari
+15035.2019-00006;DF;Órgão Central;Santa Rita da Serra;mineração;vigente;0,524;16524864;2027-02-18;Rio Verde Grande
+95513.2015-00007;ES;Sudeste;Porto das Pedras Altas;abastecimento urbano;em análise;1,062;33491232;2030-07-04;Rio Taquari-Mirim
+72600.2025-00008;BA;Nordeste;Campo Novo do Oeste;mineração;vigente;1,677;52885872;2030-07-12;Rio Araguari
+50423.2026-00009;GO;Bacia do Paraná;Alto Paraíso do Norte;irrigação;vigente;2,705;85304880;2027-07-08;Rio Araguari
+11520.2026-00010;ES;Sudeste;Porto das Pedras Altas;abastecimento urbano;vencida;7,985;251814960;2025-01-09;Rio Pardo Novo
+13458.2022-00011;RS;Sul;Vila Serrana;indústria;em análise;0,501;15799536;2032-02-27;Rio Araguari
+86266.2018-00012;AP;Norte;Riacho Fundo Velho;lazer;vigente;0,187;5897232;2026-09-25;Açude Serra Azul
+91179.2017-00013;SP;Bacia do Paraná;Campo Novo do Oeste;indústria;suspensa;6,344;200064384;2028-03-23;Rio Taquari-Mirim
+61420.2025-00014;SC;Sul;Porto das Pedras Altas;indústria;vigente;1,154;36392544;2030-09-05;Rio Verde Grande
+64307.2021-00015;SP;Bacia do Paraná;Bom Retiro das Águas;termoelétrica;vigente;9,538;300790368;2030-05-02;Rio Araguari
+50771.2026-00016;MA;Nordeste;Porto das Pedras Altas;aquicultura;suspensa;0,302;9523872;2028-07-26;Rio Verde Grande
+52913.2020-00017;MA;Nordeste;Campo Novo do Oeste;dessedentação animal;vencida;0,243;7663248;2025-03-16;Aquífero Guarani
+33242.2021-00018;DF;Órgão Central;Alto Paraíso do Norte;indústria;vigente;3,251;102523536;2028-07-09;Ribeirão das Antas
+78297.2024-00019;RN;Nordeste;Alto Paraíso do Norte;dessedentação animal;suspensa;0,269;8483184;2030-07-02;Rio Taquari-Mirim
+28120.2021-00020;DF;Órgão Central;Cachoeira do Vale Azul;dessedentação animal;suspensa;1,038;32734368;2031-10-07;Rio Taquari-Mirim
+70671.2015-00021;MG;Bacia do São Francisco;Santa Rita da Serra;mineração;em análise;5,516;173952576;2032-06-08;Córrego Santa Luzia
+47868.2025-00022;PR;Sul;Bom Retiro das Águas;termoelétrica;em análise;0,916;28886976;2028-08-24;Rio Formoso
+93100.2018-00023;DF;Órgão Central;Santa Rita da Serra;indústria;vigente;0,394;12425184;2027-09-09;Rio Pardo Novo
+89008.2018-00024;RN;Nordeste;Alto Paraíso do Norte;termoelétrica;vigente;2,147;67707792;2031-11-28;Açude Serra Azul
+79171.2025-00025;RS;Sul;Cachoeira do Vale Azul;abastecimento urbano;vigente;1,307;41217552;2030-03-10;Aquífero Guarani
+56809.2020-00026;SP;Sudeste;Alto Paraíso do Norte;dessedentação animal;vigente;0,192;6054912;2026-03-18;Açude Serra Azul
+99745.2022-00027;PE;Bacia do São Francisco;Campo Novo do Oeste;dessedentação animal;suspensa;0,618;19489248;2031-10-26;Ribeirão das Antas
+33198.2025-00028;RN;Nordeste;Campo Novo do Oeste;abastecimento urbano;vigente;5,448;171808128;2030-06-19;Açude Serra Azul
+53406.2018-00029;DF;Órgão Central;Vila Serrana;termoelétrica;vencida;1,285;40523760;2025-08-09;Rio Araguari
+29692.2018-00030;MG;Sudeste;Alto Paraíso do Norte;irrigação;vencida;5,405;170452080;2025-07-08;Represa do Funil Velho
+94253.2022-00031;AL;Bacia do São Francisco;Vila Serrana;irrigação;vigente;0,280;8830080;2027-07-15;Ribeirão das Antas
+16255.2018-00032;DF;Órgão Central;Bom Retiro das Águas;mineração;vigente;4,300;135604800;2031-02-28;Córrego Santa Luzia
+62789.2023-00033;DF;Órgão Central;Cachoeira do Vale Azul;irrigação;vigente;0,548;17281728;2026-11-25;Córrego Santa Luzia
+63696.2021-00034;DF;Órgão Central;Vila Serrana;mineração;em análise;4,182;131883552;2031-03-11;Açude Serra Azul
+61859.2025-00035;SP;Sudeste;Vila Serrana;lazer;vigente;0,191;6023376;2029-12-04;Represa do Funil Velho
+90344.2017-00036;GO;Bacia do Paraná;Porto das Pedras Altas;abastecimento urbano;vigente;0,735;23178960;2030-01-20;Açude Serra Azul
+18278.2016-00037;ES;Sudeste;Alto Paraíso do Norte;lazer;vigente;10,752;339075072;2029-01-05;Ribeirão das Antas
+43559.2018-00038;AP;Norte;Alto Paraíso do Norte;mineração;vigente;0,911;28729296;2029-01-06;Aquífero Guarani
+23815.2023-00039;BA;Bacia do São Francisco;Campo Novo do Oeste;termoelétrica;vigente;3,329;104983344;2030-11-20;Represa do Funil Velho
+73206.2018-00040;DF;Órgão Central;Alto Paraíso do Norte;aquicultura;vigente;1,549;48849264;2030-07-22;Rio Taquari-Mirim
+40569.2025-00041;AL;Nordeste;Bom Retiro das Águas;dessedentação animal;vigente;2,201;69410736;2030-09-14;Rio Taquari-Mirim
+13516.2021-00042;CE;Nordeste;Porto das Pedras Altas;indústria;suspensa;5,060;159572160;2031-10-23;Açude Serra Azul
+26944.2016-00043;DF;Órgão Central;Cachoeira do Vale Azul;lazer;vigente;0,944;29769984;2032-07-07;Rio Formoso
+31246.2022-00044;ES;Sudeste;Bom Retiro das Águas;irrigação;vencida;1,241;39136176;2025-09-09;Rio Taquari-Mirim
+85759.2024-00045;PA;Norte;Riacho Fundo Velho;indústria;em análise;1,291;40712976;31/12/2026;Rio Taquari-Mirim
+67849.2017-00046;SC;Sul;Santa Rita da Serra;irrigação;vigente;0,609;19205424;2028-02-18;Açude Serra Azul
+92436.2015-00047;RS;Sul;Alto Paraíso do Norte;abastecimento urbano;suspensa;0,784;24724224;2030-05-02;Rio Formoso
+45657.2016-00048;MS;Bacia do Paraná;Cachoeira do Vale Azul;termoelétrica;vigente;1,067;33648912;2031-04-10;Rio Formoso
+84928.2023-00049;AL;Nordeste;Bom Retiro das Águas;indústria;suspensa;2,721;85809456;2029-01-28;Represa do Funil Velho
+43575.2021-00050;MS;Centro-Oeste;Cachoeira do Vale Azul;mineração;vigente;0,965;30432240;2031-07-04;Rio Formoso
+79636.2024-00051;RN;Nordeste;Santa Rita da Serra;mineração;em análise;1,418;44718048;2030-10-29;Rio Formoso
+31601.2024-00052;AM;Norte;Bom Retiro das Águas;termoelétrica;em análise;3,915;123463440;2027-04-19;Rio Verde Grande
+95298.2018-00053;MS;Bacia do Paraná;Riacho Fundo Velho;abastecimento urbano;vigente;0,677;21349872;2031-04-20;Ribeirão das Antas
+81874.2022-00054;DF;Órgão Central;Cachoeira do Vale Azul;indústria;pendente de analise;0,500;15768000;2029-11-16;Aquífero Guarani
+12383.2021-00055;CE;Nordeste;Alto Paraíso do Norte;irrigação;em análise;2,110;66540959;2030-12-04;Rio Taquari-Mirim
+25087.2022-00056;BA;Nordeste;Alto Paraíso do Norte;irrigação;vigente;1,021;32198255;2031-07-16;Rio Pardo Novo
+17599.2021-00057;AM;Norte;Santa Rita da Serra;irrigação;vigente;1,719;54210384;2026-07-21;Aquífero Guarani
+94002.2018-00058;BA;Bacia do São Francisco;Campo Novo do Oeste;termoelétrica;vigente;0,765;24125040;2032-06-28;Açude Serra Azul
+83323.2021-00059;DF;Órgão Central;Riacho Fundo Velho;lazer;vigente;22,601;712745136;2030-06-18;Açude Serra Azul
+97606.2019-00060;AL;Nordeste;Alto Paraíso do Norte;indústria;vigente;1,406;44339616;2026-04-30;Rio Araguari
+78963.2016-00061;SC;Sul;Bom Retiro das Águas;aquicultura;vigente;0,966;30463776;2029-06-29;Rio Pardo Novo
+98532.2018-00062;SP;Bacia do Paraná;Riacho Fundo Velho;lazer;vigente;0,808;25481088;2027-01-10;Açude Serra Azul
+86851.2026-00063;RJ;Sudeste;Cachoeira do Vale Azul;irrigação;em análise;0,176;5550336;2027-12-07;Rio Araguari
+87174.2015-00064;PE;Bacia do São Francisco;Vila Serrana;dessedentação animal;em análise;0,628;19804608;2027-02-03;Ribeirão das Antas
+54578.2024-00065;DF;Órgão Central;Alto Paraíso do Norte;mineração;vigente;2,382;75118752;2032-04-04;Açude Serra Azul
+72328.2018-00066;PR;Sul;Riacho Fundo Velho;aquicultura;vigente;5,392;170042112;2030-03-23;Rio Araguari
+87815.2020-00067;RS;Sul;Vila Serrana;termoelétrica;vigente;7,109;224189424;2029-01-16;Rio Formoso
+85033.2019-00068;MS;Centro-Oeste;Cachoeira do Vale Azul;abastecimento urbano;vencida;10,566;333209376;2025-03-24;Ribeirão das Antas
+42310.2018-00069;MG;Bacia do São Francisco;Campo Novo do Oeste;mineração;vigente;0,497;15673392;2030-12-02;Rio Verde Grande
+26193.2022-00070;AM;Norte;Campo Novo do Oeste;termoelétrica;vigente;5,685;179282160;2031-10-10;Rio Verde Grande
+62208.2022-00071;SP;Bacia do Paraná;Porto das Pedras Altas;indústria;vigente;5,199;163955664;2030-02-08;Rio Formoso
+51989.2016-00072;PA;Norte;Santa Rita da Serra;aquicultura;suspensa;0,877;27657072;2030-07-23;Rio Araguari
+19096.2020-00073;DF;Centro-Oeste;Campo Novo do Oeste;dessedentação animal;vigente;2,275;71744400;2028-02-26;Açude Serra Azul
+32650.2015-00074;MT;Centro-Oeste;Cachoeira do Vale Azul;irrigação;vigente;0,429;13528944;2027-11-08;Represa do Funil Velho
+20017.2020-00075;PR;Sul;Santa Rita da Serra;irrigação;vigente;0,131;4131216;2030-07-14;Aquífero Guarani
+28624.2015-00076;SC;Sul;Alto Paraíso do Norte;termoelétrica;vigente;0,961;30306096;2032-03-27;Açude Serra Azul
+34786.2016-00077;AL;Bacia do São Francisco;Bom Retiro das Águas;indústria;vigente;1,631;51435216;2032-01-09;Represa do Funil Velho
+65761.2017-00078;DF;Centro-Oeste;Campo Novo do Oeste;indústria;vigente;2,060;64964160;2028-03-11;Ribeirão das Antas
+16730.2015-00079;SP;Sudeste;Bom Retiro das Águas;irrigação;vigente;1,590;50142240;2027-03-02;Aquífero Guarani
+56646.2024-00080;DF;Órgão Central;Porto das Pedras Altas;irrigação;vigente;1,125;35478000;2031-02-16;Aquífero Guarani
+83148.2021-00081;DF;Centro-Oeste;Bom Retiro das Águas;lazer;vigente;0,524;16524864;2031-12-25;Rio Taquari-Mirim
+14829.2022-00082;PR;Bacia do Paraná;Bom Retiro das Águas;lazer;em análise;0,512;16146432;2027-04-01;Aquífero Guarani
+34267.2023-00083;DF;Órgão Central;Campo Novo do Oeste;indústria;vigente;0,266;8388576;2028-09-03;Açude Serra Azul
+99193.2022-00084;PA;Norte;Cachoeira do Vale Azul;mineração;vigente;2,712;85525632;2026-10-16;Rio Araguari
+61148.2019-00085;AP;Norte;Riacho Fundo Velho;abastecimento urbano;vigente;2,241;70672176;2029-05-05;Rio Formoso
+64735.2024-00086;DF;Órgão Central;Vila Serrana;lazer;vencida;10,822;341282592;2024-07-13;Rio Araguari
+84626.2020-00087;TO;Norte;Vila Serrana;dessedentação animal;vigente;4,831;152350416;2030-04-08;Rio Pardo Novo
+30013.2020-00088;PB;Nordeste;Campo Novo do Oeste;aquicultura;em análise;0,802;25291872;2032-05-20;Rio Taquari-Mirim
+37638.2024-00089;DF;Órgão Central;Riacho Fundo Velho;abastecimento urbano;vigente;4,635;146169360;2026-03-02;Represa do Funil Velho
+62045.2018-00090;GO;Centro-Oeste;Vila Serrana;irrigação;suspensa;1,661;52381296;2026-05-11;Açude Serra Azul
+81234.2022-00091;RN;Nordeste;Campo Novo do Oeste;lazer;vigente;1,491;47020176;2031-05-26;Ribeirão das Antas
+26848.2021-00092;TO;Norte;Santa Rita da Serra;irrigação;em análise;-4,20;93472704;2027-01-15;Rio Taquari-Mirim
+47228.2023-00093;DF;Órgão Central;Alto Paraíso do Norte;aquicultura;vigente;2,227;70230672;2029-12-15;Ribeirão das Antas
+53378.2026-00094;RO;Norte;Vila Serrana;abastecimento urbano;vigente;3,405;107380080;2031-01-24;Rio Araguari
+39316.2024-00095;MS;Centro-Oeste;Vila Serrana;lazer;vigente;2,011;63418896;2028-03-29;Aquífero Guarani
+45815.2019-00096;PE;Bacia do São Francisco;Vila Serrana;abastecimento urbano;vigente;0,047;1482192;2026-12-20;Rio Pardo Novo
+67996.2016-00097;DF;Órgão Central;Porto das Pedras Altas;mineração;vigente;0,334;10533024;2032-06-20;Rio Araguari
+71533.2021-00098;SP;Sudeste;Porto das Pedras Altas;dessedentação animal;vigente;1,924;60675264;2026-05-28;Rio Pardo Novo
+62974.2017-00099;GO;Centro-Oeste;Campo Novo do Oeste;abastecimento urbano;vigente;4,192;132198912;2027-08-02;Rio Araguari
+84445.2018-00100;DF;Centro-Oeste;Cachoeira do Vale Azul;irrigação;vigente;4,425;139546800;2026-11-20;Rio Formoso
+27319.2026-00101;RS;Sul;Porto das Pedras Altas;indústria;vigente;0,302;9523872;2031-07-17;Rio Verde Grande
+50227.2026-00102;RJ;Sudeste;Vila Serrana;lazer;vigente;0,789;24881904;2026-06-27;Rio Formoso
+17320.2023-00103;TO;Norte;Campo Novo do Oeste;irrigação;vigente;5,110;161148960;2028-12-26;Aquífero Guarani
+37781.2015-00104;SP;Bacia do Paraná;Cachoeira do Vale Azul;aquicultura;vigente;0,700;22075200;2032-07-09;Rio Taquari-Mirim
+51590.2019-00105;GO;Centro-Oeste;Santa Rita da Serra;mineração;vencida;0,672;21192192;2025-05-15;Rio Araguari
+50237.2023-00106;CE;Nordeste;Bom Retiro das Águas;aquicultura;vencida;2,131;67203216;2024-02-14;Córrego Santa Luzia
+39921.2023-00107;MS;Centro-Oeste;Campo Novo do Oeste;termoelétrica;vigente;1,605;50615280;2030-02-23;Rio Araguari
+18483.2020-00108;SC;Sul;Santa Rita da Serra;lazer;vigente;0,089;2806704;2031-01-01;Aquífero Guarani
+88301.2016-00109;TO;Norte;Porto das Pedras Altas;mineração;suspensa;1,162;36644832;2029-11-23;Rio Pardo Novo
+79936.2019-00110;GO;Centro-Oeste;Porto das Pedras Altas;indústria;vigente;1,018;32103648;2027-04-11;Rio Pardo Novo
+12245.2022-00111;PR;Sul;Riacho Fundo Velho;lazer;vigente;7,522;237213792;2026-04-01;Rio Pardo Novo
+76363.2019-00112;PR;Bacia do Paraná;Alto Paraíso do Norte;irrigação;vigente;2,346;73983456;2028-03-26;Rio Taquari-Mirim
+16376.2015-00113;PR;Sul;Riacho Fundo Velho;indústria;vigente;0,150;4730400;2031-12-16;Açude Serra Azul
+31738.2017-00114;MS;Bacia do Paraná;Cachoeira do Vale Azul;lazer;suspensa;1,714;54052704;2026-03-17;Rio Verde Grande
+48631.2015-00115;PR;Bacia do Paraná;Alto Paraíso do Norte;lazer;vigente;1,421;44812656;2027-03-09;Rio Pardo Novo
+91680.2026-00116;DF;Órgão Central;Vila Serrana;aquicultura;vigente;0,486;15326496;2028-11-25;Rio Verde Grande
+95103.2023-00117;PR;Sul;Cachoeira do Vale Azul;irrigação;vigente;3,776;119079936;2029-03-12;Córrego Santa Luzia
+55465.2020-00118;SE;Nordeste;Santa Rita da Serra;indústria;vigente;0,855;26963280;2032-02-25;Represa do Funil Velho
+24048.2019-00119;PR;Bacia do Paraná;Alto Paraíso do Norte;mineração;suspensa;5,185;163514160;2028-07-11;Represa do Funil Velho
+46841.2019-00120;MG;Sudeste;Campo Novo do Oeste;irrigação;vigente;2,150;67802400;2031-04-25;Rio Pardo Novo
+26525.2015-00121;MS;Centro-Oeste;Bom Retiro das Águas;aquicultura;vigente;2,964;93472704;2031-12-30;Rio Araguari
+61542.2018-00122;TO;Norte;Cachoeira do Vale Azul;indústria;vigente;0,844;26616384;2027-03-23;Represa do Funil Velho
+78418.2020-00123;SP;Sudeste;Santa Rita da Serra;lazer;vigente;0,850;26805600;2032-06-13;Aquífero Guarani
+98191.2018-00124;BA;Nordeste;Alto Paraíso do Norte;dessedentação animal;vigente;0,477;15042672;2030-07-30;Rio Pardo Novo
+41543.2018-00125;ES;Sudeste;Bom Retiro das Águas;termoelétrica;em análise;1,141;35982576;2030-06-26;Rio Verde Grande
+96698.2021-00126;PI;Nordeste;Bom Retiro das Águas;dessedentação animal;vigente;1,449;45695664;2031-02-08;Ribeirão das Antas
+27369.2015-00127;CE;Nordeste;Riacho Fundo Velho;lazer;vigente;1,317;41532912;2032-07-11;Rio Formoso
+14727.2022-00128;AM;Norte;Vila Serrana;termoelétrica;vigente;1,057;33333551;2029-06-21;Rio Pardo Novo
+74202.2015-00129;DF;Órgão Central;Santa Rita da Serra;abastecimento urbano;suspensa;0,699;22043664;2026-11-27;Rio Verde Grande
+90122.2015-00130;MA;Nordeste;Cachoeira do Vale Azul;termoelétrica;vigente;2,526;79659936;2030-02-25;Córrego Santa Luzia
+61288.2026-00131;SC;Sul;Cachoeira do Vale Azul;mineração;vigente;1,462;46105632;2031-12-28;Rio Taquari-Mirim
+76455.2016-00132;GO;Bacia do Paraná;Bom Retiro das Águas;indústria;vigente;6,322;199370592;31/12/2026;Rio Formoso
+78700.2020-00133;RS;Sul;Campo Novo do Oeste;indústria;suspensa;1,429;45064944;2031-02-23;Açude Serra Azul
+45552.2021-00134;DF;Centro-Oeste;Cachoeira do Vale Azul;mineração;em análise;4,309;135888624;2026-04-26;Aquífero Guarani
+32366.2026-00135;GO;Bacia do Paraná;Alto Paraíso do Norte;irrigação;vigente;0,118;3721248;2030-07-30;Rio Verde Grande
+63116.2025-00136;MT;Centro-Oeste;Bom Retiro das Águas;mineração;suspensa;0,224;7064064;2026-10-10;Córrego Santa Luzia
+19223.2025-00137;TO;Norte;Campo Novo do Oeste;dessedentação animal;vencida;0,946;29833056;2024-12-15;Rio Pardo Novo
+52522.2016-00138;AM;Norte;Campo Novo do Oeste;lazer;vigente;0,660;20813760;2026-04-19;Rio Formoso
+37581.2023-00139;SP;Bacia do Paraná;Bom Retiro das Águas;termoelétrica;vigente;4,149;130842864;2029-02-10;Aquífero Guarani
+99845.2024-00140;PR;Sul;Cachoeira do Vale Azul;irrigação;vigente;13,886;437908896;2028-03-23;Aquífero Guarani
+97750.2018-00141;AL;Bacia do São Francisco;Vila Serrana;aquicultura;vigente;1,506;47493216;2027-08-02;Rio Araguari
+94955.2026-00142;PR;Bacia do Paraná;Santa Rita da Serra;irrigação;suspensa;8,422;265596192;2027-12-05;Ribeirão das Antas
+94200.2022-00143;MG;Bacia do São Francisco;Alto Paraíso do Norte;termoelétrica;vigente;5,041;158972976;2028-08-25;Rio Araguari
+11277.2023-00144;MS;Centro-Oeste;Vila Serrana;lazer;vigente;;40555296;2027-12-24;Rio Pardo Novo
+19768.2024-00145;DF;Centro-Oeste;Alto Paraíso do Norte;dessedentação animal;vigente;0,556;17534016;2027-12-24;Aquífero Guarani
+60133.2016-00146;TO;Norte;Campo Novo do Oeste;termoelétrica;em análise;4,405;138916080;2028-06-25;Rio Araguari
+73249.2018-00147;PE;Nordeste;Vila Serrana;aquicultura;vigente;0,354;11163744;2027-01-03;Ribeirão das Antas
+42513.2023-00148;ES;Sudeste;Campo Novo do Oeste;aquicultura;suspensa;2,432;76695552;2031-03-20;Represa do Funil Velho
+98875.2025-00149;RO;Norte;Cachoeira do Vale Azul;lazer;vigente;2,918;92022048;2030-11-16;Rio Taquari-Mirim
+21489.2020-00150;PB;Nordeste;Vila Serrana;mineração;suspensa;0,621;19583856;2029-09-19;Rio Verde Grande
+94882.2024-00151;SC;Sul;Riacho Fundo Velho;termoelétrica;vigente;1,003;31630607;2031-02-08;Açude Serra Azul
+45179.2017-00152;SE;Nordeste;Vila Serrana;indústria;vigente;0,627;19773072;2028-02-22;Represa do Funil Velho
+90527.2023-00153;AP;Norte;Campo Novo do Oeste;dessedentação animal;vigente;2,230;70325280;2028-06-05;Aquífero Guarani
+84818.2026-00154;GO;Bacia do Paraná;Santa Rita da Serra;lazer;em análise;0,680;21444480;2032-07-19;Rio Pardo Novo
+55757.2019-00155;PB;Nordeste;Bom Retiro das Águas;termoelétrica;em análise;0,715;22548240;2032-05-14;Açude Serra Azul
+50390.2025-00156;DF;Órgão Central;Santa Rita da Serra;aquicultura;vigente;0,950;29959200;2027-01-13;Rio Araguari
+;MS;Bacia do Paraná;Campo Novo do Oeste;indústria;vigente;19,472;614068992;2028-06-23;Rio Taquari-Mirim
+59412.2021-00158;MS;Centro-Oeste;Porto das Pedras Altas;lazer;vigente;1,017;32072111;2031-04-11;Aquífero Guarani
+44518.2025-00159;MG;Bacia do São Francisco;Porto das Pedras Altas;abastecimento urbano;vencida;0,662;20876832;2024-09-28;Rio Taquari-Mirim
+94640.2017-00160;RS;Sul;Riacho Fundo Velho;lazer;vigente;0,806;25418016;2030-07-04;Rio Formoso
+79492.2016-00161;RJ;Sudeste;Porto das Pedras Altas;mineração;vigente;1,058;33365088;2026-06-30;Rio Pardo Novo
+46847.2023-00162;RJ;Sudeste;Vila Serrana;indústria;vigente;5,079;160171344;2030-08-26;Rio Verde Grande
+52067.2023-00163;SP;Sudeste;Cachoeira do Vale Azul;abastecimento urbano;em análise;0,912;28760832;2028-11-01;Rio Formoso
+32517.2015-00164;MT;Centro-Oeste;Riacho Fundo Velho;indústria;vigente;1,137;35856432;2029-11-29;Açude Serra Azul
+55159.2026-00165;AC;Norte;Campo Novo do Oeste;indústria;em análise;1,057;33333551;2029-12-13;Açude Serra Azul
+95512.2024-00166;PR;Bacia do Paraná;Bom Retiro das Águas;irrigação;vigente;0,272;8577792;2028-06-04;Córrego Santa Luzia
+54658.2023-00167;MS;Bacia do Paraná;Alto Paraíso do Norte;mineração;em análise;4,207;132671952;2029-01-20;Rio Araguari
+66098.2018-00168;BA;Bacia do São Francisco;Riacho Fundo Velho;indústria;em análise;2,330;73478880;2028-05-08;Rio Taquari-Mirim
+43295.2023-00169;MG;Bacia do São Francisco;Bom Retiro das Águas;lazer;suspensa;2,142;67550112;2027-08-02;Aquífero Guarani
+41165.2018-00170;SE;Nordeste;Vila Serrana;mineração;vigente;0,584;18417024;2027-08-24;Rio Taquari-Mirim
+97801.2015-00171;RS;Sul;Cachoeira do Vale Azul;mineração;em análise;2,715;85620240;2026-06-04;Aquífero Guarani
+86274.2023-00172;PR;Bacia do Paraná;Riacho Fundo Velho;indústria;vigente;5,809;183192624;2030-01-14;Rio Taquari-Mirim
+88994.2016-00173;MG;Bacia do São Francisco;Riacho Fundo Velho;aquicultura;vigente;1,944;61305984;2031-12-27;Açude Serra Azul
+95569.2023-00174;RS;Sul;Riacho Fundo Velho;abastecimento urbano;em análise;1,672;52728192;2032-03-07;Rio Formoso
+13527.2016-00175;AM;Norte;Porto das Pedras Altas;lazer;vigente;1,351;42605136;2031-02-03;Rio Taquari-Mirim
+74575.2020-00176;PR;Sul;Porto das Pedras Altas;termoelétrica;em análise;6,153;194041008;2028-12-28;Rio Araguari
+31555.2019-00177;DF;Órgão Central;Porto das Pedras Altas;irrigação;vigente;4,386;138316896;2026-04-23;Córrego Santa Luzia
+53673.2021-00178;SE;Nordeste;Alto Paraíso do Norte;dessedentação animal;em análise;1,060;33428160;2028-01-01;Açude Serra Azul
+49917.2016-00179;MT;Centro-Oeste;Santa Rita da Serra;indústria;em análise;1,665;52507440;2028-07-09;Rio Araguari
+45513.2026-00180;PR;Bacia do Paraná;Santa Rita da Serra;abastecimento urbano;vigente;11,203;353297808;2029-04-14;Rio Araguari
+66243.2022-00181;SP;Bacia do Paraná;Bom Retiro das Águas;indústria;suspensa;0,411;12961296;2031-05-13;Represa do Funil Velho
+58235.2024-00182;SP;Sudeste;Campo Novo do Oeste;irrigação;suspensa;0,721;22737456;2032-01-01;Rio Formoso
+52745.2026-00183;BA;Bacia do São Francisco;Campo Novo do Oeste;indústria;vigente;4,621;145727856;2027-12-21;Rio Taquari-Mirim
+72543.2019-00184;AC;Norte;Bom Retiro das Águas;mineração;vigente;0,933;29423088;2028-10-01;Rio Araguari
+63983.2017-00185;AL;Nordeste;Campo Novo do Oeste;indústria;vigente;0,315;9933840;2028-12-03;Ribeirão das Antas
+69376.2022-00186;SE;Nordeste;Porto das Pedras Altas;abastecimento urbano;vigente;4,371;137843856;2026-03-30;Ribeirão das Antas
+53313.2018-00187;SC;Sul;Bom Retiro das Águas;aquicultura;vigente;1,408;44402688;2028-11-12;Rio Taquari-Mirim
+19786.2019-00188;DF;Órgão Central;Bom Retiro das Águas;aquicultura;vigente;0,999;31504464;2032-04-14;Córrego Santa Luzia
+27492.2020-00189;ES;Sudeste;Bom Retiro das Águas;aquicultura;vigente;1,544;48691584;2027-01-31;Ribeirão das Antas
+72546.2023-00190;DF;Órgão Central;Porto das Pedras Altas;dessedentação animal;suspensa;0,164;5171904;2029-01-24;Córrego Santa Luzia
+90098.2016-00191;CE;Nordeste;Bom Retiro das Águas;dessedentação animal;vigente;0,939;29612304;2030-03-16;Aquífero Guarani
+32212.2018-00192;MT;Centro-Oeste;Riacho Fundo Velho;lazer;vencida;0,343;10816848;2025-12-25;Rio Taquari-Mirim
+90967.2018-00193;RS;Sul;Vila Serrana;lazer;vigente;1,813;57174768;2026-05-24;Córrego Santa Luzia
+61785.2025-00194;AP;Norte;Vila Serrana;aquicultura;vigente;24,716;779443776;2030-08-06;Açude Serra Azul
+50682.2023-00195;PE;Bacia do São Francisco;Santa Rita da Serra;indústria;em análise;26,946;849769056;2029-08-08;Rio Taquari-Mirim
+51264.2024-00196;PE;Bacia do São Francisco;Bom Retiro das Águas;mineração;em análise;0,547;17250192;2030-08-16;Rio Pardo Novo
+25259.2017-00197;RS;Sul;Alto Paraíso do Norte;mineração;em análise;3,345;105487920;2028-10-23;Rio Verde Grande
+83755.2018-00198;RJ;Sudeste;Campo Novo do Oeste;termoelétrica;vigente;0,368;11605248;2032-05-01;Rio Taquari-Mirim
+11624.2019-00199;AL;Bacia do São Francisco;Porto das Pedras Altas;irrigação;vigente;0,222;7000992;2031-03-08;Rio Araguari
+11642.2024-00200;MS;Bacia do Paraná;Campo Novo do Oeste;aquicultura;vigente;0,219;6906384;2027-08-16;Aquífero Guarani
+32355.2016-00201;ES;Sudeste;Bom Retiro das Águas;indústria;vigente;2,667;84106512;2030-01-05;Açude Serra Azul
+93886.2026-00202;MT;Centro-Oeste;Santa Rita da Serra;dessedentação animal;vigente;0,418;13182048;2028-12-26;Rio Pardo Novo
+89214.2021-00203;PA;Norte;Porto das Pedras Altas;termoelétrica;em análise;3,451;108830736;2029-03-23;Aquífero Guarani
+28339.2023-00204;DF;Órgão Central;Alto Paraíso do Norte;mineração;vencida;0,954;30085344;2024-11-08;Ribeirão das Antas
+51983.2019-00205;MG;Bacia do São Francisco;Alto Paraíso do Norte;termoelétrica;vigente;15,980;503945280;2026-06-08;Rio Taquari-Mirim
+92522.2019-00206;PE;Bacia do São Francisco;Bom Retiro das Águas;aquicultura;vigente;1,034;32608224;2026-11-14;Represa do Funil Velho
+44396.2021-00207;MT;Centro-Oeste;Alto Paraíso do Norte;lazer;vigente;3,166;99842976;2029-03-13;Aquífero Guarani
+63681.2018-00208;DF;Órgão Central;Porto das Pedras Altas;mineração;vigente;0,262;8262432;2029-09-28;Rio Formoso
+65073.2018-00209;DF;Órgão Central;Porto das Pedras Altas;termoelétrica;vigente;2,904;91580544;2030-03-10;Rio Araguari
+32281.2023-00210;DF;Órgão Central;Alto Paraíso do Norte;dessedentação animal;vigente;2,454;77389344;2027-04-01;Córrego Santa Luzia
+55653.2019-00211;SP;Sudeste;Porto das Pedras Altas;lazer;vigente;8,956;282436416;2030-05-26;Açude Serra Azul
+18441.2023-00212;MS;Centro-Oeste;Porto das Pedras Altas;indústria;vigente;3,251;102523536;2026-06-07;Represa do Funil Velho
+71048.2015-00213;ES;Sudeste;Santa Rita da Serra;aquicultura;vigente;0,268;8451648;2031-01-17;Córrego Santa Luzia
+94602.2021-00214;SC;Sul;Santa Rita da Serra;indústria;vigente;2,437;76853232;2027-05-13;Córrego Santa Luzia
+69018.2015-00215;DF;Órgão Central;Santa Rita da Serra;mineração;vigente;0,616;19426176;2029-02-21;Rio Araguari
+61493.2021-00216;PE;Bacia do São Francisco;Campo Novo do Oeste;indústria;vigente;1,668;52602048;2027-03-05;Rio Araguari
+86867.2015-00217;GO;Centro-Oeste;Bom Retiro das Águas;mineração;vencida;0,408;12866688;2023-11-20;Açude Serra Azul
+61605.2026-00218;PE;Bacia do São Francisco;Riacho Fundo Velho;aquicultura;vigente;1,168;36834048;2027-03-11;Rio Pardo Novo
+38793.2026-00219;PI;Nordeste;Campo Novo do Oeste;dessedentação animal;vigente;1,834;57837024;2027-06-27;Rio Formoso
+54048.2018-00220;AM;Norte;Cachoeira do Vale Azul;lazer;vigente;8,745;275782320;2029-08-30;Rio Formoso
+55303.2024-00221;TO;Norte;Alto Paraíso do Norte;irrigação;vencida;0,194;6117984;2024-06-10;Rio Verde Grande
+45453.2022-00222;DF;Centro-Oeste;Campo Novo do Oeste;mineração;vigente;1,289;40649904;2028-12-16;Rio Taquari-Mirim
+44161.2021-00223;DF;Órgão Central;Riacho Fundo Velho;mineração;vencida;0,307;9681552;2024-09-24;Rio Taquari-Mirim
+52210.2018-00224;SP;Bacia do Paraná;Vila Serrana;irrigação;vigente;1,616;50962176;2032-01-07;Açude Serra Azul
+51094.2016-00225;MS;Bacia do Paraná;Vila Serrana;indústria;vigente;2,067;65184912;2029-09-27;Rio Formoso
+37305.2020-00226;GO;Bacia do Paraná;Bom Retiro das Águas;mineração;vigente;0,264;8325504;2028-10-09;Córrego Santa Luzia
+99446.2021-00227;SC;Sul;Campo Novo do Oeste;indústria;vencida;0,711;22422096;2024-06-22;Rio Taquari-Mirim
+26231.2026-00228;PI;Nordeste;Riacho Fundo Velho;mineração;vigente;0,546;17218656;2030-06-08;Ribeirão das Antas
+45602.2025-00229;GO;Bacia do Paraná;Porto das Pedras Altas;termoelétrica;vigente;0,074;2333664;2032-01-10;Ribeirão das Antas
+47911.2023-00230;PA;Norte;Campo Novo do Oeste;mineração;vigente;0,099;3122064;2030-06-08;Açude Serra Azul
+73610.2016-00231;RS;Sul;Riacho Fundo Velho;dessedentação animal;vigente;0,376;11857536;2029-10-02;Represa do Funil Velho
+62605.2021-00232;DF;Órgão Central;Riacho Fundo Velho;irrigação;vigente;2,320;73163520;2030-02-01;Rio Pardo Novo
+59576.2025-00233;PA;Norte;Bom Retiro das Águas;dessedentação animal;vigente;0,034;1072224;2031-01-05;Rio Verde Grande
+91358.2019-00234;SP;Sudeste;Alto Paraíso do Norte;irrigação;vigente;0,339;10690704;2028-07-06;Represa do Funil Velho
+39762.2019-00235;MT;Centro-Oeste;Vila Serrana;aquicultura;em análise;0,279;8798544;2028-09-25;Represa do Funil Velho
+37622.2020-00236;PE;Nordeste;Bom Retiro das Águas;indústria;vigente;0,673;21223728;2030-10-30;Rio Pardo Novo
+76874.2016-00237;MT;Centro-Oeste;Porto das Pedras Altas;lazer;vigente;0,775;24440400;2027-07-13;Aquífero Guarani
+91340.2015-00238;RJ;Sudeste;Cachoeira do Vale Azul;indústria;vigente;0,333;10501488;2029-12-24;Rio Verde Grande
+67272.2016-00239;DF;Órgão Central;Vila Serrana;indústria;vigente;1,205;38000880;2030-01-17;Rio Pardo Novo
+88179.2015-00240;PR;Sul;Alto Paraíso do Norte;lazer;vigente;1,320;41627520;2026-07-20;Represa do Funil Velho
+77050.2025-00241;RS;Sul;Riacho Fundo Velho;indústria;em análise;0,944;29769984;2027-01-14;Córrego Santa Luzia
+96881.2018-00242;SP;Bacia do Paraná;Campo Novo do Oeste;irrigação;vigente;2,803;88395408;2028-03-14;Represa do Funil Velho
+12877.2018-00243;GO;Bacia do Paraná;Porto das Pedras Altas;aquicultura;vigente;0,167;5266512;2029-04-06;Açude Serra Azul
+45297.2024-00244;MG;Bacia do São Francisco;Bom Retiro das Águas;aquicultura;vigente;1,048;33049728;2030-05-21;Rio Pardo Novo
+63266.2019-00245;TO;Norte;Riacho Fundo Velho;irrigação;vigente;3,239;102145104;2029-06-16;Rio Taquari-Mirim
+57948.2026-00246;AP;Norte;Riacho Fundo Velho;lazer;vencida;2,284;72028224;2024-01-29;Aquífero Guarani
+29472.2016-00247;DF;Órgão Central;Campo Novo do Oeste;irrigação;vigente;7,602;239736672;2030-09-08;Rio Taquari-Mirim
+41760.2025-00248;DF;Centro-Oeste;Porto das Pedras Altas;mineração;vigente;0,260;8199360;2028-05-08;Rio Pardo Novo
+12460.2026-00249;SP;Sudeste;Bom Retiro das Águas;termoelétrica;vigente;4,081;128698416;2027-03-21;Rio Verde Grande
+24375.2018-00250;PE;Bacia do São Francisco;Porto das Pedras Altas;indústria;vigente;1,565;49353840;2030-02-07;Rio Araguari
+38497.2016-00251;DF;Órgão Central;Vila Serrana;dessedentação animal;vigente;7,314;230654304;2028-08-20;Açude Serra Azul
+91920.2025-00252;RJ;Sudeste;Bom Retiro das Águas;indústria;em análise;2,360;74424960;2027-05-15;Córrego Santa Luzia
+92843.2026-00253;GO;Centro-Oeste;Cachoeira do Vale Azul;termoelétrica;em análise;0,649;20466864;2026-10-15;Açude Serra Azul
+91127.2021-00254;MS;Bacia do Paraná;Cachoeira do Vale Azul;indústria;em análise;0,840;26490240;2030-08-02;Rio Verde Grande
+80574.2021-00255;CE;Nordeste;Cachoeira do Vale Azul;indústria;vigente;4,123;130022928;2028-05-13;Represa do Funil Velho
+96100.2025-00256;RO;Norte;Bom Retiro das Águas;lazer;vigente;0,909;28666224;2032-02-04;Rio Verde Grande
+64005.2017-00257;GO;Bacia do Paraná;Vila Serrana;dessedentação animal;em análise;;5771088;2026-09-10;Açude Serra Azul
+11122.2021-00258;ES;Sudeste;Alto Paraíso do Norte;termoelétrica;vigente;1,600;50457600;2028-08-26;Rio Verde Grande
+71857.2022-00259;ES;Sudeste;Bom Retiro das Águas;mineração;vigente;0,384;12109824;2031-02-02;Rio Formoso
+11913.2025-00260;MG;Sudeste;Alto Paraíso do Norte;dessedentação animal;vigente;1,694;53421984;2031-10-27;Rio Formoso
+63964.2023-00261;DF;Órgão Central;Vila Serrana;mineração;vigente;1,184;37338624;2031-01-05;Córrego Santa Luzia
+10918.2020-00262;MG;Sudeste;Santa Rita da Serra;dessedentação animal;em análise;1,028;32419008;2032-01-02;Aquífero Guarani
+91647.2016-00263;AL;Bacia do São Francisco;Campo Novo do Oeste;lazer;vigente;2,174;68559264;2028-11-06;Ribeirão das Antas
+45426.2021-00264;BA;Bacia do São Francisco;Porto das Pedras Altas;dessedentação animal;vigente;4,941;155819376;2029-10-29;Ribeirão das Antas
+46273.2016-00265;PR;Bacia do Paraná;Riacho Fundo Velho;termoelétrica;vigente;0,209;6591024;2030-12-27;Aquífero Guarani
+11152.2022-00266;AL;Nordeste;Bom Retiro das Águas;termoelétrica;vigente;0,657;20719152;2029-12-29;Rio Verde Grande
+66145.2019-00267;DF;Órgão Central;Campo Novo do Oeste;irrigação;vencida;2,798;88237728;2024-10-17;Rio Formoso
+59857.2021-00268;PR;Bacia do Paraná;Santa Rita da Serra;mineração;vencida;0,401;12645936;2024-03-26;Rio Verde Grande
+82375.2023-00269;DF;Centro-Oeste;Vila Serrana;aquicultura;vigente;2,085;65752560;2026-09-02;Rio Verde Grande
+35827.2025-00270;PE;Bacia do São Francisco;Santa Rita da Serra;lazer;vigente;0,290;9145440;2030-08-21;Rio Araguari
+81919.2022-00271;MS;Centro-Oeste;Santa Rita da Serra;mineração;vencida;1,556;49070016;2024-07-01;Córrego Santa Luzia
+32681.2025-00272;PE;Bacia do São Francisco;Porto das Pedras Altas;indústria;vigente;0,496;15641856;2030-02-13;Córrego Santa Luzia
+16352.2020-00273;AC;Norte;Porto das Pedras Altas;abastecimento urbano;vigente;1,805;56922480;2027-02-25;Represa do Funil Velho
+24404.2015-00274;SP;Bacia do Paraná;Cachoeira do Vale Azul;termoelétrica;vigente;1,235;38946960;2029-10-21;Rio Taquari-Mirim
+96138.2018-00275;MS;Bacia do Paraná;Campo Novo do Oeste;dessedentação animal;vigente;6,668;210282048;2031-01-08;Rio Araguari
+69914.2026-00276;AL;Bacia do São Francisco;Santa Rita da Serra;abastecimento urbano;vencida;19,452;613438272;2024-09-14;Rio Araguari
+86005.2022-00277;PA;Norte;Santa Rita da Serra;abastecimento urbano;em análise;1,503;47398608;2031-09-29;Rio Formoso
+49619.2022-00278;GO;Bacia do Paraná;Bom Retiro das Águas;lazer;suspensa;0,108;3405888;2031-07-17;Represa do Funil Velho
+87752.2025-00279;RS;Sul;Santa Rita da Serra;termoelétrica;vigente;0,235;7410960;2028-09-14;Ribeirão das Antas
+56267.2025-00280;DF;Órgão Central;Riacho Fundo Velho;aquicultura;em análise;0,867;27341712;2027-01-27;Rio Taquari-Mirim
+28373.2020-00281;AC;Norte;Riacho Fundo Velho;abastecimento urbano;vigente;0,470;14821920;2029-03-10;Rio Taquari-Mirim
+83220.2015-00282;MS;Bacia do Paraná;Riacho Fundo Velho;abastecimento urbano;vigente;15,510;489123360;2031-10-15;Represa do Funil Velho
+90593.2026-00283;RJ;Sudeste;Alto Paraíso do Norte;termoelétrica;vencida;0,740;23336640;2025-04-23;Rio Pardo Novo
+19117.2021-00284;BA;Bacia do São Francisco;Alto Paraíso do Norte;irrigação;suspensa;0,337;10627632;2027-04-18;Rio Taquari-Mirim
+27723.2017-00285;DF;Órgão Central;Campo Novo do Oeste;aquicultura;vigente;0,413;13024368;2029-06-17;Represa do Funil Velho
+21962.2019-00286;PR;Bacia do Paraná;Bom Retiro das Águas;termoelétrica;vigente;4,904;154652544;2028-08-07;Ribeirão das Antas
+84734.2021-00287;RO;Norte;Campo Novo do Oeste;termoelétrica;vigente;1,350;42573600;2029-09-08;Aquífero Guarani
+69030.2026-00288;AP;Norte;Cachoeira do Vale Azul;mineração;vigente;0,454;14317344;2027-01-24;Rio Araguari
+39600.2023-00289;MG;Sudeste;Riacho Fundo Velho;dessedentação animal;vigente;1,100;34689600;2026-10-29;Rio Pardo Novo
+19871.2018-00290;AL;Bacia do São Francisco;Vila Serrana;aquicultura;vencida;3,423;107947728;2025-11-25;Rio Pardo Novo
+88573.2023-00291;DF;Órgão Central;Campo Novo do Oeste;dessedentação animal;vigente;3,541;111668976;2029-10-07;Córrego Santa Luzia
+55307.2021-00292;MG;Bacia do São Francisco;Riacho Fundo Velho;indústria;vigente;1,335;42100560;31/12/2026;Rio Verde Grande
+84345.2024-00293;PA;Norte;Campo Novo do Oeste;abastecimento urbano;vigente;1,608;50709888;2031-12-02;Represa do Funil Velho
+39362.2021-00294;DF;Órgão Central;Cachoeira do Vale Azul;irrigação;vigente;2,384;75181824;2032-05-30;Represa do Funil Velho
+74058.2016-00295;PR;Sul;Alto Paraíso do Norte;indústria;vigente;2,276;71775936;2032-04-16;Rio Taquari-Mirim
+49571.2015-00296;RN;Nordeste;Bom Retiro das Águas;dessedentação animal;vigente;37,236;1174274496;2027-01-20;Aquífero Guarani
+45403.2017-00297;BA;Bacia do São Francisco;Bom Retiro das Águas;lazer;pendente de analise;1,802;56827872;2031-01-25;Ribeirão das Antas
+83236.2015-00298;AM;Norte;Campo Novo do Oeste;mineração;vigente;0,815;25701840;2031-07-16;Rio Pardo Novo
+16896.2024-00299;SC;Sul;Alto Paraíso do Norte;lazer;vigente;16,235;511986960;2031-12-06;Represa do Funil Velho
+65633.2017-00300;GO;Centro-Oeste;Alto Paraíso do Norte;termoelétrica;vigente;0,736;23210496;2029-04-10;Rio Formoso
+97706.2024-00301;AM;Norte;Santa Rita da Serra;aquicultura;suspensa;2,510;79155360;2029-05-19;Córrego Santa Luzia
+99629.2022-00302;MS;Bacia do Paraná;Riacho Fundo Velho;aquicultura;vigente;0,946;29833056;2030-07-08;Represa do Funil Velho
+46812.2018-00303;GO;Centro-Oeste;Alto Paraíso do Norte;indústria;vigente;25,718;811042848;2031-06-29;Rio Formoso
+38410.2015-00304;RJ;Sudeste;Vila Serrana;aquicultura;vigente;1,547;48786192;2030-08-17;Córrego Santa Luzia
+25390.2019-00305;DF;Órgão Central;Riacho Fundo Velho;dessedentação animal;vigente;2,303;72627408;2031-10-28;Rio Pardo Novo
+18656.2018-00306;GO;Bacia do Paraná;Riacho Fundo Velho;indústria;suspensa;0,298;9397728;2031-12-21;Rio Formoso
+79977.2020-00307;DF;Órgão Central;Riacho Fundo Velho;abastecimento urbano;em análise;-4,20;27877824;2029-07-25;Ribeirão das Antas
+32722.2024-00308;RS;Sul;Porto das Pedras Altas;mineração;vigente;0,541;17060976;2029-08-16;Rio Araguari
+27359.2015-00309;DF;Órgão Central;Riacho Fundo Velho;termoelétrica;vigente;2,615;82466640;2031-06-26;Represa do Funil Velho
+69119.2016-00310;MS;Centro-Oeste;Riacho Fundo Velho;aquicultura;vencida;3,544;111763584;2023-12-01;Rio Taquari-Mirim
+97062.2023-00311;MA;Nordeste;Vila Serrana;termoelétrica;vigente;0,284;8956224;2029-05-28;Rio Pardo Novo
+53128.2025-00312;GO;Bacia do Paraná;Santa Rita da Serra;abastecimento urbano;vigente;0,138;4351968;2027-03-22;Aquífero Guarani
+21736.2017-00313;PA;Norte;Vila Serrana;mineração;vigente;0,982;30968352;2031-08-08;Represa do Funil Velho
+72220.2020-00314;PE;Bacia do São Francisco;Porto das Pedras Altas;abastecimento urbano;vigente;0,821;25891056;2032-01-07;Rio Formoso
+27700.2017-00315;BA;Nordeste;Vila Serrana;termoelétrica;vigente;5,788;182530368;2027-01-29;Rio Taquari-Mirim
+39647.2020-00316;MG;Bacia do São Francisco;Campo Novo do Oeste;aquicultura;vigente;0,970;30589920;2028-09-23;Rio Verde Grande
+87093.2026-00317;MT;Centro-Oeste;Santa Rita da Serra;irrigação;vigente;0,633;19962288;2028-07-26;Aquífero Guarani
+63147.2021-00318;MG;Bacia do São Francisco;Santa Rita da Serra;aquicultura;em análise;11,543;364020048;2029-12-20;Rio Araguari
+43394.2024-00319;MT;Centro-Oeste;Campo Novo do Oeste;aquicultura;vigente;3,110;98076960;2028-08-10;Rio Verde Grande
+95458.2016-00320;PR;Bacia do Paraná;Vila Serrana;abastecimento urbano;vencida;1,001;31567535;2025-03-04;Córrego Santa Luzia
+52964.2017-00321;MS;Bacia do Paraná;Vila Serrana;indústria;vigente;2,055;64806480;2026-05-09;Córrego Santa Luzia
+93239.2018-00322;PE;Bacia do São Francisco;Riacho Fundo Velho;termoelétrica;vigente;0,893;28161648;2028-04-26;Represa do Funil Velho
+99267.2026-00323;PE;Nordeste;Porto das Pedras Altas;aquicultura;em análise;;30179952;2026-11-27;Rio Araguari
+39649.2018-00324;PR;Bacia do Paraná;Santa Rita da Serra;irrigação;vigente;1,312;41375232;2027-01-17;Rio Verde Grande
+47509.2017-00325;AP;Norte;Santa Rita da Serra;irrigação;em análise;0,145;4572720;2032-06-21;Açude Serra Azul
+59663.2015-00326;PE;Nordeste;Porto das Pedras Altas;abastecimento urbano;vigente;0,375;11826000;2029-10-12;Córrego Santa Luzia
+31335.2018-00327;MT;Centro-Oeste;Santa Rita da Serra;lazer;vigente;0,235;7410960;2027-06-19;Represa do Funil Velho
+98669.2021-00328;DF;Órgão Central;Bom Retiro das Águas;mineração;vigente;0,105;3311280;2030-10-17;Represa do Funil Velho
+85449.2017-00329;DF;Órgão Central;Porto das Pedras Altas;dessedentação animal;vigente;2,278;71839008;2027-12-07;Ribeirão das Antas
+22701.2016-00330;GO;Centro-Oeste;Porto das Pedras Altas;mineração;vigente;11,870;374332320;2031-06-16;Açude Serra Azul
+81789.2019-00331;MS;Bacia do Paraná;Bom Retiro das Águas;dessedentação animal;em análise;1,302;41059872;2028-08-22;Rio Pardo Novo
+14267.2022-00332;GO;Bacia do Paraná;Campo Novo do Oeste;lazer;vigente;16,283;513500688;2029-11-01;Rio Taquari-Mirim
+77955.2023-00333;DF;Órgão Central;Campo Novo do Oeste;termoelétrica;vigente;0,634;19993824;2027-10-12;Rio Pardo Novo
+57115.2022-00334;MG;Sudeste;Santa Rita da Serra;mineração;vigente;0,322;10154592;2028-07-26;Rio Formoso
+49940.2018-00335;BA;Bacia do São Francisco;Bom Retiro das Águas;abastecimento urbano;vigente;9,909;312490224;2028-06-15;Rio Formoso
+63051.2022-00336;PR;Sul;Porto das Pedras Altas;irrigação;vigente;2,810;88616160;2030-05-09;Aquífero Guarani
+75453.2016-00337;DF;Órgão Central;Campo Novo do Oeste;indústria;vigente;1,669;52633584;2031-11-14;Ribeirão das Antas
+80882.2023-00338;MS;Bacia do Paraná;Bom Retiro das Águas;lazer;vigente;0,316;9965376;2028-08-24;Rio Pardo Novo
+39105.2026-00339;DF;Órgão Central;Cachoeira do Vale Azul;abastecimento urbano;em análise;0,571;18007056;2028-04-10;Córrego Santa Luzia
+82905.2023-00340;SP;Bacia do Paraná;Cachoeira do Vale Azul;termoelétrica;vencida;0,091;2869776;2025-05-31;Represa do Funil Velho
+80304.2017-00341;MA;Nordeste;Porto das Pedras Altas;lazer;vencida;3,548;111889728;2025-06-25;Rio Taquari-Mirim
+89699.2019-00342;PB;Nordeste;Cachoeira do Vale Azul;irrigação;vencida;0,379;11952144;2024-07-20;Rio Formoso
+42114.2023-00343;DF;Centro-Oeste;Alto Paraíso do Norte;abastecimento urbano;pendente de analise;0,089;2806704;2027-12-20;Aquífero Guarani
+36432.2023-00344;PR;Bacia do Paraná;Riacho Fundo Velho;lazer;vigente;1,575;49669200;2026-09-02;Rio Formoso
+69140.2020-00345;DF;Órgão Central;Porto das Pedras Altas;lazer;vigente;0,231;7284816;2031-07-02;Rio Taquari-Mirim
+92613.2015-00346;DF;Centro-Oeste;Alto Paraíso do Norte;indústria;vigente;5,025;158468400;2028-03-04;Rio Pardo Novo
+86060.2020-00347;PR;Sul;Alto Paraíso do Norte;aquicultura;vigente;1,643;51813648;2028-11-25;Rio Formoso
+52617.2025-00348;SC;Sul;Porto das Pedras Altas;mineração;vigente;0,210;6622560;2026-06-19;Rio Formoso
+69535.2026-00349;TO;Norte;Campo Novo do Oeste;termoelétrica;vigente;2,052;64711872;2030-07-30;Rio Verde Grande
+79431.2022-00350;PR;Bacia do Paraná;Santa Rita da Serra;dessedentação animal;vigente;22,923;722899728;2031-09-10;Rio Verde Grande
+11463.2017-00351;ES;Sudeste;Alto Paraíso do Norte;abastecimento urbano;vencida;2,514;79281504;2025-01-26;Ribeirão das Antas
+84579.2017-00352;MS;Centro-Oeste;Alto Paraíso do Norte;dessedentação animal;vigente;0,488;15389568;2027-04-02;Rio Verde Grande
+84383.2023-00353;MS;Bacia do Paraná;Bom Retiro das Águas;termoelétrica;em análise;0,946;29833056;2030-12-10;Rio Taquari-Mirim
+69544.2018-00354;PE;Bacia do São Francisco;Riacho Fundo Velho;aquicultura;vigente;0,823;25954128;2030-10-27;Rio Verde Grande
+73690.2016-00355;AM;Norte;Alto Paraíso do Norte;irrigação;vigente;2,679;84484944;2030-03-28;Represa do Funil Velho
+26935.2017-00356;ES;Sudeste;Santa Rita da Serra;indústria;vigente;0,616;19426176;2028-06-02;Ribeirão das Antas
+87554.2022-00357;AL;Bacia do São Francisco;Vila Serrana;dessedentação animal;vencida;10,191;321383376;2024-04-22;Aquífero Guarani
+50211.2022-00358;RO;Norte;Riacho Fundo Velho;abastecimento urbano;vencida;8,765;276413040;2024-12-02;Rio Taquari-Mirim
+78373.2020-00359;RS;Sul;Alto Paraíso do Norte;lazer;vigente;0,074;2333664;2032-05-13;Aquífero Guarani
+11973.2020-00360;PE;Nordeste;Santa Rita da Serra;abastecimento urbano;em análise;0,211;6654096;2028-04-23;Rio Pardo Novo
+35185.2020-00361;DF;Órgão Central;Vila Serrana;indústria;em análise;0,581;18322416;2026-04-02;Rio Taquari-Mirim
+24891.2022-00362;TO;Norte;Cachoeira do Vale Azul;abastecimento urbano;vigente;0,995;31378320;2030-07-16;Represa do Funil Velho
+79530.2019-00363;BA;Nordeste;Bom Retiro das Águas;mineração;vigente;0,305;9618480;2030-09-01;Rio Formoso
+79820.2024-00364;SE;Nordeste;Riacho Fundo Velho;dessedentação animal;vigente;6,591;207853776;2030-01-01;Represa do Funil Velho
+86880.2016-00365;PR;Bacia do Paraná;Riacho Fundo Velho;indústria;vigente;3,011;94954896;2029-09-07;Rio Pardo Novo
+88919.2022-00366;MG;Sudeste;Porto das Pedras Altas;indústria;vigente;2,323;73258128;2027-12-20;Aquífero Guarani
+63667.2023-00367;PB;Nordeste;Alto Paraíso do Norte;dessedentação animal;vigente;0,597;18826992;2032-04-02;Açude Serra Azul
+35644.2015-00368;DF;Órgão Central;Campo Novo do Oeste;mineração;vigente;0,101;3185136;2029-11-02;Rio Taquari-Mirim
+72731.2023-00369;AM;Norte;Riacho Fundo Velho;mineração;vigente;0,406;12803616;2026-07-04;Rio Verde Grande
+79961.2025-00370;DF;Órgão Central;Cachoeira do Vale Azul;aquicultura;vigente;3,328;104951808;2026-08-10;Represa do Funil Velho
+82863.2021-00371;RS;Sul;Bom Retiro das Águas;lazer;suspensa;1,040;32797440;2030-05-02;Rio Araguari
+35929.2026-00372;DF;Órgão Central;Porto das Pedras Altas;lazer;vencida;0,803;25323408;2023-07-20;Aquífero Guarani
+45310.2019-00373;PR;Sul;Porto das Pedras Altas;aquicultura;vigente;0,132;4162752;2028-12-01;Rio Taquari-Mirim
+29306.2023-00374;PI;Nordeste;Porto das Pedras Altas;irrigação;vigente;6,983;220215888;2029-01-20;Rio Verde Grande
+86190.2026-00375;SP;Sudeste;Alto Paraíso do Norte;indústria;vigente;1,498;47240928;2031-04-04;Ribeirão das Antas
+61239.2016-00376;PR;Sul;Alto Paraíso do Norte;abastecimento urbano;vigente;0,292;9208512;2028-07-09;Aquífero Guarani
+97478.2019-00377;MS;Centro-Oeste;Riacho Fundo Velho;mineração;vigente;1,137;35856432;2029-08-20;Córrego Santa Luzia
+82486.2021-00378;SC;Sul;Campo Novo do Oeste;indústria;vigente;0,899;28350864;2027-02-03;Ribeirão das Antas
+15491.2018-00379;DF;Órgão Central;Vila Serrana;mineração;vigente;0,707;22295952;2031-12-01;Rio Taquari-Mirim
+13214.2022-00380;DF;Órgão Central;Riacho Fundo Velho;irrigação;vigente;1,110;35004960;2030-06-11;Rio Pardo Novo
+92293.2019-00381;MS;Bacia do Paraná;Alto Paraíso do Norte;termoelétrica;suspensa;2,281;71933616;2031-11-26;Represa do Funil Velho
+23772.2020-00382;GO;Centro-Oeste;Porto das Pedras Altas;lazer;vigente;0,859;27089424;2028-07-15;Açude Serra Azul
+65525.2025-00383;PB;Nordeste;Bom Retiro das Águas;aquicultura;vencida;6,764;213309504;2024-08-25;Rio Pardo Novo
+60353.2018-00384;MS;Bacia do Paraná;Vila Serrana;indústria;vigente;1,038;32734368;2028-05-05;Córrego Santa Luzia
+95181.2026-00385;MG;Sudeste;Bom Retiro das Águas;irrigação;vigente;1,901;59949936;2029-08-06;Rio Pardo Novo
+51933.2026-00386;DF;Órgão Central;Riacho Fundo Velho;abastecimento urbano;vigente;1,416;44654976;2029-06-15;Aquífero Guarani
+24556.2021-00387;DF;Órgão Central;Bom Retiro das Águas;mineração;vigente;0,505;15925680;2030-09-30;Aquífero Guarani
+92257.2022-00388;RO;Norte;Santa Rita da Serra;indústria;vigente;2,024;63828864;2031-03-08;Ribeirão das Antas
+26148.2021-00389;MS;Bacia do Paraná;Bom Retiro das Águas;irrigação;em análise;0,405;12772080;2027-03-30;Rio Verde Grande
+85718.2017-00390;PE;Bacia do São Francisco;Cachoeira do Vale Azul;lazer;vigente;0,367;11573712;2032-04-30;Córrego Santa Luzia
+79944.2022-00391;PR;Sul;Vila Serrana;irrigação;vigente;0,593;18700848;2031-05-22;Aquífero Guarani
+64163.2016-00392;AL;Bacia do São Francisco;Porto das Pedras Altas;irrigação;em análise;2,737;86314032;2032-05-15;Rio Taquari-Mirim
+45739.2022-00393;DF;Órgão Central;Riacho Fundo Velho;aquicultura;vigente;11,085;349576560;2027-07-18;Rio Taquari-Mirim
+87552.2025-00394;ES;Sudeste;Porto das Pedras Altas;mineração;vigente;1,889;59571504;2031-07-11;Aquífero Guarani
+24393.2022-00395;ES;Sudeste;Porto das Pedras Altas;mineração;vigente;2,638;83191968;2030-03-05;Rio Formoso
+42248.2025-00396;SP;Bacia do Paraná;Cachoeira do Vale Azul;indústria;vencida;0,322;10154592;2023-12-09;Aquífero Guarani
+30998.2026-00397;PB;Nordeste;Porto das Pedras Altas;aquicultura;vigente;3,211;101262096;2031-06-24;Rio Pardo Novo
+80366.2017-00398;PA;Norte;Alto Paraíso do Norte;termoelétrica;vigente;0,464;14632704;2030-03-14;Córrego Santa Luzia
+17621.2020-00399;CE;Nordeste;Campo Novo do Oeste;termoelétrica;vencida;2,250;70956000;2024-03-23;Rio Pardo Novo
+26470.2026-00400;RS;Sul;Alto Paraíso do Norte;abastecimento urbano;vigente;0,362;11416032;2026-07-20;Rio Araguari
+37048.2016-00401;MG;Bacia do São Francisco;Cachoeira do Vale Azul;aquicultura;vigente;0,938;29580768;2029-03-22;Represa do Funil Velho
+26149.2025-00402;MS;Bacia do Paraná;Vila Serrana;mineração;vigente;0,420;13245120;2031-01-04;Ribeirão das Antas
+75901.2020-00403;PR;Bacia do Paraná;Santa Rita da Serra;lazer;vigente;1,025;32324399;2026-02-28;Rio Araguari
+41233.2022-00404;BA;Bacia do São Francisco;Campo Novo do Oeste;irrigação;vigente;0,705;22232880;2029-10-11;Córrego Santa Luzia
+85568.2021-00405;RO;Norte;Campo Novo do Oeste;aquicultura;em análise;2,096;66099456;2030-08-16;Ribeirão das Antas
+45650.2025-00406;DF;Centro-Oeste;Santa Rita da Serra;aquicultura;vigente;1,410;44465760;2028-12-07;Açude Serra Azul
+38589.2018-00407;MT;Centro-Oeste;Porto das Pedras Altas;termoelétrica;vigente;0,223;7032528;2029-06-25;Córrego Santa Luzia
+73979.2023-00408;SE;Nordeste;Vila Serrana;mineração;vigente;0,363;11447568;2026-02-08;Aquífero Guarani
+58283.2015-00409;MS;Centro-Oeste;Vila Serrana;abastecimento urbano;suspensa;0,667;21034512;2027-07-05;Rio Pardo Novo
+15080.2017-00410;RS;Sul;Campo Novo do Oeste;abastecimento urbano;em análise;3,934;124062624;2028-05-04;Rio Formoso
+61755.2022-00411;MS;Centro-Oeste;Cachoeira do Vale Azul;mineração;em análise;0,569;17943984;2031-03-18;Ribeirão das Antas
+41303.2020-00412;AP;Norte;Riacho Fundo Velho;mineração;vigente;2,141;67518576;2030-04-27;Aquífero Guarani
+97014.2021-00413;DF;Órgão Central;Alto Paraíso do Norte;lazer;em análise;0,400;12614400;2029-02-07;Rio Pardo Novo
+51637.2023-00414;MS;Bacia do Paraná;Riacho Fundo Velho;irrigação;vigente;0,464;14632704;2029-03-29;Rio Formoso
+30323.2017-00415;AP;Norte;Bom Retiro das Águas;lazer;em análise;2,651;83601936;2031-03-20;Rio Verde Grande
+35182.2021-00416;DF;Centro-Oeste;Alto Paraíso do Norte;dessedentação animal;vigente;1,067;33648912;2032-03-08;Rio Taquari-Mirim
+85679.2023-00417;SE;Nordeste;Vila Serrana;abastecimento urbano;vigente;5,732;180764352;2027-03-02;Ribeirão das Antas
+97305.2024-00418;GO;Centro-Oeste;Cachoeira do Vale Azul;termoelétrica;vigente;0,019;599184;2029-05-12;Rio Verde Grande
+31679.2015-00419;MG;Bacia do São Francisco;Vila Serrana;mineração;vigente;1,002;31599072;2026-10-14;Rio Taquari-Mirim
+12017.2017-00420;DF;Órgão Central;Santa Rita da Serra;lazer;vigente;0,810;25544160;2027-08-26;Rio Araguari
+93796.2015-00421;RS;Sul;Cachoeira do Vale Azul;aquicultura;vigente;0,255;8041680;2032-03-04;Córrego Santa Luzia
+27775.2015-00422;BA;Bacia do São Francisco;Campo Novo do Oeste;irrigação;vigente;4,739;149449104;2029-11-24;Rio Araguari
+41662.2020-00423;RJ;Sudeste;Santa Rita da Serra;termoelétrica;em análise;1,546;48754656;2026-09-20;Rio Formoso
+43330.2017-00424;ES;Sudeste;Campo Novo do Oeste;irrigação;vigente;0,140;4415040;2028-07-27;Ribeirão das Antas
+59240.2015-00425;AL;Bacia do São Francisco;Bom Retiro das Águas;indústria;em análise;3,713;117093168;2028-10-11;Rio Pardo Novo
+22894.2021-00426;PE;Bacia do São Francisco;Campo Novo do Oeste;aquicultura;em análise;0,498;15704928;2029-12-16;Rio Araguari
+71192.2023-00427;SP;Sudeste;Santa Rita da Serra;mineração;em análise;0,220;6937920;2027-07-31;Represa do Funil Velho
+47064.2016-00428;DF;Órgão Central;Campo Novo do Oeste;dessedentação animal;vigente;0,246;7757856;2028-05-26;Represa do Funil Velho
+38746.2022-00429;RS;Sul;Santa Rita da Serra;abastecimento urbano;vencida;0,289;9113904;2025-09-11;Aquífero Guarani
+30235.2020-00430;DF;Órgão Central;Santa Rita da Serra;dessedentação animal;vigente;8,519;268655184;2029-09-17;Represa do Funil Velho
+68812.2026-00431;RO;Norte;Santa Rita da Serra;abastecimento urbano;vigente;7,048;222265728;2027-07-27;Represa do Funil Velho
+17061.2016-00432;RO;Norte;Riacho Fundo Velho;termoelétrica;vencida;0,761;23998896;2025-04-03;Ribeirão das Antas
+56599.2015-00433;DF;Órgão Central;Riacho Fundo Velho;mineração;vigente;1,961;61842096;2026-05-03;Rio Araguari
+30836.2021-00434;DF;Órgão Central;Cachoeira do Vale Azul;irrigação;vigente;2,108;66477888;2029-09-01;Açude Serra Azul
+69274.2025-00435;ES;Sudeste;Riacho Fundo Velho;lazer;vencida;0,220;6937920;2024-12-17;Represa do Funil Velho
+60827.2015-00436;PE;Bacia do São Francisco;Riacho Fundo Velho;aquicultura;vigente;0,218;6874848;2029-01-25;Rio Formoso
+10525.2017-00437;MG;Bacia do São Francisco;Riacho Fundo Velho;dessedentação animal;suspensa;2,685;84674160;2029-06-06;Açude Serra Azul
+31497.2025-00438;SP;Sudeste;Campo Novo do Oeste;mineração;em análise;0,250;7884000;2027-06-28;Rio Taquari-Mirim
+98374.2022-00439;MS;Bacia do Paraná;Santa Rita da Serra;mineração;vigente;0,633;19962288;2029-05-12;Córrego Santa Luzia
+83669.2016-00440;DF;Órgão Central;Campo Novo do Oeste;lazer;vigente;1,672;52728192;2030-11-12;Açude Serra Azul
+88514.2021-00441;AL;Bacia do São Francisco;Campo Novo do Oeste;abastecimento urbano;vigente;0,465;14664240;2026-04-06;Córrego Santa Luzia
+22631.2015-00442;DF;Órgão Central;Alto Paraíso do Norte;irrigação;vigente;1,015;32009039;2029-01-27;Ribeirão das Antas
+18002.2017-00443;PR;Sul;Cachoeira do Vale Azul;termoelétrica;vigente;3,177;100189872;2031-09-05;Ribeirão das Antas
+98160.2018-00444;GO;Centro-Oeste;Bom Retiro das Águas;aquicultura;em análise;1,520;47934720;2029-07-05;Rio Verde Grande
+95954.2022-00445;SP;Bacia do Paraná;Santa Rita da Serra;abastecimento urbano;vigente;0,291;9176976;2032-06-17;Córrego Santa Luzia
+29863.2023-00446;BA;Nordeste;Campo Novo do Oeste;dessedentação animal;vigente;0,723;22800528;2027-11-01;Represa do Funil Velho
+90657.2017-00447;PR;Sul;Bom Retiro das Águas;lazer;vencida;11,362;358312032;2025-10-20;Aquífero Guarani
+14877.2025-00448;GO;Centro-Oeste;Cachoeira do Vale Azul;termoelétrica;vigente;1,815;57237840;2028-10-01;Aquífero Guarani
+94992.2020-00449;BA;Nordeste;Porto das Pedras Altas;indústria;em análise;1,064;33554304;2028-02-16;Aquífero Guarani
+73952.2021-00450;AL;Nordeste;Cachoeira do Vale Azul;termoelétrica;vigente;1,049;33081263;2029-03-10;Aquífero Guarani
+88720.2023-00451;MG;Sudeste;Campo Novo do Oeste;indústria;vigente;0,865;27278640;2028-09-10;Rio Taquari-Mirim
+64978.2015-00452;RJ;Sudeste;Vila Serrana;indústria;vigente;1,227;38694672;2030-04-18;Rio Araguari
+30554.2019-00453;RJ;Sudeste;Porto das Pedras Altas;irrigação;vigente;1,691;53327376;2028-06-03;Rio Araguari
+24223.2019-00454;SP;Sudeste;Riacho Fundo Velho;aquicultura;vigente;0,922;29076192;2032-03-19;Córrego Santa Luzia
+79751.2017-00455;DF;Órgão Central;Campo Novo do Oeste;mineração;em análise;0,514;16209504;2032-03-29;Rio Pardo Novo
+83669.2022-00456;PA;Norte;Riacho Fundo Velho;termoelétrica;suspensa;2,258;71208288;2026-09-21;Rio Verde Grande
+59632.2021-00457;BA;Bacia do São Francisco;Bom Retiro das Águas;abastecimento urbano;vigente;1,680;52980480;2027-02-23;Rio Araguari
+49918.2020-00458;ES;Sudeste;Campo Novo do Oeste;indústria;vencida;2,716;85651776;2024-10-09;Rio Formoso
+56295.2020-00459;GO;Bacia do Paraná;Campo Novo do Oeste;lazer;em análise;2,317;73068912;2032-03-18;Aquífero Guarani
+50482.2022-00460;GO;Bacia do Paraná;Santa Rita da Serra;aquicultura;vigente;4,420;139389120;2027-03-26;Rio Formoso
+60297.2021-00461;PE;Bacia do São Francisco;Cachoeira do Vale Azul;indústria;vigente;14,436;455253696;2030-05-03;Rio Araguari
+35407.2016-00462;DF;Órgão Central;Bom Retiro das Águas;aquicultura;em análise;1,079;34027344;2031-02-09;Represa do Funil Velho
+78419.2022-00463;RJ;Sudeste;Bom Retiro das Águas;lazer;vigente;0,540;17029440;2027-07-16;Córrego Santa Luzia
+26746.2026-00464;ES;Sudeste;Bom Retiro das Águas;dessedentação animal;vigente;1,827;57616272;2026-10-08;Rio Taquari-Mirim
+24237.2020-00465;ES;Sudeste;Vila Serrana;abastecimento urbano;vigente;0,482;15200352;2031-01-14;Rio Taquari-Mirim
+85052.2018-00466;MG;Bacia do São Francisco;Santa Rita da Serra;aquicultura;vigente;4,131;130275216;2029-10-07;Rio Pardo Novo
+89506.2018-00467;PR;Sul;Vila Serrana;mineração;vigente;7,664;241691904;2031-02-02;Rio Pardo Novo
+80454.2025-00468;RO;Norte;Riacho Fundo Velho;dessedentação animal;suspensa;1,048;33049728;2031-10-19;Aquífero Guarani
+78892.2023-00469;RO;Norte;Riacho Fundo Velho;lazer;vigente;4,650;146642400;2026-10-02;Rio Araguari
+81226.2023-00470;MS;Bacia do Paraná;Cachoeira do Vale Azul;lazer;vigente;2,978;93914208;2027-10-17;Rio Verde Grande
+45985.2025-00471;DF;Órgão Central;Cachoeira do Vale Azul;irrigação;vigente;0,745;23494320;2031-05-21;Rio Verde Grande
+63869.2018-00472;DF;Órgão Central;Cachoeira do Vale Azul;abastecimento urbano;em análise;0,245;7726320;2028-10-15;Rio Verde Grande
+75175.2023-00473;SP;Sudeste;Vila Serrana;aquicultura;vigente;1,161;36613296;2030-03-08;Rio Taquari-Mirim
+11955.2019-00474;MS;Centro-Oeste;Campo Novo do Oeste;indústria;vencida;0,489;15421104;2023-09-13;Represa do Funil Velho
+47729.2019-00475;PR;Bacia do Paraná;Bom Retiro das Águas;termoelétrica;vigente;2,066;65153375;2028-03-08;Rio Verde Grande
+76345.2017-00476;MG;Bacia do São Francisco;Cachoeira do Vale Azul;irrigação;vigente;1,163;36676368;2029-09-24;Ribeirão das Antas
+83377.2025-00477;PR;Bacia do Paraná;Cachoeira do Vale Azul;irrigação;vigente;0,634;19993824;2029-05-07;Ribeirão das Antas
+25471.2016-00478;AL;Nordeste;Porto das Pedras Altas;dessedentação animal;vigente;1,436;45285696;2026-05-07;Ribeirão das Antas
+92559.2020-00479;PB;Nordeste;Santa Rita da Serra;indústria;vigente;0,141;4446576;2032-07-15;Rio Formoso
+96354.2025-00480;DF;Centro-Oeste;Riacho Fundo Velho;indústria;vencida;1,600;50457600;2023-09-10;Rio Verde Grande
+99573.2025-00481;AC;Norte;Alto Paraíso do Norte;abastecimento urbano;vigente;1,713;54021168;2031-11-22;Rio Taquari-Mirim
+59599.2025-00482;RO;Norte;Cachoeira do Vale Azul;aquicultura;vigente;0,235;7410960;2029-07-30;Represa do Funil Velho
+80639.2016-00483;DF;Órgão Central;Santa Rita da Serra;abastecimento urbano;vigente;0,576;18164736;2027-05-25;Aquífero Guarani
+81872.2020-00484;DF;Centro-Oeste;Campo Novo do Oeste;dessedentação animal;vigente;2,899;91422864;2026-09-10;Rio Verde Grande
+47316.2024-00485;MS;Centro-Oeste;Alto Paraíso do Norte;dessedentação animal;vencida;2,004;63198144;2024-02-05;Rio Verde Grande
+12075.2026-00486;MG;Sudeste;Riacho Fundo Velho;termoelétrica;em análise;1,384;43645824;2031-03-12;Rio Taquari-Mirim
+30280.2025-00487;AL;Nordeste;Santa Rita da Serra;irrigação;vigente;1,605;50615280;2028-10-14;Rio Pardo Novo
+63409.2019-00488;DF;Órgão Central;Bom Retiro das Águas;irrigação;em análise;0,348;10974528;2029-11-20;Rio Pardo Novo
+75242.2025-00489;GO;Bacia do Paraná;Cachoeira do Vale Azul;aquicultura;em análise;3,970;125197920;2026-10-20;Rio Araguari
+17030.2020-00490;AC;Norte;Cachoeira do Vale Azul;indústria;vigente;2,569;81015984;2027-08-07;Rio Pardo Novo
+93196.2015-00491;PR;Sul;Vila Serrana;indústria;vigente;2,307;72753552;2031-09-11;Aquífero Guarani
+96505.2026-00492;DF;Órgão Central;Riacho Fundo Velho;abastecimento urbano;vigente;1,856;58530816;2026-11-11;Represa do Funil Velho
+99694.2026-00493;AL;Nordeste;Campo Novo do Oeste;mineração;suspensa;2,142;67550112;2031-12-20;Rio Verde Grande
+44779.2024-00494;DF;Órgão Central;Santa Rita da Serra;dessedentação animal;vigente;0,892;28130112;2029-02-27;Córrego Santa Luzia
+76603.2015-00495;PR;Bacia do Paraná;Vila Serrana;abastecimento urbano;em análise;1,692;53358912;2028-01-03;Represa do Funil Velho
+85487.2021-00496;SP;Sudeste;Alto Paraíso do Norte;lazer;vigente;1,370;43204320;2028-03-07;Rio Araguari
+84977.2019-00497;SP;Sudeste;Santa Rita da Serra;lazer;vigente;1,145;36108720;2029-11-02;Córrego Santa Luzia
+24416.2020-00498;MG;Sudeste;Riacho Fundo Velho;lazer;suspensa;0,665;20971440;2031-11-04;Rio Araguari
+33493.2025-00499;TO;Norte;Santa Rita da Serra;dessedentação animal;vigente;0,728;22958208;2032-05-09;Ribeirão das Antas
+54323.2015-00500;MG;Bacia do São Francisco;Cachoeira do Vale Azul;termoelétrica;vencida;0,679;21412944;2025-12-15;Açude Serra Azul
+15623.2025-00501;RS;Sul;Riacho Fundo Velho;abastecimento urbano;vigente;0,675;21286800;2031-09-08;Aquífero Guarani
+45248.2019-00502;PA;Norte;Alto Paraíso do Norte;abastecimento urbano;vigente;1,122;35383392;2029-03-09;Rio Taquari-Mirim
+79166.2022-00503;SC;Sul;Bom Retiro das Águas;abastecimento urbano;vigente;4,091;129013776;2030-07-09;Açude Serra Azul
+94807.2025-00504;PE;Bacia do São Francisco;Bom Retiro das Águas;dessedentação animal;em análise;0,448;14128128;2029-06-18;Rio Pardo Novo
+30647.2026-00505;MS;Bacia do Paraná;Porto das Pedras Altas;indústria;vigente;1,134;35761824;2027-01-26;Rio Formoso
+28234.2022-00506;AC;Norte;Vila Serrana;abastecimento urbano;vigente;2,329;73447344;2028-01-10;Córrego Santa Luzia
+90286.2015-00507;RS;Sul;Cachoeira do Vale Azul;irrigação;vigente;17,823;562066128;2032-04-29;Rio Verde Grande
+51701.2022-00508;CE;Nordeste;Cachoeira do Vale Azul;aquicultura;vigente;0,875;27594000;2027-04-13;Rio Taquari-Mirim
+16103.2017-00509;RJ;Sudeste;Campo Novo do Oeste;lazer;vencida;1,388;43771968;2024-03-03;Rio Pardo Novo
+31179.2026-00510;DF;Órgão Central;Alto Paraíso do Norte;termoelétrica;vigente;5,784;182404224;2031-07-11;Açude Serra Azul
+70229.2017-00511;PR;Bacia do Paraná;Alto Paraíso do Norte;irrigação;vigente;0,782;24661152;2028-04-13;Rio Taquari-Mirim
+87493.2017-00512;PR;Bacia do Paraná;Alto Paraíso do Norte;indústria;vigente;1,936;61053696;2031-05-31;Córrego Santa Luzia
+19002.2017-00513;DF;Órgão Central;Santa Rita da Serra;abastecimento urbano;vigente;4,063;128130767;2029-08-31;Córrego Santa Luzia
+20041.2018-00514;AM;Norte;Campo Novo do Oeste;indústria;vigente;1,324;41753664;2026-07-09;Rio Taquari-Mirim
+70061.2023-00515;RJ;Sudeste;Porto das Pedras Altas;dessedentação animal;vigente;1,248;39356928;2028-11-09;Rio Araguari
+39015.2020-00516;DF;Órgão Central;Vila Serrana;indústria;vigente;1,243;39199248;2028-06-23;Rio Formoso
+72100.2023-00517;RO;Norte;Riacho Fundo Velho;irrigação;vencida;1,031;32513615;2025-10-20;Açude Serra Azul
+18040.2020-00518;DF;Órgão Central;Cachoeira do Vale Azul;abastecimento urbano;vigente;0,420;13245120;2027-10-03;Rio Pardo Novo
+87787.2026-00519;TO;Norte;Vila Serrana;mineração;suspensa;1,888;59539968;2027-01-27;Represa do Funil Velho
+19606.2015-00520;SP;Bacia do Paraná;Cachoeira do Vale Azul;mineração;vigente;0,717;22611312;2030-01-24;Ribeirão das Antas
+71655.2019-00521;MS;Centro-Oeste;Bom Retiro das Águas;lazer;vencida;1,155;36424080;2024-02-14;Rio Pardo Novo
+27536.2018-00522;CE;Nordeste;Cachoeira do Vale Azul;abastecimento urbano;em análise;0,466;14695776;2029-06-29;Rio Taquari-Mirim
+91806.2025-00523;DF;Órgão Central;Cachoeira do Vale Azul;mineração;vigente;0,602;18984672;2028-11-01;Rio Araguari
+45564.2016-00524;DF;Órgão Central;Cachoeira do Vale Azul;dessedentação animal;vigente;0,182;5739552;2028-02-28;Aquífero Guarani
+87484.2015-00525;RJ;Sudeste;Santa Rita da Serra;termoelétrica;vencida;0,068;2144448;2023-08-01;Rio Taquari-Mirim
+15699.2018-00526;ES;Sudeste;Bom Retiro das Águas;abastecimento urbano;vigente;0,683;21539088;2031-07-20;Represa do Funil Velho
+68341.2025-00527;RJ;Sudeste;Alto Paraíso do Norte;abastecimento urbano;em análise;1,486;46862496;2032-07-09;Ribeirão das Antas
+90771.2019-00528;PE;Nordeste;Bom Retiro das Águas;dessedentação animal;vigente;2,260;71271360;2030-11-23;Rio Araguari
+61881.2017-00529;SC;Sul;Campo Novo do Oeste;aquicultura;vigente;-4,20;66446352;2027-07-22;Rio Araguari
+93658.2024-00530;MS;Bacia do Paraná;Riacho Fundo Velho;dessedentação animal;vigente;0,361;11384496;2027-08-22;Rio Taquari-Mirim
+77096.2022-00531;MA;Nordeste;Santa Rita da Serra;lazer;em análise;0,402;12677472;2031-06-04;Açude Serra Azul
+47451.2017-00532;PR;Bacia do Paraná;Santa Rita da Serra;mineração;vigente;1,450;45727200;2030-04-07;Ribeirão das Antas
+56576.2016-00533;ES;Sudeste;Cachoeira do Vale Azul;irrigação;vencida;1,301;41028336;2025-08-04;Rio Verde Grande
+93262.2018-00534;MT;Centro-Oeste;Porto das Pedras Altas;dessedentação animal;vencida;3,218;101482848;2024-08-25;Represa do Funil Velho
+72336.2017-00535;AM;Norte;Bom Retiro das Águas;indústria;vigente;1,614;50899104;2027-05-02;Açude Serra Azul
+36636.2016-00536;PR;Sul;Alto Paraíso do Norte;aquicultura;vigente;2,261;71302896;2031-11-22;Córrego Santa Luzia
+97288.2018-00537;RO;Norte;Campo Novo do Oeste;dessedentação animal;vigente;0,302;9523872;2032-04-08;Rio Taquari-Mirim
+57294.2026-00538;MT;Centro-Oeste;Bom Retiro das Águas;irrigação;vigente;0,386;12172896;2029-10-06;Represa do Funil Velho
+31148.2016-00539;PR;Sul;Riacho Fundo Velho;lazer;vigente;7,490;236204640;2026-08-18;Rio Formoso
+44492.2016-00540;MA;Nordeste;Porto das Pedras Altas;indústria;vigente;3,069;96783984;2027-04-27;Córrego Santa Luzia
+45584.2021-00541;GO;Bacia do Paraná;Santa Rita da Serra;termoelétrica;vigente;2,197;69284592;2027-05-15;Rio Verde Grande
+49697.2023-00542;PE;Nordeste;Riacho Fundo Velho;lazer;vigente;0,070;2207520;2029-07-03;Rio Araguari
+52813.2020-00543;RO;Norte;Bom Retiro das Águas;abastecimento urbano;vigente;0,614;19363104;2032-05-23;Aquífero Guarani
+56181.2025-00544;PE;Bacia do São Francisco;Alto Paraíso do Norte;lazer;vigente;6,716;211795776;2029-03-24;Rio Formoso
+61966.2023-00545;DF;Órgão Central;Santa Rita da Serra;aquicultura;vigente;2,652;83633472;2032-07-22;Córrego Santa Luzia
+68874.2022-00546;RS;Sul;Campo Novo do Oeste;irrigação;vigente;1,070;33743520;2029-04-24;Ribeirão das Antas
+87039.2026-00547;SC;Sul;Campo Novo do Oeste;lazer;vigente;1,170;36897120;2029-05-04;Ribeirão das Antas
+50547.2025-00548;PR;Bacia do Paraná;Vila Serrana;irrigação;vigente;1,123;35414928;2029-03-10;Ribeirão das Antas
+69442.2021-00549;AM;Norte;Vila Serrana;irrigação;vigente;0,237;7474032;2028-05-14;Açude Serra Azul
+82449.2016-00550;DF;Órgão Central;Riacho Fundo Velho;lazer;em análise;2,980;93977280;2027-05-24;Represa do Funil Velho
+17114.2022-00551;DF;Órgão Central;Bom Retiro das Águas;irrigação;em análise;0,395;12456720;2029-12-20;Açude Serra Azul
+33200.2020-00552;AC;Norte;Santa Rita da Serra;mineração;vigente;0,523;16493328;2030-06-29;Rio Verde Grande
+60009.2017-00553;SP;Sudeste;Porto das Pedras Altas;lazer;vigente;2,171;68464656;2027-03-25;Rio Pardo Novo
+90334.2020-00554;DF;Órgão Central;Porto das Pedras Altas;indústria;em análise;1,227;38694672;2026-04-07;Córrego Santa Luzia
+45065.2022-00555;AL;Bacia do São Francisco;Porto das Pedras Altas;dessedentação animal;vigente;2,250;70956000;2028-12-15;Rio Formoso
+88942.2023-00556;BA;Bacia do São Francisco;Santa Rita da Serra;aquicultura;vigente;0,341;10753776;2027-04-26;Aquífero Guarani
+96015.2023-00557;PE;Bacia do São Francisco;Porto das Pedras Altas;mineração;em análise;0,238;7505568;2030-05-06;Rio Araguari
+36207.2025-00558;ES;Sudeste;Vila Serrana;mineração;vencida;2,060;64964160;2024-03-22;Córrego Santa Luzia
+69462.2024-00559;GO;Bacia do Paraná;Santa Rita da Serra;lazer;vigente;1,469;46326384;2030-12-02;Açude Serra Azul
+68454.2015-00560;AC;Norte;Santa Rita da Serra;abastecimento urbano;vigente;20,184;636522624;2032-03-05;Córrego Santa Luzia
+80640.2015-00561;PR;Sul;Vila Serrana;abastecimento urbano;suspensa;0,106;3342816;2026-10-07;Represa do Funil Velho
+38414.2017-00562;SC;Sul;Alto Paraíso do Norte;termoelétrica;vigente;1,390;43835040;2029-09-12;Ribeirão das Antas
+56454.2024-00563;AP;Norte;Cachoeira do Vale Azul;termoelétrica;vigente;0,603;19016208;2029-11-25;Rio Formoso
+86703.2019-00564;MS;Centro-Oeste;Campo Novo do Oeste;abastecimento urbano;vigente;1,557;49101552;2027-06-21;Rio Verde Grande
+25876.2026-00565;SC;Sul;Alto Paraíso do Norte;mineração;em análise;0,437;13781232;2028-11-20;Ribeirão das Antas
+39449.2024-00566;GO;Bacia do Paraná;Vila Serrana;aquicultura;vigente;2,595;81835920;2030-12-11;Rio Taquari-Mirim
+23883.2024-00567;CE;Nordeste;Riacho Fundo Velho;irrigação;vencida;0,087;2743632;2023-08-15;Represa do Funil Velho
+81097.2017-00568;RS;Sul;Riacho Fundo Velho;irrigação;vigente;0,316;9965376;2029-09-18;Rio Taquari-Mirim
+32001.2016-00569;DF;Órgão Central;Bom Retiro das Águas;termoelétrica;em análise;0,760;23967360;2027-10-24;Aquífero Guarani
+54198.2016-00570;RS;Sul;Bom Retiro das Águas;abastecimento urbano;vigente;1,326;41816736;2028-12-25;Rio Formoso
+58794.2019-00571;SP;Bacia do Paraná;Bom Retiro das Águas;abastecimento urbano;vigente;2,049;64617264;2026-08-23;Rio Formoso
+54404.2024-00572;GO;Bacia do Paraná;Porto das Pedras Altas;termoelétrica;em análise;1,788;56386368;2032-02-16;Rio Pardo Novo
+95908.2025-00573;PR;Bacia do Paraná;Campo Novo do Oeste;aquicultura;em análise;1,965;61968240;2030-12-09;Açude Serra Azul
+17217.2015-00574;PE;Bacia do São Francisco;Bom Retiro das Águas;indústria;suspensa;1,774;55944864;2026-10-18;Rio Verde Grande
+38891.2026-00575;BA;Bacia do São Francisco;Riacho Fundo Velho;abastecimento urbano;vigente;1,388;43771968;2032-02-26;Rio Formoso
+27251.2024-00576;RN;Nordeste;Santa Rita da Serra;mineração;vigente;5,761;181678896;2027-09-06;Rio Verde Grande
+32611.2024-00577;GO;Bacia do Paraná;Vila Serrana;termoelétrica;vigente;2,859;90161424;2027-02-04;Ribeirão das Antas
+67729.2026-00578;SP;Sudeste;Riacho Fundo Velho;mineração;em análise;4,440;140019840;2027-06-27;Rio Verde Grande
+45171.2025-00579;RO;Norte;Cachoeira do Vale Azul;aquicultura;suspensa;0,795;25071120;2030-07-08;Córrego Santa Luzia
+81746.2024-00580;DF;Órgão Central;Porto das Pedras Altas;dessedentação animal;vigente;0,126;3973536;2026-11-22;Rio Araguari
+30178.2021-00581;GO;Bacia do Paraná;Bom Retiro das Águas;irrigação;vigente;1,453;45821808;2026-03-05;Córrego Santa Luzia
+33745.2022-00582;DF;Órgão Central;Campo Novo do Oeste;dessedentação animal;vigente;2,762;87102432;2026-06-01;Rio Formoso
+85319.2023-00583;BA;Bacia do São Francisco;Cachoeira do Vale Azul;mineração;vigente;1,642;51782112;2026-03-13;Rio Formoso
+61151.2016-00584;PR;Sul;Alto Paraíso do Norte;mineração;vigente;3,465;109272240;2027-03-10;Açude Serra Azul
+17584.2016-00585;DF;Órgão Central;Alto Paraíso do Norte;dessedentação animal;vigente;1,238;39041568;2028-05-03;Rio Taquari-Mirim
+50552.2019-00586;BA;Nordeste;Riacho Fundo Velho;mineração;vigente;1,383;43614288;2029-09-17;Rio Formoso
+45416.2024-00587;GO;Bacia do Paraná;Bom Retiro das Águas;aquicultura;vigente;3,905;123148080;2026-08-04;Rio Araguari
+51933.2020-00588;SE;Nordeste;Alto Paraíso do Norte;aquicultura;em análise;9,464;298456704;2030-02-18;Ribeirão das Antas
+94290.2018-00589;SP;Sudeste;Alto Paraíso do Norte;mineração;vigente;0,835;26332560;2027-07-08;Córrego Santa Luzia
+16892.2017-00590;DF;Centro-Oeste;Santa Rita da Serra;mineração;vigente;0,613;19331568;2028-11-30;Ribeirão das Antas
+41175.2025-00591;SC;Sul;Riacho Fundo Velho;dessedentação animal;em análise;1,217;38379312;2027-06-08;Rio Araguari
+33212.2016-00592;PR;Bacia do Paraná;Alto Paraíso do Norte;irrigação;vigente;0,346;10911456;2026-12-24;Rio Taquari-Mirim
+12982.2025-00593;MG;Bacia do São Francisco;Campo Novo do Oeste;irrigação;vigente;12,572;396470592;2031-06-22;Represa do Funil Velho
+92611.2022-00594;MG;Sudeste;Campo Novo do Oeste;irrigação;vigente;2,542;80164512;2027-06-08;Rio Taquari-Mirim
+59686.2023-00595;MG;Sudeste;Campo Novo do Oeste;irrigação;suspensa;0,275;8672400;2030-10-26;Rio Araguari
+10551.2025-00596;DF;Órgão Central;Santa Rita da Serra;irrigação;vigente;1,215;38316240;2026-09-28;Represa do Funil Velho
+15680.2024-00597;RJ;Sudeste;Bom Retiro das Águas;abastecimento urbano;suspensa;1,396;44024256;2028-07-11;Rio Araguari
+40740.2017-00598;RS;Sul;Riacho Fundo Velho;irrigação;vigente;1,723;54336528;2030-08-27;Rio Taquari-Mirim
+12008.2025-00599;SP;Sudeste;Vila Serrana;mineração;vigente;0,675;21286800;2027-08-02;Açude Serra Azul
+44070.2018-00600;SP;Bacia do Paraná;Cachoeira do Vale Azul;termoelétrica;em análise;1,788;56386368;2027-10-30;Rio Araguari
+45967.2023-00601;AM;Norte;Santa Rita da Serra;abastecimento urbano;vigente;1,785;56291760;2027-04-07;Açude Serra Azul
+58935.2017-00602;AP;Norte;Vila Serrana;termoelétrica;suspensa;1,248;39356928;2029-11-20;Represa do Funil Velho
+38442.2026-00603;GO;Bacia do Paraná;Bom Retiro das Águas;aquicultura;vigente;0,759;23935824;2027-05-07;Rio Araguari
+10918.2016-00604;GO;Centro-Oeste;Santa Rita da Serra;abastecimento urbano;vigente;33,509;1056739824;2030-04-28;Rio Pardo Novo
+12734.2020-00605;ES;Sudeste;Riacho Fundo Velho;dessedentação animal;vigente;1,395;43992720;2029-11-27;Córrego Santa Luzia
+73861.2018-00606;DF;Órgão Central;Alto Paraíso do Norte;dessedentação animal;vigente;4,076;128540735;2031-04-23;Rio Pardo Novo
+19489.2022-00607;BA;Bacia do São Francisco;Alto Paraíso do Norte;mineração;vigente;0,716;22579776;2030-04-20;Aquífero Guarani
+20863.2025-00608;BA;Bacia do São Francisco;Campo Novo do Oeste;lazer;em análise;0,880;27751680;2028-09-13;Rio Verde Grande
+85219.2020-00609;SP;Sudeste;Alto Paraíso do Norte;aquicultura;vencida;2,169;68401584;2024-05-22;Represa do Funil Velho
+10316.2017-00610;DF;Órgão Central;Vila Serrana;indústria;vigente;1,298;40933728;2027-09-10;Rio Taquari-Mirim
+90321.2024-00611;RO;Norte;Alto Paraíso do Norte;dessedentação animal;vigente;1,240;39104640;2027-03-31;Rio Verde Grande
+54558.2022-00612;GO;Centro-Oeste;Campo Novo do Oeste;irrigação;vigente;0,190;5991840;2027-07-31;Ribeirão das Antas
+68855.2016-00613;ES;Sudeste;Campo Novo do Oeste;abastecimento urbano;em análise;1,684;53106624;2030-08-27;Rio Taquari-Mirim
+48313.2018-00614;PR;Bacia do Paraná;Cachoeira do Vale Azul;termoelétrica;pendente de analise;0,357;11258352;2025-04-10;Açude Serra Azul
+94443.2018-00615;SE;Nordeste;Bom Retiro das Águas;abastecimento urbano;vigente;0,673;21223728;2026-12-02;Aquífero Guarani
+51878.2021-00616;CE;Nordeste;Alto Paraíso do Norte;indústria;suspensa;2,121;66887856;2032-02-14;Rio Taquari-Mirim
+90572.2025-00617;MS;Bacia do Paraná;Vila Serrana;abastecimento urbano;vigente;0,703;22169808;2031-01-12;Açude Serra Azul
+79854.2026-00618;GO;Bacia do Paraná;Bom Retiro das Águas;indústria;em análise;0,599;18890064;2028-05-12;Ribeirão das Antas
+58525.2018-00619;SP;Sudeste;Campo Novo do Oeste;aquicultura;em análise;2,141;67518576;2029-02-22;Açude Serra Azul
+44766.2021-00620;ES;Sudeste;Riacho Fundo Velho;indústria;vencida;0,244;7694784;2024-08-13;Ribeirão das Antas
+53069.2019-00621;DF;Centro-Oeste;Santa Rita da Serra;termoelétrica;vigente;1,532;48313152;2031-05-12;Rio Taquari-Mirim
+59319.2016-00622;PI;Nordeste;Bom Retiro das Águas;lazer;vencida;0,655;20656080;2025-03-16;Represa do Funil Velho
+71088.2019-00623;PR;Bacia do Paraná;Vila Serrana;mineração;vigente;2,248;70892928;2031-11-01;Ribeirão das Antas
+24739.2023-00624;DF;Órgão Central;Cachoeira do Vale Azul;aquicultura;vigente;0,584;18417024;2031-04-18;Rio Verde Grande
+20836.2019-00625;MS;Centro-Oeste;Cachoeira do Vale Azul;indústria;vigente;6,889;217251504;2032-07-11;Aquífero Guarani
+73687.2026-00626;GO;Bacia do Paraná;Porto das Pedras Altas;abastecimento urbano;vigente;1,103;34784208;2030-11-01;Rio Verde Grande
+62941.2020-00627;DF;Órgão Central;Santa Rita da Serra;aquicultura;vigente;0,945;29801520;2026-12-13;Ribeirão das Antas
+21675.2016-00628;ES;Sudeste;Riacho Fundo Velho;abastecimento urbano;suspensa;2,084;65721024;2031-08-15;Rio Verde Grande
+91810.2020-00629;MG;Bacia do São Francisco;Porto das Pedras Altas;irrigação;vigente;0,329;10375344;2028-02-03;Rio Taquari-Mirim
+15272.2020-00630;ES;Sudeste;Cachoeira do Vale Azul;irrigação;vigente;0,139;4383504;2028-08-25;Rio Formoso
+17718.2023-00631;BA;Bacia do São Francisco;Alto Paraíso do Norte;mineração;vigente;2,340;73794240;2029-10-21;Rio Araguari
+88484.2023-00632;TO;Norte;Santa Rita da Serra;indústria;vigente;13,379;421920144;2030-12-02;Córrego Santa Luzia
+41925.2020-00633;DF;Órgão Central;Porto das Pedras Altas;mineração;vigente;1,421;44812656;2031-05-05;Aquífero Guarani
+61616.2020-00634;GO;Centro-Oeste;Campo Novo do Oeste;termoelétrica;vigente;3,697;116588592;2029-02-14;Rio Pardo Novo
+86593.2023-00635;PR;Sul;Cachoeira do Vale Azul;abastecimento urbano;vigente;0,164;5171904;2029-07-16;Rio Verde Grande
+73561.2026-00636;MS;Bacia do Paraná;Riacho Fundo Velho;irrigação;vigente;12,417;391582512;2030-04-24;Rio Araguari
+50836.2025-00637;DF;Órgão Central;Santa Rita da Serra;mineração;em análise;0,903;28477008;2029-01-09;Rio Araguari
+77417.2019-00638;PE;Bacia do São Francisco;Vila Serrana;mineração;suspensa;1,479;46641744;2032-06-01;Rio Araguari
+70398.2018-00639;PE;Nordeste;Santa Rita da Serra;irrigação;vigente;0,576;18164736;2027-05-04;Córrego Santa Luzia
+35852.2018-00640;GO;Centro-Oeste;Alto Paraíso do Norte;mineração;suspensa;2,764;87165504;2030-04-04;Açude Serra Azul
+75875.2025-00641;PE;Bacia do São Francisco;Cachoeira do Vale Azul;indústria;vigente;0,936;29517696;2032-07-21;Rio Taquari-Mirim
+75972.2021-00642;TO;Norte;Campo Novo do Oeste;mineração;vigente;1,122;35383392;2027-07-07;Açude Serra Azul
+87969.2018-00643;MT;Centro-Oeste;Bom Retiro das Águas;aquicultura;vencida;1,640;51719040;2025-04-11;Rio Verde Grande
+33635.2019-00644;RJ;Sudeste;Alto Paraíso do Norte;aquicultura;vigente;2,712;85525632;2026-09-07;Rio Taquari-Mirim
+91383.2018-00645;BA;Bacia do São Francisco;Alto Paraíso do Norte;mineração;vigente;3,082;97193952;2028-07-02;Rio Araguari
+99055.2025-00646;DF;Órgão Central;Porto das Pedras Altas;aquicultura;vigente;0,229;7221744;2028-07-07;Rio Formoso
+67689.2020-00647;AM;Norte;Alto Paraíso do Norte;lazer;vigente;8,171;257680655;2029-05-08;Rio Taquari-Mirim
+25930.2025-00648;DF;Órgão Central;Campo Novo do Oeste;lazer;vigente;1,859;58625424;2027-08-22;Rio Araguari
+85452.2020-00649;PR;Sul;Vila Serrana;abastecimento urbano;vigente;0,774;24408864;2030-06-18;Aquífero Guarani
+63561.2018-00650;PE;Nordeste;Alto Paraíso do Norte;lazer;vigente;1,066;33617376;2030-02-20;Rio Araguari
+41323.2015-00651;MS;Bacia do Paraná;Vila Serrana;lazer;vigente;4,941;155819376;2030-04-10;Rio Verde Grande
+33513.2016-00652;MS;Bacia do Paraná;Alto Paraíso do Norte;irrigação;vigente;0,133;4194288;2031-10-01;Ribeirão das Antas
+10108.2024-00653;PB;Nordeste;Porto das Pedras Altas;irrigação;vigente;1,212;38221632;2026-12-20;Córrego Santa Luzia
+24534.2016-00654;SP;Bacia do Paraná;Santa Rita da Serra;aquicultura;vigente;0,580;18290880;2029-06-03;Aquífero Guarani
+22559.2019-00655;TO;Norte;Campo Novo do Oeste;lazer;vigente;4,978;156986208;2030-10-07;Córrego Santa Luzia
+76091.2020-00656;RJ;Sudeste;Cachoeira do Vale Azul;irrigação;vigente;0,151;4761936;2029-03-24;Açude Serra Azul
+31236.2021-00657;MG;Bacia do São Francisco;Porto das Pedras Altas;aquicultura;vigente;1,589;50110704;2027-11-12;Rio Pardo Novo
+18839.2021-00658;MG;Bacia do São Francisco;Campo Novo do Oeste;lazer;em análise;2,057;64869552;2027-05-09;Aquífero Guarani
+32286.2022-00659;RJ;Sudeste;Cachoeira do Vale Azul;abastecimento urbano;vigente;0,663;20908368;2029-03-11;Aquífero Guarani
+18684.2024-00660;AP;Norte;Alto Paraíso do Norte;mineração;vigente;3,112;98140032;2032-07-19;Rio Araguari
+76302.2017-00661;DF;Órgão Central;Cachoeira do Vale Azul;indústria;vigente;6,942;218922912;2029-06-09;Rio Formoso
+39882.2023-00662;MT;Centro-Oeste;Santa Rita da Serra;abastecimento urbano;em análise;6,201;195554736;2028-01-02;Represa do Funil Velho
+69510.2021-00663;PE;Nordeste;Riacho Fundo Velho;aquicultura;vigente;0,451;14222736;2029-10-19;Açude Serra Azul
+91537.2025-00664;AP;Norte;Alto Paraíso do Norte;dessedentação animal;vigente;0,146;4604256;2031-12-19;Rio Verde Grande
+84080.2016-00665;PA;Norte;Vila Serrana;aquicultura;vigente;1,412;44528832;2030-06-13;Rio Verde Grande
+55000.2023-00666;SE;Nordeste;Porto das Pedras Altas;lazer;vigente;0,608;19173888;2029-01-02;Represa do Funil Velho
+24548.2019-00667;MS;Bacia do Paraná;Alto Paraíso do Norte;termoelétrica;vigente;9,784;308548224;2029-06-24;Aquífero Guarani
+90656.2017-00668;RS;Sul;Santa Rita da Serra;dessedentação animal;vigente;1,114;35131104;2028-03-28;Rio Verde Grande
+43863.2021-00669;RO;Norte;Cachoeira do Vale Azul;termoelétrica;suspensa;3,222;101608992;2029-11-20;Aquífero Guarani
+80380.2026-00670;DF;Órgão Central;Cachoeira do Vale Azul;irrigação;vigente;0,165;5203440;2031-11-10;Rio Verde Grande
+31917.2025-00671;PA;Norte;Porto das Pedras Altas;indústria;vigente;0,433;13655088;2026-04-17;Rio Araguari
+92468.2015-00672;GO;Bacia do Paraná;Riacho Fundo Velho;irrigação;vencida;2,532;79849152;2024-05-27;Córrego Santa Luzia
+11708.2026-00673;SC;Sul;Vila Serrana;lazer;vigente;1,755;55345680;2031-01-30;Rio Formoso
+23396.2020-00674;SP;Bacia do Paraná;Cachoeira do Vale Azul;irrigação;vigente;4,341;136897776;2030-09-26;Rio Taquari-Mirim
+57069.2015-00675;AC;Norte;Campo Novo do Oeste;aquicultura;vigente;2,370;74740320;2027-11-29;Rio Pardo Novo
+54343.2020-00676;RJ;Sudeste;Campo Novo do Oeste;dessedentação animal;vigente;0,687;21665232;2029-11-28;Córrego Santa Luzia
+65497.2025-00677;SP;Sudeste;Bom Retiro das Águas;termoelétrica;vigente;0,650;20498400;2031-02-27;Córrego Santa Luzia
+44290.2023-00678;PE;Nordeste;Porto das Pedras Altas;dessedentação animal;em análise;0,744;23462784;2030-06-26;Rio Araguari
+85048.2023-00679;DF;Centro-Oeste;Vila Serrana;indústria;em análise;0,473;14916528;2026-02-22;Rio Formoso
+93564.2015-00680;GO;Bacia do Paraná;Alto Paraíso do Norte;mineração;vigente;8,172;257712192;2026-03-24;Aquífero Guarani
+80469.2016-00681;PB;Nordeste;Porto das Pedras Altas;aquicultura;vencida;3,129;98676144;2023-11-05;Represa do Funil Velho
+89722.2019-00682;RS;Sul;Campo Novo do Oeste;indústria;vencida;1,967;62031312;2025-09-29;Rio Verde Grande
+97148.2015-00683;PI;Nordeste;Santa Rita da Serra;aquicultura;vigente;2,198;69316128;2029-11-09;Açude Serra Azul
+59891.2016-00684;TO;Norte;Santa Rita da Serra;aquicultura;suspensa;2,983;94071888;2027-01-16;Rio Pardo Novo
+62940.2023-00685;PB;Nordeste;Alto Paraíso do Norte;irrigação;vigente;2,240;70640640;2030-06-18;Açude Serra Azul
+77625.2022-00686;PA;Norte;Cachoeira do Vale Azul;lazer;vigente;2,769;87323184;2031-11-02;Rio Taquari-Mirim
+12097.2021-00687;DF;Órgão Central;Riacho Fundo Velho;lazer;em análise;1,835;57868560;2026-07-25;Rio Araguari
+35975.2015-00688;MS;Bacia do Paraná;Santa Rita da Serra;irrigação;vigente;2,318;73100448;2026-12-18;Rio Verde Grande
+37571.2017-00689;CE;Nordeste;Cachoeira do Vale Azul;termoelétrica;vigente;0,898;28319328;2027-11-14;Ribeirão das Antas
+77424.2026-00690;DF;Órgão Central;Alto Paraíso do Norte;indústria;vencida;0,996;31409856;2025-02-15;Rio Pardo Novo
+89909.2015-00691;AL;Nordeste;Bom Retiro das Águas;aquicultura;vigente;0,224;7064064;2029-05-04;Ribeirão das Antas
+11589.2022-00692;SE;Nordeste;Riacho Fundo Velho;abastecimento urbano;vigente;0,561;17691696;2027-06-19;Rio Araguari
+80068.2018-00693;RS;Sul;Vila Serrana;abastecimento urbano;vigente;3,015;95081040;2029-02-22;Rio Formoso
+81138.2021-00694;RJ;Sudeste;Porto das Pedras Altas;aquicultura;vencida;1,381;43551216;2024-11-02;Aquífero Guarani
+37181.2018-00695;AP;Norte;Porto das Pedras Altas;irrigação;vigente;1,709;53895024;2031-02-27;Rio Verde Grande
+60439.2020-00696;GO;Centro-Oeste;Alto Paraíso do Norte;lazer;vigente;24,545;774051120;2027-12-31;Aquífero Guarani
+63668.2015-00697;DF;Órgão Central;Santa Rita da Serra;indústria;vigente;0,379;11952144;2027-05-11;Rio Verde Grande
+90984.2018-00698;PE;Nordeste;Riacho Fundo Velho;mineração;vigente;1,730;54557280;2030-10-22;Ribeirão das Antas
+35190.2022-00699;MG;Sudeste;Vila Serrana;lazer;em análise;2,608;82245888;2028-05-15;Rio Taquari-Mirim
+25058.2017-00700;SC;Sul;Santa Rita da Serra;abastecimento urbano;suspensa;1,447;45632592;2031-05-09;Represa do Funil Velho
+49617.2020-00701;AP;Norte;Campo Novo do Oeste;lazer;vigente;0,458;14443488;2027-07-29;Rio Araguari
+66633.2019-00702;DF;Órgão Central;Vila Serrana;mineração;vigente;0,839;26458704;2027-12-20;Aquífero Guarani
+46779.2016-00703;BA;Bacia do São Francisco;Campo Novo do Oeste;aquicultura;vigente;0,346;10911456;2027-09-26;Rio Formoso
+69639.2026-00704;PR;Sul;Bom Retiro das Águas;lazer;em análise;3,179;100252944;2029-12-30;Açude Serra Azul
+52648.2016-00705;RS;Sul;Cachoeira do Vale Azul;lazer;vencida;1,680;52980480;2024-01-10;Açude Serra Azul
+11421.2023-00706;MG;Sudeste;Vila Serrana;dessedentação animal;vigente;0,806;25418016;2028-10-08;Açude Serra Azul
+82170.2024-00707;ES;Sudeste;Santa Rita da Serra;abastecimento urbano;vigente;2,477;78114672;2029-06-04;Rio Verde Grande
+36991.2024-00708;MS;Centro-Oeste;Campo Novo do Oeste;termoelétrica;vigente;0,406;12803616;2030-02-20;Ribeirão das Antas
+87005.2025-00709;DF;Órgão Central;Porto das Pedras Altas;aquicultura;vigente;5,276;166383936;2028-05-12;Aquífero Guarani
+93599.2020-00710;AM;Norte;Cachoeira do Vale Azul;abastecimento urbano;vigente;1,579;49795344;2028-11-20;Açude Serra Azul
+26500.2020-00711;AM;Norte;Bom Retiro das Águas;indústria;vigente;0,298;9397728;2032-01-05;Represa do Funil Velho
+31149.2021-00712;RS;Sul;Alto Paraíso do Norte;dessedentação animal;vencida;0,456;14380416;2024-04-08;Rio Taquari-Mirim
+64144.2018-00713;DF;Órgão Central;Santa Rita da Serra;irrigação;vigente;0,487;15358032;2027-09-08;Rio Verde Grande
+54205.2017-00714;GO;Centro-Oeste;Bom Retiro das Águas;lazer;em análise;0,356;11226816;2026-11-11;Represa do Funil Velho
+98435.2026-00715;AC;Norte;Santa Rita da Serra;lazer;vigente;5,041;158972976;2029-06-05;Córrego Santa Luzia
+91343.2017-00716;DF;Órgão Central;Cachoeira do Vale Azul;dessedentação animal;vencida;1,106;34878816;2024-09-16;Rio Verde Grande
+53607.2019-00717;RO;Norte;Riacho Fundo Velho;termoelétrica;vigente;3,579;112867344;2030-03-06;Represa do Funil Velho
+86599.2025-00718;MG;Sudeste;Santa Rita da Serra;indústria;vigente;2,529;79754544;2029-08-11;Ribeirão das Antas
+98220.2026-00719;MG;Sudeste;Vila Serrana;irrigação;vigente;0,638;20119968;2026-02-26;Rio Araguari
+80264.2021-00720;MT;Centro-Oeste;Vila Serrana;termoelétrica;vigente;0,355;11195280;2030-12-02;Córrego Santa Luzia
+30161.2022-00721;DF;Centro-Oeste;Campo Novo do Oeste;aquicultura;vigente;1,949;61463664;2029-12-24;Córrego Santa Luzia
+72027.2025-00722;MT;Centro-Oeste;Riacho Fundo Velho;mineração;vigente;1,739;54841104;2026-03-20;Açude Serra Azul
+71575.2026-00723;MS;Centro-Oeste;Riacho Fundo Velho;dessedentação animal;vigente;8,462;266857632;2030-03-18;Córrego Santa Luzia
+40271.2017-00724;DF;Centro-Oeste;Santa Rita da Serra;termoelétrica;vigente;7,471;235605456;2030-01-28;Rio Verde Grande
+28628.2021-00725;MG;Bacia do São Francisco;Cachoeira do Vale Azul;mineração;suspensa;0,666;21002976;2026-05-29;Represa do Funil Velho
+89035.2025-00726;PE;Bacia do São Francisco;Bom Retiro das Águas;indústria;vigente;1,252;39483072;2026-02-18;Rio Pardo Novo
+26435.2021-00727;MA;Nordeste;Santa Rita da Serra;abastecimento urbano;vigente;0,271;8546256;2026-02-22;Rio Pardo Novo
+45103.2025-00728;DF;Centro-Oeste;Campo Novo do Oeste;aquicultura;vigente;1,015;32009039;2029-02-06;Açude Serra Azul
+93733.2020-00729;MG;Sudeste;Bom Retiro das Águas;abastecimento urbano;vigente;1,134;35761824;2030-06-23;Rio Formoso
+77091.2017-00730;DF;Centro-Oeste;Cachoeira do Vale Azul;aquicultura;vigente;8,013;252697968;2026-12-30;Açude Serra Azul
+51022.2024-00731;GO;Bacia do Paraná;Bom Retiro das Águas;lazer;vencida;0,541;17060976;2025-11-18;Rio Pardo Novo
+15302.2019-00732;GO;Bacia do Paraná;Alto Paraíso do Norte;mineração;vencida;1,446;45601056;2023-07-20;Rio Formoso
+20511.2021-00733;CE;Nordeste;Cachoeira do Vale Azul;mineração;em análise;2,294;72343584;2029-01-25;Ribeirão das Antas
+17604.2025-00734;DF;Órgão Central;Alto Paraíso do Norte;aquicultura;vigente;0,427;13465872;2028-10-16;Aquífero Guarani
+47566.2018-00735;SP;Sudeste;Campo Novo do Oeste;aquicultura;vigente;0,202;6370272;2030-10-23;Ribeirão das Antas
+51231.2015-00736;PA;Norte;Campo Novo do Oeste;aquicultura;vigente;1,119;35288784;2030-07-12;Córrego Santa Luzia
+67126.2019-00737;MG;Sudeste;Porto das Pedras Altas;aquicultura;vencida;0,702;22138272;2024-07-12;Rio Araguari
+51016.2016-00738;PR;Sul;Santa Rita da Serra;aquicultura;vigente;3,773;118985328;2029-10-05;Aquífero Guarani
+29013.2024-00739;PE;Bacia do São Francisco;Riacho Fundo Velho;aquicultura;vigente;11,093;349828848;2026-02-21;Ribeirão das Antas
+95903.2018-00740;DF;Órgão Central;Alto Paraíso do Norte;mineração;vigente;10,284;324316224;2026-10-30;Rio Formoso
+29520.2019-00741;DF;Órgão Central;Porto das Pedras Altas;termoelétrica;vigente;1,386;43708896;2029-11-30;Rio Taquari-Mirim
+72568.2023-00742;PA;Norte;Riacho Fundo Velho;irrigação;em análise;7,469;235542384;2026-11-17;Rio Araguari
+32932.2015-00743;DF;Centro-Oeste;Campo Novo do Oeste;mineração;vigente;0,785;24755760;2030-05-17;Aquífero Guarani
+39549.2015-00744;CE;Nordeste;Bom Retiro das Águas;termoelétrica;vencida;0,388;12235968;2025-10-29;Rio Araguari
+21930.2017-00745;PE;Bacia do São Francisco;Bom Retiro das Águas;lazer;vencida;0,375;11826000;2023-10-04;Rio Formoso
+65731.2016-00746;GO;Centro-Oeste;Cachoeira do Vale Azul;irrigação;suspensa;3,045;96027120;2032-06-04;Rio Verde Grande
+49969.2018-00747;AL;Bacia do São Francisco;Cachoeira do Vale Azul;abastecimento urbano;vigente;1,509;47587824;2031-10-13;Rio Taquari-Mirim
+81623.2021-00748;RS;Sul;Vila Serrana;dessedentação animal;vigente;0,178;5613408;2030-03-26;Rio Taquari-Mirim
+20338.2026-00749;PA;Norte;Cachoeira do Vale Azul;aquicultura;em análise;3,319;104667984;2029-10-06;Rio Formoso
+27530.2022-00750;PR;Sul;Campo Novo do Oeste;termoelétrica;vigente;1,738;54809568;2031-01-15;Rio Pardo Novo
+27324.2024-00751;AM;Norte;Porto das Pedras Altas;mineração;vigente;0,497;15673392;2032-07-22;Rio Verde Grande
+55037.2018-00752;MS;Centro-Oeste;Vila Serrana;lazer;vencida;0,349;11006064;2024-08-22;Rio Verde Grande
+31492.2026-00753;RN;Nordeste;Alto Paraíso do Norte;dessedentação animal;vigente;1,638;51655968;2032-06-06;Rio Taquari-Mirim
+35561.2026-00754;BA;Bacia do São Francisco;Porto das Pedras Altas;irrigação;pendente de analise;0,542;17092512;2029-02-11;Rio Formoso
+78708.2018-00755;AL;Bacia do São Francisco;Santa Rita da Serra;abastecimento urbano;vigente;0,854;26931744;2031-11-03;Córrego Santa Luzia
+46796.2023-00756;PE;Bacia do São Francisco;Porto das Pedras Altas;dessedentação animal;vigente;1,832;57773952;2031-05-11;Ribeirão das Antas
+83370.2018-00757;TO;Norte;Bom Retiro das Águas;dessedentação animal;vigente;1,285;40523760;31/12/2026;Ribeirão das Antas
+89196.2025-00758;RS;Sul;Porto das Pedras Altas;abastecimento urbano;vigente;2,098;66162527;2028-01-08;Córrego Santa Luzia
+77128.2022-00759;DF;Órgão Central;Alto Paraíso do Norte;mineração;vigente;1,457;45947952;2028-03-22;Rio Taquari-Mirim
+15053.2023-00760;ES;Sudeste;Vila Serrana;mineração;em análise;0,251;7915536;2028-04-28;Córrego Santa Luzia
+47658.2023-00761;MG;Sudeste;Riacho Fundo Velho;termoelétrica;vencida;1,564;49322304;2023-10-09;Rio Verde Grande
+86630.2025-00762;DF;Centro-Oeste;Riacho Fundo Velho;lazer;vigente;4,211;132798096;2030-07-30;Rio Formoso
+58989.2024-00763;DF;Órgão Central;Bom Retiro das Águas;abastecimento urbano;vigente;3,537;111542832;2030-09-26;Açude Serra Azul
+30091.2020-00764;PE;Nordeste;Santa Rita da Serra;indústria;vigente;4,154;131000544;2027-03-14;Ribeirão das Antas
+39325.2025-00765;PE;Bacia do São Francisco;Bom Retiro das Águas;termoelétrica;vigente;0,968;30526848;2028-01-14;Rio Araguari
+10131.2016-00766;RJ;Sudeste;Bom Retiro das Águas;termoelétrica;vigente;0,320;10091520;2028-08-23;Rio Formoso
+70468.2021-00767;PE;Bacia do São Francisco;Riacho Fundo Velho;abastecimento urbano;vigente;1,198;37780128;2029-10-13;Rio Pardo Novo
+41286.2026-00768;MG;Sudeste;Vila Serrana;mineração;em análise;3,820;120467520;2029-06-19;Ribeirão das Antas
+67537.2019-00769;MS;Bacia do Paraná;Bom Retiro das Águas;indústria;vigente;1,011;31882895;2028-03-09;Rio Araguari
+99679.2015-00770;PR;Sul;Santa Rita da Serra;indústria;em análise;0,737;23242032;2026-02-06;Rio Pardo Novo
+99266.2024-00771;MA;Nordeste;Riacho Fundo Velho;lazer;vigente;1,131;35667216;2029-03-03;Rio Formoso
+47517.2018-00772;RS;Sul;Riacho Fundo Velho;irrigação;em análise;0,612;19300032;2030-03-02;Rio Pardo Novo
+50416.2024-00773;AL;Nordeste;Riacho Fundo Velho;mineração;suspensa;0,208;6559488;2031-07-26;Rio Araguari
+66918.2024-00774;DF;Órgão Central;Vila Serrana;dessedentação animal;suspensa;0,144;4541184;2030-07-25;Açude Serra Azul
+96663.2022-00775;DF;Centro-Oeste;Alto Paraíso do Norte;indústria;vencida;16,917;533494512;2023-08-28;Rio Taquari-Mirim
+19624.2017-00776;AL;Bacia do São Francisco;Cachoeira do Vale Azul;dessedentação animal;em análise;0,884;27877824;2028-03-14;Açude Serra Azul
+77801.2020-00777;DF;Órgão Central;Cachoeira do Vale Azul;termoelétrica;suspensa;1,531;48281616;2027-12-04;Ribeirão das Antas
+20459.2026-00778;AL;Bacia do São Francisco;Alto Paraíso do Norte;irrigação;vigente;1,361;42920496;2028-03-09;Rio Verde Grande
+12443.2022-00779;PA;Norte;Vila Serrana;irrigação;em análise;8,750;275940000;2028-05-05;Ribeirão das Antas
+36764.2022-00780;MG;Sudeste;Riacho Fundo Velho;aquicultura;em análise;0,234;7379424;2029-02-05;Represa do Funil Velho
+91576.2024-00781;MS;Centro-Oeste;Porto das Pedras Altas;abastecimento urbano;vigente;4,026;126963936;2028-05-13;Rio Araguari
+26965.2025-00782;RS;Sul;Riacho Fundo Velho;irrigação;vigente;2,845;89719920;2027-12-16;Aquífero Guarani
+18105.2022-00783;MG;Bacia do São Francisco;Campo Novo do Oeste;aquicultura;vigente;0,173;5455728;2029-08-20;Córrego Santa Luzia
+35143.2016-00784;TO;Norte;Porto das Pedras Altas;lazer;vigente;2,167;68338512;2029-06-27;Rio Pardo Novo
+91474.2022-00785;GO;Centro-Oeste;Porto das Pedras Altas;dessedentação animal;vigente;0,651;20529936;2032-01-21;Aquífero Guarani
+99618.2021-00786;RO;Norte;Cachoeira do Vale Azul;indústria;vigente;0,668;21066048;2028-09-14;Rio Pardo Novo
+42698.2025-00787;RS;Sul;Bom Retiro das Águas;mineração;vigente;0,315;9933840;2031-12-27;Rio Verde Grande
+63704.2016-00788;MG;Bacia do São Francisco;Alto Paraíso do Norte;irrigação;em análise;0,713;22485168;2029-09-26;Rio Pardo Novo
+13730.2019-00789;RJ;Sudeste;Porto das Pedras Altas;abastecimento urbano;vencida;1,208;38095488;2024-07-09;Córrego Santa Luzia
+50128.2021-00790;PR;Bacia do Paraná;Riacho Fundo Velho;dessedentação animal;vigente;0,379;11952144;2030-01-21;Rio Verde Grande
+12830.2021-00791;SC;Sul;Vila Serrana;lazer;vigente;1,999;63040464;2027-02-11;Rio Pardo Novo
+75002.2024-00792;RS;Sul;Alto Paraíso do Norte;termoelétrica;em análise;0,499;15736464;2027-11-23;Rio Pardo Novo
+90898.2022-00793;MS;Bacia do Paraná;Bom Retiro das Águas;indústria;vigente;0,212;6685632;2026-11-15;Rio Araguari
+17427.2025-00794;SP;Bacia do Paraná;Vila Serrana;irrigação;vigente;1,406;44339616;2029-12-07;Rio Araguari
+98835.2021-00795;MS;Bacia do Paraná;Campo Novo do Oeste;termoelétrica;vigente;0,471;14853456;2028-12-27;Ribeirão das Antas
+50186.2019-00796;RS;Sul;Bom Retiro das Águas;indústria;vigente;2,568;80984448;2029-01-27;Rio Taquari-Mirim
+25413.2026-00797;SC;Sul;Alto Paraíso do Norte;mineração;vencida;1,045;32955119;2024-09-03;Ribeirão das Antas
+33158.2024-00798;DF;Órgão Central;Alto Paraíso do Norte;lazer;vencida;1,857;58562352;2025-11-27;Açude Serra Azul
+31909.2016-00799;GO;Centro-Oeste;Bom Retiro das Águas;dessedentação animal;vigente;2,738;86345568;2026-05-09;Rio Pardo Novo
+65328.2025-00800;MG;Bacia do São Francisco;Riacho Fundo Velho;aquicultura;vencida;3,783;119300688;2023-08-21;Rio Araguari
+53910.2022-00801;AM;Norte;Porto das Pedras Altas;lazer;em análise;0,402;12677472;2027-03-11;Rio Verde Grande
+29984.2025-00802;MG;Bacia do São Francisco;Santa Rita da Serra;termoelétrica;vigente;1,061;33459696;2026-08-13;Represa do Funil Velho
+70498.2023-00803;PR;Bacia do Paraná;Porto das Pedras Altas;abastecimento urbano;suspensa;2,777;87575472;2030-01-21;Rio Taquari-Mirim
+17328.2015-00804;GO;Bacia do Paraná;Bom Retiro das Águas;indústria;vigente;0,770;24282720;2026-12-26;Ribeirão das Antas
+97394.2025-00805;PI;Nordeste;Vila Serrana;mineração;vencida;1,617;50993712;2024-04-19;Açude Serra Azul
+34804.2018-00806;AP;Norte;Cachoeira do Vale Azul;lazer;vigente;0,219;6906384;2032-07-09;Açude Serra Azul
+14570.2022-00807;RJ;Sudeste;Campo Novo do Oeste;lazer;vigente;0,247;7789392;2028-09-08;Rio Verde Grande
+71838.2025-00808;BA;Nordeste;Campo Novo do Oeste;dessedentação animal;vigente;4,506;142101216;2029-11-22;Rio Verde Grande
+90651.2020-00809;DF;Órgão Central;Vila Serrana;termoelétrica;vigente;1,428;45033408;2027-05-25;Açude Serra Azul
+25642.2022-00810;GO;Centro-Oeste;Cachoeira do Vale Azul;abastecimento urbano;vigente;2,737;86314032;2029-09-13;Córrego Santa Luzia
+69947.2017-00811;MS;Bacia do Paraná;Alto Paraíso do Norte;abastecimento urbano;vigente;7,854;247683744;2027-07-29;Córrego Santa Luzia
+19893.2024-00812;AP;Norte;Porto das Pedras Altas;irrigação;vigente;0,525;16556400;2029-11-08;Rio Verde Grande
+59118.2022-00813;AL;Bacia do São Francisco;Riacho Fundo Velho;lazer;vigente;-4,20;50615280;2027-09-27;Represa do Funil Velho
+41001.2019-00814;AL;Bacia do São Francisco;Porto das Pedras Altas;indústria;vigente;0,234;7379424;2029-01-11;Rio Araguari
+39832.2016-00815;PE;Bacia do São Francisco;Santa Rita da Serra;irrigação;vigente;0,821;25891056;2029-07-09;Açude Serra Azul
+85620.2016-00816;AC;Norte;Riacho Fundo Velho;dessedentação animal;vigente;0,111;3500496;2029-08-21;Açude Serra Azul
+79205.2017-00817;PI;Nordeste;Vila Serrana;abastecimento urbano;vigente;1,893;59697648;2031-04-05;Córrego Santa Luzia
+78794.2023-00818;DF;Centro-Oeste;Porto das Pedras Altas;irrigação;vigente;2,579;81331344;2029-03-21;Rio Taquari-Mirim
+92948.2015-00819;GO;Centro-Oeste;Riacho Fundo Velho;lazer;suspensa;0,334;10533024;2027-09-19;Rio Taquari-Mirim
+86638.2015-00820;GO;Centro-Oeste;Alto Paraíso do Norte;mineração;vigente;0,263;8293968;2030-02-16;Açude Serra Azul
+14058.2016-00821;SP;Sudeste;Bom Retiro das Águas;mineração;vigente;0,715;22548240;2026-12-14;Rio Verde Grande
+56974.2026-00822;PE;Nordeste;Bom Retiro das Águas;irrigação;em análise;6,959;219459024;2028-05-04;Aquífero Guarani
+99964.2026-00823;RS;Sul;Cachoeira do Vale Azul;dessedentação animal;vigente;1,076;33932736;2031-03-28;Rio Verde Grande
+91216.2023-00824;AL;Bacia do São Francisco;Porto das Pedras Altas;termoelétrica;vigente;6,303;198771408;2030-11-16;Rio Verde Grande
+15060.2024-00825;RJ;Sudeste;Vila Serrana;indústria;vigente;1,949;61463664;2030-08-23;Aquífero Guarani
+35044.2015-00826;AL;Bacia do São Francisco;Cachoeira do Vale Azul;aquicultura;vigente;16,512;520722432;2029-01-29;Aquífero Guarani
+11401.2019-00827;AL;Nordeste;Cachoeira do Vale Azul;aquicultura;vigente;0,169;5329584;2030-05-28;Açude Serra Azul
+94924.2024-00828;PR;Sul;Vila Serrana;irrigação;vigente;0,639;20151504;2031-07-19;Represa do Funil Velho
+91047.2025-00829;PR;Bacia do Paraná;Vila Serrana;abastecimento urbano;vigente;0,121;3815856;2030-12-19;Rio Pardo Novo
+62457.2024-00830;SP;Sudeste;Riacho Fundo Velho;termoelétrica;vigente;0,529;16682544;2030-08-03;Rio Araguari
+84019.2024-00831;AC;Norte;Porto das Pedras Altas;termoelétrica;vigente;2,534;79912224;2028-12-08;Rio Araguari
+17496.2025-00832;SP;Sudeste;Campo Novo do Oeste;mineração;vigente;1,775;55976400;2031-06-29;Represa do Funil Velho
+49157.2021-00833;DF;Órgão Central;Alto Paraíso do Norte;mineração;vigente;7,725;243615600;2030-11-25;Rio Formoso
+18606.2016-00834;PI;Nordeste;Cachoeira do Vale Azul;termoelétrica;vigente;1,721;54273456;2026-05-07;Rio Verde Grande
+74323.2015-00835;SP;Sudeste;Alto Paraíso do Norte;dessedentação animal;vencida;0,494;15578784;2025-05-16;Ribeirão das Antas
+75569.2024-00836;MG;Sudeste;Vila Serrana;abastecimento urbano;vigente;0,698;22012128;2032-02-03;Rio Verde Grande
+72984.2018-00837;MT;Centro-Oeste;Porto das Pedras Altas;abastecimento urbano;vigente;3,228;101798208;2026-03-01;Aquífero Guarani
+97788.2026-00838;CE;Nordeste;Campo Novo do Oeste;dessedentação animal;vigente;19,727;622110672;2029-07-09;Ribeirão das Antas
+42532.2024-00839;AC;Norte;Porto das Pedras Altas;termoelétrica;vigente;5,964;188080704;2027-05-26;Ribeirão das Antas
+77622.2020-00840;PE;Bacia do São Francisco;Vila Serrana;aquicultura;vencida;0,431;13592016;2025-03-05;Aquífero Guarani
+35275.2026-00841;MS;Centro-Oeste;Vila Serrana;mineração;em análise;0,971;30621456;2029-07-11;Açude Serra Azul
+92640.2025-00842;DF;Órgão Central;Campo Novo do Oeste;abastecimento urbano;em análise;8,571;270295056;2028-09-17;Córrego Santa Luzia
+50303.2025-00843;RS;Sul;Campo Novo do Oeste;lazer;vigente;0,943;29738448;2026-04-07;Aquífero Guarani
+70404.2020-00844;MS;Centro-Oeste;Porto das Pedras Altas;mineração;vigente;1,796;56638656;2026-02-18;Rio Araguari
+82008.2017-00845;RO;Norte;Porto das Pedras Altas;abastecimento urbano;vigente;4,403;138853008;2030-12-28;Açude Serra Azul
+36052.2025-00846;DF;Órgão Central;Santa Rita da Serra;indústria;em análise;12,620;397984320;2026-04-28;Represa do Funil Velho
+57693.2022-00847;MT;Centro-Oeste;Vila Serrana;indústria;vigente;5,917;186598512;2030-11-25;Rio Taquari-Mirim
+34087.2024-00848;RN;Nordeste;Porto das Pedras Altas;lazer;vigente;1,887;59508432;2028-10-21;Ribeirão das Antas
+67356.2021-00849;DF;Órgão Central;Vila Serrana;dessedentação animal;vigente;1,364;43015104;2032-05-25;Rio Verde Grande
+11041.2017-00850;MS;Bacia do Paraná;Vila Serrana;indústria;vigente;8,140;256703040;31/12/2026;Córrego Santa Luzia
+90710.2020-00851;SP;Bacia do Paraná;Riacho Fundo Velho;indústria;vigente;1,137;35856432;2029-10-04;Rio Araguari
+51870.2024-00852;DF;Órgão Central;Vila Serrana;lazer;vigente;0,908;28634688;2031-04-22;Açude Serra Azul
+64717.2020-00853;AP;Norte;Vila Serrana;mineração;vigente;7,043;222108048;2029-02-15;Rio Verde Grande
+58525.2023-00854;DF;Centro-Oeste;Cachoeira do Vale Azul;abastecimento urbano;em análise;6,766;213372576;2028-08-31;Rio Araguari
+78520.2025-00855;RS;Sul;Bom Retiro das Águas;mineração;vigente;0,481;15168816;2026-07-23;Rio Formoso
+45531.2015-00856;ES;Sudeste;Riacho Fundo Velho;irrigação;vigente;2,785;87827760;2030-04-04;Córrego Santa Luzia
+93424.2019-00857;SC;Sul;Vila Serrana;lazer;vigente;0,789;24881904;2030-01-24;Aquífero Guarani
+71617.2023-00858;SC;Sul;Riacho Fundo Velho;termoelétrica;vigente;0,468;14758848;2030-04-02;Represa do Funil Velho
+68352.2015-00859;DF;Órgão Central;Porto das Pedras Altas;dessedentação animal;vigente;0,415;13087440;2027-05-07;Ribeirão das Antas
+50599.2020-00860;DF;Órgão Central;Alto Paraíso do Norte;irrigação;vigente;;274615488;2027-01-03;Represa do Funil Velho
+95567.2024-00861;DF;Centro-Oeste;Cachoeira do Vale Azul;aquicultura;vigente;7,137;225072432;31/12/2026;Rio Formoso
+44027.2023-00862;PE;Bacia do São Francisco;Alto Paraíso do Norte;dessedentação animal;vigente;0,563;17754768;2027-04-05;Rio Formoso
+72706.2026-00863;PE;Bacia do São Francisco;Vila Serrana;termoelétrica;em análise;1,882;59350752;2028-11-24;Ribeirão das Antas
+55703.2022-00864;GO;Centro-Oeste;Santa Rita da Serra;dessedentação animal;em análise;3,495;110218320;2026-09-18;Rio Taquari-Mirim
+79953.2016-00865;PE;Bacia do São Francisco;Cachoeira do Vale Azul;mineração;em análise;4,780;150742080;2026-03-16;Rio Pardo Novo
+74001.2024-00866;MG;Sudeste;Vila Serrana;termoelétrica;vigente;1,692;53358912;2031-12-13;Rio Araguari
+85044.2020-00867;DF;Órgão Central;Bom Retiro das Águas;lazer;vigente;1,877;59193072;2026-03-15;Córrego Santa Luzia
+49018.2018-00868;DF;Órgão Central;Riacho Fundo Velho;abastecimento urbano;pendente de analise;26,503;835798608;2027-06-11;Rio Verde Grande
+18608.2022-00869;SC;Sul;Porto das Pedras Altas;indústria;vigente;1,589;50110704;2031-12-22;Rio Formoso
+89357.2024-00870;MA;Nordeste;Cachoeira do Vale Azul;termoelétrica;vigente;1,098;34626528;2029-12-30;Rio Taquari-Mirim
+20272.2023-00871;PE;Nordeste;Vila Serrana;abastecimento urbano;vigente;0,099;3122064;2032-01-28;Rio Verde Grande
+13610.2023-00872;DF;Órgão Central;Santa Rita da Serra;indústria;vigente;0,255;8041680;2028-11-04;Açude Serra Azul
+64391.2019-00873;PE;Bacia do São Francisco;Santa Rita da Serra;termoelétrica;vigente;2,211;69726096;2031-05-08;Rio Verde Grande
+45994.2025-00874;DF;Centro-Oeste;Santa Rita da Serra;irrigação;vigente;2,511;79186896;2026-11-26;Córrego Santa Luzia
+86089.2022-00875;DF;Órgão Central;Riacho Fundo Velho;irrigação;vencida;18,174;573135264;2025-09-19;Açude Serra Azul
+30878.2024-00876;RN;Nordeste;Alto Paraíso do Norte;abastecimento urbano;vigente;0,864;27247104;2029-10-13;Córrego Santa Luzia
+59702.2016-00877;PE;Nordeste;Campo Novo do Oeste;aquicultura;suspensa;10,147;319995792;2026-02-18;Rio Araguari
+65052.2016-00878;SC;Sul;Vila Serrana;dessedentação animal;em análise;8,601;271241136;2027-04-20;Ribeirão das Antas
+90221.2016-00879;AL;Nordeste;Alto Paraíso do Norte;aquicultura;vigente;0,701;22106736;2026-10-25;Aquífero Guarani
+29759.2021-00880;MT;Centro-Oeste;Porto das Pedras Altas;mineração;vigente;9,902;312269472;2028-12-24;Rio Formoso
+20466.2026-00881;PI;Nordeste;Cachoeira do Vale Azul;indústria;vigente;1,499;47272464;2030-10-12;Córrego Santa Luzia
+16424.2023-00882;GO;Centro-Oeste;Alto Paraíso do Norte;irrigação;vigente;4,065;128193840;2028-09-16;Açude Serra Azul
+36645.2018-00883;MG;Sudeste;Cachoeira do Vale Azul;indústria;vencida;0,072;2270592;2024-03-15;Ribeirão das Antas
+91599.2023-00884;DF;Órgão Central;Campo Novo do Oeste;termoelétrica;vencida;1,935;61022160;2025-09-11;Rio Taquari-Mirim
+12920.2021-00885;TO;Norte;Alto Paraíso do Norte;abastecimento urbano;vencida;0,767;24188112;2025-01-15;Aquífero Guarani
+48893.2020-00886;SP;Sudeste;Vila Serrana;dessedentação animal;suspensa;0,163;5140368;2026-07-27;Córrego Santa Luzia
+76427.2024-00887;PE;Nordeste;Vila Serrana;aquicultura;vigente;0,602;18984672;2028-01-25;Aquífero Guarani
+41396.2025-00888;PE;Bacia do São Francisco;Vila Serrana;indústria;vencida;1,621;51119856;2025-05-31;Rio Taquari-Mirim
+38401.2022-00889;AC;Norte;Bom Retiro das Águas;dessedentação animal;em análise;0,158;4982688;2032-07-01;Rio Taquari-Mirim
+92001.2020-00890;DF;Centro-Oeste;Alto Paraíso do Norte;abastecimento urbano;vigente;0,600;18921600;2031-03-02;Rio Taquari-Mirim
+59692.2022-00891;MS;Centro-Oeste;Vila Serrana;dessedentação animal;vigente;0,372;11731392;2032-07-09;Açude Serra Azul
+61959.2018-00892;PE;Nordeste;Vila Serrana;lazer;vigente;0,341;10753776;2027-11-21;Córrego Santa Luzia
+73805.2019-00893;MG;Bacia do São Francisco;Cachoeira do Vale Azul;termoelétrica;vigente;0,620;19552320;2031-05-29;Ribeirão das Antas
+47481.2021-00894;MS;Centro-Oeste;Santa Rita da Serra;indústria;em análise;3,974;125324064;2026-11-27;Rio Verde Grande
+34027.2024-00895;AM;Norte;Porto das Pedras Altas;aquicultura;em análise;2,896;91328256;2030-09-09;Açude Serra Azul
+86784.2025-00896;RO;Norte;Santa Rita da Serra;indústria;vigente;0,738;23273568;2027-02-11;Açude Serra Azul
+98704.2018-00897;PB;Nordeste;Bom Retiro das Águas;indústria;vigente;1,177;37117872;2032-01-23;Rio Formoso
+14319.2021-00898;MS;Centro-Oeste;Vila Serrana;dessedentação animal;vigente;1,123;35414928;2027-10-07;Rio Taquari-Mirim
+75478.2016-00899;DF;Órgão Central;Santa Rita da Serra;dessedentação animal;vencida;0,170;5361120;2025-04-22;Rio Formoso
+95479.2015-00900;AL;Nordeste;Santa Rita da Serra;indústria;vigente;0,287;9050832;2030-04-15;Rio Araguari
+64268.2021-00901;DF;Órgão Central;Bom Retiro das Águas;dessedentação animal;vigente;0,268;8451648;2032-01-04;Rio Verde Grande
+45911.2025-00902;PR;Bacia do Paraná;Campo Novo do Oeste;mineração;vencida;0,174;5487264;2025-07-24;Rio Araguari
+54853.2026-00903;DF;Órgão Central;Alto Paraíso do Norte;indústria;vigente;2,444;77073984;2027-05-04;Rio Formoso
+58725.2025-00904;SC;Sul;Cachoeira do Vale Azul;irrigação;vigente;0,985;31062960;2028-11-20;Rio Formoso
+92668.2015-00905;MS;Centro-Oeste;Alto Paraíso do Norte;lazer;vigente;4,652;146705472;2027-11-05;Rio Verde Grande
+55702.2016-00906;DF;Órgão Central;Cachoeira do Vale Azul;irrigação;vigente;1,731;54588816;2029-12-12;Rio Pardo Novo
+99284.2022-00907;DF;Órgão Central;Vila Serrana;lazer;vigente;0,243;7663248;2028-12-22;Ribeirão das Antas
+87430.2022-00908;TO;Norte;Vila Serrana;irrigação;em análise;3,270;103122720;2031-08-25;Rio Verde Grande
+60951.2023-00909;MT;Centro-Oeste;Porto das Pedras Altas;indústria;vigente;0,852;26868672;2030-01-18;Rio Pardo Novo
+97785.2023-00910;GO;Bacia do Paraná;Porto das Pedras Altas;irrigação;em análise;11,683;368435088;2031-05-15;Córrego Santa Luzia
+21625.2023-00911;PR;Sul;Riacho Fundo Velho;termoelétrica;vigente;4,065;128193840;2031-07-02;Aquífero Guarani
+71636.2015-00912;AM;Norte;Campo Novo do Oeste;mineração;vencida;1,289;40649904;2024-08-29;Aquífero Guarani
+93598.2017-00913;MT;Centro-Oeste;Santa Rita da Serra;indústria;vigente;0,394;12425184;2027-08-12;Rio Verde Grande
+96339.2016-00914;AL;Nordeste;Porto das Pedras Altas;indústria;vigente;1,191;37559376;2029-06-15;Açude Serra Azul
+12557.2016-00915;AC;Norte;Bom Retiro das Águas;irrigação;em análise;8,502;268119072;2028-07-15;Rio Pardo Novo
+98542.2020-00916;SE;Nordeste;Santa Rita da Serra;mineração;vigente;0,746;23525856;2032-06-06;Represa do Funil Velho
+92560.2026-00917;AC;Norte;Porto das Pedras Altas;abastecimento urbano;vigente;0,150;4730400;2030-01-24;Rio Verde Grande
+23954.2018-00918;RJ;Sudeste;Riacho Fundo Velho;mineração;vigente;2,793;88080048;2029-12-01;Córrego Santa Luzia
+80909.2017-00919;TO;Norte;Riacho Fundo Velho;indústria;suspensa;2,954;93157344;2026-09-01;Represa do Funil Velho
+43771.2015-00920;SP;Sudeste;Santa Rita da Serra;abastecimento urbano;vigente;1,001;31567535;2032-03-17;Açude Serra Azul
+33158.2020-00921;RJ;Sudeste;Porto das Pedras Altas;irrigação;vigente;4,721;148881456;2031-04-01;Aquífero Guarani
+26285.2019-00922;DF;Órgão Central;Alto Paraíso do Norte;abastecimento urbano;vigente;0,114;3595104;2030-03-02;Córrego Santa Luzia
+57038.2015-00923;DF;Órgão Central;Alto Paraíso do Norte;termoelétrica;vigente;2,906;91643616;2026-12-26;Rio Verde Grande
+76478.2016-00924;SP;Bacia do Paraná;Riacho Fundo Velho;termoelétrica;vigente;1,469;46326384;31/12/2026;Represa do Funil Velho
+46901.2020-00925;AL;Nordeste;Santa Rita da Serra;abastecimento urbano;vigente;1,229;38757744;2029-04-03;Rio Pardo Novo
+63736.2020-00926;DF;Centro-Oeste;Bom Retiro das Águas;mineração;vigente;0,291;9176976;2028-05-07;Rio Araguari
+52372.2016-00927;DF;Órgão Central;Alto Paraíso do Norte;aquicultura;vigente;0,218;6874848;2027-06-16;Ribeirão das Antas
+43914.2024-00928;DF;Órgão Central;Porto das Pedras Altas;abastecimento urbano;vigente;0,064;2018304;2031-07-19;Rio Araguari
+10183.2022-00929;PR;Sul;Cachoeira do Vale Azul;abastecimento urbano;vencida;15,777;497543472;2025-11-08;Córrego Santa Luzia
+93250.2019-00930;ES;Sudeste;Cachoeira do Vale Azul;lazer;vigente;0,722;22768992;2030-04-14;Rio Araguari
+19740.2024-00931;RJ;Sudeste;Bom Retiro das Águas;mineração;vigente;0,413;13024368;2030-06-30;Rio Formoso
+76576.2016-00932;AM;Norte;Bom Retiro das Águas;lazer;suspensa;1,308;41249088;2030-10-26;Aquífero Guarani
+61801.2023-00933;MG;Bacia do São Francisco;Riacho Fundo Velho;irrigação;vigente;0,400;12614400;2032-06-21;Rio Araguari
+73862.2015-00934;MS;Bacia do Paraná;Alto Paraíso do Norte;aquicultura;vigente;1,529;48218544;2026-07-14;Rio Araguari
+97098.2018-00935;DF;Órgão Central;Alto Paraíso do Norte;irrigação;vencida;0,712;22453632;2024-05-29;Açude Serra Azul
+68191.2015-00936;RJ;Sudeste;Vila Serrana;lazer;em análise;7,196;226933056;2028-03-16;Rio Taquari-Mirim
+37363.2020-00937;GO;Centro-Oeste;Vila Serrana;termoelétrica;vigente;6,258;197352288;2027-05-16;Rio Pardo Novo
+60007.2015-00938;SP;Sudeste;Vila Serrana;aquicultura;vigente;2,053;64743408;2029-10-14;Represa do Funil Velho
+28191.2025-00939;DF;Órgão Central;Alto Paraíso do Norte;mineração;vigente;5,174;163167264;2030-09-04;Represa do Funil Velho
+52284.2026-00940;BA;Bacia do São Francisco;Cachoeira do Vale Azul;mineração;vigente;14,540;458533440;2032-03-15;Córrego Santa Luzia
+41086.2025-00941;GO;Centro-Oeste;Santa Rita da Serra;termoelétrica;vigente;7,476;235763136;2030-12-20;Rio Araguari
+46348.2016-00942;PI;Nordeste;Riacho Fundo Velho;dessedentação animal;vigente;7,456;235132416;2027-11-26;Represa do Funil Velho
+25967.2025-00943;MS;Centro-Oeste;Porto das Pedras Altas;abastecimento urbano;vigente;0,255;8041680;2032-03-04;Represa do Funil Velho
+33064.2025-00944;DF;Órgão Central;Bom Retiro das Águas;indústria;vigente;2,533;79880688;2029-10-12;Aquífero Guarani
+58587.2015-00945;SP;Sudeste;Campo Novo do Oeste;mineração;vigente;5,307;167361552;2032-07-08;Represa do Funil Velho
+71873.2021-00946;AP;Norte;Porto das Pedras Altas;abastecimento urbano;vigente;2,136;67360896;2030-07-06;Rio Araguari
+81162.2025-00947;SP;Sudeste;Vila Serrana;dessedentação animal;em análise;0,627;19773072;2032-07-20;Córrego Santa Luzia
+90269.2024-00948;DF;Centro-Oeste;Bom Retiro das Águas;dessedentação animal;vigente;0,106;3342816;2031-02-25;Açude Serra Azul
+84863.2018-00949;AM;Norte;Riacho Fundo Velho;dessedentação animal;vigente;1,053;33207407;2031-10-30;Açude Serra Azul
+31806.2017-00950;ES;Sudeste;Alto Paraíso do Norte;aquicultura;em análise;0,106;3342816;2028-11-02;Rio Pardo Novo
+71915.2021-00951;PR;Sul;Vila Serrana;abastecimento urbano;em análise;1,594;50268384;2026-12-12;Rio Araguari
+80308.2018-00952;MG;Sudeste;Campo Novo do Oeste;abastecimento urbano;vigente;0,492;15515712;2026-09-04;Rio Formoso
+83168.2017-00953;GO;Centro-Oeste;Alto Paraíso do Norte;abastecimento urbano;vigente;0,478;15074208;2027-04-10;Açude Serra Azul
+40228.2017-00954;PR;Sul;Campo Novo do Oeste;aquicultura;vigente;0,789;24881904;2032-07-04;Aquífero Guarani
+96526.2017-00955;AM;Norte;Campo Novo do Oeste;irrigação;vigente;4,974;156860064;2031-07-11;Rio Verde Grande
+97151.2023-00956;SE;Nordeste;Cachoeira do Vale Azul;mineração;vigente;1,294;40807584;2031-02-18;Rio Taquari-Mirim
+40274.2021-00957;RS;Sul;Campo Novo do Oeste;termoelétrica;vigente;1,112;35068032;2030-11-22;Rio Verde Grande
+48943.2024-00958;ES;Sudeste;Cachoeira do Vale Azul;irrigação;vigente;0,559;17628624;2029-12-22;Aquífero Guarani
+59922.2020-00959;BA;Bacia do São Francisco;Bom Retiro das Águas;dessedentação animal;vencida;0,198;6244128;2024-10-31;Rio Pardo Novo
+58052.2019-00960;RN;Nordeste;Bom Retiro das Águas;mineração;vigente;0,292;9208512;2026-12-18;Rio Taquari-Mirim
+87198.2021-00961;MG;Bacia do São Francisco;Santa Rita da Serra;dessedentação animal;vigente;0,424;13371264;2032-02-21;Rio Pardo Novo
+67029.2026-00962;AL;Nordeste;Alto Paraíso do Norte;indústria;vigente;0,801;25260336;2032-02-23;Represa do Funil Velho
+60137.2026-00963;GO;Centro-Oeste;Bom Retiro das Águas;dessedentação animal;vencida;1,583;49921488;2024-07-13;Rio Pardo Novo
+87487.2025-00964;DF;Órgão Central;Porto das Pedras Altas;lazer;vigente;0,795;25071120;2030-12-24;Rio Formoso
+59121.2018-00965;AL;Bacia do São Francisco;Riacho Fundo Velho;indústria;vencida;0,271;8546256;2023-10-06;Açude Serra Azul
+25661.2018-00966;SC;Sul;Cachoeira do Vale Azul;dessedentação animal;vigente;1,331;41974416;2031-04-30;Rio Pardo Novo
+80555.2017-00967;MG;Bacia do São Francisco;Bom Retiro das Águas;aquicultura;em análise;0,191;6023376;2027-06-25;Rio Araguari
+21624.2019-00968;PE;Nordeste;Bom Retiro das Águas;termoelétrica;vigente;8,551;269664336;2029-02-25;Aquífero Guarani
+86476.2023-00969;PE;Bacia do São Francisco;Porto das Pedras Altas;abastecimento urbano;vigente;6,678;210597408;2029-05-30;Rio Verde Grande
+89923.2020-00970;GO;Bacia do Paraná;Santa Rita da Serra;indústria;suspensa;0,441;13907376;2030-06-03;Córrego Santa Luzia
+59018.2023-00971;RO;Norte;Bom Retiro das Águas;indústria;vigente;2,593;81772848;2031-07-25;Aquífero Guarani
+69469.2015-00972;SP;Bacia do Paraná;Porto das Pedras Altas;aquicultura;vigente;10,508;331380288;2028-09-06;Rio Araguari
+93628.2023-00973;MS;Bacia do Paraná;Bom Retiro das Águas;dessedentação animal;suspensa;2,618;82561248;2031-09-07;Rio Araguari
+35702.2016-00974;MG;Bacia do São Francisco;Vila Serrana;termoelétrica;vigente;1,410;44465760;2026-11-29;Rio Taquari-Mirim
+46653.2025-00975;CE;Nordeste;Bom Retiro das Águas;termoelétrica;suspensa;2,519;79439184;2030-05-13;Rio Formoso
+11477.2017-00976;MS;Centro-Oeste;Porto das Pedras Altas;mineração;vigente;0,377;11889072;2029-12-25;Rio Formoso
+97959.2025-00977;DF;Órgão Central;Campo Novo do Oeste;aquicultura;vigente;0,599;18890064;2030-03-26;Aquífero Guarani
+26996.2015-00978;MA;Nordeste;Bom Retiro das Águas;termoelétrica;vencida;4,150;130874400;2024-11-24;Rio Pardo Novo
+24725.2025-00979;MS;Bacia do Paraná;Bom Retiro das Águas;irrigação;em análise;0,675;21286800;2028-11-08;Açude Serra Azul
+83258.2023-00980;AC;Norte;Cachoeira do Vale Azul;dessedentação animal;vigente;9,663;304732368;2031-08-28;Represa do Funil Velho
+74160.2020-00981;MG;Sudeste;Porto das Pedras Altas;mineração;vigente;0,566;17849376;2028-06-03;Rio Taquari-Mirim
+89122.2019-00982;PB;Nordeste;Bom Retiro das Águas;lazer;vigente;4,452;140398272;2028-07-25;Córrego Santa Luzia
+22616.2021-00983;GO;Bacia do Paraná;Riacho Fundo Velho;aquicultura;vigente;9,693;305678448;2030-11-18;Córrego Santa Luzia
+51819.2026-00984;CE;Nordeste;Cachoeira do Vale Azul;abastecimento urbano;vigente;0,908;28634688;2030-04-27;Rio Pardo Novo
+82175.2024-00985;GO;Bacia do Paraná;Porto das Pedras Altas;irrigação;suspensa;0,462;14569632;2030-08-16;Córrego Santa Luzia
+73745.2021-00986;CE;Nordeste;Cachoeira do Vale Azul;abastecimento urbano;vigente;0,152;4793472;2029-06-19;Rio Verde Grande
+86042.2022-00987;DF;Órgão Central;Alto Paraíso do Norte;lazer;vigente;2,329;73447344;2029-11-08;Rio Taquari-Mirim
+75570.2023-00988;PR;Sul;Cachoeira do Vale Azul;mineração;vigente;3,978;125450208;2031-12-21;Ribeirão das Antas
+31228.2020-00989;AC;Norte;Santa Rita da Serra;termoelétrica;vigente;0,398;12551328;2030-04-09;Represa do Funil Velho
+40050.2015-00990;RS;Sul;Santa Rita da Serra;indústria;vigente;0,462;14569632;2030-08-30;Rio Pardo Novo
+67416.2026-00991;SP;Bacia do Paraná;Riacho Fundo Velho;termoelétrica;vencida;0,257;8104752;2023-09-13;Rio Formoso
+18857.2019-00992;RJ;Sudeste;Cachoeira do Vale Azul;indústria;vigente;0,213;6717168;2028-10-03;Rio Verde Grande
+84983.2024-00993;MS;Centro-Oeste;Porto das Pedras Altas;mineração;vigente;0,697;21980592;2028-12-28;Rio Formoso
+75059.2018-00994;MS;Bacia do Paraná;Porto das Pedras Altas;termoelétrica;vigente;0,542;17092512;2031-10-04;Represa do Funil Velho
+34343.2020-00995;RJ;Sudeste;Bom Retiro das Águas;irrigação;em análise;5,631;177579216;2028-03-17;Rio Taquari-Mirim
+38250.2017-00996;SP;Sudeste;Riacho Fundo Velho;mineração;vigente;1,033;32576687;2032-06-27;Rio Verde Grande
+50459.2025-00997;SC;Sul;Vila Serrana;termoelétrica;vigente;0,408;12866688;2028-08-19;Represa do Funil Velho
+43160.2017-00998;DF;Órgão Central;Riacho Fundo Velho;aquicultura;vigente;2,094;66036383;2031-11-02;Rio Pardo Novo
+31980.2015-00999;AP;Norte;Alto Paraíso do Norte;indústria;vigente;0,596;18795456;2027-06-23;Rio Araguari
+47256.2026-01000;SP;Bacia do Paraná;Campo Novo do Oeste;irrigação;vigente;2,765;87197040;2031-09-02;Rio Formoso
+71255.2018-01001;PI;Nordeste;Bom Retiro das Águas;aquicultura;suspensa;0,330;10406880;2032-01-26;Rio Taquari-Mirim
+71345.2024-01002;DF;Órgão Central;Alto Paraíso do Norte;abastecimento urbano;vigente;0,157;4951152;2027-09-14;Córrego Santa Luzia
+66203.2017-01003;AM;Norte;Cachoeira do Vale Azul;irrigação;vigente;0,909;28666224;2031-09-16;Ribeirão das Antas
+73406.2019-01004;DF;Órgão Central;Alto Paraíso do Norte;irrigação;em análise;1,652;52097472;2027-08-28;Aquífero Guarani
+47377.2025-01005;CE;Nordeste;Campo Novo do Oeste;aquicultura;vigente;0,681;21476016;2028-04-08;Rio Araguari
+68698.2017-01006;MS;Centro-Oeste;Santa Rita da Serra;termoelétrica;vigente;1,746;55061856;2027-06-18;Aquífero Guarani
+85095.2020-01007;MG;Bacia do São Francisco;Riacho Fundo Velho;dessedentação animal;suspensa;0,358;11289888;2031-09-12;Ribeirão das Antas
+94289.2023-01008;MA;Nordeste;Vila Serrana;lazer;vigente;1,600;50457600;2030-12-25;Açude Serra Azul
+60003.2018-01009;AP;Norte;Campo Novo do Oeste;aquicultura;vigente;11,176;352446336;2026-02-02;Rio Verde Grande
+14781.2016-01010;PR;Bacia do Paraná;Alto Paraíso do Norte;irrigação;em análise;1,093;34468848;2031-04-21;Rio Verde Grande
+38909.2025-01011;BA;Bacia do São Francisco;Bom Retiro das Águas;mineração;vigente;1,381;43551216;2030-07-01;Rio Araguari
+26275.2017-01012;MG;Sudeste;Alto Paraíso do Norte;dessedentação animal;vencida;1,132;35698752;2024-06-23;Represa do Funil Velho
+90581.2020-01013;SP;Sudeste;Bom Retiro das Águas;indústria;vigente;0,802;25291872;2030-02-14;Rio Araguari
+47883.2017-01014;BA;Bacia do São Francisco;Bom Retiro das Águas;indústria;vigente;1,388;43771968;2026-11-22;Rio Araguari
+62130.2024-01015;RS;Sul;Porto das Pedras Altas;termoelétrica;vigente;0,093;2932848;2028-12-26;Rio Verde Grande
+12519.2023-01016;MT;Centro-Oeste;Vila Serrana;abastecimento urbano;suspensa;0,473;14916528;2027-07-26;Represa do Funil Velho
+53588.2017-01017;BA;Bacia do São Francisco;Cachoeira do Vale Azul;dessedentação animal;vigente;3,757;118480752;2028-07-14;Córrego Santa Luzia
+32283.2024-01018;ES;Sudeste;Vila Serrana;mineração;vigente;0,248;7820928;2027-12-04;Rio Taquari-Mirim
+40283.2023-01019;DF;Órgão Central;Porto das Pedras Altas;aquicultura;vigente;0,145;4572720;2030-07-05;Rio Verde Grande
+83416.2017-01020;PR;Bacia do Paraná;Bom Retiro das Águas;irrigação;vigente;2,579;81331344;2030-10-19;Rio Formoso
+13912.2025-01021;RN;Nordeste;Campo Novo do Oeste;termoelétrica;vigente;4,859;153233424;2030-11-10;Rio Pardo Novo
+84191.2026-01022;SC;Sul;Porto das Pedras Altas;lazer;pendente de analise;1,151;36297936;2032-04-12;Córrego Santa Luzia
+85096.2015-01023;MT;Centro-Oeste;Santa Rita da Serra;abastecimento urbano;vigente;3,600;113529600;2027-08-02;Açude Serra Azul
+59746.2016-01024;PR;Sul;Vila Serrana;indústria;vigente;4,602;145128672;2028-10-27;Açude Serra Azul
+64594.2021-01025;GO;Centro-Oeste;Porto das Pedras Altas;indústria;em análise;1,512;47682432;2028-01-27;Açude Serra Azul
+64332.2021-01026;SC;Sul;Porto das Pedras Altas;lazer;vigente;0,427;13465872;2029-04-03;Ribeirão das Antas
+29204.2017-01027;AM;Norte;Porto das Pedras Altas;indústria;suspensa;0,476;15011136;2032-07-19;Represa do Funil Velho
+97380.2022-01028;MS;Centro-Oeste;Campo Novo do Oeste;irrigação;vigente;0,818;25796448;2031-03-15;Rio Pardo Novo
+33012.2020-01029;AP;Norte;Santa Rita da Serra;dessedentação animal;vigente;1,815;57237840;2030-02-05;Rio Taquari-Mirim
+53302.2015-01030;PE;Bacia do São Francisco;Santa Rita da Serra;mineração;vigente;1,451;45758736;2029-09-27;Represa do Funil Velho
+88350.2026-01031;DF;Órgão Central;Porto das Pedras Altas;aquicultura;vencida;0,425;13402800;2024-04-29;Represa do Funil Velho
+25114.2018-01032;PR;Bacia do Paraná;Cachoeira do Vale Azul;irrigação;vigente;0,749;23620464;2027-11-17;Rio Taquari-Mirim
+92081.2023-01033;PA;Norte;Santa Rita da Serra;termoelétrica;vigente;0,055;1734480;2026-10-14;Rio Pardo Novo
+92467.2015-01034;MS;Bacia do Paraná;Vila Serrana;indústria;vigente;0,948;29896128;2026-07-20;Represa do Funil Velho
+80315.2019-01035;AM;Norte;Santa Rita da Serra;indústria;vigente;1,589;50110704;2028-06-23;Rio Verde Grande
+70053.2020-01036;DF;Órgão Central;Vila Serrana;abastecimento urbano;vigente;2,409;75970224;2027-06-13;Ribeirão das Antas
+40288.2017-01037;AL;Bacia do São Francisco;Bom Retiro das Águas;mineração;vigente;0,158;4982688;2029-09-11;Represa do Funil Velho
+44653.2018-01038;RJ;Sudeste;Riacho Fundo Velho;lazer;vigente;1,864;58783104;2031-10-22;Rio Formoso
+50691.2024-01039;MG;Bacia do São Francisco;Porto das Pedras Altas;lazer;vigente;1,955;61652880;2031-12-06;Represa do Funil Velho
+84640.2024-01040;PE;Nordeste;Vila Serrana;irrigação;vigente;4,687;147809232;2027-11-14;Rio Formoso
+84127.2018-01041;GO;Bacia do Paraná;Riacho Fundo Velho;lazer;vigente;0,329;10375344;2029-03-09;Ribeirão das Antas
+80938.2021-01042;PE;Bacia do São Francisco;Santa Rita da Serra;aquicultura;vencida;1,953;61589808;2023-09-29;Rio Taquari-Mirim
+25396.2017-01043;RO;Norte;Porto das Pedras Altas;irrigação;vigente;1,939;61148304;2032-04-27;Aquífero Guarani
+11608.2018-01044;DF;Órgão Central;Porto das Pedras Altas;abastecimento urbano;em análise;1,641;51750576;2031-04-24;Rio Araguari
+14399.2022-01045;AP;Norte;Santa Rita da Serra;abastecimento urbano;vigente;0,839;26458704;2032-02-09;Açude Serra Azul
+49486.2021-01046;SC;Sul;Vila Serrana;indústria;vencida;1,484;46799424;2023-10-07;Rio Pardo Novo
+86893.2021-01047;SE;Nordeste;Campo Novo do Oeste;dessedentação animal;em análise;18,687;589313232;2026-10-02;Rio Pardo Novo
+64112.2015-01048;DF;Centro-Oeste;Porto das Pedras Altas;indústria;vigente;0,961;30306096;2029-08-08;Rio Formoso
+78623.2019-01049;RJ;Sudeste;Riacho Fundo Velho;abastecimento urbano;vigente;1,812;57143232;2029-03-09;Rio Araguari
+44634.2017-01050;DF;Órgão Central;Campo Novo do Oeste;termoelétrica;vigente;1,896;59792256;2032-06-12;Rio Formoso
+30659.2022-01051;PE;Bacia do São Francisco;Campo Novo do Oeste;lazer;vigente;1,711;53958096;2028-06-08;Represa do Funil Velho
+48557.2020-01052;MS;Bacia do Paraná;Riacho Fundo Velho;lazer;vigente;0,528;16651008;2032-02-12;Rio Verde Grande
+50293.2023-01053;DF;Órgão Central;Riacho Fundo Velho;termoelétrica;vigente;5,738;180953568;2026-02-11;Aquífero Guarani
+23540.2017-01054;DF;Órgão Central;Campo Novo do Oeste;aquicultura;vigente;3,122;98455392;2026-04-26;Rio Pardo Novo
+34739.2019-01055;ES;Sudeste;Riacho Fundo Velho;aquicultura;vigente;0,110;3468960;2029-04-18;Rio Araguari
+15399.2021-01056;MG;Bacia do São Francisco;Vila Serrana;dessedentação animal;vigente;0,394;12425184;2029-06-02;Rio Verde Grande
+50026.2017-01057;DF;Órgão Central;Campo Novo do Oeste;dessedentação animal;vigente;4,978;156986208;2030-10-27;Rio Pardo Novo
+19080.2026-01058;SP;Bacia do Paraná;Porto das Pedras Altas;abastecimento urbano;vigente;0,495;15610320;2028-06-14;Córrego Santa Luzia
+86846.2016-01059;MA;Nordeste;Cachoeira do Vale Azul;aquicultura;vigente;1,776;56007936;2028-01-14;Rio Formoso
+66884.2023-01060;MS;Bacia do Paraná;Vila Serrana;irrigação;vigente;1,541;48596976;2027-03-13;Rio Formoso
+92074.2016-01061;MS;Centro-Oeste;Porto das Pedras Altas;indústria;vigente;0,952;30022272;2026-08-16;Ribeirão das Antas
+71211.2015-01062;DF;Órgão Central;Riacho Fundo Velho;abastecimento urbano;em análise;2,179;68716944;2027-04-13;Rio Pardo Novo
+12815.2021-01063;ES;Sudeste;Riacho Fundo Velho;termoelétrica;em análise;1,305;41154480;2029-09-13;Rio Verde Grande
+25699.2022-01064;DF;Órgão Central;Santa Rita da Serra;aquicultura;vigente;1,112;35068032;2032-02-16;Represa do Funil Velho
+40434.2016-01065;DF;Órgão Central;Campo Novo do Oeste;abastecimento urbano;vigente;1,263;39829968;2032-05-29;Açude Serra Azul
+33116.2022-01066;SP;Sudeste;Riacho Fundo Velho;irrigação;vencida;10,410;328289760;2024-05-25;Rio Taquari-Mirim
+13837.2023-01067;AC;Norte;Cachoeira do Vale Azul;dessedentação animal;em análise;2,360;74424960;2030-11-09;Aquífero Guarani
+96701.2018-01068;MG;Sudeste;Cachoeira do Vale Azul;termoelétrica;em análise;0,847;26710992;2032-05-24;Córrego Santa Luzia
+83752.2015-01069;ES;Sudeste;Santa Rita da Serra;dessedentação animal;em análise;12,596;397227456;2026-06-25;Rio Taquari-Mirim
+14472.2022-01070;DF;Centro-Oeste;Porto das Pedras Altas;abastecimento urbano;vencida;0,281;8861616;2023-11-14;Córrego Santa Luzia
+35313.2020-01071;DF;Órgão Central;Cachoeira do Vale Azul;termoelétrica;vigente;0,219;6906384;2030-04-19;Rio Formoso
+70073.2025-01072;DF;Órgão Central;Cachoeira do Vale Azul;termoelétrica;vigente;0,223;7032528;2026-08-28;Represa do Funil Velho
+63609.2026-01073;RS;Sul;Vila Serrana;indústria;vigente;0,414;13055904;2026-04-16;Rio Verde Grande
+31851.2026-01074;MA;Nordeste;Vila Serrana;termoelétrica;suspensa;0,900;28382400;2027-04-02;Represa do Funil Velho
+23881.2018-01075;TO;Norte;Santa Rita da Serra;termoelétrica;vigente;2,436;76821696;2031-03-02;Rio Araguari
+96307.2015-01076;RO;Norte;Riacho Fundo Velho;termoelétrica;vigente;0,640;20183040;2026-04-22;Rio Pardo Novo
+50183.2026-01077;PR;Sul;Campo Novo do Oeste;irrigação;vigente;0,814;25670304;2027-02-16;Rio Araguari
+87648.2016-01078;MS;Centro-Oeste;Campo Novo do Oeste;lazer;suspensa;2,856;90066816;2029-07-30;Rio Formoso
+99277.2022-01079;DF;Centro-Oeste;Porto das Pedras Altas;abastecimento urbano;vigente;1,217;38379312;2027-08-12;Rio Araguari
+52587.2017-01080;PB;Nordeste;Cachoeira do Vale Azul;dessedentação animal;vigente;2,282;71965152;2026-04-27;Ribeirão das Antas
+95446.2016-01081;RN;Nordeste;Bom Retiro das Águas;aquicultura;vigente;4,332;136613952;2028-08-27;Aquífero Guarani
+35471.2025-01082;PR;Bacia do Paraná;Alto Paraíso do Norte;dessedentação animal;em análise;4,198;132388128;2028-01-22;Rio Araguari
+48860.2024-01083;DF;Órgão Central;Bom Retiro das Águas;lazer;vigente;2,236;70514496;2026-12-13;Córrego Santa Luzia
+88654.2020-01084;ES;Sudeste;Bom Retiro das Águas;dessedentação animal;vigente;1,182;37275552;2028-08-18;Represa do Funil Velho
+56890.2018-01085;MG;Bacia do São Francisco;Santa Rita da Serra;dessedentação animal;vigente;0,369;11636784;2028-05-19;Aquífero Guarani
+67367.2015-01086;MT;Centro-Oeste;Bom Retiro das Águas;termoelétrica;vigente;0,701;22106736;2031-10-28;Represa do Funil Velho
+58868.2022-01087;AL;Nordeste;Bom Retiro das Águas;termoelétrica;vigente;1,347;42478992;2027-07-26;Córrego Santa Luzia
+92361.2015-01088;MS;Centro-Oeste;Cachoeira do Vale Azul;aquicultura;vencida;1,314;41438304;2025-07-03;Rio Pardo Novo
+85543.2025-01089;MG;Sudeste;Bom Retiro das Águas;indústria;vencida;0,231;7284816;2023-10-10;Rio Pardo Novo
+55357.2017-01090;SP;Sudeste;Alto Paraíso do Norte;irrigação;vigente;1,640;51719040;2032-05-12;Rio Pardo Novo
+53203.2021-01091;SP;Bacia do Paraná;Porto das Pedras Altas;abastecimento urbano;vigente;0,717;22611312;2031-07-20;Rio Pardo Novo
+22635.2026-01092;RN;Nordeste;Porto das Pedras Altas;indústria;vigente;0,218;6874848;2029-12-09;Córrego Santa Luzia
+64598.2017-01093;MS;Centro-Oeste;Bom Retiro das Águas;abastecimento urbano;vigente;3,178;100221408;2027-07-06;Córrego Santa Luzia
+90230.2020-01094;PA;Norte;Alto Paraíso do Norte;lazer;suspensa;0,804;25354944;2030-12-09;Rio Pardo Novo
+54262.2017-01095;AC;Norte;Campo Novo do Oeste;lazer;em análise;0,567;17880912;2027-07-31;Ribeirão das Antas
+89245.2021-01096;AL;Nordeste;Campo Novo do Oeste;abastecimento urbano;vigente;0,221;6969456;2031-03-08;Rio Araguari
+28457.2016-01097;CE;Nordeste;Bom Retiro das Águas;termoelétrica;vigente;0,526;16587936;2029-09-07;Rio Formoso
+90912.2026-01098;GO;Bacia do Paraná;Porto das Pedras Altas;irrigação;vigente;8,609;271493424;2032-06-18;Rio Pardo Novo
+69006.2015-01099;PR;Bacia do Paraná;Cachoeira do Vale Azul;termoelétrica;vencida;36,530;1152010080;2024-03-12;Ribeirão das Antas
+48748.2022-01100;MG;Sudeste;Vila Serrana;abastecimento urbano;vigente;0,283;8924688;2031-04-08;Açude Serra Azul
+30075.2020-01101;AM;Norte;Vila Serrana;mineração;suspensa;0,645;20340720;2031-06-27;Açude Serra Azul
+36285.2018-01102;PR;Sul;Riacho Fundo Velho;mineração;vigente;0,702;22138272;2029-11-29;Rio Araguari
+50569.2022-01103;DF;Centro-Oeste;Cachoeira do Vale Azul;aquicultura;vigente;0,638;20119968;2030-03-07;Rio Formoso
+39908.2016-01104;BA;Nordeste;Campo Novo do Oeste;lazer;vigente;0,239;7537104;2029-11-13;Rio Araguari
+36327.2025-01105;DF;Órgão Central;Campo Novo do Oeste;indústria;vencida;0,127;4005072;2025-03-15;Córrego Santa Luzia
+85015.2023-01106;RS;Sul;Riacho Fundo Velho;indústria;vigente;0,190;5991840;2028-03-04;Rio Formoso
+48548.2020-01107;ES;Sudeste;Cachoeira do Vale Azul;lazer;vigente;4,397;138663792;2029-02-07;Rio Pardo Novo
+15705.2023-01108;GO;Centro-Oeste;Cachoeira do Vale Azul;irrigação;vigente;1,046;32986656;2029-06-13;Rio Pardo Novo
+58006.2022-01109;ES;Sudeste;Porto das Pedras Altas;aquicultura;vigente;2,038;64270367;2029-10-11;Rio Verde Grande
+51161.2018-01110;MS;Bacia do Paraná;Santa Rita da Serra;dessedentação animal;em análise;0,612;19300032;2031-11-24;Ribeirão das Antas
+41566.2022-01111;AC;Norte;Alto Paraíso do Norte;abastecimento urbano;em análise;0,572;18038592;2029-05-24;Rio Taquari-Mirim
+20093.2018-01112;MA;Nordeste;Vila Serrana;indústria;vigente;16,879;532296144;2027-06-30;Aquífero Guarani
+46873.2016-01113;DF;Órgão Central;Vila Serrana;irrigação;vigente;2,046;64522655;2026-09-30;Rio Taquari-Mirim
+28980.2022-01114;DF;Órgão Central;Alto Paraíso do Norte;termoelétrica;vigente;1,231;38820816;2031-07-10;Aquífero Guarani
+75936.2017-01115;PR;Sul;Riacho Fundo Velho;dessedentação animal;em análise;2,197;69284592;2028-11-08;Represa do Funil Velho
+89650.2016-01116;MT;Centro-Oeste;Santa Rita da Serra;indústria;em análise;1,211;38190096;2028-05-07;Rio Formoso
+66513.2025-01117;TO;Norte;Vila Serrana;irrigação;vigente;1,465;46200240;2028-03-01;Represa do Funil Velho
+22792.2017-01118;MS;Bacia do Paraná;Cachoeira do Vale Azul;lazer;vigente;0,176;5550336;2031-08-14;Ribeirão das Antas
+42287.2018-01119;RS;Sul;Cachoeira do Vale Azul;indústria;vigente;2,081;65626416;2031-08-19;Rio Pardo Novo
+62951.2021-01120;SP;Bacia do Paraná;Cachoeira do Vale Azul;lazer;vigente;0,106;3342816;2027-02-24;Córrego Santa Luzia
+22471.2015-01121;MS;Bacia do Paraná;Cachoeira do Vale Azul;aquicultura;vigente;1,713;54021168;2028-12-23;Aquífero Guarani
+93690.2019-01122;GO;Bacia do Paraná;Cachoeira do Vale Azul;aquicultura;em análise;0,891;28098576;2031-10-08;Rio Taquari-Mirim
+47982.2025-01123;ES;Sudeste;Cachoeira do Vale Azul;lazer;vigente;0,169;5329584;2029-03-08;Aquífero Guarani
+24136.2019-01124;AL;Bacia do São Francisco;Vila Serrana;aquicultura;vigente;9,621;303407856;2026-10-28;Aquífero Guarani
+65216.2017-01125;DF;Órgão Central;Alto Paraíso do Norte;indústria;em análise;0,280;8830080;2028-10-19;Córrego Santa Luzia
+90957.2022-01126;AP;Norte;Riacho Fundo Velho;termoelétrica;vencida;0,270;8514720;2024-07-05;Rio Pardo Novo
+39670.2025-01127;AL;Bacia do São Francisco;Riacho Fundo Velho;indústria;em análise;1,521;47966256;2032-04-20;Ribeirão das Antas
+30011.2020-01128;PI;Nordeste;Riacho Fundo Velho;lazer;vigente;0,342;10785312;2031-03-26;Ribeirão das Antas
+92905.2016-01129;GO;Bacia do Paraná;Vila Serrana;indústria;em análise;0,227;7158672;2030-02-03;Aquífero Guarani
+89454.2024-01130;ES;Sudeste;Bom Retiro das Águas;dessedentação animal;vigente;13,375;421794000;2031-12-10;Açude Serra Azul
+59918.2021-01131;PA;Norte;Campo Novo do Oeste;indústria;vigente;0,387;12204432;2026-12-19;Rio Formoso
+58914.2017-01132;RS;Sul;Bom Retiro das Águas;aquicultura;vencida;0,228;7190208;2024-07-03;Córrego Santa Luzia
+86342.2015-01133;MS;Centro-Oeste;Vila Serrana;irrigação;vigente;1,597;50362992;2028-07-23;Rio Formoso
+49860.2015-01134;GO;Bacia do Paraná;Riacho Fundo Velho;indústria;vigente;0,189;5960304;2032-02-27;Açude Serra Azul
+95604.2017-01135;BA;Bacia do São Francisco;Porto das Pedras Altas;dessedentação animal;em análise;0,167;5266512;2032-07-22;Rio Verde Grande
+79285.2024-01136;RO;Norte;Cachoeira do Vale Azul;dessedentação animal;vencida;0,975;30747600;2025-12-24;Córrego Santa Luzia
+23340.2024-01137;DF;Órgão Central;Alto Paraíso do Norte;abastecimento urbano;vigente;0,968;30526848;2029-11-22;Rio Formoso
+45926.2016-01138;SP;Sudeste;Vila Serrana;indústria;vencida;0,407;12835152;2023-11-25;Rio Araguari
+51978.2021-01139;RJ;Sudeste;Santa Rita da Serra;lazer;vigente;1,639;51687504;2030-01-29;Represa do Funil Velho
+76234.2025-01140;SC;Sul;Bom Retiro das Águas;dessedentação animal;vigente;2,658;83822688;2032-04-13;Rio Verde Grande
+73189.2021-01141;PR;Sul;Riacho Fundo Velho;irrigação;vigente;0,301;9492336;2027-02-11;Represa do Funil Velho
+82599.2026-01142;CE;Nordeste;Porto das Pedras Altas;abastecimento urbano;vigente;0,081;2554416;2027-03-05;Córrego Santa Luzia
+65511.2016-01143;GO;Bacia do Paraná;Riacho Fundo Velho;irrigação;vencida;0,448;14128128;2025-01-14;Rio Taquari-Mirim
+87847.2025-01144;SC;Sul;Cachoeira do Vale Azul;aquicultura;vigente;0,817;25764912;2026-12-28;Rio Formoso
+15848.2017-01145;SC;Sul;Vila Serrana;mineração;vigente;0,152;4793472;2030-12-31;Rio Taquari-Mirim
+60209.2017-01146;PA;Norte;Alto Paraíso do Norte;aquicultura;vigente;1,146;36140256;2030-01-08;Represa do Funil Velho
+45060.2024-01147;BA;Nordeste;Vila Serrana;aquicultura;vigente;1,745;55030320;2029-08-29;Córrego Santa Luzia
+87685.2016-01148;GO;Centro-Oeste;Campo Novo do Oeste;termoelétrica;vigente;0,425;13402800;2026-02-18;Rio Formoso
+59491.2026-01149;SP;Sudeste;Campo Novo do Oeste;lazer;vigente;0,789;24881904;2031-09-08;Rio Formoso
+39651.2025-01150;DF;Órgão Central;Santa Rita da Serra;lazer;vigente;2,634;83065824;2028-04-08;Ribeirão das Antas
+25489.2023-01151;BA;Bacia do São Francisco;Cachoeira do Vale Azul;indústria;vigente;6,286;198235296;2031-04-01;Córrego Santa Luzia
+94068.2020-01152;BA;Bacia do São Francisco;Alto Paraíso do Norte;indústria;vigente;0,481;15168816;2032-02-17;Rio Pardo Novo
+41272.2020-01153;MA;Nordeste;Alto Paraíso do Norte;termoelétrica;em análise;3,890;122675040;2026-03-11;Aquífero Guarani
+54177.2024-01154;PB;Nordeste;Vila Serrana;lazer;vigente;0,112;3532032;2029-01-23;Rio Taquari-Mirim
+80894.2016-01155;SC;Sul;Alto Paraíso do Norte;aquicultura;vigente;0,180;5676480;2029-02-08;Ribeirão das Antas
+35158.2022-01156;MG;Sudeste;Bom Retiro das Águas;indústria;vigente;8,790;277201440;2031-06-15;Ribeirão das Antas
+21551.2015-01157;RJ;Sudeste;Cachoeira do Vale Azul;indústria;vigente;0,745;23494320;2029-08-04;Ribeirão das Antas
+36958.2023-01158;AL;Nordeste;Campo Novo do Oeste;aquicultura;vigente;0,794;25039584;2030-11-27;Represa do Funil Velho
+57014.2018-01159;DF;Centro-Oeste;Santa Rita da Serra;aquicultura;vigente;3,957;124787952;2028-01-15;Rio Pardo Novo
+15200.2025-01160;RJ;Sudeste;Bom Retiro das Águas;indústria;vigente;4,564;143930304;2031-10-06;Rio Pardo Novo
+26029.2021-01161;MG;Sudeste;Riacho Fundo Velho;mineração;vigente;0,123;3878928;2028-08-02;Córrego Santa Luzia
+12204.2020-01162;MS;Bacia do Paraná;Porto das Pedras Altas;termoelétrica;em análise;2,525;79628400;2031-08-17;Rio Verde Grande
+35836.2020-01163;MT;Centro-Oeste;Vila Serrana;aquicultura;em análise;3,081;97162416;2030-10-11;Açude Serra Azul
+72121.2018-01164;DF;Órgão Central;Cachoeira do Vale Azul;mineração;vencida;2,086;65784095;2024-12-23;Córrego Santa Luzia
+25689.2018-01165;GO;Bacia do Paraná;Riacho Fundo Velho;irrigação;vigente;0,266;8388576;2029-09-08;Aquífero Guarani
+42746.2025-01166;DF;Órgão Central;Porto das Pedras Altas;aquicultura;vencida;0,559;17628624;2023-07-24;Córrego Santa Luzia
+21524.2020-01167;PR;Bacia do Paraná;Riacho Fundo Velho;dessedentação animal;suspensa;0,548;17281728;2031-03-18;Aquífero Guarani
+10669.2021-01168;AM;Norte;Riacho Fundo Velho;aquicultura;suspensa;0,510;16083360;2026-09-21;Rio Pardo Novo
+45486.2024-01169;PI;Nordeste;Cachoeira do Vale Azul;irrigação;vigente;1,486;46862496;2031-08-05;Aquífero Guarani
+97902.2017-01170;DF;Órgão Central;Alto Paraíso do Norte;dessedentação animal;vigente;0,201;6338736;2026-09-08;Ribeirão das Antas
+76390.2015-01171;MG;Sudeste;Porto das Pedras Altas;lazer;em análise;0,683;21539088;2026-04-14;Rio Formoso
+37072.2023-01172;MS;Bacia do Paraná;Vila Serrana;dessedentação animal;vigente;2,163;68212368;2030-11-20;Aquífero Guarani
+65283.2015-01173;MT;Centro-Oeste;Cachoeira do Vale Azul;irrigação;vigente;2,926;92274336;2029-04-27;Represa do Funil Velho
+28426.2025-01174;MS;Centro-Oeste;Campo Novo do Oeste;aquicultura;vigente;0,787;24818832;2031-03-02;Rio Araguari
+32717.2018-01175;DF;Centro-Oeste;Cachoeira do Vale Azul;indústria;vencida;2,227;70230672;2024-01-12;Ribeirão das Antas
+93356.2026-01176;PE;Bacia do São Francisco;Porto das Pedras Altas;lazer;vigente;0,810;25544160;2032-04-19;Rio Verde Grande
+10047.2024-01177;MG;Bacia do São Francisco;Campo Novo do Oeste;termoelétrica;vigente;1,197;37748592;2027-10-27;Represa do Funil Velho
+52747.2017-01178;SP;Sudeste;Porto das Pedras Altas;aquicultura;suspensa;1,595;50299920;2032-03-11;Rio Taquari-Mirim
+52815.2017-01179;DF;Centro-Oeste;Bom Retiro das Águas;indústria;vigente;0,215;6780240;2028-11-13;Represa do Funil Velho
+71119.2020-01180;DF;Órgão Central;Vila Serrana;dessedentação animal;vigente;0,892;28130112;2032-03-15;Rio Araguari
+75585.2018-01181;RN;Nordeste;Santa Rita da Serra;aquicultura;vigente;0,352;11100672;2027-07-19;Represa do Funil Velho
+91395.2020-01182;MG;Sudeste;Campo Novo do Oeste;abastecimento urbano;em análise;1,699;53579664;2029-08-26;Açude Serra Azul
+77535.2019-01183;PA;Norte;Alto Paraíso do Norte;termoelétrica;vigente;2,092;65973312;2031-07-10;Rio Formoso
+24429.2025-01184;RJ;Sudeste;Campo Novo do Oeste;dessedentação animal;vigente;14,240;449072640;2030-12-21;Ribeirão das Antas
+60703.2023-01185;PR;Sul;Vila Serrana;lazer;vigente;11,337;357523632;2027-01-09;Rio Araguari
+54192.2019-01186;MS;Centro-Oeste;Santa Rita da Serra;termoelétrica;vigente;1,247;39325392;2029-06-11;Represa do Funil Velho
+35224.2015-01187;SC;Sul;Vila Serrana;dessedentação animal;vigente;6,174;194703264;2028-06-09;Ribeirão das Antas
+69361.2016-01188;TO;Norte;Bom Retiro das Águas;lazer;em análise;0,909;28666224;2031-05-31;Rio Taquari-Mirim
+25379.2019-01189;AM;Norte;Vila Serrana;lazer;vencida;4,902;154589472;2024-01-17;Ribeirão das Antas
+93655.2025-01190;PR;Sul;Santa Rita da Serra;termoelétrica;vigente;0,820;25859520;2028-10-26;Represa do Funil Velho
+57295.2017-01191;BA;Bacia do São Francisco;Campo Novo do Oeste;aquicultura;em análise;0,305;9618480;2027-06-07;Rio Taquari-Mirim
+37394.2018-01192;PR;Bacia do Paraná;Porto das Pedras Altas;lazer;suspensa;1,440;45411840;2027-01-23;Córrego Santa Luzia
+91874.2024-01193;DF;Órgão Central;Bom Retiro das Águas;indústria;vencida;0,879;27720144;2024-03-11;Aquífero Guarani
+91907.2025-01194;GO;Centro-Oeste;Campo Novo do Oeste;dessedentação animal;vigente;0,865;27278640;2030-05-16;Rio Verde Grande
+35269.2017-01195;MA;Nordeste;Riacho Fundo Velho;mineração;vigente;4,666;147146976;2027-08-26;Rio Pardo Novo
+29707.2025-01196;RS;Sul;Bom Retiro das Águas;aquicultura;vigente;0,203;6401808;2031-01-13;Açude Serra Azul
+39391.2024-01197;MS;Bacia do Paraná;Vila Serrana;abastecimento urbano;vigente;0,254;8010144;2031-07-04;Ribeirão das Antas
+10587.2019-01198;SP;Bacia do Paraná;Vila Serrana;aquicultura;vigente;2,065;65121840;2032-01-27;Rio Taquari-Mirim
+;MS;Bacia do Paraná;Campo Novo do Oeste;termoelétrica;vigente;2,597;81898992;2031-08-28;Ribeirão das Antas
+;DF;Órgão Central;Alto Paraíso do Norte;irrigação;vigente;1,487;46894032;2029-08-06;Rio Araguari
+83104.2020-01201;SP;Bacia do Paraná;Campo Novo do Oeste;termoelétrica;vigente;4,517;142448112;2027-04-27;Rio Araguari
+18149.2016-01202;AP;Norte;Porto das Pedras Altas;aquicultura;vigente;7,359;232073424;2028-09-16;Rio Taquari-Mirim
+41596.2017-01203;AL;Nordeste;Vila Serrana;termoelétrica;em análise;0,038;1198368;2028-10-13;Rio Verde Grande
+63090.2015-01204;RJ;Sudeste;Vila Serrana;aquicultura;vigente;0,071;2239056;2032-07-22;Rio Pardo Novo
+24482.2024-01205;AP;Norte;Riacho Fundo Velho;indústria;vigente;1,072;33806592;2029-08-02;Rio Taquari-Mirim
+89486.2019-01206;PR;Sul;Campo Novo do Oeste;aquicultura;vigente;0,549;17313264;2029-03-30;Ribeirão das Antas
+27749.2017-01207;SP;Bacia do Paraná;Cachoeira do Vale Azul;irrigação;suspensa;1,288;40618368;2028-06-19;Rio Formoso
+97950.2017-01208;RS;Sul;Riacho Fundo Velho;abastecimento urbano;vencida;0,181;5708016;2023-07-24;Rio Verde Grande
+44065.2015-01209;DF;Órgão Central;Alto Paraíso do Norte;indústria;vigente;1,719;54210384;2028-03-22;Rio Araguari
+46820.2021-01210;PE;Nordeste;Campo Novo do Oeste;dessedentação animal;vigente;2,288;72154368;2030-12-06;Açude Serra Azul
+59453.2015-01211;SE;Nordeste;Bom Retiro das Águas;irrigação;em análise;1,483;46767888;2027-06-15;Rio Araguari
+72645.2023-01212;DF;Órgão Central;Campo Novo do Oeste;lazer;em análise;0,562;17723232;2027-09-25;Córrego Santa Luzia
+20781.2026-01213;DF;Órgão Central;Alto Paraíso do Norte;dessedentação animal;em análise;1,025;32324399;2028-03-16;Rio Taquari-Mirim
+75366.2026-01214;DF;Órgão Central;Riacho Fundo Velho;abastecimento urbano;em análise;0,264;8325504;2027-04-04;Rio Taquari-Mirim
+75453.2024-01215;RO;Norte;Bom Retiro das Águas;mineração;vigente;0,984;31031424;2030-01-21;Rio Pardo Novo
+;SP;Bacia do Paraná;Vila Serrana;irrigação;vigente;0,186;5865696;2029-09-12;Rio Araguari
+78045.2025-01217;SP;Bacia do Paraná;Santa Rita da Serra;aquicultura;vigente;1,428;45033408;2026-05-17;Ribeirão das Antas
+58700.2026-01218;CE;Nordeste;Riacho Fundo Velho;dessedentação animal;em análise;0,466;14695776;2030-04-18;Rio Pardo Novo
+44409.2020-01219;DF;Órgão Central;Bom Retiro das Águas;mineração;vigente;0,592;18669312;2026-10-29;Represa do Funil Velho
+44127.2022-01220;SP;Bacia do Paraná;Alto Paraíso do Norte;aquicultura;vigente;2,595;81835920;2029-03-12;Rio Verde Grande
+48172.2026-01221;MT;Centro-Oeste;Porto das Pedras Altas;lazer;vigente;0,236;7442496;2026-06-29;Rio Araguari
+90802.2025-01222;PR;Sul;Santa Rita da Serra;mineração;vigente;0,333;10501488;2030-10-10;Córrego Santa Luzia
+24554.2018-01223;RO;Norte;Santa Rita da Serra;dessedentação animal;vencida;0,075;2365200;2025-02-23;Rio Araguari
+90109.2015-01224;MG;Sudeste;Porto das Pedras Altas;dessedentação animal;vigente;3,384;106717824;2029-12-13;Aquífero Guarani
+10470.2016-01225;AP;Norte;Vila Serrana;irrigação;vigente;3,470;109429920;2026-05-26;Aquífero Guarani
+23545.2026-01226;MS;Centro-Oeste;Campo Novo do Oeste;mineração;vigente;1,279;40334544;2027-12-31;Aquífero Guarani
+21227.2020-01227;DF;Centro-Oeste;Bom Retiro das Águas;aquicultura;vigente;0,072;2270592;2031-12-12;Rio Taquari-Mirim
+11440.2017-01228;AP;Norte;Alto Paraíso do Norte;dessedentação animal;vigente;2,550;80416800;2026-07-11;Rio Araguari
+74512.2016-01229;GO;Centro-Oeste;Riacho Fundo Velho;lazer;em análise;0,385;12141360;2026-08-05;Represa do Funil Velho
+70468.2017-01230;PA;Norte;Campo Novo do Oeste;abastecimento urbano;vigente;2,458;77515488;2030-07-11;Açude Serra Azul
+33764.2022-01231;MS;Bacia do Paraná;Santa Rita da Serra;termoelétrica;em análise;0,417;13150512;2027-11-06;Ribeirão das Antas
+43928.2021-01232;PR;Bacia do Paraná;Santa Rita da Serra;abastecimento urbano;vigente;64,764;2042397503;2028-02-06;Ribeirão das Antas
+63160.2026-01233;RS;Sul;Santa Rita da Serra;lazer;vigente;3,161;99685296;2030-01-06;Córrego Santa Luzia
+81894.2021-01234;AL;Nordeste;Riacho Fundo Velho;dessedentação animal;vigente;1,225;38631600;2027-05-06;Aquífero Guarani
+21858.2017-01235;RJ;Sudeste;Porto das Pedras Altas;lazer;vigente;0,058;1829088;2026-03-08;Rio Formoso
+73372.2016-01236;RJ;Sudeste;Riacho Fundo Velho;aquicultura;vigente;3,315;104541840;2026-07-04;Rio Araguari
+56339.2025-01237;DF;Órgão Central;Vila Serrana;indústria;vigente;0,553;17439408;2028-02-28;Rio Pardo Novo
+11757.2022-01238;TO;Norte;Cachoeira do Vale Azul;termoelétrica;vigente;21,368;673861248;2030-06-03;Rio Araguari
+56167.2025-01239;PR;Bacia do Paraná;Campo Novo do Oeste;irrigação;vigente;0,674;21255264;2030-02-25;Rio Verde Grande
+52798.2018-01240;MT;Centro-Oeste;Riacho Fundo Velho;lazer;vigente;1,309;41280624;2030-10-06;Rio Taquari-Mirim
+82895.2019-01241;MT;Centro-Oeste;Riacho Fundo Velho;irrigação;suspensa;1,705;53768880;2030-08-16;Rio Taquari-Mirim
+58127.2022-01242;SP;Bacia do Paraná;Cachoeira do Vale Azul;aquicultura;vigente;0,500;15768000;2026-02-26;Represa do Funil Velho
+12103.2022-01243;MG;Bacia do São Francisco;Campo Novo do Oeste;abastecimento urbano;em análise;0,204;6433344;2032-06-02;Rio Verde Grande
+55944.2021-01244;DF;Órgão Central;Campo Novo do Oeste;aquicultura;vigente;0,597;18826992;2031-04-30;Córrego Santa Luzia
+92097.2022-01245;RJ;Sudeste;Alto Paraíso do Norte;irrigação;vigente;0,329;10375344;2028-09-28;Aquífero Guarani
+79233.2020-01246;RJ;Sudeste;Santa Rita da Serra;indústria;vencida;0,321;10123056;2023-08-12;Açude Serra Azul
+62436.2024-01247;MA;Nordeste;Porto das Pedras Altas;mineração;em análise;1,139;35919504;2026-09-23;Represa do Funil Velho
+89394.2016-01248;DF;Órgão Central;Santa Rita da Serra;irrigação;vigente;6,642;209462112;2030-10-01;Represa do Funil Velho
+36752.2021-01249;DF;Órgão Central;Porto das Pedras Altas;termoelétrica;vigente;0,234;7379424;2032-01-07;Aquífero Guarani
+17097.2025-01250;PE;Nordeste;Porto das Pedras Altas;aquicultura;vigente;0,520;16398720;2026-07-03;Ribeirão das Antas
+24381.2025-01251;RS;Sul;Santa Rita da Serra;abastecimento urbano;em análise;0,730;23021280;2030-04-15;Córrego Santa Luzia
+37233.2022-01252;AM;Norte;Campo Novo do Oeste;lazer;vigente;4,433;139799088;2032-07-12;Açude Serra Azul
+65080.2022-01253;RS;Sul;Alto Paraíso do Norte;indústria;vigente;2,371;74771856;2027-03-09;Aquífero Guarani
+67431.2026-01254;DF;Órgão Central;Porto das Pedras Altas;mineração;vigente;0,090;2838240;2027-02-15;Rio Verde Grande
+47398.2015-01255;MT;Centro-Oeste;Porto das Pedras Altas;mineração;vigente;0,938;29580768;2030-08-19;Rio Taquari-Mirim
+60037.2019-01256;PR;Sul;Alto Paraíso do Norte;abastecimento urbano;vigente;1,342;42321312;2031-12-06;Rio Formoso
+53610.2018-01257;AC;Norte;Cachoeira do Vale Azul;dessedentação animal;vigente;1,497;47209392;2027-03-17;Rio Formoso
+58067.2019-01258;GO;Bacia do Paraná;Alto Paraíso do Norte;mineração;vigente;3,111;98108496;2030-06-28;Ribeirão das Antas
+66741.2021-01259;RN;Nordeste;Bom Retiro das Águas;mineração;vigente;1,330;41942880;2026-05-17;Rio Formoso
+37192.2021-01260;DF;Órgão Central;Porto das Pedras Altas;mineração;vigente;2,059;64932624;2028-01-29;Açude Serra Azul
+64363.2021-01261;GO;Bacia do Paraná;Bom Retiro das Águas;lazer;vigente;1,308;41249088;2031-09-28;Ribeirão das Antas
+27343.2021-01262;DF;Órgão Central;Cachoeira do Vale Azul;dessedentação animal;vigente;8,578;270515808;2027-07-12;Rio Formoso
+68817.2018-01263;SC;Sul;Riacho Fundo Velho;aquicultura;em análise;4,055;127878479;2027-01-07;Rio Taquari-Mirim
+52836.2018-01264;ES;Sudeste;Porto das Pedras Altas;aquicultura;vigente;1,348;42510528;2028-09-16;Rio Formoso
+46304.2015-01265;RS;Sul;Santa Rita da Serra;termoelétrica;vigente;0,199;6275664;2026-08-12;Córrego Santa Luzia
+17168.2019-01266;MT;Centro-Oeste;Santa Rita da Serra;irrigação;vigente;1,605;50615280;2026-06-23;Aquífero Guarani
+99694.2021-01267;GO;Bacia do Paraná;Vila Serrana;termoelétrica;vigente;3,840;121098240;2031-11-05;Aquífero Guarani
+58125.2016-01268;SP;Bacia do Paraná;Campo Novo do Oeste;mineração;vencida;2,000;63072000;2024-11-20;Rio Araguari
+19217.2026-01269;ES;Sudeste;Vila Serrana;abastecimento urbano;vigente;0,260;8199360;2029-06-10;Rio Formoso
+99661.2019-01270;MG;Sudeste;Vila Serrana;aquicultura;vigente;3,056;96374016;2031-07-11;Córrego Santa Luzia
+59083.2021-01271;PB;Nordeste;Bom Retiro das Águas;termoelétrica;vigente;5,079;160171344;2030-07-26;Ribeirão das Antas
+11229.2025-01272;PE;Nordeste;Vila Serrana;mineração;suspensa;0,539;16997904;2031-02-23;Represa do Funil Velho
+94998.2022-01273;PR;Bacia do Paraná;Santa Rita da Serra;indústria;vigente;0,092;2901312;2027-12-07;Represa do Funil Velho
+90229.2016-01274;PI;Nordeste;Cachoeira do Vale Azul;indústria;vigente;2,280;71902080;2031-05-16;Rio Taquari-Mirim
+85266.2017-01275;MS;Centro-Oeste;Vila Serrana;lazer;vigente;4,785;150899760;2031-05-10;Córrego Santa Luzia
+85454.2019-01276;RS;Sul;Porto das Pedras Altas;irrigação;vencida;7,290;229897440;2025-10-26;Açude Serra Azul
+51807.2018-01277;ES;Sudeste;Santa Rita da Serra;mineração;vencida;0,223;7032528;2025-12-03;Aquífero Guarani
+77100.2019-01278;GO;Centro-Oeste;Vila Serrana;lazer;vigente;0,361;11384496;2028-09-16;Rio Taquari-Mirim
+14637.2016-01279;MS;Centro-Oeste;Santa Rita da Serra;lazer;vencida;3,263;102901968;2025-06-23;Rio Verde Grande
+74717.2015-01280;GO;Centro-Oeste;Santa Rita da Serra;indústria;vencida;0,570;17975520;2025-02-15;Represa do Funil Velho
+59313.2025-01281;PE;Bacia do São Francisco;Riacho Fundo Velho;dessedentação animal;vigente;1,437;45317232;2031-04-28;Aquífero Guarani
+88080.2016-01282;MS;Centro-Oeste;Porto das Pedras Altas;termoelétrica;em análise;0,761;23998896;2031-12-09;Rio Araguari
+76855.2017-01283;RO;Norte;Vila Serrana;abastecimento urbano;vencida;0,694;21885984;2025-09-25;Rio Formoso
+65498.2020-01284;SC;Sul;Riacho Fundo Velho;lazer;vigente;0,491;15484176;2030-06-14;Represa do Funil Velho
+34823.2019-01285;MS;Centro-Oeste;Porto das Pedras Altas;indústria;vencida;1,413;44560368;2025-12-07;Córrego Santa Luzia
+15229.2021-01286;DF;Órgão Central;Porto das Pedras Altas;indústria;vigente;0,178;5613408;2029-09-06;Represa do Funil Velho
+81052.2023-01287;MG;Sudeste;Santa Rita da Serra;abastecimento urbano;vigente;0,369;11636784;2031-08-04;Represa do Funil Velho
+17144.2020-01288;SP;Bacia do Paraná;Cachoeira do Vale Azul;dessedentação animal;em análise;2,544;80227584;2027-12-18;Aquífero Guarani
+34952.2022-01289;BA;Nordeste;Alto Paraíso do Norte;irrigação;vigente;14,994;472850784;2026-10-09;Aquífero Guarani
+61238.2024-01290;SC;Sul;Riacho Fundo Velho;mineração;vencida;0,334;10533024;2025-03-22;Ribeirão das Antas
+11303.2022-01291;PE;Bacia do São Francisco;Campo Novo do Oeste;lazer;vigente;5,503;173542608;2027-03-22;Represa do Funil Velho
+65679.2025-01292;DF;Órgão Central;Porto das Pedras Altas;mineração;vencida;2,803;88395408;2024-05-09;Rio Verde Grande
+33736.2020-01293;AL;Nordeste;Campo Novo do Oeste;dessedentação animal;vigente;8,028;253171008;2030-01-31;Rio Formoso
+60182.2015-01294;AL;Bacia do São Francisco;Vila Serrana;indústria;vigente;5,634;177673824;2027-02-13;Aquífero Guarani
+58358.2017-01295;MT;Centro-Oeste;Cachoeira do Vale Azul;mineração;vigente;0,509;16051824;2029-02-27;Aquífero Guarani
+57623.2019-01296;SC;Sul;Cachoeira do Vale Azul;dessedentação animal;vigente;1,441;45443376;2029-12-26;Rio Araguari
+18453.2026-01297;DF;Órgão Central;Cachoeira do Vale Azul;mineração;vigente;0,928;29265408;2031-05-01;Rio Verde Grande
+20437.2022-01298;SC;Sul;Porto das Pedras Altas;indústria;vigente;4,051;127752336;2032-05-09;Ribeirão das Antas
+47365.2016-01299;GO;Bacia do Paraná;Bom Retiro das Águas;lazer;vigente;22,721;716529456;2028-07-14;Rio Verde Grande
+67017.2022-01300;RN;Nordeste;Porto das Pedras Altas;irrigação;vencida;1,319;41595984;2025-08-17;Rio Taquari-Mirim
+74291.2025-01301;BA;Nordeste;Campo Novo do Oeste;aquicultura;vigente;0,452;14254272;2028-11-05;Rio Pardo Novo
+56120.2016-01302;GO;Centro-Oeste;Campo Novo do Oeste;indústria;vigente;4,671;147304656;2028-03-20;Ribeirão das Antas
+80915.2017-01303;ES;Sudeste;Bom Retiro das Águas;aquicultura;vigente;0,151;4761936;2031-09-14;Córrego Santa Luzia
+68889.2023-01304;MS;Bacia do Paraná;Riacho Fundo Velho;dessedentação animal;vigente;0,413;13024368;2031-01-28;Córrego Santa Luzia
+20521.2019-01305;RS;Sul;Riacho Fundo Velho;indústria;vigente;4,376;138001536;2030-01-17;Represa do Funil Velho
+11939.2015-01306;AM;Norte;Santa Rita da Serra;indústria;em análise;1,700;53611200;2030-02-03;Ribeirão das Antas
+62378.2017-01307;PR;Bacia do Paraná;Riacho Fundo Velho;dessedentação animal;vigente;3,845;121255920;2031-09-23;Represa do Funil Velho
+19385.2019-01308;SP;Sudeste;Santa Rita da Serra;aquicultura;vigente;2,533;79880688;2028-03-16;Represa do Funil Velho
+71824.2019-01309;SC;Sul;Vila Serrana;dessedentação animal;vigente;0,067;2112912;2028-02-10;Rio Formoso
+27817.2016-01310;AL;Bacia do São Francisco;Riacho Fundo Velho;lazer;vigente;0,080;2522880;2032-06-01;Represa do Funil Velho
+45022.2026-01311;GO;Bacia do Paraná;Bom Retiro das Águas;lazer;vigente;1,407;44371152;2032-04-14;Rio Pardo Novo
+22047.2022-01312;DF;Órgão Central;Cachoeira do Vale Azul;mineração;suspensa;6,843;215800848;2029-04-29;Rio Formoso
+62574.2016-01313;MS;Centro-Oeste;Alto Paraíso do Norte;mineração;vencida;0,573;18070128;2024-08-19;Aquífero Guarani
+78160.2026-01314;DF;Órgão Central;Bom Retiro das Águas;mineração;vigente;3,481;109776816;2026-12-17;Córrego Santa Luzia
+86793.2017-01315;PR;Bacia do Paraná;Alto Paraíso do Norte;mineração;suspensa;1,951;61526736;2028-10-06;Rio Taquari-Mirim
+97842.2020-01316;ES;Sudeste;Santa Rita da Serra;dessedentação animal;vigente;0,307;9681552;2026-03-23;Córrego Santa Luzia
+24708.2015-01317;DF;Órgão Central;Porto das Pedras Altas;abastecimento urbano;vigente;4,957;156323952;2029-07-26;Açude Serra Azul
+13062.2023-01318;RJ;Sudeste;Vila Serrana;termoelétrica;vigente;1,499;47272464;2031-11-25;Córrego Santa Luzia
+80553.2025-01319;GO;Centro-Oeste;Vila Serrana;lazer;vigente;8,362;263704032;2031-02-11;Açude Serra Azul
+23219.2021-01320;PE;Nordeste;Santa Rita da Serra;abastecimento urbano;em análise;0,991;31252176;2030-04-09;Rio Taquari-Mirim
+81642.2015-01321;MG;Sudeste;Campo Novo do Oeste;indústria;suspensa;6,935;218702160;2028-09-02;Represa do Funil Velho
+89376.2023-01322;PE;Nordeste;Vila Serrana;aquicultura;vigente;0,550;17344800;2028-12-04;Ribeirão das Antas
+47244.2026-01323;RN;Nordeste;Vila Serrana;abastecimento urbano;vigente;0,515;16241040;2028-08-08;Rio Araguari
+68075.2020-01324;MS;Bacia do Paraná;Campo Novo do Oeste;aquicultura;vigente;2,582;81425952;2030-02-28;Córrego Santa Luzia
+20007.2019-01325;PE;Nordeste;Bom Retiro das Águas;aquicultura;vigente;2,938;92652768;2031-10-19;Ribeirão das Antas
+50046.2016-01326;MG;Bacia do São Francisco;Bom Retiro das Águas;dessedentação animal;vigente;1,008;31788288;2029-02-13;Ribeirão das Antas
+62380.2016-01327;AL;Nordeste;Bom Retiro das Águas;irrigação;vigente;0,871;27467856;2030-02-15;Rio Taquari-Mirim
+77009.2021-01328;PR;Bacia do Paraná;Vila Serrana;mineração;vigente;0,893;28161648;2028-07-09;Córrego Santa Luzia
+18872.2020-01329;SP;Sudeste;Riacho Fundo Velho;indústria;vigente;0,682;21507552;2027-10-21;Represa do Funil Velho
+21263.2020-01330;MT;Centro-Oeste;Bom Retiro das Águas;mineração;vigente;0,315;9933840;2028-07-15;Rio Araguari
+39482.2018-01331;AP;Norte;Vila Serrana;abastecimento urbano;vigente;1,193;37622448;2031-09-24;Açude Serra Azul
+21974.2023-01332;PR;Sul;Riacho Fundo Velho;irrigação;em análise;7,904;249260544;2032-04-30;Represa do Funil Velho
+57988.2020-01333;PI;Nordeste;Cachoeira do Vale Azul;irrigação;vigente;0,395;12456720;2032-01-18;Rio Taquari-Mirim
+55284.2025-01334;AL;Nordeste;Cachoeira do Vale Azul;dessedentação animal;em análise;1,464;46168704;2030-06-11;Rio Formoso
+96672.2021-01335;SE;Nordeste;Cachoeira do Vale Azul;mineração;em análise;0,562;17723232;2032-05-01;Córrego Santa Luzia
+58427.2025-01336;AM;Norte;Vila Serrana;abastecimento urbano;vencida;0,980;30905280;2024-07-17;Rio Verde Grande
+26320.2021-01337;MT;Centro-Oeste;Santa Rita da Serra;abastecimento urbano;vigente;0,050;1576800;2028-02-17;Rio Araguari
+62868.2015-01338;PR;Bacia do Paraná;Porto das Pedras Altas;mineração;suspensa;2,813;88710768;2029-08-23;Açude Serra Azul
+71102.2024-01339;MG;Bacia do São Francisco;Cachoeira do Vale Azul;irrigação;vigente;23,775;749768400;2030-04-12;Açude Serra Azul
+44331.2021-01340;PE;Nordeste;Cachoeira do Vale Azul;irrigação;vigente;0,746;23525856;2029-04-22;Rio Taquari-Mirim
+69935.2026-01341;DF;Órgão Central;Campo Novo do Oeste;lazer;em análise;1,838;57963168;2030-09-07;Açude Serra Azul
+15331.2019-01342;AL;Bacia do São Francisco;Porto das Pedras Altas;mineração;vigente;2,394;75497184;2032-05-08;Rio Araguari
+80173.2025-01343;MG;Sudeste;Cachoeira do Vale Azul;dessedentação animal;vigente;2,073;65374128;2027-10-02;Rio Verde Grande
+83602.2025-01344;MS;Centro-Oeste;Bom Retiro das Águas;mineração;vigente;1,236;38978496;2029-10-11;Rio Verde Grande
+89457.2026-01345;GO;Bacia do Paraná;Cachoeira do Vale Azul;lazer;suspensa;0,527;16619472;2031-08-25;Rio Verde Grande
+53706.2022-01346;PE;Bacia do São Francisco;Vila Serrana;aquicultura;vigente;0,358;11289888;2031-01-02;Córrego Santa Luzia
+82273.2023-01347;SP;Bacia do Paraná;Vila Serrana;termoelétrica;vigente;0,938;29580768;2028-07-23;Ribeirão das Antas
+73690.2020-01348;GO;Centro-Oeste;Santa Rita da Serra;indústria;vigente;0,294;9271584;2032-02-13;Açude Serra Azul
+56848.2016-01349;DF;Órgão Central;Alto Paraíso do Norte;indústria;vigente;2,554;80542944;2026-12-14;Açude Serra Azul
+70274.2015-01350;SC;Sul;Campo Novo do Oeste;indústria;vigente;3,351;105677136;2027-03-27;Represa do Funil Velho
+14317.2024-01351;MG;Bacia do São Francisco;Santa Rita da Serra;mineração;vigente;0,499;15736464;2032-04-23;Rio Pardo Novo
+62706.2019-01352;BA;Nordeste;Vila Serrana;abastecimento urbano;vencida;11,922;375972192;2023-11-04;Rio Formoso
+82057.2021-01353;PR;Sul;Campo Novo do Oeste;irrigação;vigente;1,183;37307088;2029-04-24;Açude Serra Azul
+52022.2022-01354;GO;Centro-Oeste;Santa Rita da Serra;termoelétrica;vigente;2,751;86755536;2031-04-14;Rio Araguari
+84984.2019-01355;BA;Bacia do São Francisco;Cachoeira do Vale Azul;aquicultura;vencida;0,850;26805600;2023-08-23;Açude Serra Azul
+67730.2018-01356;GO;Bacia do Paraná;Campo Novo do Oeste;termoelétrica;vigente;0,674;21255264;2030-04-04;Rio Verde Grande
+45422.2025-01357;SC;Sul;Alto Paraíso do Norte;mineração;vigente;0,219;6906384;2028-02-23;Rio Araguari
+61370.2025-01358;MT;Centro-Oeste;Bom Retiro das Águas;mineração;vigente;0,295;9303120;2028-09-13;Córrego Santa Luzia
+20730.2018-01359;MG;Bacia do São Francisco;Santa Rita da Serra;irrigação;vigente;3,928;123873408;2027-08-08;Rio Verde Grande
+58006.2019-01360;DF;Órgão Central;Campo Novo do Oeste;irrigação;vigente;4,222;133144992;2032-06-21;Rio Pardo Novo
+14326.2024-01361;DF;Órgão Central;Cachoeira do Vale Azul;lazer;vigente;0,273;8609328;2027-07-31;Rio Pardo Novo
+70848.2015-01362;PE;Nordeste;Campo Novo do Oeste;lazer;em análise;2,311;72879696;2030-10-28;Rio Pardo Novo
+35733.2019-01363;MS;Centro-Oeste;Campo Novo do Oeste;indústria;vigente;0,629;19836144;2029-01-26;Rio Pardo Novo
+14207.2026-01364;SC;Sul;Campo Novo do Oeste;abastecimento urbano;vigente;2,344;73920384;2032-04-07;Rio Taquari-Mirim
+44333.2023-01365;SE;Nordeste;Vila Serrana;lazer;em análise;0,538;16966368;2030-01-26;Açude Serra Azul
+66432.2025-01366;SE;Nordeste;Porto das Pedras Altas;lazer;vigente;0,273;8609328;2031-05-08;Rio Verde Grande
+81132.2022-01367;AC;Norte;Cachoeira do Vale Azul;dessedentação animal;em análise;0,721;22737456;2026-12-20;Aquífero Guarani
+74382.2024-01368;MG;Sudeste;Riacho Fundo Velho;abastecimento urbano;vigente;1,032;32545152;2028-06-25;Rio Verde Grande
+61271.2025-01369;DF;Órgão Central;Campo Novo do Oeste;aquicultura;vigente;0,746;23525856;2028-12-10;Represa do Funil Velho
+31606.2019-01370;PE;Bacia do São Francisco;Campo Novo do Oeste;dessedentação animal;vigente;1,132;35698752;2026-03-24;Ribeirão das Antas
+53362.2025-01371;MS;Centro-Oeste;Campo Novo do Oeste;aquicultura;vigente;2,048;64585728;2028-03-23;Aquífero Guarani
+50476.2016-01372;AC;Norte;Bom Retiro das Águas;dessedentação animal;vigente;3,300;104068800;31/12/2026;Rio Pardo Novo
+86402.2023-01373;DF;Órgão Central;Porto das Pedras Altas;dessedentação animal;vigente;6,374;201010464;2027-12-03;Ribeirão das Antas
+57737.2015-01374;GO;Bacia do Paraná;Riacho Fundo Velho;irrigação;vigente;0,356;11226816;2027-11-10;Rio Taquari-Mirim
+65916.2022-01375;DF;Órgão Central;Santa Rita da Serra;termoelétrica;vigente;11,435;360614160;2030-08-06;Rio Formoso
+71898.2022-01376;AL;Bacia do São Francisco;Bom Retiro das Águas;termoelétrica;vencida;0,580;18290880;2024-06-17;Córrego Santa Luzia
+90840.2023-01377;AM;Norte;Porto das Pedras Altas;aquicultura;vigente;0,805;25386480;2026-03-26;Aquífero Guarani
+73255.2023-01378;MG;Sudeste;Campo Novo do Oeste;aquicultura;vigente;2,929;92368944;2028-11-25;Represa do Funil Velho
+80005.2022-01379;RO;Norte;Porto das Pedras Altas;mineração;vigente;2,014;63513503;2032-02-11;Rio Pardo Novo
+62345.2022-01380;SP;Sudeste;Riacho Fundo Velho;irrigação;vigente;0,615;19394640;2027-10-08;Rio Formoso
+41576.2018-01381;AP;Norte;Riacho Fundo Velho;aquicultura;em análise;2,616;82498176;2028-09-12;Córrego Santa Luzia
+22540.2024-01382;DF;Órgão Central;Bom Retiro das Águas;indústria;vigente;1,575;49669200;2026-07-11;Rio Pardo Novo
+38427.2018-01383;DF;Centro-Oeste;Bom Retiro das Águas;lazer;vigente;4,391;138474576;2027-03-05;Rio Formoso
+18272.2022-01384;MG;Bacia do São Francisco;Vila Serrana;lazer;em análise;8,563;270042768;2028-09-17;Rio Araguari
+79062.2015-01385;GO;Centro-Oeste;Bom Retiro das Águas;lazer;vigente;0,248;7820928;2030-02-22;Ribeirão das Antas
+50055.2022-01386;AL;Bacia do São Francisco;Alto Paraíso do Norte;mineração;suspensa;0,401;12645936;2032-07-20;Açude Serra Azul
+86796.2020-01387;PA;Norte;Santa Rita da Serra;indústria;vigente;0,276;8703936;2032-07-26;Rio Formoso
+64134.2015-01388;BA;Nordeste;Campo Novo do Oeste;lazer;vencida;0,567;17880912;2024-06-01;Rio Araguari
+44581.2024-01389;BA;Nordeste;Alto Paraíso do Norte;abastecimento urbano;vigente;0,754;23778144;2030-07-01;Açude Serra Azul
+70883.2026-01390;SC;Sul;Bom Retiro das Águas;abastecimento urbano;vigente;2,416;76190976;2026-03-13;Córrego Santa Luzia
+85155.2016-01391;PE;Bacia do São Francisco;Cachoeira do Vale Azul;termoelétrica;vigente;0,182;5739552;2026-04-06;Açude Serra Azul
+57353.2016-01392;DF;Órgão Central;Riacho Fundo Velho;abastecimento urbano;vigente;0,095;2995920;2027-03-14;Rio Pardo Novo
+61596.2015-01393;CE;Nordeste;Bom Retiro das Águas;termoelétrica;vigente;2,429;76600944;2031-07-01;Açude Serra Azul
+13525.2016-01394;MT;Centro-Oeste;Santa Rita da Serra;termoelétrica;vigente;7,039;221981904;2032-01-08;Aquífero Guarani
+92021.2015-01395;MS;Bacia do Paraná;Vila Serrana;aquicultura;vigente;3,042;95932512;2028-11-21;Rio Araguari
+44303.2024-01396;GO;Bacia do Paraná;Vila Serrana;termoelétrica;vigente;3,811;120183696;2027-01-18;Córrego Santa Luzia
+52770.2018-01397;CE;Nordeste;Cachoeira do Vale Azul;mineração;em análise;3,878;122296608;2031-09-26;Rio Pardo Novo
+59807.2018-01398;DF;Órgão Central;Porto das Pedras Altas;irrigação;vigente;0,252;7947072;2026-09-20;Ribeirão das Antas
+91519.2026-01399;RS;Sul;Campo Novo do Oeste;irrigação;vigente;2,672;84264192;2030-04-21;Rio Verde Grande
+24944.2020-01400;PI;Nordeste;Riacho Fundo Velho;termoelétrica;vigente;5,807;183129552;2029-02-20;Rio Verde Grande
+87903.2017-01401;BA;Bacia do São Francisco;Vila Serrana;aquicultura;vigente;3,116;98266176;2032-05-08;Córrego Santa Luzia
+51701.2026-01402;RJ;Sudeste;Vila Serrana;termoelétrica;em análise;0,166;5234976;2031-05-09;Ribeirão das Antas
+90802.2022-01403;MG;Bacia do São Francisco;Riacho Fundo Velho;dessedentação animal;vigente;1,754;55314144;2027-12-08;Córrego Santa Luzia
+37151.2015-01404;PE;Bacia do São Francisco;Bom Retiro das Águas;mineração;vigente;1,390;43835040;2026-09-04;Açude Serra Azul
+90122.2021-01405;GO;Centro-Oeste;Vila Serrana;irrigação;vigente;12,710;400822560;2028-03-28;Rio Verde Grande
+92582.2017-01406;RS;Sul;Alto Paraíso do Norte;abastecimento urbano;vigente;5,086;160392096;2029-08-31;Rio Araguari
+10592.2022-01407;GO;Centro-Oeste;Campo Novo do Oeste;mineração;vigente;0,112;3532032;2027-07-22;Rio Formoso
+88702.2016-01408;PA;Norte;Vila Serrana;indústria;vigente;0,831;26206416;2030-02-23;Rio Pardo Novo
+68815.2015-01409;AL;Nordeste;Porto das Pedras Altas;lazer;vigente;0,122;3847392;2032-05-10;Rio Taquari-Mirim
+57998.2025-01410;PR;Bacia do Paraná;Vila Serrana;mineração;vencida;10,066;317441376;2025-07-25;Rio Araguari
+17057.2025-01411;SP;Bacia do Paraná;Bom Retiro das Águas;lazer;suspensa;5,386;169852896;2026-09-07;Aquífero Guarani
+94364.2016-01412;CE;Nordeste;Santa Rita da Serra;indústria;vigente;0,824;25985664;2028-11-30;Córrego Santa Luzia
+72946.2021-01413;DF;Órgão Central;Alto Paraíso do Norte;indústria;em análise;12,234;385811424;2031-01-08;Rio Pardo Novo
+87777.2025-01414;DF;Órgão Central;Santa Rita da Serra;termoelétrica;vigente;1,621;51119856;2030-01-30;Rio Pardo Novo
+24393.2016-01415;RS;Sul;Santa Rita da Serra;indústria;vigente;0,701;22106736;2030-09-06;Rio Verde Grande
+50179.2018-01416;SE;Nordeste;Alto Paraíso do Norte;abastecimento urbano;vigente;2,132;67234752;2029-04-01;Represa do Funil Velho
+40590.2021-01417;SP;Sudeste;Campo Novo do Oeste;termoelétrica;vigente;4,634;146137824;2026-02-10;Ribeirão das Antas
+91339.2020-01418;PE;Bacia do São Francisco;Cachoeira do Vale Azul;lazer;vigente;3,950;124567200;2028-10-03;Rio Taquari-Mirim
+95939.2021-01419;DF;Órgão Central;Cachoeira do Vale Azul;indústria;vigente;1,589;50110704;2027-02-10;Córrego Santa Luzia

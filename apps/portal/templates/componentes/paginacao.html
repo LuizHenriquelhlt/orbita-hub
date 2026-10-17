@@ -1,0 +1,32 @@
+{% load orbita %}
+{% comment %}
+Paginação. Usa a tag `consulta_com`, que reconstrói a query string trocando só
+`pagina` — assim os filtros ativos sobrevivem à virada de página, que é o bug
+mais irritante de uma listagem.
+{% endcomment %}
+
+{% if paginas > 1 %}
+  <nav class="paginacao" aria-label="Paginação">
+    <span class="paginacao__info">
+      Página {{ pagina }} de {{ paginas }} · {{ total|numero }} {{ rotulo|default:"itens" }}
+    </span>
+
+    <div class="paginacao__botoes">
+      {% if pagina > 1 %}
+        <a class="botao botao--secundario botao--pequeno" href="?{% consulta_com pagina=1 %}" aria-label="Primeira página">««</a>
+        <a class="botao botao--secundario botao--pequeno" href="?{% consulta_com pagina=pagina|add:'-1' %}" rel="prev">Anterior</a>
+      {% else %}
+        <span class="botao botao--secundario botao--pequeno" aria-disabled="true">Anterior</span>
+      {% endif %}
+
+      {% if pagina < paginas %}
+        <a class="botao botao--secundario botao--pequeno" href="?{% consulta_com pagina=pagina|add:'1' %}" rel="next">Próxima</a>
+        <a class="botao botao--secundario botao--pequeno" href="?{% consulta_com pagina=paginas %}" aria-label="Última página">»»</a>
+      {% else %}
+        <span class="botao botao--secundario botao--pequeno" aria-disabled="true">Próxima</span>
+      {% endif %}
+    </div>
+  </nav>
+{% elif total %}
+  <p class="paginacao__info">{{ total|numero }} {{ rotulo|default:"itens" }}</p>
+{% endif %}

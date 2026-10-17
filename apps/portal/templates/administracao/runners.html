@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+{% load orbita %}
+
+{% block titulo %}Runners{% endblock %}
+
+{% block conteudo %}
+
+<div class="pagina__cabecalho">
+  <div>
+    <h1 class="pagina__titulo">Runners</h1>
+    <p class="pagina__descricao">
+      O runner é o serviço que consome a fila e executa as automações. É o que
+      tem mais privilégio da plataforma — com executor Docker, fala com o Docker
+      Engine — e por isso é o único que não tem acesso ao banco de domínio dos
+      outros serviços: reporta tudo por HTTP, com token de serviço.
+    </p>
+  </div>
+</div>
+
+<div class="grade grade--indicadores">
+  <div class="indicador{% if situacao.saudavel %} indicador--sucesso{% else %} indicador--erro{% endif %}">
+    <span class="indicador__rotulo">Executor</span>
+    <span class="indicador__valor" style="font-size: 1.2rem">{{ situacao.executor }}</span>
+    <span class="indicador__nota">{{ situacao.detalhe }}</span>
+  </div>
+
+  {% if situacao.worker %}
+    <div class="indicador">
+      <span class="indicador__rotulo">Em execução</span>
+      <span class="indicador__valor">
+        {{ situacao.worker.em_execucao }}<span class="tenue" style="font-size:1rem">/{{ situacao.worker.max_concorrentes }}</span>
+      </span>
+      <span class="indicador__nota">{{ situacao.worker.vagas_livres }} vaga(s) livre(s)</span>
+    </div>
+
+    <div class="indicador">
+      <span class="indicador__rotulo">Processadas</span>
+      <span class="indicador__valor">{{ situacao.worker.processadas|numero }}</span>
+      <span class="indicador__nota">desde que o processo subiu</span>
+    </div>
+  {% else %}
+    <div class="indicador">
+      <span class="indicador__rotulo">Consumo da fila</span>
+      <span class="indicador__valor" style="font-size: 1.1rem">desligado</span>
+      <span class="indicador__nota">RUNNER_CONSOME_FILA=false</span>
+    </div>
+  {% endif %}
+</div>
+
+<section class="cartao" style="margin-top: var(--e-5)">
+  <div class="cartao__cabecalho">
+    <h2 class="cartao__titulo">Containers gerenciados</h2>
+    <span class="cartao__legenda">
+      apenas os rotulados pela plataforma
+    </span>
+  </div>
+
+  {% if aviso %}
+    {% include "componentes/alerta.html" with tipo="info" mensagem=aviso %}
+  {% elif containers %}
+    <p class="pequeno tenue">
+      O filtro por rótulo é o que impede esta tela de listar — e de oferecer um
+      botão de parar para — containers que não são da plataforma. Em uma máquina
+      de desenvolvimento, é o que evita derrubar o próprio PostgreSQL.
+    </p>
+
+    <div class="tabela-envoltorio" style="margin-top: var(--e-3)">
+      <table class="tabela">
+        <thead>
+          <tr><th>Container</th><th>Imagem</th><th>Automação</th><th>Situação</th><th>Criado</th></tr>
+        </thead>
+        <tbody>
+          {% for container in containers %}
+            <tr>
+              <td class="mono pequeno">{{ container.nome }}</td>
+              <td class="mono pequeno quebra-tudo">{{ container.imagem }}</td>
+              <td class="pequeno">{{ container.automacao|default:"—" }}</td>
+              <td>
+                <span class="etiqueta etiqueta--{% if container.status == 'running' %}ativo{% elif container.status == 'exited' %}inativo{% else %}aviso{% endif %}">
+                  {{ container.status }}
+                </span>
+              </td>
+              <td class="pequeno">{{ container.criado_em|quando }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    {% include "componentes/vazio.html" with titulo="Nenhum container ativo" texto="Nada rodando no momento. Containers aparecem aqui enquanto a execução está em andamento e são removidos ao terminar." %}
+  {% endif %}
+</section>
+
+<section class="cartao" style="margin-top: var(--e-5)">
+  <h2 class="cartao__titulo">Os três executores</h2>
+  <div class="tabela-envoltorio" style="margin-top: var(--e-3)">
+    <table class="tabela">
+      <thead>
+        <tr><th>Executor</th><th>O que isola</th><th>Onde roda</th></tr>
+      </thead>
+      <tbody>
+        <tr{% if situacao.executor == "docker" %} style="background: var(--primaria-suave)"{% endif %}>
+          <td><code>docker</code></td>
+          <td class="pequeno">
+            cgroups para CPU e memória, namespace de rede, raiz somente leitura,
+            <code>no-new-privileges</code>, todas as capabilities descartadas
+          </td>
+          <td class="pequeno">produção e docker-compose local</td>
+        </tr>
+        <tr{% if situacao.executor == "subprocesso" %} style="background: var(--primaria-suave)"{% endif %}>
+          <td><code>subprocesso</code></td>
+          <td class="pequeno">
+            ambiente (o processo filho não herda segredo nem URL de banco) e
+            diretório de trabalho. <strong>Não</strong> isola memória nem CPU
+          </td>
+          <td class="pequeno">desenvolvimento, sem Docker</td>
+        </tr>
+        <tr{% if situacao.executor == "simulado" %} style="background: var(--primaria-suave)"{% endif %}>
+          <td><code>simulado</code></td>
+          <td class="pequeno">nada — reproduz um roteiro declarado no manifesto</td>
+          <td class="pequeno">demonstração pública</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="pequeno tenue" style="margin-top: var(--e-3)">
+    O executor usado é persistido em cada execução e aparece na tela dela. Uma
+    execução simulada é rotulada como tal, com os números de consumo marcados
+    como reproduzidos.
+  </p>
+</section>
+{% endblock %}

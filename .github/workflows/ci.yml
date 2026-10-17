@@ -1,0 +1,181 @@
+name: CI
+
+# Em push na main e em todo pull request. Sem `schedule`: um build noturno de
+# um projeto sem dependências que mudam sozinhas só gasta minutos de runner.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Cancela execuções antigas do mesmo branch. Sem isto, três commits seguidos
+# enfileiram três builds e o resultado que interessa é o último.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHON_VERSION: "3.12"
+
+jobs:
+  estatica:
+    name: Estilo e tipos
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+
+      - name: Instalar
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev,portal,rabbitmq,redis,s3,docker]"
+
+      - name: Ruff — regras
+        run: ruff check --output-format=github .
+
+      - name: Ruff — formatação
+        run: ruff format --check .
+
+      - name: Mypy
+        # `continue-on-error` porque a tipagem está sendo adotada de forma
+        # incremental: o relatório aparece no resumo do job sem bloquear o
+        # merge. Quando a base estiver limpa, esta linha sai.
+        continue-on-error: true
+        run: mypy packages services gateway sdk
+
+      - name: Django — verificação de configuração
+        env:
+          DJANGO_SETTINGS_MODULE: portal.configuracao
+          PYTHONPATH: apps/portal
+          DJANGO_SECRET_KEY: chave-de-ci-sem-valor-real
+        run: python apps/portal/manage.py check --deploy --fail-level ERROR
+
+  testes:
+    name: Testes
+    runs-on: ubuntu-latest
+
+    # O PostgreSQL de verdade, não SQLite: `FOR UPDATE SKIP LOCKED`,
+    # `make_interval`, índice parcial, JSONB e advisory locks não existem no
+    # SQLite, e um teste que passa lá e falha aqui é pior do que teste nenhum.
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: orbita
+          POSTGRES_PASSWORD: orbita_ci
+          POSTGRES_DB: orbita
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U orbita -d orbita"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 12
+
+    env:
+      DATABASE_URL: postgresql+asyncpg://orbita:orbita_ci@localhost:5432/orbita
+      JWT_SECRET: segredo-de-ci-com-tamanho-suficiente-para-hmac-valido
+      INTERNAL_SHARED_SECRET: segredo-interno-de-ci
+      HUB_MODE: monolith
+      BROKER_BACKEND: postgres
+      EXECUTOR_BACKEND: simulated
+      STORAGE_BACKEND: postgres
+      LOCK_BACKEND: postgres
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+
+      - name: Instalar
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev,portal]"
+
+      - name: Migrações
+        run: alembic upgrade head
+
+      - name: Migrações são reversíveis
+        # Descer até a base e subir de novo prova que cada `downgrade` existe
+        # e funciona. Migração só testada para cima é migração que ninguém
+        # consegue desfazer no dia em que precisa.
+        run: |
+          alembic downgrade base
+          alembic upgrade head
+
+      - name: Dados sintéticos são determinísticos
+        # O arquivo versionado tem de ser idêntico ao que o gerador produz.
+        # Se divergir, o teste que confere os totais do relatório mente.
+        run: |
+          python scripts/gerar_dados.py
+          git diff --exit-code automations/relatorio-outorgas-mensal/dados/outorgas.csv
+
+      - name: Testes
+        run: pytest --cov=hub_core --cov=hub_catalog --cov=hub_execution
+                    --cov=hub_identity --cov=hub_runner
+                    --cov-report=term-missing:skip-covered
+
+      - name: Seed roda de ponta a ponta
+        # Exercita o caminho real de importação de manifesto. Rodado duas
+        # vezes de propósito: o seed precisa ser idempotente.
+        run: |
+          python -m scripts.seed
+          python -m scripts.seed --historico
+
+      - name: A automação de exemplo roda de verdade
+        run: |
+          TRAB=$(mktemp -d)
+          echo '{"competencia":"2026-09","regiao":"todas"}' > "$TRAB/parametros.json"
+          ORBITA_EXECUCAO_ID=ci-0001 \
+          ORBITA_AUTOMACAO=relatorio-outorgas-mensal \
+          ORBITA_DIR_TRABALHO="$TRAB" \
+          ORBITA_PARAMETROS="$TRAB/parametros.json" \
+          python -I automations/relatorio-outorgas-mensal/main.py
+          test -s "$TRAB/outorgas-2026-09.xlsx" || { echo "planilha não gerada"; exit 1; }
+          echo "planilha gerada: $(stat -c%s "$TRAB/outorgas-2026-09.xlsx") bytes"
+
+  imagem:
+    name: Imagem Docker
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Construir
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: infra/Dockerfile
+          push: false
+          load: true
+          tags: orbita-hub:ci
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: A imagem sobe e responde
+        # Build que compila mas não executa não prova nada. Sobe o monolito
+        # sem banco e confere que o processo inicia e responde — o `/saude`
+        # não consulta o banco de propósito, justamente para isto ser possível.
+        run: |
+          docker run -d --name orbita-ci -p 8000:8000 \
+            -e HUB_MODE=monolith \
+            -e DATABASE_URL=postgresql+asyncpg://x:y@localhost:5432/z \
+            -e JWT_SECRET=ci -e DJANGO_SECRET_KEY=ci \
+            orbita-hub:ci
+          for tentativa in $(seq 1 20); do
+            if curl -fsS http://localhost:8000/_plataforma/saude; then
+              echo; echo "a imagem respondeu na tentativa $tentativa"; exit 0
+            fi
+            sleep 2
+          done
+          echo "a imagem não respondeu"; docker logs orbita-ci; exit 1
+
+      - name: Logs do container
+        if: always()
+        run: docker logs orbita-ci 2>&1 | tail -40 || true

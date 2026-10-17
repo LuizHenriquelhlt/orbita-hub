@@ -1,0 +1,113 @@
+# Manifesto da automação. Validado contra o contrato publicado em
+# GET /manifestos/schema — aponte o seu editor para lá e ele autocompleta.
+#
+# Esta é a automação que roda código de verdade: EXECUTOR_BACKEND=subprocess
+# ou =docker. Não tem `roteiro_simulado`, então no executor simulado ela cai no
+# roteiro padrão (ciclo curto de sucesso, sem artefato real).
+
+apiVersion: orbita.inrh/v1
+kind: Automacao
+
+metadata:
+  nome: relatorio-outorgas-mensal
+  titulo: Relatório mensal de outorgas
+  versao: 1.4.0
+  categoria: relatorios
+  descricao: >-
+    Consolida o cadastro de outorgas de uso de água por região e situação, e
+    gera a planilha oficial da competência em três abas (resumo, por região e
+    detalhe). Linhas com dado inconsistente não interrompem a execução: vão
+    para um CSV de rejeitos com o motivo de cada uma.
+  tags: [relatorio, outorgas, etl, planilha]
+  responsavel_tecnico: Núcleo de Dados e Automação
+  responsavel_negocio: Coordenação-Geral de Outorgas
+  unidade: CGOUT
+  changelog: >-
+    1.4.0 — aba "Por região" passa a listar todas as regiões, inclusive as sem
+    outorga no período; total do resumo virou fórmula em vez de valor fixo.
+
+spec:
+  tipo: batch
+  imagem: local/relatorio-outorgas-mensal
+  entrypoint: [python, -I, main.py]
+
+  modo_visual: false
+  # Sem rede: a automação só lê um arquivo local e escreve dois. Padrão
+  # restritivo — ver `hub_core.executor.base.PedidoDeExecucao.rede_habilitada`.
+  rede_habilitada: false
+
+  recursos:
+    cpus: 0.5
+    memoria_mb: 512
+    timeout_segundos: 300
+    disco_mb: 128
+
+  # Duas ao mesmo tempo: o gargalo é CPU na geração do .xlsx, e mais do que
+  # isso em um container de 512 MB começa a competir por memória.
+  max_execucoes_concorrentes: 2
+
+  consumo_estimado:
+    duracao_media_segundos: 12
+    memoria_media_mb: 180
+
+  parametros:
+    - nome: competencia
+      rotulo: Competência
+      tipo: mes
+      obrigatorio: true
+      mascara: AAAA-MM
+      ajuda: Mês de referência do relatório.
+
+    - nome: regiao
+      rotulo: Região
+      tipo: opcao
+      obrigatorio: false
+      padrao: todas
+      ajuda: Deixe em "Todas" para consolidar o país inteiro.
+      opcoes:
+        - { valor: todas, rotulo: Todas as regiões }
+        - { valor: Norte, rotulo: Norte }
+        - { valor: Nordeste, rotulo: Nordeste }
+        - { valor: Centro-Oeste, rotulo: Centro-Oeste }
+        - { valor: Sudeste, rotulo: Sudeste }
+        - { valor: Sul, rotulo: Sul }
+        - { valor: Bacia do São Francisco, rotulo: Bacia do São Francisco }
+        - { valor: Bacia do Paraná, rotulo: Bacia do Paraná }
+        - { valor: Órgão Central, rotulo: Órgão Central }
+
+    - nome: incluir_vencidas
+      rotulo: Incluir outorgas vencidas
+      tipo: booleano
+      obrigatorio: false
+      padrao: false
+      ajuda: Por padrão, outorgas vencidas ficam fora do consolidado.
+
+  gatilhos:
+    - tipo: manual
+
+    # Todo dia 1º às 6h (fuso America/Sao_Paulo — ver `hub_execution.agenda`).
+    # Vai para a fila de lote: é pesado e ninguém está esperando na tela.
+    - tipo: cron
+      expressao: "0 6 1 * *"
+      fila: execucoes.lote
+      parametros_padrao:
+        regiao: todas
+        incluir_vencidas: false
+
+  permissoes:
+    - escopo: todos
+      nivel: executar
+
+  readme: |
+    O relatório lê `dados/outorgas.csv` e produz:
+
+    - `outorgas-<competencia>.xlsx` — três abas: **Resumo** (por situação, com
+      total em fórmula), **Por região** (todas as regiões, inclusive as sem
+      dado) e **Detalhe** (uma linha por outorga, com autofiltro).
+    - `outorgas-rejeitadas.csv` — só quando há linha inconsistente. Primeira
+      coluna é o motivo.
+
+    **Dados sintéticos.** O INRH é um órgão fictício e nenhuma linha
+    corresponde a outorga, processo ou pessoa real. O arquivo é gerado por
+    `scripts/gerar_dados.py` a partir de uma semente fixa, com ~2% de linhas
+    defeituosas de propósito — é o que exercita o caminho dos rejeitos.

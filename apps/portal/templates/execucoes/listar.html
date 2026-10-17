@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block titulo %}Execuções{% endblock %}
+
+{% block conteudo %}
+
+<div class="pagina__cabecalho">
+  <div>
+    <h1 class="pagina__titulo">Execuções</h1>
+    <p class="pagina__descricao">
+      {% if quem.pode_ver_todas_execucoes %}
+        Todas as execuções da plataforma. Com uma em andamento, a tabela se
+        atualiza sozinha.
+      {% else %}
+        As execuções que você disparou. Seu papel não inclui ver as de outras
+        pessoas.
+      {% endif %}
+    </p>
+  </div>
+  <div class="pagina__acoes">
+    <a class="botao botao--secundario" href="{% url 'marketplace:catalogo' %}">Catálogo</a>
+  </div>
+</div>
+
+<form class="filtros" method="get" action="{% url 'execucoes:listar' %}">
+  <div class="filtros__campo filtros__campo--largo">
+    <label class="filtros__rotulo" for="automacao">Automação</label>
+    <input id="automacao" name="automacao" type="search"
+           value="{{ filtros.automacao|default:'' }}" placeholder="identificador da automação">
+  </div>
+
+  <div class="filtros__campo">
+    <label class="filtros__rotulo" for="status">Situação</label>
+    <select id="status" name="status">
+      <option value="">Todas</option>
+      <option value="enfileirada" {% if filtros.status == "enfileirada" %}selected{% endif %}>Na fila</option>
+      <option value="executando" {% if filtros.status == "executando" %}selected{% endif %}>Executando</option>
+      <option value="sucesso" {% if filtros.status == "sucesso" %}selected{% endif %}>Sucesso</option>
+      <option value="falha" {% if filtros.status == "falha" %}selected{% endif %}>Falha</option>
+      <option value="timeout" {% if filtros.status == "timeout" %}selected{% endif %}>Tempo esgotado</option>
+      <option value="cancelada" {% if filtros.status == "cancelada" %}selected{% endif %}>Cancelada</option>
+    </select>
+  </div>
+
+  <div class="filtros__campo">
+    <label class="filtros__rotulo" for="origem">Origem</label>
+    <select id="origem" name="origem">
+      <option value="">Todas</option>
+      <option value="manual" {% if filtros.origem == "manual" %}selected{% endif %}>Manual</option>
+      <option value="agendada" {% if filtros.origem == "agendada" %}selected{% endif %}>Agendada</option>
+      <option value="reexecucao" {% if filtros.origem == "reexecucao" %}selected{% endif %}>Reexecução</option>
+      <option value="webhook" {% if filtros.origem == "webhook" %}selected{% endif %}>Webhook</option>
+    </select>
+  </div>
+
+  {% if quem.pode_ver_todas_execucoes %}
+    <div class="filtros__campo">
+      <label class="filtros__rotulo" for="apenas_minhas">Escopo</label>
+      <select id="apenas_minhas" name="apenas_minhas">
+        <option value="">Todas as pessoas</option>
+        <option value="1" {% if filtros.apenas_minhas %}selected{% endif %}>Só as minhas</option>
+      </select>
+    </div>
+  {% endif %}
+
+  <div class="filtros__acoes">
+    <button type="submit" class="botao botao--secundario botao--pequeno">Filtrar</button>
+    <a class="botao botao--fantasma botao--pequeno" href="{% url 'execucoes:listar' %}">Limpar</a>
+  </div>
+</form>
+
+{% include "execucoes/_tabela.html" %}
+{% endblock %}

@@ -1,0 +1,16 @@
+{% comment %}
+Alerta. Serve a dois usos:
+  - mensagens do framework `messages` do Django, incluídas em `base.html`;
+  - resposta de erro a uma requisição HTMX, devolvida pelo decorador
+    `nucleo.decoradores.exige` como fragmento.
+
+`tipo` aceita os níveis do Django (`success`, `error`, `warning`, `info`,
+`debug`) e os nomes em português. A tradução está aqui, e não na view, porque é
+decisão de apresentação.
+{% endcomment %}
+
+{% if tipo == "success" or tipo == "sucesso" %}{% with classe="sucesso" %}{% include "componentes/_alerta_corpo.html" %}{% endwith %}
+{% elif tipo == "error" or tipo == "erro" %}{% with classe="erro" %}{% include "componentes/_alerta_corpo.html" %}{% endwith %}
+{% elif tipo == "warning" or tipo == "aviso" %}{% with classe="aviso" %}{% include "componentes/_alerta_corpo.html" %}{% endwith %}
+{% else %}{% with classe="info" %}{% include "componentes/_alerta_corpo.html" %}{% endwith %}
+{% endif %}

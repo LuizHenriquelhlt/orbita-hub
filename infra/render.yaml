@@ -1,0 +1,110 @@
+# Infraestrutura como código para o Render (free tier).
+#
+# Um serviço só: o gateway em modo monolito, com o portal Django montado na
+# raiz. Os quatro serviços de domínio rodam dentro dele, chamados por
+# `ASGITransport` — sem rede entre eles. É o mesmo código que roda em cinco
+# containers no `infra/docker-compose.yml`; o que muda é uma variável de
+# ambiente. Ver `hub_core/clients.py` e docs/adr/0002.
+#
+# O banco **não** está declarado aqui. O PostgreSQL gratuito do Render expira
+# em 30 dias; o do Neon não expira, tem scale-to-zero que religa em cerca de
+# um segundo e dá 0,5 GB. A URL entra como variável secreta no painel do
+# Render — ver docs/implantacao.md.
+#
+#   render.com → New → Blueprint → aponte para este arquivo
+
+services:
+  - type: web
+    name: orbita-hub
+    runtime: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./infra/Dockerfile
+    dockerContext: .
+
+    # `/saude` do portal não consulta o banco de propósito: o Render chama
+    # este caminho a cada poucos segundos, e um `SELECT 1` por chamada contra
+    # um plano gratuito com limite de conexões é o tipo de verificação de
+    # saúde que causa a indisponibilidade que deveria detectar.
+    healthCheckPath: /saude
+
+    # As migrações rodam antes do processo subir. Em um serviço só, é o lugar
+    # certo: não há corrida entre réplicas, porque o free tier tem uma.
+    # Com mais de uma instância, isto viraria um job separado.
+    preDeployCommand: alembic upgrade head
+
+    dockerCommand: >-
+      uvicorn hub_gateway.main:app
+      --host 0.0.0.0
+      --port 8000
+      --workers 1
+      --timeout-keep-alive 65
+
+    envVars:
+      # ── Composição: tudo sem dependência externa ─────────────────────────
+      - key: HUB_MODE
+        value: monolith
+      - key: BROKER_BACKEND
+        value: postgres
+      - key: EXECUTOR_BACKEND
+        value: simulated
+      - key: STORAGE_BACKEND
+        value: postgres
+      - key: LOCK_BACKEND
+        value: postgres
+
+      # ── Banco (Neon) ─────────────────────────────────────────────────────
+      # `sync: false` faz o Render pedir o valor na criação e guardá-lo como
+      # segredo, fora do repositório.
+      #
+      # Use o endpoint **pooled** do Neon (`...-pooler...`): o free tier tem
+      # poucas conexões diretas, e o código já desliga o cache de prepared
+      # statements quando detecta o pooler — ver `hub_core/db/engine.py`.
+      - key: DATABASE_URL
+        sync: false
+
+      # ── Segredos ─────────────────────────────────────────────────────────
+      # `generateValue` cria um valor aleatório na primeira implantação e o
+      # mantém entre deploys. Melhor do que um valor no arquivo, e melhor do
+      # que pedir ao operador que invente um.
+      - key: JWT_SECRET
+        generateValue: true
+      - key: INTERNAL_SHARED_SECRET
+        generateValue: true
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+
+      # ── Portal ───────────────────────────────────────────────────────────
+      - key: DJANGO_DEBUG
+        value: "false"
+      # O Render expõe o host externo em RENDER_EXTERNAL_HOSTNAME, lido em
+      # `portal/configuracao.py` para montar ALLOWED_HOSTS e
+      # CSRF_TRUSTED_ORIGINS. Sem isso, cada deploy exigiria configurar o
+      # domínio à mão.
+      - key: AMBIENTE
+        value: demo
+
+      # ── Demonstração ─────────────────────────────────────────────────────
+      # Habilita a entrada por papel, sem senha. Só é aceitável porque o
+      # ambiente tem exclusivamente dado sintético, e porque a sessão de
+      # demonstração é somente leitura para cadastros.
+      - key: DEMO_MODE
+        value: "true"
+
+      # ── Operação ─────────────────────────────────────────────────────────
+      - key: LOG_JSON
+        value: "true"
+      - key: LOG_NIVEL
+        value: INFO
+      - key: TZ
+        value: America/Sao_Paulo
+      # Uma execução por vez: o container do free tier tem 512 MB, e duas
+      # execuções simultâneas mais o portal e os quatro serviços não cabem.
+      - key: RUNNER_MAX_CONCORRENTES
+        value: "1"
+      # Teto menor para artefato: no `bytea` do Neon, cada arquivo consome do
+      # mesmo 0,5 GB que o dado de domínio.
+      - key: ARTEFATO_TAMANHO_MAXIMO_BYTES
+        value: "1048576"
+      - key: PYTHONUNBUFFERED
+        value: "1"

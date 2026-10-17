@@ -1,0 +1,103 @@
+{% load orbita %}
+{% comment %}
+Tabela de execuções. Como os outros fragmentos auto-substituíveis, traz o
+próprio invólucro e só carrega o gatilho de atualização quando há execução em
+andamento — uma lista de execuções antigas não fica pedindo atualização.
+
+`hx-select` é necessário aqui porque a resposta do servidor, quando a
+requisição não vem do HTMX, é a página inteira; mas como a view devolve o
+fragmento para requisição HTMX, ele serve de salvaguarda caso alguém mude a
+view e esqueça o fragmento.
+{% endcomment %}
+
+<div id="tabela-de-execucoes"
+     {% if tem_ativa %}
+       hx-get="{{ request.get_full_path }}"
+       hx-trigger="every 4s"
+       hx-select="#tabela-de-execucoes"
+       hx-swap="outerHTML"
+     {% endif %}>
+
+  {% if tem_ativa %}
+    <p class="pequeno tenue linha" style="margin-bottom: var(--e-2)">
+      <span class="etiqueta etiqueta--ativo">
+        <span class="etiqueta__ponto" aria-hidden="true"></span>
+        em andamento
+      </span>
+      a lista se atualiza a cada 4 segundos
+    </p>
+  {% endif %}
+
+  {% if itens %}
+    <div class="tabela-envoltorio">
+      <table class="tabela">
+        <thead>
+          <tr>
+            <th>Automação</th>
+            <th>Situação</th>
+            <th>Quem</th>
+            <th>Origem</th>
+            <th>Quando</th>
+            <th class="tabela__numero">Duração</th>
+            <th class="tabela__acoes"><span class="so-leitor">Ações</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for execucao in itens %}
+            <tr>
+              <td>
+                <a class="tabela__principal" href="{% url 'execucoes:detalhe' execucao_id=execucao.id %}">
+                  {{ execucao.automacao_nome|default:execucao.automacao_slug }}
+                </a>
+                <div class="tabela__secundario">
+                  <code>{{ execucao.automacao_slug }}</code>
+                  {% if execucao.automacao_versao %} · v{{ execucao.automacao_versao }}{% endif %}
+                </div>
+                {% if execucao.resultado_resumo %}
+                  <div class="tabela__secundario">{{ execucao.resultado_resumo|truncatechars:90 }}</div>
+                {% endif %}
+              </td>
+
+              <td>
+                <span class="etiqueta etiqueta--{{ execucao.status|cor_de_status }}">
+                  <span class="etiqueta__ponto" aria-hidden="true"></span>
+                  {{ execucao.status|rotulo_de_status }}
+                </span>
+                {% if execucao.simulada %}
+                  <div class="tabela__secundario">simulada</div>
+                {% endif %}
+              </td>
+
+              <td class="pequeno">{{ execucao.usuario_nome|default:"—" }}</td>
+
+              <td>
+                <span class="etiqueta etiqueta--contorno">{{ execucao.origem }}</span>
+              </td>
+
+              <td class="pequeno" title="{{ execucao.enfileirada_em|data_e_hora }}">
+                {{ execucao.enfileirada_em|quando }}
+              </td>
+
+              <td class="tabela__numero">
+                {{ execucao.duracao_ms|duracao }}
+                {% if execucao.espera_ms %}
+                  <div class="tabela__secundario">fila {{ execucao.espera_ms|duracao }}</div>
+                {% endif %}
+              </td>
+
+              <td class="tabela__acoes">
+                <a class="botao botao--fantasma botao--pequeno"
+                   href="{% url 'execucoes:detalhe' execucao_id=execucao.id %}">Abrir</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    {% include "componentes/paginacao.html" with rotulo="execuções" %}
+
+  {% else %}
+    {% include "componentes/vazio.html" with icone="execucao" titulo="Nenhuma execução" texto="Nada foi executado ainda com estes filtros. Abra o catálogo e dispare uma automação para ver o fluxo completo: fila, log ao vivo e artefatos." acao_url="/" acao_texto="Ir para o catálogo" %}
+  {% endif %}
+</div>

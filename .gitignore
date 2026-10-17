@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Ambiente — NUNCA comitar segredos reais
+.env
+.env.local
+*.local.env
+
+# Dados e artefatos de execução
+/data/
+/artefatos/
+*.sqlite3
+*.db
+
+# Django
+/apps/portal/staticfiles/
+/apps/portal/db.sqlite3
+
+# Editores / SO
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Saídas das automações de exemplo
+/automations/**/saida/
