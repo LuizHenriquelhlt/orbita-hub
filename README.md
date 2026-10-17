@@ -1,5 +1,12 @@
 # Órbita
 
+[![CI](https://github.com/LuizHenriquelhlt/orbita-hub/actions/workflows/ci.yml/badge.svg)](https://github.com/LuizHenriquelhlt/orbita-hub/actions/workflows/ci.yml)
+![Python](https://img.shields.io/badge/python-3.12-3776ab?logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white)
+![Django](https://img.shields.io/badge/Django%205-092e20?logo=django&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL%2016-4169e1?logo=postgresql&logoColor=white)
+![Licença MIT](https://img.shields.io/badge/licen%C3%A7a-MIT-blue)
+
 **Plataforma de orquestração de automações corporativas.** Catálogo,
 disparo, fila, execução isolada, acompanhamento ao vivo, artefatos, auditoria
 imutável e agendamento — em quatro serviços e um portal.
