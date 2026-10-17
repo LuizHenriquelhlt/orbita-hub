@@ -9,7 +9,7 @@
 
 **Plataforma de orquestração de automações corporativas.** Catálogo,
 disparo, fila, execução isolada, acompanhamento ao vivo, artefatos, auditoria
-imutável e agendamento — em quatro serviços e um portal.
+imutável e agendamento, em quatro serviços e um portal.
 
 O ponto do projeto não é a lista de funcionalidades. É que **o mesmo código
 roda de dois jeitos**: cinco processos com RabbitMQ, Redis, MinIO e containers
@@ -21,7 +21,7 @@ PostgreSQL. Trocar entre os dois é uma variável de ambiente, e não existe um
 git clone … && cd orbita-hub
 make up        # ambiente distribuído completo
 make seed      # cenário fictício do INRH
-# http://localhost:3000 — entre por "ver a demonstração", sem senha
+# http://localhost:3000 - entre por "ver a demonstração", sem senha
 ```
 
 ---
@@ -58,7 +58,7 @@ prioridade, limite de execuções simultâneas, log ao vivo, artefatos baixávei
 métricas, agendamento e trilha de auditoria.
 
 O Órbita é uma implementação dessa ideia. O domínio é o **Instituto Nacional de
-Recursos Hídricos (INRH)**, um órgão federal fictício — outorgas de uso de
+Recursos Hídricos (INRH)**, um órgão federal fictício, outorgas de uso de
 água, reservatórios, superintendências regionais. Todos os dados são
 sintéticos.
 
@@ -69,7 +69,7 @@ sintéticos.
 ```mermaid
 flowchart TB
     subgraph apresentacao["Apresentação"]
-        portal["<b>portal</b><br/>Django 5 + HTMX<br/><i>BFF — o navegador só fala com ele</i>"]
+        portal["<b>portal</b><br/>Django 5 + HTMX<br/><i>BFF, o navegador só fala com ele</i>"]
     end
 
     subgraph dominio["Serviços de domínio"]
@@ -108,7 +108,7 @@ flowchart TB
 **Quatro serviços, uma regra de fronteira**: cada um tem o seu schema no
 PostgreSQL e **não existe chave estrangeira entre schemas**. Se alguém
 escrever um `JOIN` de `execution` para `catalog`, a migração que cria a FK não
-tem o que referenciar e o erro aparece no CI — não seis meses depois, na
+tem o que referenciar e o erro aparece no CI, não seis meses depois, na
 reunião em que se decide extrair o serviço.
 
 O portal é um **BFF**: o navegador conversa só com ele, e o JWT nunca chega ao
@@ -130,8 +130,8 @@ A plataforma precisa rodar em dois lugares com restrições opostas:
 | Lock | Redis | advisory lock |
 | Memória | o que for preciso | 512 MB |
 
-A saída usual é manter dois códigos — um "modo dev simplificado" e um "modo
-produção" — que divergem em um mês e passam a esconder bugs um do outro.
+A saída usual é manter dois códigos, um "modo dev simplificado" e um "modo
+produção", que divergem em um mês e passam a esconder bugs um do outro.
 
 Aqui a saída foi outra. O `httpx` tem um transporte, `ASGITransport`, que em
 vez de abrir socket chama a aplicação ASGI **em memória**. Como é um
@@ -142,7 +142,7 @@ código que chama continua sendo
 preparo = await cliente_catalog.post(f"/automacoes/{slug}/preparar-execucao", ...)
 ```
 
-e continua recebendo um `httpx.Response` com status, cabeçalhos e corpo — com
+e continua recebendo um `httpx.Response` com status, cabeçalhos e corpo, com
 middleware, validação do Pydantic, dependências e tradução de erro todos
 funcionando, porque a requisição de fato atravessa a pilha do FastAPI do
 serviço destino. O que não acontece é um byte sair pela rede.
@@ -177,7 +177,7 @@ Sem elas, todo o desenho não funciona.
 Cada dependência de infraestrutura é uma classe abstrata com ao menos duas
 implementações. A que roda vem da configuração.
 
-### Fila — `hub_core/broker/`
+### Fila - `hub_core/broker/`
 
 | Adaptador | Como obtém cada garantia |
 |---|---|
@@ -194,13 +194,13 @@ Uma sutileza que o teste `test_lote_parcial_sob_concorrencia` registra: com
 aplicado à varredura e não às linhas efetivamente travadas. Pedir 10 sob
 contenção pode trazer 3. Quem consome precisa tratar lote parcial.
 
-### Executor — `hub_core/executor/`
+### Executor - `hub_core/executor/`
 
 | Adaptador | Isola | Onde |
 |---|---|---|
 | **Docker** | cgroups (CPU/memória), namespace de rede, raiz somente leitura, `no-new-privileges`, todas as capabilities descartadas, limite de PIDs | produção |
 | **Subprocesso** | ambiente e diretório de trabalho. **Não** isola memória nem CPU | desenvolvimento sem Docker |
-| **Simulado** | nada — reproduz um roteiro declarado no manifesto | demonstração pública |
+| **Simulado** | nada, reproduz um roteiro declarado no manifesto | demonstração pública |
 
 O executor Docker tem a parte mais difícil do projeto: **log ao vivo com uma
 biblioteca síncrona**. `container.logs(stream=True)` é um gerador bloqueante;
@@ -208,16 +208,16 @@ iterá-lo dentro de uma corrotina congela o event loop pelo tempo inteiro da
 execução. A ponte é uma thread que consome o gerador e empurra cada linha em
 uma `asyncio.Queue` com `loop.call_soon_threadsafe`.
 
-### Artefatos — `hub_core/storage/`
+### Artefatos - `hub_core/storage/`
 
 A porta tem uma assimetria deliberada: `url_para_download` pode devolver
 `None`. Com S3 existe URL pré-assinada e o navegador baixa direto do object
 storage; com `bytea` no PostgreSQL não existe equivalente. Em vez de inventar
 uma URL falsa para uniformizar, a porta admite que a capacidade não existe dos
-dois lados — uma abstração que escondesse a diferença faria o adaptador
+dois lados, uma abstração que escondesse a diferença faria o adaptador
 PostgreSQL servir URLs que não funcionam.
 
-### Lock — `hub_core/locks/`
+### Lock - `hub_core/locks/`
 
 Serve ao controle de admissão e ao agendador. As semânticas **não** são
 idênticas, e isso está documentado: o Redis guarda uma chave com TTL; o
@@ -257,7 +257,7 @@ spec:
 ```
 
 O manifesto é validado por modelos Pydantic, e o **JSON Schema é gerado deles**
-e publicado em `GET /manifestos/schema` — uma fonte, três usos: validar o que
+e publicado em `GET /manifestos/schema`, uma fonte, três usos: validar o que
 chega, gerar o formulário de parâmetros no portal, e autocompletar no editor
 de quem escreve a automação.
 
@@ -272,13 +272,13 @@ echo '@@orbita {"tipo":"metrica","nome":"linhas_processadas","valor":1420}'
 echo '@@orbita {"tipo":"artefato","caminho":"relatorio.xlsx"}'
 ```
 
-A alternativa óbvia — um SDK que faz chamadas HTTP de volta — exige que todo
+A alternativa óbvia, um SDK que faz chamadas HTTP de volta, exige que todo
 container tenha rota de rede até o serviço e credencial para autenticar, e
 exige um SDK por linguagem antes de a linguagem ser suportada. Com stdout:
 
 1. funciona nos três executores sem adaptação (`docker logs`, o stdout de um
    subprocesso e a saída do simulador são a mesma coisa);
-2. não precisa de SDK — aquele `echo` acima é um cliente completo;
+2. não precisa de SDK, aquele `echo` acima é um cliente completo;
 3. o container não precisa de rede, o que permite rodá-lo com `--network none`,
    que é o padrão da plataforma.
 
@@ -297,17 +297,17 @@ comentários do código. As que mais mudam a forma do sistema:
 | [0003](docs/adr/0003-schema-por-servico.md) | Um schema por serviço, sem FK entre schemas | Consultas que cruzam domínios custam uma chamada HTTP; em troca, a fronteira é verificável |
 | [0006](docs/adr/0006-protocolo-por-stdout.md) | Automação fala por stdout, não por HTTP | Canal unidirecional; em troca, zero dependência de rede e de SDK |
 | [0007](docs/adr/0007-jwt-sem-revogacao.md) | JWT validado localmente, sem consulta ao identity | Revogação só vale no próximo token (60 min); em troca, o catálogo funciona com o identity fora do ar |
-| [0010](docs/adr/0010-publicacao-apos-commit.md) | Publicar na fila **depois** do commit | Pode existir execução gravada sem mensagem; em troca, nunca existe mensagem apontando para execução inexistente — e um recuperador trata o primeiro caso |
+| [0010](docs/adr/0010-publicacao-apos-commit.md) | Publicar na fila **depois** do commit | Pode existir execução gravada sem mensagem; em troca, nunca existe mensagem apontando para execução inexistente, e um recuperador trata o primeiro caso |
 | [0013](docs/adr/0013-polling-em-vez-de-websocket.md) | Acompanhamento ao vivo por polling com ponteiro de sequência | Latência de até 2 s; em troca, sem processo com estado, sem sticky session, e reconexão resolvida de graça |
 
 ### Duas que vale ver de perto
 
 **A auditoria é imutável no banco, não no código.** A migração `0002` instala
 triggers que recusam `UPDATE`, `DELETE` e `TRUNCATE` em `plataforma.auditoria`
-— inclusive para o dono da tabela. A receita tradicional (`CREATE RULE … DO
+- inclusive para o dono da tabela. A receita tradicional (`CREATE RULE … DO
 INSTEAD NOTHING`) foi rejeitada porque falha **em silêncio**: o `UPDATE`
 retorna sucesso e o código segue achando que alterou. E `TRUNCATE` precisa do
-seu próprio gatilho, porque não dispara triggers de `UPDATE`/`DELETE` — é
+seu próprio gatilho, porque não dispara triggers de `UPDATE`/`DELETE`, é
 justamente o comando que alguém usaria para limpar a tabela.
 
 **A matriz de permissões está em código, não em tabela.** Permissão por papel
@@ -340,7 +340,7 @@ O que mantém isso honesto é que **a plataforma registra qual executor rodou
 cada execução** e a interface rotula as simuladas, com os números de consumo
 marcados como reproduzidos:
 
-> `simulada` — consumo reproduzido, não medido
+> `simulada`, consumo reproduzido, não medido
 
 A automação [`relatorio-outorgas-mensal`](automations/relatorio-outorgas-mensal/)
 roda **código real** com `EXECUTOR_BACKEND=subprocess` ou `=docker`: lê 1 420
@@ -353,7 +353,7 @@ sair.
 
 ## Como rodar
 
-### Modo distribuído — cinco processos, como em produção
+### Modo distribuído - cinco processos, como em produção
 
 Precisa de Docker com Compose v2.
 
@@ -370,7 +370,7 @@ make seed        # cenário fictício do INRH
 | RabbitMQ | http://localhost:15672 |
 | MinIO | http://localhost:9001 |
 
-### Modo monolito — um processo, como no free tier
+### Modo monolito - um processo, como no free tier
 
 Precisa só de um PostgreSQL.
 
@@ -388,7 +388,7 @@ papel**. Vale experimentar a diferença entre dois deles:
 
 - **operador** dispara automação e vê as próprias execuções; não vê a trilha
   de auditoria nem a área administrativa;
-- **auditor** lê a trilha inteira e vê CPF sem máscara, e **não dispara nada** —
+- **auditor** lê a trilha inteira e vê CPF sem máscara, e **não dispara nada**,
   quem fiscaliza não opera.
 
 Para entrar com CPF e senha, `make seed` imprime a lista. Todas usam
@@ -400,13 +400,13 @@ Para entrar com CPF e senha, `make seed` imprime a lista. Todas usam
 
 Guia completo em [`docs/implantacao.md`](docs/implantacao.md). O resumo:
 
-**Banco — Neon.** PostgreSQL 16 de verdade, free tier permanente, scale-to-zero
+**Banco, Neon.** PostgreSQL 16 de verdade, free tier permanente, scale-to-zero
 que religa em cerca de um segundo. Use o endpoint **pooled**; o código detecta
-o PgBouncer pelo host e desliga o cache de prepared statements sozinho — sem
+o PgBouncer pelo host e desliga o cache de prepared statements sozinho, sem
 isso, a segunda query de cada conexão falha com `prepared statement
 "__asyncpg_stmt_1__" does not exist`.
 
-**Aplicação — Render.** `infra/render.yaml` é um blueprint pronto: um serviço
+**Aplicação, Render.** `infra/render.yaml` é um blueprint pronto: um serviço
 web Docker, `preDeployCommand` com `alembic upgrade head`, segredos gerados
 automaticamente. Só a `DATABASE_URL` é pedida na criação.
 
@@ -420,10 +420,10 @@ Nenhum dos dois exige cartão de crédito.
 orbita-hub/
 ├── packages/hub-core/        núcleo: portas, adaptadores, auth, db, auditoria
 │   └── hub_core/
-│       ├── broker/           fila        — Postgres | RabbitMQ
-│       ├── executor/         execução    — Docker | subprocesso | simulado
-│       ├── storage/          artefatos   — S3 | Postgres
-│       ├── locks/            exclusão    — Postgres | Redis
+│       ├── broker/           fila       , Postgres | RabbitMQ
+│       ├── executor/         execução   , Docker | subprocesso | simulado
+│       ├── storage/          artefatos  , S3 | Postgres
+│       ├── locks/            exclusão   , Postgres | Redis
 │       ├── auth/             JWT, RBAC, senhas, dependências do FastAPI
 │       └── clients.py        ◀ o transporte in-process que faz os dois modos
 ├── services/
@@ -435,7 +435,7 @@ orbita-hub/
 ├── apps/portal/              Django 5 + HTMX, sem banco próprio
 ├── automations/              três automações de exemplo, com manifesto
 ├── sdk/hub_sdk/              SDK Python (conveniência, não requisito)
-├── migrations/               Alembic — cinco schemas, uma linha de versão
+├── migrations/               Alembic, cinco schemas, uma linha de versão
 ├── scripts/                  seed do cenário fictício, gerador de dados
 ├── tests/                    92 testes: unitários + integração com Postgres
 ├── docs/adr/                 decisões arquiteturais
@@ -447,7 +447,7 @@ orbita-hub/
 ## Testes
 
 ```bash
-pytest                      # unitários — sem banco, segundos
+pytest                      # unitários, sem banco, segundos
 make up && pytest -m integracao   # com PostgreSQL de verdade
 ```
 
@@ -455,7 +455,7 @@ Os de integração são **pulados** sem `DATABASE_URL`, em vez de falharem: quem
 clona o repositório roda `pytest` e vê a suíte unitária passar sem subir nada.
 
 Não há SQLite nos testes. `FOR UPDATE SKIP LOCKED`, `make_interval`,
-`gen_random_uuid`, índice parcial, `JSONB` e advisory locks não existem lá — um
+`gen_random_uuid`, índice parcial, `JSONB` e advisory locks não existem lá, um
 teste que passa no SQLite e falha no PostgreSQL é pior do que teste nenhum.
 
 Cada teste de integração prova algo que só se prova contra o banco: a
@@ -492,7 +492,7 @@ Escritos aqui porque um projeto que só lista o que faz bem não é informativo.
   verificação de HMAC por JWKS e o resto não muda.
 - **O parser de cron é próprio**, com o subconjunto POSIX de cinco campos. Se
   o projeto precisasse de `@reboot`, segundos ou cron estendido, a decisão
-  correta seria trocá-lo por `croniter` — está na ADR 0009.
+  correta seria trocá-lo por `croniter`, está na ADR 0009.
 
 ---
 

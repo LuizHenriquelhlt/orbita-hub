@@ -7,7 +7,7 @@
     nada em nenhuma fila:  dorme o intervalo de poll
 
 A ordem das filas é a prioridade entre elas: `interativa` antes de `padrao`
-antes de `lote`. É *starvation* por desenho — um relatório mensal pesado nunca
+antes de `lote`. É *starvation* por desenho, um relatório mensal pesado nunca
 atrasa a automação que alguém está esperando na tela. Em troca, uma fila de
 lote pode esperar muito quando há carga interativa constante, o que é o
 comportamento desejado para este domínio.
@@ -26,8 +26,8 @@ antes da décima.
   que falha deterministicamente, três vezes, para falhar as três;
 * **o runner falhou** (não conseguiu puxar a imagem, perdeu o Docker, o
   `execution-service` não respondeu). A automação não teve a sua chance: a
-  mensagem recebe **nack** e volta à fila com backoff, para outro runner — ou
-  este, mais tarde — tentar de novo.
+  mensagem recebe **nack** e volta à fila com backoff, para outro runner, ou
+  este, mais tarde, tentar de novo.
 
 Em uma frase: *nack é para falha de infraestrutura; ack é para resultado de
 automação, inclusive resultado ruim*.
@@ -124,7 +124,7 @@ class Worker:
         if self._vagas.locked():
             # Sem vaga: não retira mensagem da fila. Retirar e segurar em
             # memória tornaria a mensagem invisível a outros runners sem estar
-            # sendo processada — desperdício de capacidade disfarçado de
+            # sendo processada, desperdício de capacidade disfarçado de
             # trabalho em andamento.
             return False
 
@@ -196,7 +196,7 @@ class Worker:
                 resultado = await self._executor.executar(pedido, coletor.registrar)
             except Exception as erro:
                 # Exceção que escapa do executor é falha **dele**, não da
-                # automação — o contrato em `Executor.executar` diz que falha
+                # automação, o contrato em `Executor.executar` diz que falha
                 # de automação volta como `ResultadoExecucao`. Então: nack.
                 log.error("worker.executor_falhou", execucao_id=execucao_id, exc_info=True)
                 await coletor.registrar("ERROR", f"falha do executor: {erro}")
@@ -212,13 +212,13 @@ class Worker:
             # A automação rodou, mas o resultado não chegou. Nack: a nova
             # tentativa a reexecuta, o que é aceitável porque a plataforma
             # exige que automação seja idempotente (ver contrato do SDK), e a
-            # alternativa — perder o resultado — é pior.
+            # alternativa, perder o resultado, é pior.
             log.error("worker.finalizacao_nao_entregue", execucao_id=execucao_id)
             await self._broker.rejeitar(mensagem, motivo=str(erro))
             definir_trace_id(None)
             return
 
-        # A automação teve a sua chance e produziu um resultado — inclusive se
+        # A automação teve a sua chance e produziu um resultado, inclusive se
         # o resultado foi falha. Ack.
         await self._broker.confirmar(mensagem)
 
@@ -263,7 +263,7 @@ class Worker:
         """Traduz as variáveis declaradas em valores, lendo do ambiente do runner.
 
         O valor de um segredo **nunca** passa pelo banco, pela API nem pela
-        interface — o manifesto declara apenas o nome (ver
+        interface, o manifesto declara apenas o nome (ver
         `hub_catalog.manifesto.VariavelDeAmbiente`). É aqui, no último momento
         possível, que o valor é resolvido.
 

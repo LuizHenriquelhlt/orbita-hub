@@ -5,12 +5,12 @@ Adaptador usado quando há Redis no ambiente (docker-compose local, Kubernetes).
 
 O detalhe que separa uma implementação correta de uma com bug de corrida é a
 **liberação**: um `DEL` simples apaga o lock mesmo quando ele já expirou e foi
-retomado por outro processo — o processo lento apaga o lock do rápido. A
+retomado por outro processo, o processo lento apaga o lock do rápido. A
 proteção é guardar um token aleatório no valor e só apagar se o valor conferir,
 o que exige comparar-e-apagar atomicamente. Em Redis, isso é um script Lua.
 
 Este adaptador não implementa Redlock (quórum entre vários nós). Com um único
-nó Redis, um failover pode perder o lock — risco aceito aqui e registrado em
+nó Redis, um failover pode perder o lock, risco aceito aqui e registrado em
 docs/adr/0004. Para o uso do projeto (evitar disparo duplicado de agendamento),
 o pior caso é uma execução repetida, que o motor já trata por idempotência.
 """

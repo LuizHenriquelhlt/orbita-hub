@@ -1,4 +1,4 @@
-# 0005 — Fila de mensagens sobre uma tabela PostgreSQL
+# 0005 - Fila de mensagens sobre uma tabela PostgreSQL
 
 **Situação:** aceita · **Data:** 2026-10-17
 **Implementa:** `hub_core/broker/postgres.py`, `hub_core/db/plataforma.py`
@@ -7,7 +7,7 @@
 
 A plataforma precisa de fila durável com retry, backoff, *visibility timeout*,
 prioridade e fila de mensagens mortas. O ambiente de demonstração não tem
-broker — e não vai ter, porque não existe RabbitMQ em free tier.
+broker, e não vai ter, porque não existe RabbitMQ em free tier.
 
 "Fila em banco de dados" tem má fama merecida: a implementação ingênua
 (`SELECT … WHERE processado = false LIMIT 1` seguido de `UPDATE`) entrega a
@@ -16,7 +16,7 @@ mesma mensagem a dois consumidores.
 ## Decisão
 
 Uma tabela, `plataforma.fila_mensagens`, consumida com **`SELECT … FOR UPDATE
-SKIP LOCKED`** dentro de um CTE que alimenta o `UPDATE` de entrega — um
+SKIP LOCKED`** dentro de um CTE que alimenta o `UPDATE` de entrega, um
 comando só, uma transação só, sem janela em que a mensagem esteja travada mas
 ainda visível a outro worker.
 
@@ -48,12 +48,12 @@ recuperador.
 ## Consequências
 
 **A favor.** Zero dependência além do banco que já existe. A fila é
-inspecionável com SQL — algo que o RabbitMQ não dá. O histórico fica.
+inspecionável com SQL, algo que o RabbitMQ não dá. O histórico fica.
 
 **Contra.** O consumo é por **poll**, com latência de até
 `FILA_INTERVALO_POLL_SEGUNDOS` (1 s por padrão), contra o *push* do RabbitMQ.
 O teto de vazão fica na casa de milhares de mensagens por minuto, ordens de
-magnitude abaixo do broker — e ordens de magnitude acima do que este projeto
+magnitude abaixo do broker, e ordens de magnitude acima do que este projeto
 precisa. E a fila disputa conexões e I/O com o banco de domínio, então um pico
 de fila pode degradar consulta de tela.
 
@@ -68,7 +68,7 @@ laço justamente para não depender disso. Registrado em
 
 - **`LISTEN`/`NOTIFY`.** Elimina o poll e não é durável: notificação enviada
   enquanto ninguém escuta se perde. Serviria como complemento para reduzir
-  latência, com o poll como rede de segurança — não foi implementado.
+  latência, com o poll como rede de segurança, não foi implementado.
 - **Celery com broker em banco.** Traz um modelo de execução inteiro para
   usar a fila, e o resultado seria mais acoplado, não menos.
 - **SQS, Cloud Tasks.** Resolveriam e trariam dependência de nuvem específica,

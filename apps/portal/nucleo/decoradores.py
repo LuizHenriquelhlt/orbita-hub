@@ -5,7 +5,7 @@ das views:
 
 1. manda para a tela de entrada quem não tem sessão, guardando o destino para
    voltar depois;
-2. recusa com 403 quem não tem a permissão — **para esconder a tela**; a
+2. recusa com 403 quem não tem a permissão, **para esconder a tela**; a
    autorização que conta é a do serviço (ver `nucleo.middleware`);
 3. captura `ErroOrbita`, transforma em mensagem na interface e redireciona, em
    vez de deixar a página estourar.
@@ -46,7 +46,7 @@ def redirecionar_htmx(destino: str) -> HttpResponse:
     """Resposta que faz o HTMX navegar a página inteira.
 
     Um 302 comum seria seguido pelo próprio HTMX, que inseriria a página de
-    destino dentro do fragmento — resultando em uma página dentro da outra.
+    destino dentro do fragmento, resultando em uma página dentro da outra.
     `HX-Redirect` instrui o HTMX a trocar a URL do navegador.
     """
     resposta = HttpResponse(status=204)

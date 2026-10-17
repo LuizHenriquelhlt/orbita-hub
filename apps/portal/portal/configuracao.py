@@ -9,18 +9,18 @@ um cookie assinado.
 
 Três coisas caem fora por causa disso, e todas são deliberadas:
 
-* **`django.contrib.auth`** — a identidade é do `identity-service`, que emite
+* **`django.contrib.auth`**, a identidade é do `identity-service`, que emite
   JWT. Usar o `auth` do Django significaria duas bases de usuário para manter
   em sincronia, que é o problema que ter um serviço de identidade resolve;
-* **`django.contrib.admin`** — depende do `auth` e de banco. A administração
+* **`django.contrib.admin`**, depende do `auth` e de banco. A administração
   da plataforma é feita pelas telas próprias, que respeitam o mesmo RBAC do
   resto;
-* **sessão em banco** — `signed_cookies` guarda a sessão no próprio cookie,
+* **sessão em banco**, `signed_cookies` guarda a sessão no próprio cookie,
   assinada com a `SECRET_KEY`. O limite é 4 KB; o JWT ocupa cerca de 700
   bytes, com folga confortável.
 
 O resultado é um processo sem estado, que escala horizontalmente sem nada
-compartilhado e sobe em segundos — o que importa em um free tier que hiberna.
+compartilhado e sobe em segundos, o que importa em um free tier que hiberna.
 
 ## Por que Django, e não FastAPI com Jinja
 
@@ -55,7 +55,7 @@ ALLOWED_HOSTS = [
 
 # O Render serve a aplicação atrás de um proxy que termina o TLS. Sem estas
 # duas linhas, o Django acha que a requisição é HTTP e monta URL absoluta com
-# `http://`, o que o navegador bloqueia como conteúdo misto — e a proteção
+# `http://`, o que o navegador bloqueia como conteúdo misto, e a proteção
 # CSRF rejeita o POST por origem divergente.
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 USE_X_FORWARDED_HOST = True
@@ -77,7 +77,7 @@ if not DEBUG:
     X_FRAME_OPTIONS = "DENY"
 
 # `Lax` e não `Strict`: com `Strict`, o cookie não é enviado quando alguém
-# chega ao portal por um link externo — e a pessoa cai na tela de login mesmo
+# chega ao portal por um link externo, e a pessoa cai na tela de login mesmo
 # com sessão válida. `Lax` protege contra CSRF em requisição que altera estado
 # (que é POST) e mantém a navegação por link funcionando.
 SESSION_COOKIE_SAMESITE = "Lax"
@@ -127,7 +127,7 @@ TEMPLATES = [
                 "nucleo.contexto.plataforma",
             ],
             # Em produção, o loader em cache compila cada template uma vez. Sem
-            # ele, cada requisição relê o arquivo do disco — o que em um
+            # ele, cada requisição relê o arquivo do disco, o que em um
             # container com disco de rede é a maior parte do tempo de resposta.
             "loaders": (
                 [
@@ -191,8 +191,8 @@ STORAGES = {
         # (`orbita.4f2a1b.css`), o que permite servir com cache longo e
         # invalidar na publicação. Exige `collectstatic`, rodado no Dockerfile.
         #
-        # Não é o WhiteNoise. A middleware dele é **somente síncrona** — não
-        # declara `async_capable` — e colocá-la na cadeia faz o Django adaptar
+        # Não é o WhiteNoise. A middleware dele é **somente síncrona**, não
+        # declara `async_capable`, e colocá-la na cadeia faz o Django adaptar
         # todo o resto para modo síncrono, quebrando as views assíncronas de
         # que o modo monolito depende. Os arquivos estáticos são servidos pela
         # camada ASGI em `portal.asgi`, que é nativa assíncrona.
@@ -213,7 +213,7 @@ SERVICOS = {
 
 # Em modo monolito, o portal fala com os serviços pelo transporte in-process do
 # `hub_core.clients`, sem rede. Em distribuído, por HTTP. O código das views é
-# o mesmo — ver `nucleo.bff`.
+# o mesmo, ver `nucleo.bff`.
 HUB_MODE = os.getenv("HUB_MODE", "monolith")
 
 DEMO_MODE = os.getenv("DEMO_MODE", "false").lower() in {"true", "1", "yes"}

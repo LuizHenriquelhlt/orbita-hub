@@ -6,7 +6,7 @@ erro de domínio para HTTP, `trace_id` por requisição, endpoint de saúde,
 
 A fábrica recebe o *router* e um ciclo de vida opcional, em vez de o serviço
 construir o `FastAPI` e importar uma lista de middlewares. Assim, acrescentar
-um middleware a toda a plataforma é uma mudança em um arquivo — e nenhum
+um middleware a toda a plataforma é uma mudança em um arquivo, e nenhum
 serviço pode esquecer de aplicá-lo.
 """
 
@@ -99,7 +99,7 @@ def _registrar_middleware(app: FastAPI, nome: str) -> None:
     async def trace_e_tempo(request: Request, proxima: Any) -> Any:
         """Garante um `trace_id` por requisição e mede a duração.
 
-        O id vem do cabeçalho se o chamador já tinha um — é assim que uma ação
+        O id vem do cabeçalho se o chamador já tinha um, é assim que uma ação
         iniciada no portal mantém o mesmo id ao passar por `execution` e
         `runner`. Sem isso, cada serviço geraria o seu e a correlação se
         perderia justamente onde ela importa.
@@ -134,7 +134,7 @@ def _registrar_tratadores_de_erro(app: FastAPI) -> None:
 
         O corpo carrega `codigo` além da mensagem, e é esse código que
         `ClienteServico._levantar` usa para reconstruir a exceção exata do
-        outro lado — inclusive distinguindo dois erros que compartilham o mesmo
+        outro lado, inclusive distinguindo dois erros que compartilham o mesmo
         status HTTP.
         """
         return JSONResponse(
@@ -154,7 +154,7 @@ def _registrar_tratadores_de_erro(app: FastAPI) -> None:
 
         O padrão do FastAPI devolve a estrutura crua do Pydantic, com `loc`,
         `ctx` e mensagens em inglês. Ela é ótima para depurar uma API e ruim
-        para mostrar em formulário — e é o formulário do portal que consome
+        para mostrar em formulário, e é o formulário do portal que consome
         isto.
         """
         campos = [

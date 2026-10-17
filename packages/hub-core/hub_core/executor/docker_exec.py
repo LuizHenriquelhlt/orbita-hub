@@ -8,7 +8,7 @@ usuário sem privilégio.
 
 O `docker` SDK é síncrono. `container.logs(stream=True, follow=True)` devolve um
 gerador **bloqueante**: cada `next()` espera a próxima linha chegar. Iterar isso
-dentro de uma corrotina congela o event loop — e, com um container que roda por
+dentro de uma corrotina congela o event loop, e, com um container que roda por
 dez minutos, congela o processo inteiro por dez minutos.
 
 A solução aqui é a ponte padrão entre os dois mundos: uma thread consome o
@@ -17,7 +17,7 @@ gerador bloqueante e empurra cada linha em uma `asyncio.Queue` usando
 bloqueia, e o log chega à interface conforme é produzido.
 
 `asyncio.to_thread` resolveria se fosse uma chamada só, mas não serve para um
-gerador que produz ao longo do tempo — ele devolve o resultado no fim, e o fim
+gerador que produz ao longo do tempo, ele devolve o resultado no fim, e o fim
 é justamente o que não se quer esperar.
 
 ## Postura de segurança do container
@@ -25,7 +25,7 @@ gerador que produz ao longo do tempo — ele devolve o resultado no fim, e o fim
 Toda execução roda com: rede desligada por padrão, raiz somente leitura,
 `no-new-privileges`, todas as *capabilities* descartadas, limite de PIDs, e um
 `tmpfs` com teto para a área de trabalho. O que a automação precisa além disso,
-declara no manifesto — e a declaração fica visível na ficha dela.
+declara no manifesto, e a declaração fica visível na ficha dela.
 """
 
 from __future__ import annotations
@@ -187,7 +187,7 @@ class ExecutorDocker(Executor):
                     codigo_saida=codigo,
                     resumo="Container encerrado por falta de memória",
                     erro=(
-                        f"OOMKilled — o limite é {pedido.limites.memoria_mb} MB. "
+                        f"OOMKilled, o limite é {pedido.limites.memoria_mb} MB. "
                         "Aumente `resources.memory` no manifesto da automação."
                     ),
                     metricas=metricas,
@@ -288,7 +288,7 @@ class ExecutorDocker(Executor):
         """Extrai os arquivos declarados de dentro do container.
 
         `get_archive` devolve um stream tar. É o único jeito de ler arquivo de
-        um container sem montar volume do host — e não montar volume é o que
+        um container sem montar volume do host, e não montar volume é o que
         mantém o host fora do alcance da automação.
         """
         colhidos: list[ArtefatoProduzido] = []
@@ -351,8 +351,8 @@ class ExecutorDocker(Executor):
     async def listar_containers(self) -> list[dict[str, Any]]:
         """Containers gerenciados pela plataforma, para a área de Runners.
 
-        O filtro por label é o que impede a interface de listar — e oferecer
-        um botão de "parar" para — containers que não são da plataforma. Em uma
+        O filtro por label é o que impede a interface de listar, e oferecer
+        um botão de "parar" para, containers que não são da plataforma. Em uma
         máquina de desenvolvimento, isso evita derrubar o próprio PostgreSQL.
         """
         if self._cliente is None:

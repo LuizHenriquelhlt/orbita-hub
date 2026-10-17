@@ -17,7 +17,7 @@ from django.utils.safestring import mark_safe
 # O nome da variável é obrigatório: o Django procura literalmente por
 # `register` no módulo (`django.template.backends.django.import_library`).
 # Chamá-la de `registrador`, como o resto do projeto sugeriria, faz a
-# biblioteca simplesmente não ser registrada — e o erro que aparece é
+# biblioteca simplesmente não ser registrada, e o erro que aparece é
 # "'orbita' is not a registered tag library", que não diz o motivo.
 register = template.Library()
 
@@ -102,11 +102,11 @@ def duracao(milissegundos: Any) -> str:
     em execução curta.
     """
     if milissegundos in (None, ""):
-        return "—"
+        return "-"
     try:
         ms = float(milissegundos)
     except (TypeError, ValueError):
-        return "—"
+        return "-"
 
     if ms < 1000:
         return f"{ms:.0f} ms"
@@ -123,11 +123,11 @@ def duracao(milissegundos: Any) -> str:
 @register.filter
 def tamanho_de_arquivo(bytes_: Any) -> str:
     if bytes_ in (None, ""):
-        return "—"
+        return "-"
     try:
         tamanho = float(bytes_)
     except (TypeError, ValueError):
-        return "—"
+        return "-"
     for unidade in ("B", "KB", "MB", "GB"):
         if tamanho < 1024 or unidade == "GB":
             if unidade == "B":
@@ -142,12 +142,12 @@ def quando(valor: Any) -> str:
     """Data relativa para o passado recente, absoluta para o resto.
 
     "há 3 min" é mais útil do que "17/10/2026 10:58" quando acabou de
-    acontecer, e inútil quando foi em março — "há 7 meses" obriga a pessoa a
+    acontecer, e inútil quando foi em março, "há 7 meses" obriga a pessoa a
     calcular a data. O corte fica em uma semana.
     """
     momento = _como_data(valor)
     if momento is None:
-        return "—"
+        return "-"
 
     agora = timezone.now()
     delta = agora - momento
@@ -182,7 +182,7 @@ def quando(valor: Any) -> str:
 def data_e_hora(valor: Any) -> str:
     momento = _como_data(valor)
     if momento is None:
-        return "—"
+        return "-"
     return timezone.localtime(momento).strftime("%d/%m/%Y às %H:%M:%S")
 
 
@@ -190,7 +190,7 @@ def data_e_hora(valor: Any) -> str:
 def numero(valor: Any, decimais: int = 0) -> str:
     """Formato brasileiro: ponto como separador de milhar, vírgula no decimal."""
     if valor in (None, ""):
-        return "—"
+        return "-"
     try:
         convertido = float(valor)
     except (TypeError, ValueError):
@@ -202,11 +202,11 @@ def numero(valor: Any, decimais: int = 0) -> str:
 @register.filter
 def porcentagem(valor: Any, decimais: int = 1) -> str:
     if valor in (None, ""):
-        return "—"
+        return "-"
     try:
         return f"{float(valor):.{decimais}f}%".replace(".", ",")
     except (TypeError, ValueError):
-        return "—"
+        return "-"
 
 
 @register.filter
@@ -231,7 +231,7 @@ def barra(valor: Any, maximo: Any) -> str:
 
     O gráfico é desenhado com `div`s e CSS, sem biblioteca de JavaScript. Para
     uma série de 14 pontos, carregar um pacote de gráficos custaria mais do que
-    o gráfico inteiro — e o resultado é acessível e imprime bem.
+    o gráfico inteiro, e o resultado é acessível e imprime bem.
     """
     try:
         v, m = float(valor), float(maximo)
@@ -256,7 +256,7 @@ def consulta_com(context: dict[str, Any], **novos: Any) -> str:
         <a href="?{% consulta_com pagina=3 %}">
 
     Sem isto, cada link de paginação teria de reescrever todos os filtros
-    ativos à mão — e esquecer um significa perder o filtro ao virar a página,
+    ativos à mão, e esquecer um significa perder o filtro ao virar a página,
     que é o bug mais irritante de uma listagem.
     """
     request = context.get("request")

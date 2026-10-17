@@ -6,7 +6,7 @@
 
 A forma usual é a middleware do WhiteNoise. Ela não serve aqui por um motivo
 concreto: a versão atual do WhiteNoise **não declara `async_capable`**, então o
-Django a trata como middleware somente síncrona — e uma middleware síncrona na
+Django a trata como middleware somente síncrona, e uma middleware síncrona na
 cadeia faz o Django adaptar todo o resto para modo síncrono, incluindo as
 views. As views assíncronas passariam a rodar em pool de threads, e o
 transporte in-process do modo monolito (que é `await` puro) quebraria com
@@ -14,7 +14,7 @@ transporte in-process do modo monolito (que é `await` puro) quebraria com
 
 Em vez de contornar isso, os estáticos saem da cadeia: um `Mount` do Starlette
 em `/static`, nativo assíncrono, antes do Django. O resultado é melhor nos dois
-sentidos — nenhum pedido de CSS entra no ciclo de middleware do Django, e a
+sentidos, nenhum pedido de CSS entra no ciclo de middleware do Django, e a
 cadeia continua assíncrona de ponta a ponta.
 
 ## Por que ASGI e não WSGI
@@ -45,7 +45,7 @@ def _diretorio_de_estaticos() -> Path:
     já contendo o hash do conteúdo. Em desenvolvimento, direto de `static/`,
     para que salvar o CSS tenha efeito sem rodar comando nenhum.
 
-    A ordem da verificação importa: se `staticfiles/` existe, ele ganha —
+    A ordem da verificação importa: se `staticfiles/` existe, ele ganha,
     porque é o que o `{% static %}` vai referenciar quando o
     `ManifestStaticFilesStorage` estiver ativo.
     """
@@ -63,7 +63,7 @@ def _montar() -> object:
         from starlette.staticfiles import StaticFiles
     except ImportError:
         # Starlette vem com o FastAPI, que é dependência do núcleo. Se por
-        # algum motivo não estiver presente, o portal ainda sobe — só sem
+        # algum motivo não estiver presente, o portal ainda sobe, só sem
         # servir estáticos, o que em produção é tarefa de um CDN de qualquer
         # forma.
         return aplicacao_django

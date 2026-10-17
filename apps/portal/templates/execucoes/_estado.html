@@ -7,7 +7,7 @@ por inteiro (`outerHTML`). O motivo é o mesmo: os atributos de polling vivem no
 invólucro, e é a ausência deles na resposta que faz a atualização parar quando
 a execução termina.
 
-A alternativa — invólucro fixo em `detalhe.html` e troca de `innerHTML` — teria
+A alternativa, invólucro fixo em `detalhe.html` e troca de `innerHTML`, teria
 um defeito silencioso: os atributos de gatilho foram renderizados quando a
 página carregou, com a execução em andamento, e continuariam lá para sempre.
 A tela seguiria pedindo atualização a cada 2 s de uma execução encerrada horas
@@ -43,7 +43,7 @@ antes.
 
     <div class="indicador">
       <span class="indicador__rotulo">Executor</span>
-      <span class="indicador__valor" style="font-size: 1.1rem">{{ execucao.executor|default:"—" }}</span>
+      <span class="indicador__valor" style="font-size: 1.1rem">{{ execucao.executor|default:"-" }}</span>
       {% if execucao.simulada %}
         {% comment %} Rótulo obrigatório, não decorativo: número de consumo simulado
            apresentado como real é a única parte de uma demonstração que seria

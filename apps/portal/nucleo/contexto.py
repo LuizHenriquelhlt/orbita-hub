@@ -1,7 +1,7 @@
 """Processadores de contexto: o que todo template recebe sem pedir.
 
 Substituem `django.contrib.auth.context_processors.auth`, que não existe aqui
-porque o portal não usa o `auth` do Django — a identidade vem do
+porque o portal não usa o `auth` do Django, a identidade vem do
 `identity-service` (ver `portal.configuracao`).
 """
 
@@ -16,7 +16,7 @@ from nucleo.middleware import ANONIMO
 
 
 def identidade(request: HttpRequest) -> dict[str, Any]:
-    """Põe `quem` em todo template — o equivalente ao `user` do Django."""
+    """Põe `quem` em todo template, o equivalente ao `user` do Django."""
     return {"quem": getattr(request, "quem", ANONIMO)}
 
 
@@ -26,7 +26,7 @@ def plataforma(request: HttpRequest) -> dict[str, Any]:
     `ambiente` e `modo` aparecem na faixa de identificação do rodapé. Em um
     projeto de portfólio isso é parte da demonstração: quem abre o endereço
     público vê, escrito na tela, que está no modo monolito com executor
-    simulado — e não precisa adivinhar o que é real.
+    simulado, e não precisa adivinhar o que é real.
     """
     del request
     return {

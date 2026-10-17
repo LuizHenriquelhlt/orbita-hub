@@ -4,7 +4,7 @@ São os modelos Pydantic. A separação em relação a `modelos.py` (SQLAlchemy)
 deliberada e vale o esforço: a tabela `usuario` tem `senha_hash` e
 `tentativas_falhas`, e nenhum dos dois pode aparecer em resposta de API. Com um
 modelo só, a cada campo novo na tabela alguém tem de lembrar de excluí-lo da
-serialização — e um dia não lembra.
+serialização, e um dia não lembra.
 
 Aqui, o caminho é o inverso: o campo só aparece na API se estiver escrito no
 esquema.
@@ -81,7 +81,7 @@ class UsuarioResumo(BaseModel):
         """Cópia com CPF e e-mail ocultos.
 
         Aplicado por quem **não** tem `dado_sensivel:ver`. A decisão fica na
-        rota, não aqui, porque depende de quem está perguntando — e um método
+        rota, não aqui, porque depende de quem está perguntando, e um método
         que mascara sozinho esconderia o dado também de quem tem direito a ele.
         """
         return self.model_copy(
@@ -123,7 +123,7 @@ class PedidoDeCriacaoDeUsuario(BaseModel):
         try:
             return cpf_util.normalizar(valor)
         except ValueError as erro:
-            raise ValueError("CPF inválido — confira os dígitos") from erro
+            raise ValueError("CPF inválido, confira os dígitos") from erro
 
     @field_validator("senha")
     @classmethod

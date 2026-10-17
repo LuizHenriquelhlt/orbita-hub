@@ -1,13 +1,13 @@
 """Modelo de dados do `catalog-service` (schema `catalog`).
 
 O catálogo é a fonte da verdade sobre *o que existe e quem pode usar*. Ele não
-sabe nada sobre execução — nem quantas vezes uma automação rodou, nem se a
+sabe nada sobre execução, nem quantas vezes uma automação rodou, nem se a
 última falhou. Esse dado vive em `execution`, e o portal compõe as duas coisas
 na tela.
 
 É uma separação que custa uma chamada HTTP a mais na ficha da automação e
 compra a possibilidade de o catálogo responder quando o motor de execução está
-sobrecarregado — que é exatamente quando alguém vai à plataforma procurar o que
+sobrecarregado, que é exatamente quando alguém vai à plataforma procurar o que
 está acontecendo.
 
 ## Onde cabe JSONB e onde não cabe
@@ -87,7 +87,7 @@ class Automacao(IdMixin, TimestampMixin, Base):  # type: ignore[valid-type, misc
 
     slug: Mapped[str] = mapped_column(String(80), nullable=False, unique=True)
     """Identificador estável e legível. É o que aparece em URL, em log e no
-    manifesto — por isso não muda depois de criado, enquanto `nome` pode."""
+    manifesto, por isso não muda depois de criado, enquanto `nome` pode."""
 
     nome: Mapped[str] = mapped_column(String(160), nullable=False)
     descricao: Mapped[str] = mapped_column(Text, nullable=False, server_default="")
@@ -105,7 +105,7 @@ class Automacao(IdMixin, TimestampMixin, Base):  # type: ignore[valid-type, misc
     # Referências lógicas para `identity`. Sem FK: schemas diferentes,
     # serviços diferentes. A integridade é garantida na escrita (o serviço
     # confere que a unidade existe) e aceita-se que uma unidade apagada deixe
-    # aqui um id órfão — que é melhor do que impedir o `identity-service` de
+    # aqui um id órfão, que é melhor do que impedir o `identity-service` de
     # apagar uma unidade por causa de uma referência em outro domínio.
     unidade_dona_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True))
     criado_por_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True))
@@ -223,7 +223,7 @@ class AutomacaoVersao(IdMixin, Base):  # type: ignore[valid-type, misc]
     """O manifesto como foi submetido, na íntegra.
 
     Guardar o documento original, e não só os campos extraídos, é o que
-    permite reconstituir exatamente o que foi aprovado — inclusive campos que
+    permite reconstituir exatamente o que foi aprovado, inclusive campos que
     uma versão futura da plataforma passe a interpretar.
     """
 

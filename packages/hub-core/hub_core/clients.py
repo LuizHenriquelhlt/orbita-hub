@@ -1,4 +1,4 @@
-"""Comunicação entre serviços — e o truque que faz um monorepo rodar de dois jeitos.
+"""Comunicação entre serviços, e o truque que faz um monorepo rodar de dois jeitos.
 
 ## O problema
 
@@ -7,8 +7,8 @@ por HTTP. No free tier, não cabem quatro processos: não há memória para quat
 interpretadores Python, e um serviço gratuito que hiberna multiplicaria o
 tempo de resposta a frio por quatro, em cascata.
 
-A saída usual é manter dois códigos — um "modo dev monolítico" e um "modo
-produção distribuído" — que divergem em um mês e passam a esconder bugs um do
+A saída usual é manter dois códigos, um "modo dev monolítico" e um "modo
+produção distribuído", que divergem em um mês e passam a esconder bugs um do
 outro.
 
 ## A solução
@@ -23,7 +23,7 @@ continua sendo
 e continua recebendo um `httpx.Response` com status, cabeçalhos e corpo. O que
 muda é que nenhum byte atravessa a rede. Middleware, validação do Pydantic,
 dependências, serialização JSON e tradução de erro continuam todos
-funcionando — a requisição realmente passa pela pilha do FastAPI do serviço
+funcionando, a requisição realmente passa pela pilha do FastAPI do serviço
 destino.
 
 Então o modo de composição é uma linha de configuração:
@@ -39,7 +39,7 @@ E `services/execution/` não tem um único `if` sobre o modo.
 de requisição, nunca com o de inicialização. Os eventos de `startup` do serviço
 embutido simplesmente não rodam, e a primeira requisição falha em um
 `engine()` não inicializado. Quem monta o monolito precisa rodar os lifespans
-— é o que `hub_gateway.main` faz, com `contextlib.AsyncExitStack`.
+- é o que `hub_gateway.main` faz, com `contextlib.AsyncExitStack`.
 
 **Erro em HTTP não é exceção.** Um 404 do `catalog-service` chega como resposta
 com status 404, não como `NaoEncontrado`. `ClienteServico` traduz de volta, de
@@ -265,9 +265,9 @@ def cliente_http_bruto(nome: str, settings: Settings | None = None) -> httpx.Asy
     domínio, que é o que a maioria das chamadas quer. Há dois casos em que isso
     estorva:
 
-    * **a resposta não é JSON** — o download de um artefato é um arquivo
+    * **a resposta não é JSON**, o download de um artefato é um arquivo
       binário, e tentar `resposta.json()` nele falha;
-    * **o redirecionamento precisa ser inspecionado, não seguido** — quando o
+    * **o redirecionamento precisa ser inspecionado, não seguido**, quando o
       armazenamento é S3, o serviço responde 307 para uma URL pré-assinada, e
       quem chama quer repassar esse redirecionamento ao navegador em vez de
       baixar o arquivo e retransmiti-lo.
@@ -295,7 +295,7 @@ def _limpar_params(params: dict[str, Any] | None) -> dict[str, Any] | None:
 
     Sem isto, um filtro opcional não informado viaja como `?status=None` e o
     serviço destino filtra pela string literal "None", devolvendo lista vazia
-    sem erro — o tipo de bug que custa uma tarde.
+    sem erro, o tipo de bug que custa uma tarde.
     """
     if not params:
         return None

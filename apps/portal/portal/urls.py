@@ -19,7 +19,7 @@ urlpatterns = [
     # Verificação de saúde do portal. Não consulta os serviços: o health check
     # do orquestrador roda a cada poucos segundos, e encadear a saúde do portal
     # à dos quatro serviços faria uma indisponibilidade de qualquer um deles
-    # derrubar o portal também — exatamente quando ele é mais necessário para
+    # derrubar o portal também, exatamente quando ele é mais necessário para
     # mostrar o que está acontecendo.
     path("saude", views_nucleo.saude, name="saude"),
 ]

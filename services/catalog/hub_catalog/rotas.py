@@ -113,7 +113,7 @@ async def transicionar(
     Por isso não há `Depends(exigir(...))` aqui: enviar para homologação pede
     `automacao:editar`, publicar pede `automacao:publicar` e arquivar pede
     `automacao:arquivar`. A verificação acontece em `servico.transicionar`, que
-    é quem consulta a tabela de transições — ter a exigência em dois lugares
+    é quem consulta a tabela de transições, ter a exigência em dois lugares
     seria ter duas respostas possíveis para a mesma pergunta.
     """
     _recusar_se_demonstracao(quem)
@@ -159,7 +159,7 @@ async def preparar_execucao(
 
     O `execution-service` repassa o token de quem pediu a execução, em vez de
     usar credencial própria. Isso mantém a decisão de acesso baseada em quem
-    de fato está disparando — e impede que um motor comprometido autorize
+    de fato está disparando, e impede que um motor comprometido autorize
     qualquer execução em nome de qualquer um.
     """
     return await servico.preparar_execucao(
@@ -242,7 +242,7 @@ def _resolvedor_de_unidade(request: Request) -> Any:
 
     Injetada em vez de importada porque é a única coisa de que o catálogo
     precisa do `identity-service`. Passar a função como parâmetro mantém
-    `servico.py` testável sem cliente HTTP — o teste passa um `dict.get`.
+    `servico.py` testável sem cliente HTTP, o teste passa um `dict.get`.
     """
     cliente = getattr(request.app.state, "cliente_identity", None)
     if cliente is None:

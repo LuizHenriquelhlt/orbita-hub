@@ -1,4 +1,4 @@
-# 0012 — Portal em Django, sem banco próprio
+# 0012 - Portal em Django, sem banco próprio
 
 **Situação:** aceita · **Data:** 2026-10-17
 **Implementa:** `apps/portal/`
@@ -7,7 +7,7 @@
 
 O portal é um **BFF**: o navegador conversa só com ele, e ele chama os quatro
 serviços do lado servidor com o JWT guardado na sessão. Isso é o que mantém o
-token fora do alcance do JavaScript — não há JWT em `localStorage`, que é o
+token fora do alcance do JavaScript, não há JWT em `localStorage`, que é o
 alvo preferido de XSS em aplicação com API.
 
 O resto do projeto é FastAPI. Usar FastAPI aqui também daria um framework só.
@@ -24,12 +24,12 @@ que mantém telas de domínios diferentes separadas. O resultado é
 
 Sem banco é consequência de o portal ser BFF e nada mais. Caem fora:
 
-- **`django.contrib.auth`** — a identidade é do `identity-service`; usar o
+- **`django.contrib.auth`**, a identidade é do `identity-service`; usar o
   `auth` significaria duas bases de usuário para manter em sincronia, que é o
   problema que ter um serviço de identidade resolve;
-- **`django.contrib.admin`** — depende de `auth` e de banco. A administração é
+- **`django.contrib.admin`**, depende de `auth` e de banco. A administração é
   feita por telas próprias, que respeitam o mesmo RBAC do resto;
-- **sessão em banco** — `signed_cookies` guarda a sessão no próprio cookie,
+- **sessão em banco**, `signed_cookies` guarda a sessão no próprio cookie,
   assinada. O limite é 4 KB; o JWT ocupa cerca de 700 bytes.
 
 As views são `async def`, exigência do transporte in-process do modo monolito.
@@ -47,7 +47,7 @@ Isso trouxe dois problemas que valem registro:
 ## Consequências
 
 **A favor.** Processo sem estado, que escala horizontalmente sem nada
-compartilhado e sobe em segundos — o que importa em um free tier que hiberna.
+compartilhado e sobe em segundos, o que importa em um free tier que hiberna.
 Nenhuma migração a rodar no portal.
 
 **Contra.** Carrega um framework grande para usar uma fração dele. Dois
@@ -61,7 +61,7 @@ precisa ser verificado antes.
 - **FastAPI + Jinja2.** Um framework só. Exigiria reescrever à mão
   mensagens, CSRF, `staticfiles` com hashing e organização por app.
 - **SPA em React/Next.js.** O desenho da arquitetura-alvo original. Traz um
-  build de JavaScript, e o token teria de ir para o navegador — justamente o
+  build de JavaScript, e o token teria de ir para o navegador, justamente o
   que o BFF evita.
 - **Django com banco e `contrib.auth`.** Simplificaria a sessão e criaria a
   segunda base de usuários.

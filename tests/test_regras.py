@@ -3,7 +3,7 @@
 Todos sem banco e sem rede. São os testes que rodam em cada salvamento de
 arquivo, e por isso precisam ser rápidos.
 
-Cada teste aqui corresponde a uma decisão descrita em comentário no código —
+Cada teste aqui corresponde a uma decisão descrita em comentário no código,
 a intenção é que, se alguém "simplificar" uma dessas decisões por engano, um
 teste falhe explicando o porquê.
 """
@@ -124,7 +124,7 @@ def test_mascara_de_email() -> None:
 def test_mascara_de_email_curto_revela_menos() -> None:
     """Com dois caracteres antes do arroba, mostrar dois seria mostrar tudo.
 
-    A máscara cai para um caractere nesse caso — do contrário, o endereço mais
+    A máscara cai para um caractere nesse caso, do contrário, o endereço mais
     curto seria o menos protegido.
     """
     assert mascarar_email("ab@x.br") == "a***@x.br"
@@ -146,7 +146,7 @@ def test_hash_corrompido_devolve_false_em_vez_de_levantar() -> None:
     """Hash estranho tem de virar "senha errada", não erro 500.
 
     Caso contrário, a mensagem de erro distingue "usuário existe com hash
-    estranho" de "usuário não existe" — e isso é enumeração de conta.
+    estranho" de "usuário não existe", e isso é enumeração de conta.
     """
     assert not verificar("qualquer", "nao-e-um-hash")
     assert not verificar("qualquer", "")
@@ -176,7 +176,7 @@ def test_cron_dia_do_mes_ou_dia_da_semana() -> None:
 
     `0 0 1 * 1` dispara no dia 1º do mês *e também* em toda segunda-feira.
     Implementar como E produz um agendamento que quase nunca dispara, e o erro
-    não gera falha — só silêncio.
+    não gera falha, só silêncio.
     """
     cron = interpretar("0 0 1 * 1")
     base = datetime(2026, 10, 17, 12, 0, tzinfo=FUSO_PADRAO)  # sábado
@@ -308,7 +308,7 @@ def test_parametro_opcao_exige_opcoes() -> None:
     """Validador **de modelo**, não de campo.
 
     No Pydantic v2, `@field_validator` não roda quando o campo cai no valor
-    padrão — e `tipo: opcao` sem a chave `opcoes` passaria despercebido.
+    padrão, e `tipo: opcao` sem a chave `opcoes` passaria despercebido.
     """
     with pytest.raises(ValueError, match="ao menos uma opção"):
         ParametroDeclarado(nome="r", rotulo="R", tipo="opcao")

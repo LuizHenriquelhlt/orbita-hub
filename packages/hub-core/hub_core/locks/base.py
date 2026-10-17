@@ -4,7 +4,7 @@ Serve a um problema concreto: o agendador (cron) roda dentro do
 `execution-service`, e o `execution-service` tem mais de uma réplica. Sem
 exclusão mútua, um agendamento de 6h da manhã dispara uma vez por réplica.
 
-A interface é mínima de propósito — `adquirir` e `liberar`, mais um gerenciador
+A interface é mínima de propósito, `adquirir` e `liberar`, mais um gerenciador
 de contexto. Tudo que um lock distribuído oferece além disso (reentrância,
 renovação automática, fencing token) é funcionalidade que o chamador acaba
 usando errado; quem precisa de garantia mais forte do que "no máximo um por

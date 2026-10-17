@@ -13,7 +13,7 @@ Duas formas de uso, para dois momentos diferentes:
 `assinar_eventos()` liga o barramento de `hub_core.events` a esta tabela.
 
 A gravação explícita é a preferida nas ações sensíveis (login, mudança de
-papel, publicação de automação), porque participa da transação do chamador — e
+papel, publicação de automação), porque participa da transação do chamador, e
 porque deixa o registro de auditoria visível no mesmo trecho de código que a
 ação, onde quem revisa o consegue conferir.
 """
@@ -47,7 +47,7 @@ def _ip_de(requisicao: Any) -> str | None:
 
     Pega o **primeiro** da lista: é o cliente original. Os seguintes são os
     proxies da cadeia. Vale notar que o cabeçalho é falsificável por quem fala
-    direto com a aplicação — atrás de um balanceador que o reescreve, como é o
+    direto com a aplicação, atrás de um balanceador que o reescreve, como é o
     caso aqui, ele é confiável; exposto direto na internet, não seria.
     """
     if requisicao is None:
@@ -73,7 +73,7 @@ async def registrar(
     requisicao: Any = None,
     detalhes: dict[str, Any] | None = None,
 ) -> None:
-    """Insere um registro na trilha. Não dá commit — quem chama controla a transação.
+    """Insere um registro na trilha. Não dá commit, quem chama controla a transação.
 
     Essa é a decisão central do módulo: sem `commit` aqui, o registro entra na
     transação da ação. Se a ação for desfeita, o registro também. Se a ação
@@ -100,7 +100,7 @@ async def registrar(
 def _sanear(detalhes: dict[str, Any]) -> dict[str, Any]:
     """Remove de `detalhes` o que nunca deve ir para a auditoria.
 
-    A trilha é lida por mais gente do que o banco de produção — o papel
+    A trilha é lida por mais gente do que o banco de produção, o papel
     `auditor` tem acesso a ela por desenho. Senha, token e segredo em
     `detalhes` seriam vazamento para dentro do próprio mecanismo de controle,
     e o jeito de impedir isso não é confiar em quem chama: é filtrar aqui.

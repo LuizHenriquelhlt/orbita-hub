@@ -9,7 +9,7 @@ abstração não paga o custo da dependência parada.
 `bcrypt` e não `argon2` por um motivo de contexto: o sistema real que inspira
 este projeto já tem base de usuários com hash bcrypt, e migrar algoritmo de
 hash exige reescrever o hash no próximo login de cada pessoa. Para um projeto
-novo, `argon2id` seria a escolha melhor — e `verificar` abaixo está preparado
+novo, `argon2id` seria a escolha melhor, e `verificar` abaixo está preparado
 para conviver com os dois durante uma migração.
 """
 
@@ -23,7 +23,7 @@ import bcrypt
 CUSTO_BCRYPT = 12
 
 # Limite do bcrypt: ele ignora tudo além do 72º byte. Senha mais longa não é
-# rejeitada — é truncada em silêncio, o que faz duas senhas diferentes com o
+# rejeitada, é truncada em silêncio, o que faz duas senhas diferentes com o
 # mesmo prefixo de 72 bytes passarem a ser a mesma senha. Aqui o limite é
 # verificado e informado.
 MAX_BYTES_SENHA = 72
@@ -46,7 +46,7 @@ def verificar(senha: str, hash_armazenado: str) -> bool:
     """Confere a senha. Devolve `False` em vez de levantar, em qualquer erro.
 
     Hash corrompido, truncado ou de algoritmo desconhecido tem de resultar em
-    "senha errada", não em erro 500 — caso contrário a mensagem de erro
+    "senha errada", não em erro 500, caso contrário a mensagem de erro
     distingue "usuário existe com hash estranho" de "usuário não existe", e
     isso é enumeração de conta.
     """

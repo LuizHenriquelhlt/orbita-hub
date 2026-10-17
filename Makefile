@@ -1,4 +1,4 @@
-# Órbita — atalhos de desenvolvimento.
+# Órbita, atalhos de desenvolvimento.
 # `make ajuda` lista tudo.
 
 COMPOSE := docker compose -f infra/docker-compose.yml --env-file .env

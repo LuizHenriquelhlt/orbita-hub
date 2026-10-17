@@ -1,6 +1,6 @@
 {% load orbita %}
 {% comment %}
-Fragmento de log incremental — o coração do acompanhamento ao vivo.
+Fragmento de log incremental, o coração do acompanhamento ao vivo.
 
 É um **fragmento que se substitui**: ele troca o próprio `#fim-do-log` por
 linhas novas mais um novo `#fim-do-log`, já com o `desde` atualizado. Com isso:
@@ -9,7 +9,7 @@ linhas novas mais um novo `#fim-do-log`, já com o `desde` atualizado. Com isso:
     apenas o que veio depois);
   - o próximo pedido já sai com o ponteiro certo, sem estado no navegador;
   - quando a execução termina, o novo `#fim-do-log` vem **sem** o atributo de
-    gatilho — e o polling simplesmente para.
+    gatilho, e o polling simplesmente para.
 
 Esse último ponto evita o bug clássico de polling: um laço que continua pedindo
 para sempre depois de a execução acabar. Quem decide parar é o servidor, que é
@@ -48,7 +48,7 @@ desaparecer na primeira atualização em vez de ficar acima das linhas novas.
 
   {% if not execucao.em_andamento and desde %}
     <div class="log__linha" style="margin-top: var(--e-2); opacity: 0.7">
-      <span class="log__sequencia">—</span>
+      <span class="log__sequencia">-</span>
       <span class="log__nivel log__nivel--debug">FIM</span>
       <span class="log__mensagem">
         execução {{ execucao.status|rotulo_de_status|lower }} em

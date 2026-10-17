@@ -63,7 +63,7 @@ async def catalogo(request: HttpRequest) -> HttpResponse:
 async def ficha(request: HttpRequest, slug: str) -> HttpResponse:
     """Ficha da automação: o que ela é, mais como tem se comportado.
 
-    Duas chamadas a serviços diferentes, feitas em paralelo — ver
+    Duas chamadas a serviços diferentes, feitas em paralelo, ver
     `bff.Bff.ficha_completa`. É aqui que a separação entre `catalog` e
     `execution` aparece para quem usa: o catálogo não sabe quantas vezes a
     automação rodou.
@@ -97,7 +97,7 @@ async def importar(request: HttpRequest) -> HttpResponse:
 
     É a tela que materializa o contrato de plugin: nenhuma alteração no código
     da plataforma é necessária para registrar uma automação nova. A alternativa
-    — um formulário com 30 campos espelhando o manifesto — teria de ser
+    - um formulário com 30 campos espelhando o manifesto, teria de ser
     reescrita a cada campo novo do contrato.
     """
     contexto: dict[str, Any] = {"yaml": "", "publicar": False}
@@ -144,7 +144,7 @@ async def transicionar(request: HttpRequest, slug: str) -> HttpResponse:
     """Move a automação no ciclo de vida.
 
     A permissão exigida depende da transição, então não há `exige(...)`
-    específico aqui — é o `catalog-service` que consulta a tabela de
+    específico aqui, é o `catalog-service` que consulta a tabela de
     transições e decide. Duplicar a regra no portal criaria duas respostas
     possíveis para a mesma pergunta.
     """

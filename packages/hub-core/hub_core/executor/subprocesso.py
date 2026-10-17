@@ -1,7 +1,7 @@
 """Executor de subprocesso: roda a automação como processo local.
 
-É o meio-termo entre o simulado e o Docker. Executa **código de verdade** — as
-automações versionadas em `automations/` — sem exigir Docker Engine. É o que
+É o meio-termo entre o simulado e o Docker. Executa **código de verdade**, as
+automações versionadas em `automations/`, sem exigir Docker Engine. É o que
 permite rodar o pipeline completo na máquina de quem desenvolve, e o que roda
 as automações embutidas na demonstração pública.
 
@@ -9,13 +9,13 @@ as automações embutidas na demonstração pública.
 
 Isola:
 
-* **sistema de arquivos de trabalho** — cada execução recebe um diretório
+* **sistema de arquivos de trabalho**, cada execução recebe um diretório
   temporário próprio, e é dali que os artefatos são colhidos;
-* **ambiente** — o processo filho não herda o `os.environ` do servidor. Recebe
+* **ambiente**, o processo filho não herda o `os.environ` do servidor. Recebe
   uma lista explícita, o que impede a automação de ler `DATABASE_URL`,
   `JWT_SECRET` ou credencial de nuvem do processo pai. Esse é o ponto mais
   importante deste módulo;
-* **tempo** — timeout com encerramento em duas etapas.
+* **tempo**, timeout com encerramento em duas etapas.
 
 Não isola:
 
@@ -55,7 +55,7 @@ from hub_core.logging import obter_logger
 log = obter_logger(__name__)
 
 # Variáveis que o processo filho recebe do ambiente do servidor. Tudo que não
-# estiver nesta lista fica de fora — inclusive segredo, credencial de nuvem e
+# estiver nesta lista fica de fora, inclusive segredo, credencial de nuvem e
 # URL de banco. A lista é curta por desenho: o que falta aqui a automação
 # declara no manifesto.
 _AMBIENTE_PERMITIDO = ("PATH", "LANG", "LC_ALL", "TZ", "SYSTEMROOT", "TEMP", "TMP")
@@ -242,7 +242,7 @@ class ExecutorSubprocesso(Executor):
         """Encerra em duas etapas: pede, depois força.
 
         `terminate` dá à automação a chance de fechar arquivo e conexão. Se ela
-        ignorar — ou estiver travada em I/O — cinco segundos depois vem o
+        ignorar, ou estiver travada em I/O, cinco segundos depois vem o
         `kill`. Sem a segunda etapa, um processo preso deixa a execução
         pendurada para sempre.
         """

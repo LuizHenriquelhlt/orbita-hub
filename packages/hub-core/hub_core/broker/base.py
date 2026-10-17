@@ -13,7 +13,7 @@ adaptador PostgreSQL teria de simulá-los mal.
 O que está garantido pelos dois adaptadores:
 
 * entrega **ao menos uma vez** (o consumidor precisa ser idempotente);
-* *visibility timeout* — mensagem entregue fica invisível por um prazo e volta
+* *visibility timeout*, mensagem entregue fica invisível por um prazo e volta
   à fila se não houver `confirmar` (ack) até lá;
 * *retry* com backoff exponencial e um teto de tentativas;
 * fila de mensagens mortas (DLQ) após o teto;
@@ -114,7 +114,7 @@ class Broker(abc.ABC):
 
     @abc.abstractmethod
     async def profundidade(self, fila: str) -> dict[str, int]:
-        """Contagem por estado — alimenta o dashboard e os alertas."""
+        """Contagem por estado, alimenta o dashboard e os alertas."""
 
     async def iniciar(self) -> None:
         return None

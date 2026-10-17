@@ -5,10 +5,10 @@
 `croniter` e `apscheduler` fazem isto bem, e usar um dos dois seria
 defensável. A escolha de implementar aqui tem dois motivos concretos:
 
-* **o subconjunto necessário é pequeno** — cinco campos, com `*`, número,
+* **o subconjunto necessário é pequeno**, cinco campos, com `*`, número,
   faixa, lista e passo. Não há `@yearly`, não há segundos, não há `L`/`#` de
   cron estendido. São as ~120 linhas abaixo, sem dependência;
-* **o comportamento fica explícito e testável** — em especial a semântica de
+* **o comportamento fica explícito e testável**, em especial a semântica de
   dia-do-mês × dia-da-semana, que é a parte do cron que quase todo mundo
   implementa errado (ver `_dia_corresponde`).
 
@@ -22,11 +22,11 @@ As expressões são interpretadas no fuso de `FUSO_PADRAO`, não em UTC. Quem
 agenda "0 6 * * *" quer dizer seis da manhã no horário de quem vai receber o
 relatório, não 3h da manhã local porque o servidor está em UTC.
 
-O horário de verão é a complicação clássica desse tipo de cálculo — uma hora
+O horário de verão é a complicação clássica desse tipo de cálculo, uma hora
 que não existe na virada, uma que acontece duas vezes. Aqui o risco é menor por
 um fato do domínio: o Brasil não adota horário de verão desde 2019, então
 `America/Sao_Paulo` tem deslocamento fixo. Ainda assim, o cálculo é feito com
-`zoneinfo` sobre datas conscientes de fuso, não com aritmética de offset — que
+`zoneinfo` sobre datas conscientes de fuso, não com aritmética de offset, que
 é o que quebraria caso o horário de verão volte.
 """
 
@@ -46,7 +46,7 @@ _MAX_MINUTOS = 4 * 366 * 24 * 60
 # Faixa aceita por campo. Dia-da-semana vai até **7**, não 6: o cron aceita
 # tanto `0` quanto `7` para domingo, e recusar o `7` quebraria expressões
 # legítimas copiadas de um crontab. A normalização de 7 para 0 acontece depois
-# da validação de faixa, em `_interpretar_campo` — fazê-la antes exigiria
+# da validação de faixa, em `_interpretar_campo`, fazê-la antes exigiria
 # converter cada item da lista antes de saber se é válido.
 _FAIXAS = (
     ("minuto", 0, 59),
@@ -93,7 +93,7 @@ class Cron:
         segunda-feira, não apenas no dia 1º que cair numa segunda.
 
         É assim desde o `cron` original do Unix e está no POSIX. Implementar
-        como **E** produz um agendamento que quase nunca dispara — e o erro
+        como **E** produz um agendamento que quase nunca dispara, e o erro
         passa despercebido por meses, porque não gera falha, só silêncio.
 
         Quando só um dos dois está restrito, vale o restrito. Quando nenhum
@@ -119,7 +119,7 @@ class Cron:
         """Primeiro momento após `depois_de` em que a expressão dispara, em UTC.
 
         A busca avança minuto a minuto, mas pula o dia inteiro quando o dia não
-        corresponde — o que reduz o pior caso de ~2 milhões de iterações para
+        corresponde, o que reduz o pior caso de ~2 milhões de iterações para
         algumas centenas. É mais simples e mais fácil de conferir do que o
         cálculo campo a campo, e o custo é irrelevante para algo que roda uma
         vez por minuto.
@@ -156,7 +156,7 @@ class Cron:
         """Descrição em português para a interface.
 
         Cobre os formatos frequentes com texto natural e cai para a expressão
-        crua nos casos complexos — melhor mostrar `*/7 3 * * 2` do que uma
+        crua nos casos complexos, melhor mostrar `*/7 3 * * 2` do que uma
         frase gerada mecanicamente e confusa.
         """
         if self.expressao == "* * * * *":

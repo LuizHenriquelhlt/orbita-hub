@@ -20,7 +20,7 @@ avançar a cada segundo e meio.
 ## Por que uma tarefa de fundo, e não `flush` no caminho do callback
 
 Se o envio acontecesse dentro de `registrar`, a automação ficaria bloqueada
-esperando o HTTP a cada 40 linhas — o log passaria a controlar a velocidade da
+esperando o HTTP a cada 40 linhas, o log passaria a controlar a velocidade da
 execução. Com uma tarefa separada drenando a fila, `registrar` só põe a linha
 em memória e volta na hora.
 """
@@ -42,7 +42,7 @@ TETO_DA_FILA = 5000
 
 Uma automação em laço emitindo log sem parar consumiria a memória do runner.
 Ao atingir o teto, as linhas novas são descartadas e uma única linha de aviso é
-registrada — perder log é ruim, derrubar o runner e com ele todas as execuções
+registrada, perder log é ruim, derrubar o runner e com ele todas as execuções
 é pior.
 """
 
@@ -129,7 +129,7 @@ class ColetorDeLogs:
             self.total_enviadas += len(linhas)
         except Exception as erro:
             # Log perdido não deve derrubar a execução. Registrar localmente
-            # garante que a informação não desaparece de todo — ela fica no
+            # garante que a informação não desaparece de todo, ela fica no
             # stdout do runner, que o coletor de logs da infraestrutura
             # recolhe.
             log.warning(

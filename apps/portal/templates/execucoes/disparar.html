@@ -56,7 +56,7 @@
             <select id="p-{{ parametro.nome }}" name="{{ parametro.nome }}"
                     {% if parametro.obrigatorio %}required{% endif %}
                     {% if problema %}aria-invalid="true"{% endif %}>
-              {% if not parametro.obrigatorio %}<option value="">—</option>{% endif %}
+              {% if not parametro.obrigatorio %}<option value="">-</option>{% endif %}
               {% for opcao in parametro.opcoes %}
                 <option value="{{ opcao.valor }}"
                         {% if valor == opcao.valor or not valor and parametro.padrao == opcao.valor %}selected{% endif %}>

@@ -35,7 +35,7 @@ def erro_500(request: HttpRequest) -> HttpResponse:
 
     Renderizada com `render` e sem contexto extra de propósito: se o erro foi
     em um processador de contexto, qualquer coisa que esta página tentasse
-    carregar estouraria de novo — e aí o Django cai para a página de erro
+    carregar estouraria de novo, e aí o Django cai para a página de erro
     padrão, crua.
     """
     return render(request, "erros/500.html", status=500)

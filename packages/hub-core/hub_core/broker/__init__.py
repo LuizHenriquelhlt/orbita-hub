@@ -30,7 +30,7 @@ __all__ = [
 def construir_broker(settings: Settings) -> Broker:
     """Escolhe o adaptador a partir de `BROKER_BACKEND`.
 
-    Quem chama recebe um `Broker` e não tem como descobrir qual é — que é
+    Quem chama recebe um `Broker` e não tem como descobrir qual é, que é
     exatamente o ponto. O `runner-service` tem um laço de consumo só.
     """
     if settings.broker_backend == "rabbitmq":

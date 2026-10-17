@@ -4,10 +4,10 @@ O runner é sobretudo um consumidor de fila, não um servidor HTTP. As rotas
 existem para o que a fila não resolve:
 
 * **cancelamento** é o único comando que precisa chegar a um runner
-  *específico* — o que está rodando aquela execução. Mandar por fila não
+  *específico*, o que está rodando aquela execução. Mandar por fila não
   funciona: outro runner consumiria a mensagem e não teria o processo para
   interromper;
-* **observabilidade** — situação do worker e containers gerenciados, para a
+* **observabilidade**, situação do worker e containers gerenciados, para a
   área administrativa.
 """
 
@@ -76,7 +76,7 @@ async def containers(
     """Só os containers com o rótulo da plataforma.
 
     O filtro por label está no `ExecutorDocker.listar_containers` e é o que
-    impede esta tela de listar — e de oferecer um botão de parar para — o
+    impede esta tela de listar, e de oferecer um botão de parar para, o
     PostgreSQL da própria máquina de quem está desenvolvendo.
     """
     del quem

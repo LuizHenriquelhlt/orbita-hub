@@ -13,7 +13,7 @@ HTMX com *polling* e um ponteiro de sequência:
 3. o serviço devolve **só** as linhas novas, e o HTMX as **acrescenta** ao fim
    da lista (`hx-swap="beforeend"`);
 4. quando a execução termina, o fragmento devolvido não contém o atributo de
-   polling — e o HTMX simplesmente para de pedir.
+   polling, e o HTMX simplesmente para de pedir.
 
 O passo 3 é o que torna isso viável: sem o ponteiro, cada atualização
 rebaixaria o log inteiro. Em uma execução com 2 000 linhas, seriam alguns
@@ -21,7 +21,7 @@ megabytes a cada 2 s.
 
 O passo 4 é o detalhe que evita o bug clássico de polling: um laço que continua
 rodando para sempre depois de a execução acabar. Quem decide parar é o servidor,
-que é quem sabe o estado — não um contador no navegador.
+que é quem sabe o estado, não um contador no navegador.
 
 ## Por que não WebSocket
 
@@ -89,7 +89,7 @@ async def disparar(request: HttpRequest, slug: str) -> HttpResponse:
 
     O formulário é **gerado a partir do manifesto**: os campos vêm de
     `automacao.parametros`, com tipo, rótulo, ajuda e opções. Nenhuma tela
-    precisa ser escrita para uma automação nova — é a contrapartida de ter
+    precisa ser escrita para uma automação nova, é a contrapartida de ter
     declarado os parâmetros no contrato.
     """
     automacao = await bff.de(request).automacao(slug)
@@ -130,7 +130,7 @@ def _coletar_parametros(request: HttpRequest, declarados: list[dict[str, Any]]) 
     Iterar sobre a **declaração**, e não sobre o POST, é o que impede um campo
     injetado no formulário de chegar ao serviço. O serviço também descarta o
     que não foi declarado (ver `hub_catalog.servico.validar_parametros`), então
-    são duas barreiras — mas esta é a que mantém o payload limpo.
+    são duas barreiras, mas esta é a que mantém o payload limpo.
     """
     valores: dict[str, Any] = {}
     for declaracao in declarados:
@@ -145,7 +145,7 @@ def _coletar_parametros(request: HttpRequest, declarados: list[dict[str, Any]]) 
                 valores[nome] = escolhidos
         elif tipo == "booleano":
             # Caixa de seleção não marcada simplesmente não vem no POST, então
-            # a ausência é `False` — e não "campo não informado".
+            # a ausência é `False`, e não "campo não informado".
             valores[nome] = request.POST.get(nome) == "on"
         else:
             bruto = (request.POST.get(nome) or "").strip()
@@ -186,7 +186,7 @@ async def log_incremental(request: HttpRequest, execucao_id: str) -> HttpRespons
 
     Devolve `_log_linhas.html`, que o HTMX acrescenta ao fim da lista. O
     fragmento inclui o gatilho do próximo poll **somente enquanto a execução
-    está em andamento** — é assim que o polling para sozinho.
+    está em andamento**, é assim que o polling para sozinho.
     """
     desde = _inteiro(request.GET.get("desde"), 0, minimo=0)
     execucao = await bff.de(request).execucao(execucao_id, desde_sequencia=desde)
@@ -238,7 +238,7 @@ async def reexecutar(request: HttpRequest, execucao_id: str) -> HttpResponse:
 async def baixar_artefato(request: HttpRequest, execucao_id: str, artefato_id: str) -> HttpResponse:
     """Repassa o download do `execution-service` ao navegador.
 
-    O portal fica no meio porque é ele que tem a sessão — o navegador não
+    O portal fica no meio porque é ele que tem a sessão, o navegador não
     carrega o JWT. Quando o backend de armazenamento é S3, o serviço responde
     com um redirecionamento para uma URL pré-assinada e o navegador baixa
     direto do object storage; aqui, isso aparece como um 307 que é repassado.

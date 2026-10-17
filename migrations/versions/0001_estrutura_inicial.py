@@ -4,7 +4,7 @@ Gerada por `alembic revision --autogenerate` a partir dos modelos.
 
 Os schemas em si (`identity`, `catalog`, `execution`, `runner`,
 `plataforma`) sao criados por `migrations/env.py` antes de qualquer
-migracao rodar — o Alembic cria tabelas, nao schemas.
+migracao rodar, o Alembic cria tabelas, nao schemas.
 
 A imutabilidade de `plataforma.auditoria` vem na migracao 0002.
 

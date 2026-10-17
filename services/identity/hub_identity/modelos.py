@@ -7,7 +7,7 @@ concedidos e a trilha de auditoria.
 
 Há duas tabelas de concessão (`papel_usuario` e `papel_grupo`) em vez de uma só
 com coluna polimórfica. A razão é prática: a consulta "quais papéis esta pessoa
-tem" é a mais frequente do sistema — roda a cada login — e com tabelas
+tem" é a mais frequente do sistema, roda a cada login, e com tabelas
 separadas ela é dois índices simples. Com uma tabela polimórfica, seria um
 `CASE` sobre um `tipo_sujeito` que nenhum índice cobre bem.
 

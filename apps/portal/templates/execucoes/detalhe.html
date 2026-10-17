@@ -27,7 +27,7 @@
 {% comment %} ── Estado ────────────────────────────────────────────────────────────────
    O fragmento traz o próprio invólucro e se substitui por inteiro. Separado do
    log porque muda de forma diferente: o log só cresce e é acrescentado,
-   enquanto o estado é substituído — juntá-los retransmitiria todo o log a cada
+   enquanto o estado é substituído, juntá-los retransmitiria todo o log a cada
    2 s só para atualizar o rótulo de status. {% endcomment %}
 {% include "execucoes/_estado.html" %}
 
@@ -48,7 +48,7 @@
     {% comment %} O log é a lista; o fragmento de atualização é **acrescentado** ao fim
        (`beforeend`) e inclui o gatilho do próximo pedido apenas enquanto a
        execução está em andamento. Quem decide parar é o servidor, que é quem
-       sabe o estado — e não um contador no navegador. {% endcomment %}
+       sabe o estado, e não um contador no navegador. {% endcomment %}
     <div class="log" id="log" role="log" aria-live="polite" aria-label="Log da execução">
       {% for linha in execucao.logs %}
         <div class="log__linha">
@@ -61,7 +61,7 @@
       {% comment %}
       O aviso de "aguardando" fica DENTRO do elemento que o fragmento
       substitui. Fora dele, ficaria para sempre acima das linhas que chegam
-      depois — a primeira atualização traria o log e o aviso continuaria lá,
+      depois, a primeira atualização traria o log e o aviso continuaria lá,
       dizendo que não há nada.
       {% endcomment %}
       {% include "execucoes/_log_linhas.html" with linhas=None desde=execucao.ultima_sequencia %}
@@ -80,7 +80,7 @@
   <section class="cartao">
     <h2 class="cartao__titulo">Contexto</h2>
     <dl class="definicoes" style="margin-top: var(--e-4)">
-      <div><dt>Disparada por</dt><dd>{{ execucao.usuario_nome|default:"—" }}</dd></div>
+      <div><dt>Disparada por</dt><dd>{{ execucao.usuario_nome|default:"-" }}</dd></div>
       <div><dt>Origem</dt><dd>{{ execucao.origem }}</dd></div>
       <div><dt>Fila</dt><dd class="mono pequeno">{{ execucao.fila }}</dd></div>
       <div><dt>Tentativa</dt><dd class="numerico">{{ execucao.tentativa }}</dd></div>

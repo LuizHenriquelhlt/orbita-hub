@@ -10,7 +10,7 @@ Não é. A autorização de um agendamento acontece **no momento da publicação
 não no do disparo: o gatilho cron é declarado no manifesto, e o manifesto passa
 por homologação e aprovação de um gestor antes de a automação ser publicada.
 Exigir, no disparo das 6h, que a identidade do agendador conste da lista de
-acesso daquela automação seria verificar duas vezes a mesma decisão — e levaria
+acesso daquela automação seria verificar duas vezes a mesma decisão, e levaria
 a conceder acesso explícito ao agendador em cada automação agendada, lista que
 ninguém mantém.
 
@@ -23,7 +23,7 @@ por execução de pessoa.
 
 O `execution-service` pode ter várias réplicas, e todas rodam este laço. Sem
 exclusão mútua, o agendamento das 6h dispararia uma vez por réplica. O laço
-inteiro acontece dentro de `lock.se_obtido("agendador")` — se outra réplica já
+inteiro acontece dentro de `lock.se_obtido("agendador")`, se outra réplica já
 está com o lock, esta simplesmente volta a dormir. É o caso de uso que
 justifica `hub_core.locks`.
 
@@ -232,7 +232,7 @@ async def disparar_vencidos(
             )
         except Exception as erro:
             # Limite de concorrência é o caso esperado: a execução anterior
-            # ainda está rodando quando a próxima vence. Não é erro — é o
+            # ainda está rodando quando a próxima vence. Não é erro, é o
             # controle de admissão funcionando.
             log.warning(
                 "agendador.disparo_recusado",
@@ -266,7 +266,7 @@ async def laco(
 ) -> None:
     """O laço do agendador. Roda como tarefa de fundo do serviço.
 
-    Encerra limpo quando `parar` é sinalizado — o que acontece no `shutdown`
+    Encerra limpo quando `parar` é sinalizado, o que acontece no `shutdown`
     do serviço. Sem isso, o processo não termina e o orquestrador o mata por
     timeout, no meio de um possível disparo.
     """

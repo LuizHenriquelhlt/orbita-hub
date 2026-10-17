@@ -12,7 +12,7 @@ emissor. Isso é uma escolha, não uma limitação por falta de infraestrutura:
 
 * o assinante que importa é a auditoria, e registro de auditoria que não é
   gravado junto com a ação auditada é registro que se perde exatamente quando
-  mais importa — no erro;
+  mais importa, no erro;
 * o número de assinantes é pequeno e conhecido;
 * um barramento assíncrono entre serviços exigiria *outbox* transacional para
   não perder evento, e isso é complexidade que ainda não se paga.
@@ -26,7 +26,7 @@ tenta ser a fila.
 Um `except` por assinante, com log. O raciocínio: a ação de negócio já
 aconteceu e é válida; falha ao *notificar* sobre ela não deve desfazê-la. A
 exceção é a auditoria, que é registrada no mesmo `commit` do emissor por
-escrever na sessão dele — ali, falha realmente desfaz tudo, e é o
+escrever na sessão dele, ali, falha realmente desfaz tudo, e é o
 comportamento desejado.
 """
 
@@ -64,7 +64,7 @@ LOGIN_RECUSADO = "login.recusado"
 class EventoDeDominio:
     nome: str
     recurso: str
-    """Identificador do que foi afetado — slug da automação, id da execução."""
+    """Identificador do que foi afetado, slug da automação, id da execução."""
     dados: dict[str, Any] = field(default_factory=dict)
     ator_id: uuid.UUID | None = None
     ator_nome: str = ""
@@ -116,6 +116,6 @@ class BarramentoDeEventos:
 
 
 # Um barramento por processo. Em modo monolito, os quatro serviços o
-# compartilham — o que é correto: um evento do catálogo precisa alcançar o
+# compartilham, o que é correto: um evento do catálogo precisa alcançar o
 # assinante de auditoria, independentemente de quem o emitiu.
 barramento = BarramentoDeEventos()

@@ -14,7 +14,7 @@
       <h1 class="pagina__titulo">{{ detalhe.nome }}</h1>
       <p class="pagina__descricao sem-margem">
         {{ detalhe.email }}
-        {% if detalhe.unidade %} · {{ detalhe.unidade.sigla }} — {{ detalhe.unidade.nome }}{% endif %}
+        {% if detalhe.unidade %} · {{ detalhe.unidade.sigla }}, {{ detalhe.unidade.nome }}{% endif %}
       </p>
     </div>
   </div>
@@ -25,7 +25,7 @@
     <h2 class="cartao__titulo">Conta</h2>
     <dl class="definicoes" style="margin-top: var(--e-4)">
       <div><dt>CPF</dt><dd class="mono">{{ detalhe.cpf }}</dd></div>
-      <div><dt>Matrícula</dt><dd class="mono">{{ detalhe.matricula|default:"—" }}</dd></div>
+      <div><dt>Matrícula</dt><dd class="mono">{{ detalhe.matricula|default:"-" }}</dd></div>
       <div><dt>Situação</dt>
         <dd>
           {% if detalhe.ativo %}
@@ -99,7 +99,7 @@
     <h2 class="cartao__titulo">Trocar de papel</h2>
     <p class="suave pequeno">
       Você está em uma sessão de demonstração. Saia e entre com outro papel para
-      ver a plataforma do ponto de vista dele — a diferença entre
+      ver a plataforma do ponto de vista dele, a diferença entre
       <strong>auditor</strong> e <strong>operador</strong> é o exemplo mais
       ilustrativo: o auditor lê a trilha inteira e não dispara nada, o operador
       dispara e não vê a trilha.

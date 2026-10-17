@@ -20,7 +20,7 @@ versionado por dois motivos:
 ## Linhas defeituosas de propósito
 
 Cerca de 2% das linhas são inválidas: vazão vazia, situação desconhecida,
-vencimento malformado, processo em branco. É deliberado — o caminho do ETL que
+vencimento malformado, processo em branco. É deliberado, o caminho do ETL que
 mais importa demonstrar é o que lida com dado ruim, e um arquivo perfeito
 nunca exercita o CSV de rejeitos.
 """

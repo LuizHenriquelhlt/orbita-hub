@@ -10,8 +10,8 @@
     <h1 class="pagina__titulo">Runners</h1>
     <p class="pagina__descricao">
       O runner é o serviço que consome a fila e executa as automações. É o que
-      tem mais privilégio da plataforma — com executor Docker, fala com o Docker
-      Engine — e por isso é o único que não tem acesso ao banco de domínio dos
+      tem mais privilégio da plataforma, com executor Docker, fala com o Docker
+      Engine, e por isso é o único que não tem acesso ao banco de domínio dos
       outros serviços: reporta tudo por HTTP, com token de serviço.
     </p>
   </div>
@@ -59,8 +59,8 @@
     {% include "componentes/alerta.html" with tipo="info" mensagem=aviso %}
   {% elif containers %}
     <p class="pequeno tenue">
-      O filtro por rótulo é o que impede esta tela de listar — e de oferecer um
-      botão de parar para — containers que não são da plataforma. Em uma máquina
+      O filtro por rótulo é o que impede esta tela de listar, e de oferecer um
+      botão de parar para, containers que não são da plataforma. Em uma máquina
       de desenvolvimento, é o que evita derrubar o próprio PostgreSQL.
     </p>
 
@@ -74,7 +74,7 @@
             <tr>
               <td class="mono pequeno">{{ container.nome }}</td>
               <td class="mono pequeno quebra-tudo">{{ container.imagem }}</td>
-              <td class="pequeno">{{ container.automacao|default:"—" }}</td>
+              <td class="pequeno">{{ container.automacao|default:"-" }}</td>
               <td>
                 <span class="etiqueta etiqueta--{% if container.status == 'running' %}ativo{% elif container.status == 'exited' %}inativo{% else %}aviso{% endif %}">
                   {{ container.status }}
@@ -117,7 +117,7 @@
         </tr>
         <tr{% if situacao.executor == "simulado" %} style="background: var(--primaria-suave)"{% endif %}>
           <td><code>simulado</code></td>
-          <td class="pequeno">nada — reproduz um roteiro declarado no manifesto</td>
+          <td class="pequeno">nada, reproduz um roteiro declarado no manifesto</td>
           <td class="pequeno">demonstração pública</td>
         </tr>
       </tbody>

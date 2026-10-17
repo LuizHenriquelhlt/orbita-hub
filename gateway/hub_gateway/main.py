@@ -16,7 +16,7 @@ prefixos, registra cada uma como alvo in-process para os clientes
 
 `httpx.ASGITransport` chama a aplicação com escopo de **requisição**. Ele nunca
 envia o escopo de `lifespan`. Então os eventos de inicialização dos serviços
-embutidos — criar o engine do banco, abrir o broker, instanciar o executor —
+embutidos, criar o engine do banco, abrir o broker, instanciar o executor,
 simplesmente não rodam, e a primeira requisição falha em um `engine()` não
 inicializado.
 
@@ -26,7 +26,7 @@ requisições, mas o seu lifespan não é executado pelo pai.
 A correção está em `ciclo_de_vida` abaixo: um `AsyncExitStack` entra no
 contexto de lifespan de cada aplicação montada, na ordem, e os desfaz na ordem
 inversa ao encerrar. É um detalhe de três linhas sem o qual todo o desenho de
-modo duplo não funciona — e que não aparece em nenhum tutorial de `Mount`.
+modo duplo não funciona, e que não aparece em nenhum tutorial de `Mount`.
 
 ## Por que o Django fica montado na raiz, e por último
 
@@ -80,7 +80,7 @@ def _montar_django() -> Any | None:
     """Devolve a aplicação ASGI do portal, ou `None` se o Django não estiver instalado.
 
     Opcional de propósito: o gateway serve para rodar a API em um processo só,
-    e isso é útil mesmo sem o portal — por exemplo em um ambiente que consome
+    e isso é útil mesmo sem o portal, por exemplo em um ambiente que consome
     apenas a API.
     """
     try:
@@ -103,7 +103,7 @@ def _montar_django() -> Any | None:
         # `portal.asgi.application`, e não `get_asgi_application()` direto: a
         # primeira já embrulha o Django com o `Mount` dos arquivos estáticos
         # (ver o docstring de `portal.asgi`). Usar a segunda faria o portal
-        # funcionar sozinho e ficar sem CSS quando montado aqui — o tipo de
+        # funcionar sozinho e ficar sem CSS quando montado aqui, o tipo de
         # divergência entre modos que este projeto existe para evitar.
         from portal.asgi import application
 
@@ -134,7 +134,7 @@ def criar_gateway() -> FastAPI:
     @contextlib.asynccontextmanager
     async def ciclo_de_vida(_app: FastAPI) -> AsyncIterator[None]:
         # Aqui está o ponto do módulo. Sem isto, nenhum serviço embutido
-        # inicializa — ver docstring.
+        # inicializa, ver docstring.
         async with contextlib.AsyncExitStack() as pilha:
             for nome, aplicacao in apps.items():
                 await pilha.enter_async_context(aplicacao.router.lifespan_context(aplicacao))
@@ -150,7 +150,7 @@ def criar_gateway() -> FastAPI:
             yield
 
     gateway = FastAPI(
-        title="Órbita — Gateway",
+        title="Órbita, Gateway",
         description=__doc__,
         version="0.1.0",
         lifespan=ciclo_de_vida,
@@ -185,7 +185,7 @@ def criar_gateway() -> FastAPI:
     async def indice_de_docs() -> JSONResponse:
         """Índice dos `/docs` de cada serviço.
 
-        Cada serviço mantém o seu próprio OpenAPI — mesclar os quatro em um
+        Cada serviço mantém o seu próprio OpenAPI, mesclar os quatro em um
         schema só perderia a informação de qual serviço expõe o quê, que é o
         que alguém quer saber ao ler a documentação de uma plataforma de
         microsserviços.

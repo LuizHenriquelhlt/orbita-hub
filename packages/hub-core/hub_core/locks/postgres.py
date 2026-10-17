@@ -1,6 +1,6 @@
 """Lock distribuído sobre *advisory locks* do PostgreSQL.
 
-É o adaptador padrão, e o único que roda no free tier — onde não há Redis.
+É o adaptador padrão, e o único que roda no free tier, onde não há Redis.
 
 A semântica não é idêntica à do Redis, e vale entender a diferença antes de
 confiar nela:
@@ -10,8 +10,8 @@ confiar nela:
 * **PostgreSQL** amarra o lock à *sessão* (a conexão). Se o processo morrer, o
   servidor derruba a conexão e o lock é liberado **na hora**.
 
-Para o caso de uso aqui — impedir que duas réplicas disparem o mesmo
-agendamento — a liberação imediata é melhor: o trabalho é retomado em segundos
+Para o caso de uso aqui, impedir que duas réplicas disparem o mesmo
+agendamento, a liberação imediata é melhor: o trabalho é retomado em segundos
 em vez de ficar parado esperando um TTL. O preço é que o parâmetro
 `ttl_segundos` da interface não tem efeito neste adaptador; ele é aceito para
 manter a assinatura única e é ignorado de forma explícita, não silenciosa.
@@ -19,7 +19,7 @@ manter a assinatura única e é ignorado de forma explícita, não silenciosa.
 O detalhe de implementação que importa: `pg_advisory_lock` é por sessão, então
 cada lock precisa **manter a sua própria conexão aberta** enquanto o detém.
 Pegar uma sessão do pool, dar o lock e devolver a conexão ao pool libera o lock
-imediatamente — e o bug resultante é intermitente, porque depende de o pool
+imediatamente, e o bug resultante é intermitente, porque depende de o pool
 reaproveitar aquela conexão.
 """
 

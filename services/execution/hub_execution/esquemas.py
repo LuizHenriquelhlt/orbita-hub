@@ -22,7 +22,7 @@ class PedidoDeDisparoPorSlug(PedidoDeDisparo):
     """O que a interface envia para `POST /execucoes`.
 
     Separado de `PedidoDeDisparo` para que `motor.disparar` receba o slug como
-    argumento nomeado — o agendador dispara sem passar por HTTP e não deveria
+    argumento nomeado, o agendador dispara sem passar por HTTP e não deveria
     ter de montar um corpo de requisição para isso.
     """
 
@@ -74,7 +74,7 @@ class ExecucaoCartao(BaseModel):
     fila: str = ""
     executor: str | None = None
     simulada: bool = False
-    """Marcado quando o executor foi o simulado. A interface rotula o cartão —
+    """Marcado quando o executor foi o simulado. A interface rotula o cartão,
     número de consumo simulado sem rótulo é a única parte de uma demonstração
     que seria desonesta."""
     enfileirada_em: datetime
@@ -88,7 +88,7 @@ class ExecucaoCartao(BaseModel):
     @property
     def duracao_legivel(self) -> str:
         if self.duracao_ms is None:
-            return "—"
+            return "-"
         segundos = self.duracao_ms / 1000
         if segundos < 1:
             return f"{self.duracao_ms} ms"
@@ -176,10 +176,10 @@ class Indicadores(BaseModel):
     Cada campo abaixo corresponde a uma pergunta operacional concreta, e não a
     "um número bonito para o dashboard":
 
-    * `ativas` e `filas` — a plataforma está dando conta agora?
-    * `espera_media_ms` — a fila está acumulando?
-    * `taxa_de_sucesso_7d` — alguma automação passou a falhar?
-    * `serie_14d` — a tendência é de piora?
+    * `ativas` e `filas`, a plataforma está dando conta agora?
+    * `espera_media_ms`, a fila está acumulando?
+    * `taxa_de_sucesso_7d`, alguma automação passou a falhar?
+    * `serie_14d`, a tendência é de piora?
     """
 
     total: int = 0

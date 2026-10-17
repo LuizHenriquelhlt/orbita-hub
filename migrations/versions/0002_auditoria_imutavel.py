@@ -17,7 +17,7 @@ A receita tradicional é:
 
     CREATE RULE sem_update AS ON UPDATE TO auditoria DO INSTEAD NOTHING;
 
-Funciona — e é a pior opção, porque o `UPDATE` **passa em silêncio**. O código
+Funciona, e é a pior opção, porque o `UPDATE` **passa em silêncio**. O código
 que tentou alterar o registro recebe sucesso e segue achando que alterou. Um
 bug assim pode viver anos.
 
@@ -27,7 +27,7 @@ violação de regra que nunca deveria acontecer.
 
 ## Três gatilhos, não um
 
-`UPDATE` e `DELETE` são barrados por um trigger de **statement** — que dispara
+`UPDATE` e `DELETE` são barrados por um trigger de **statement**, que dispara
 mesmo quando o comando não casa nenhuma linha, deixando a intenção clara em vez
 de "0 linhas afetadas".
 
@@ -38,7 +38,7 @@ limpar a tabela.
 ## O que isto **não** garante
 
 O dono da tabela ainda pode `DROP TRIGGER` e depois alterar o que quiser. Não
-há defesa contra quem tem DDL no banco — a defesa aí é organizacional: a
+há defesa contra quem tem DDL no banco, a defesa aí é organizacional: a
 aplicação se conecta com um papel sem privilégio de DDL, e o papel dono fica
 com a equipe de banco. Em produção isso é um `GRANT`; aqui, com um único papel
 no docker-compose, está registrado como limite conhecido.
@@ -93,7 +93,7 @@ COMENTARIO_TABELA = """
 COMMENT ON TABLE plataforma.auditoria IS
 'Trilha de auditoria. Somente insercao, garantida por trigger (migracao 0002).
 Gravada na mesma transacao da acao auditada: ou as duas coisas acontecem, ou
-nenhuma. Nao ha FK para identity.usuario de proposito — o registro sobrevive a
+nenhuma. Nao ha FK para identity.usuario de proposito, o registro sobrevive a
 exclusao do usuario auditado, e guarda nome e CPF como estavam no momento da
 acao.';
 """

@@ -1,4 +1,4 @@
-# 0004 — Lock distribuído de um nó, sem Redlock
+# 0004 - Lock distribuído de um nó, sem Redlock
 
 **Situação:** aceita · **Data:** 2026-10-17
 **Implementa:** `hub_core/locks/`
@@ -7,7 +7,7 @@
 
 Dois lugares precisam de exclusão mútua entre processos:
 
-- o **agendador**, que roda em todas as réplicas do `execution-service` — sem
+- o **agendador**, que roda em todas as réplicas do `execution-service`, sem
   lock, o agendamento das 6h dispara uma vez por réplica;
 - o **controle de admissão**, onde contar execuções ativas e inserir a nova
   precisam ser atômicos entre processos. Com uma réplica, um `SELECT … FOR
@@ -21,7 +21,7 @@ Não implementamos Redlock, o algoritmo de quórum entre vários nós Redis.
 
 A liberação no adaptador Redis usa script Lua para comparar-e-apagar
 atomicamente. Um `DEL` simples apagaria o lock mesmo depois de ele ter
-expirado e sido retomado por outro processo — o processo lento apagaria o lock
+expirado e sido retomado por outro processo, o processo lento apagaria o lock
 do rápido.
 
 As duas semânticas **não são idênticas**, e isso está documentado em vez de
@@ -52,7 +52,7 @@ otimização, não a única barreira.
 ## Alternativas
 
 - **Redlock.** Exige cinco nós Redis para valer a pena e tem fragilidades
-  conhecidas em cenários de relógio e pausa de GC — desproporcional aqui.
+  conhecidas em cenários de relógio e pausa de GC, desproporcional aqui.
 - **Eleição de líder (etcd, ZooKeeper).** Correto e um componente de
   infraestrutura a mais, que não existe no free tier.
 - **Nenhum lock, com idempotência em tudo.** Teria de ser o caminho se o

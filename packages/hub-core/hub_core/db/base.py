@@ -2,14 +2,14 @@
 
 Cada serviço tem o seu próprio **schema** no PostgreSQL (`identity`,
 `catalog`, `execution`, `runner`). Dentro de um schema existem chaves
-estrangeiras de verdade; entre schemas, não — ali a referência é lógica,
+estrangeiras de verdade; entre schemas, não, ali a referência é lógica,
 resolvida por API ou por evento.
 
 Isso não é purismo. É o que torna a separação dos serviços verificável: se
 alguém escrever um `JOIN` de `execution` para `catalog`, a migração que cria a
 FK não tem o que referenciar e o erro aparece no CI, não seis meses depois na
 reunião em que se decide extrair o serviço. Em troca, consultas que precisam de
-dado dos dois lados ficam a cargo do BFF, que faz duas chamadas e compõe — mais
+dado dos dois lados ficam a cargo do BFF, que faz duas chamadas e compõe, mais
 round-trips, fronteira preservada. Ver docs/adr/0003.
 """
 
@@ -36,7 +36,7 @@ CONVENCAO_DE_NOMES = {
 # Quatro schemas de domínio, um por serviço, mais um de infraestrutura.
 # `plataforma` guarda o que é mecanismo e não domínio: a fila do broker em
 # PostgreSQL e os artefatos quando não há object storage. Fica separado para
-# que ninguém confunda tabela de infraestrutura com tabela de negócio — e para
+# que ninguém confunda tabela de infraestrutura com tabela de negócio, e para
 # que apagar a fila em um ambiente de teste não arraste dado de domínio.
 SCHEMAS = ("identity", "catalog", "execution", "runner", "plataforma")
 
@@ -67,7 +67,7 @@ class IdMixin:
     """Chave primária UUID gerada no banco.
 
     UUID em vez de serial porque o id de uma execução viaja para fora do
-    sistema — vai em URL, em callback de automação, em log — e um inteiro
+    sistema, vai em URL, em callback de automação, em log, e um inteiro
     sequencial nessas posições entrega volume e permite enumeração.
     `gen_random_uuid()` é nativo do PostgreSQL 13+, sem precisar de extensão.
     """

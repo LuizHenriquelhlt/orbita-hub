@@ -89,7 +89,7 @@ class LimitesDeRecurso:
 
     Respeitado integralmente pelo executor Docker (cgroups), parcialmente pelo
     de subprocesso (apenas tempo, via timeout) e ignorado pelo simulado. Quem
-    lê o relatório precisa saber disso — por isso o status de uma execução
+    lê o relatório precisa saber disso, por isso o status de uma execução
     guarda qual executor a rodou.
     """
 
@@ -156,7 +156,7 @@ def interpretar_linha(linha: str) -> ComandoDeProtocolo | None:
 
     Tolerante por desenho: uma linha que começa com o prefixo mas tem JSON
     inválido vira log, não erro. Uma automação não deve falhar porque emitiu
-    uma linha de telemetria malformada — mas o problema precisa aparecer, então
+    uma linha de telemetria malformada, mas o problema precisa aparecer, então
     a linha crua é preservada no log.
     """
     if not linha.startswith(PREFIXO_PROTOCOLO):
@@ -186,7 +186,7 @@ class Executor(abc.ABC):
         `ao_registrar_log` é chamado conforme a saída aparece, não no fim: é o
         que permite a interface mostrar o log de uma execução em andamento.
 
-        Não deve levantar exceção por falha da automação — falha de automação é
+        Não deve levantar exceção por falha da automação, falha de automação é
         um `ResultadoExecucao` com status `FALHA`. Exceção aqui significa que o
         *executor* falhou, o que é outro problema e merece outra reação (a
         mensagem volta para a fila; a automação não é culpada).

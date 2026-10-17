@@ -8,7 +8,7 @@
 # Foi o que aconteceu aqui: `outorgas.csv` é gerado com CRLF e BOM de
 # propósito (é o que faz o Excel em português abrir o arquivo com um duplo
 # clique, sem passar pelo assistente de importação). O Git normalizou para LF
-# no commit, e no CI em Linux o gerador reescreveu o arquivo com CRLF — o
+# no commit, e no CI em Linux o gerador reescreveu o arquivo com CRLF, o
 # `git diff --exit-code` que confere o determinismo do dado acusou todas as
 # 1 421 linhas como alteradas.
 

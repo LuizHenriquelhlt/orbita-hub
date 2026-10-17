@@ -3,7 +3,7 @@
 ## Desnormalização deliberada
 
 `Execucao` guarda `automacao_slug`, `automacao_nome`, `usuario_nome` e
-`usuario_cpf` — dados que pertencem a `catalog` e a `identity`. Isso é cópia,
+`usuario_cpf`, dados que pertencem a `catalog` e a `identity`. Isso é cópia,
 e é intencional, por dois motivos de peso diferente:
 
 1. **Fronteira de serviço.** Não existe FK entre schemas, então a alternativa
@@ -14,7 +14,7 @@ e é intencional, por dois motivos de peso diferente:
 2. **Correção histórica**, que é a razão mais forte. Uma execução é um fato
    passado. Se a automação for renomeada em 2027, o relatório de 2026 tem de
    continuar dizendo o nome que ela tinha quando rodou. Resolver o nome por
-   `JOIN` no momento da leitura reescreveria o passado a cada renomeação — e
+   `JOIN` no momento da leitura reescreveria o passado a cada renomeação, e
    o mesmo vale para o nome de quem disparou.
 
 A regra que separa o certo do errado aqui: copiar **rótulo** (como a coisa se
@@ -93,7 +93,7 @@ class Execucao(IdMixin, Base):  # type: ignore[valid-type, misc]
     """Qual executor rodou (`simulado`, `subprocesso`, `docker`).
 
     Persistido porque muda o significado dos números de consumo e do próprio
-    resultado. Uma execução simulada é marcada como tal na interface — ver
+    resultado. Uma execução simulada é marcada como tal na interface, ver
     `hub_core.executor.simulado`."""
 
     # ── Tempos ───────────────────────────────────────────────────────────────
@@ -107,7 +107,7 @@ class Execucao(IdMixin, Base):  # type: ignore[valid-type, misc]
     """Quanto tempo ficou na fila antes de começar.
 
     Gravado em coluna em vez de calculado na leitura porque é a métrica que
-    diz se a plataforma está com capacidade suficiente — e consulta de
+    diz se a plataforma está com capacidade suficiente, e consulta de
     dashboard que calcula diferença de timestamp em `AVG` sobre meses de dados
     não usa índice."""
 
@@ -143,7 +143,7 @@ class Execucao(IdMixin, Base):  # type: ignore[valid-type, misc]
         Index("ix_execucao_usuario_data", "usuario_id", text("enfileirada_em DESC")),
         # "histórico desta automação":
         Index("ix_execucao_automacao_data", "automacao_slug", text("enfileirada_em DESC")),
-        # "o que está rodando agora" — índice parcial, porque execução ativa é
+        # "o que está rodando agora", índice parcial, porque execução ativa é
         # uma fração minúscula do total e o índice fica do tamanho dela:
         Index(
             "ix_execucao_ativas",
@@ -174,7 +174,7 @@ class ExecucaoLog(Base):  # type: ignore[valid-type, misc]
     `sequencia` existe porque `ocorrido_em` não basta para ordenar: uma
     automação que emite dezenas de linhas no mesmo milissegundo produz
     timestamps empatados, e `ORDER BY ocorrido_em` devolve ordem arbitrária
-    entre eles — fazendo o log aparecer embaralhado justamente no trecho mais
+    entre eles, fazendo o log aparecer embaralhado justamente no trecho mais
     movimentado, que é o que a pessoa está tentando ler.
 
     Chave primária composta `(execucao_id, sequencia)`: além de garantir a
@@ -246,7 +246,7 @@ class ExecucaoMetrica(Base):  # type: ignore[valid-type, misc]
     `Numeric` e não `Float`: métrica de negócio ("valor glosado", "total
     arrecadado") aparece em soma e em relatório, e ponto flutuante binário
     acumula erro de arredondamento em soma de valor monetário. O custo é não
-    poder usar funções de agregação rápidas sobre float — irrelevante neste
+    poder usar funções de agregação rápidas sobre float, irrelevante neste
     volume.
     """
 

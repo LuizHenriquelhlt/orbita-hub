@@ -4,7 +4,7 @@
 
 O schema é **derivado**, não mantido à mão. A validação do manifesto, a
 geração do formulário de parâmetros no portal e o autocompletar no editor de
-quem escreve a automação saem todos dos mesmos modelos Pydantic — uma fonte,
+quem escreve a automação saem todos dos mesmos modelos Pydantic, uma fonte,
 três usos.
 
 Mantido à mão, o JSON Schema sairia de sincronia com o validador no primeiro
@@ -43,7 +43,7 @@ def main() -> None:
     definicoes = len(esquema.get("$defs", {}))
     print(f"{DESTINO.relative_to(RAIZ)}")
     print(f"  {definicoes} definições, {DESTINO.stat().st_size / 1024:.1f} KB")
-    print("  derivado dos modelos — não edite à mão")
+    print("  derivado dos modelos, não edite à mão")
 
 
 if __name__ == "__main__":

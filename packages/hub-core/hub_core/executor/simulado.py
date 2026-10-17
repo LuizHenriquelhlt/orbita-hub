@@ -3,7 +3,7 @@
 ## Por que isto existe, e por que não é trapaça
 
 A demonstração pública da plataforma fica em um container de 512 MB sem acesso
-ao Docker Engine. Rodar container arbitrário ali é impossível — e, se fosse
+ao Docker Engine. Rodar container arbitrário ali é impossível, e, se fosse
 possível, seria imprudente: um endereço público que executa imagem informada
 pelo visitante é um serviço de mineração de criptomoeda à espera de ser
 descoberto.
@@ -11,7 +11,7 @@ descoberto.
 O que o visitante precisa ver é o *mecanismo da plataforma*: a execução entrar
 na fila, sair dela, emitir log em tempo real, publicar métrica, produzir um
 arquivo que se baixa, falhar e ser retentada com backoff. Tudo isso é código de
-verdade — fila, motor, callbacks, armazenamento. O único trecho encenado é o
+verdade, fila, motor, callbacks, armazenamento. O único trecho encenado é o
 que normalmente estaria dentro do container de terceiro.
 
 A alternativa honesta é deixar claro qual executor rodou cada execução, e é o
@@ -38,8 +38,8 @@ log, publicar métrica, gerar artefato ou falhar:
       - resumo: "1420 outorgas consolidadas"
 
 Os dados do artefato são gerados por um PRNG semeado pelo id da execução, então
-duas execuções da mesma automação produzem arquivos diferentes — como
-aconteceria de verdade — mas uma execução reexecutada com o mesmo id produz o
+duas execuções da mesma automação produzem arquivos diferentes, como
+aconteceria de verdade, mas uma execução reexecutada com o mesmo id produz o
 mesmo arquivo, o que torna o teste determinístico.
 """
 
@@ -101,7 +101,7 @@ class ExecutorSimulado(Executor):
         await ao_registrar_log(
             "INFO",
             f"[simulado] iniciando {pedido.automacao_slug} "
-            f"({len(roteiro)} passos) — executor sem container",
+            f"({len(roteiro)} passos), executor sem container",
         )
 
         for indice, passo in enumerate(roteiro, start=1):
@@ -178,7 +178,7 @@ class ExecutorSimulado(Executor):
         return True
 
     async def saudavel(self) -> tuple[bool, str]:
-        return True, "executor simulado — não requer Docker"
+        return True, "executor simulado, não requer Docker"
 
     def _consumo(self, inicio: datetime, aleatorio: random.Random) -> dict[str, Any]:
         """Números de consumo plausíveis, marcados como simulados.

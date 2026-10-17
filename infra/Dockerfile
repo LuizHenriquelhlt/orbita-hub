@@ -3,7 +3,7 @@
 # Uma imagem só, e não cinco, por um motivo concreito: os quatro serviços
 # compartilham `hub_core` e quase todas as dependências. Cinco imagens
 # significariam cinco builds que baixam o mesmo `sqlalchemy`, cinco caches a
-# invalidar e cinco tags a manter em sincronia — para economizar poucos
+# invalidar e cinco tags a manter em sincronia, para economizar poucos
 # megabytes de código Python. O que diferencia um container do outro é o
 # comando, não o conteúdo.
 #

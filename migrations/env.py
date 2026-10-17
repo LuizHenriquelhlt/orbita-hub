@@ -10,7 +10,7 @@ proporia apagar tudo que existe.
 
 **Engine assíncrono.** O projeto usa `asyncpg`, e o Alembic é síncrono. A ponte
 é `connection.run_sync`, que roda a função de migração dentro do greenlet do
-SQLAlchemy — a forma suportada, e não um `asyncio.run` por fora, que colidiria
+SQLAlchemy, a forma suportada, e não um `asyncio.run` por fora, que colidiria
 com o event loop.
 """
 
@@ -57,7 +57,7 @@ def _url() -> str:
     """URL do banco, em versão **síncrona** para o Alembic offline.
 
     O modo online usa asyncpg; o offline (`--sql`, que só gera o SQL) não abre
-    conexão, então o driver é irrelevante — mas a URL precisa ser parseável.
+    conexão, então o driver é irrelevante, mas a URL precisa ser parseável.
     """
     bruta = os.getenv("DATABASE_URL")
     if not bruta:
@@ -112,7 +112,7 @@ def _migrar(connection: object) -> None:
         compare_server_default=True,
         # Uma transação por migração: ou a migração inteira é aplicada, ou
         # nada dela. Com DDL transacional (que o PostgreSQL tem, e a maioria
-        # dos bancos não), isso é de graça — e evita o pior cenário de
+        # dos bancos não), isso é de graça, e evita o pior cenário de
         # migração, que é o banco parar no meio.
         transaction_per_migration=True,
     )

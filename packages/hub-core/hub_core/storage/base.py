@@ -1,13 +1,13 @@
 """Porta do armazenamento de artefatos.
 
 Artefato é o que uma automação produz e alguém vai baixar: a planilha do
-relatório, o PDF do ofício, o CSV de erros. É dado de saída, não de domínio —
+relatório, o PDF do ofício, o CSV de erros. É dado de saída, não de domínio,
 por isso não mora em tabela de negócio.
 
 A interface tem uma assimetria deliberada: `url_para_download` pode devolver
 `None`. Com S3/MinIO existe URL pré-assinada, e o navegador baixa direto do
 object storage sem passar pela aplicação. Com artefato em PostgreSQL não existe
-equivalente — o download tem de passar pelo serviço, que faz streaming do
+equivalente, o download tem de passar pelo serviço, que faz streaming do
 `bytea`. Em vez de inventar uma URL falsa para uniformizar, a porta admite que
 a capacidade não existe nos dois lados, e quem chama trata os dois casos. Uma
 abstração que esconde a diferença faria o adaptador PostgreSQL servir URLs que

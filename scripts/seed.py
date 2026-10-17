@@ -8,16 +8,16 @@ parte do `make up` e também para recarregar o cenário depois de mexer no banco
 
 ## O que é o INRH
 
-Instituto Nacional de Recursos Hídricos — um órgão federal **fictício**, criado
+Instituto Nacional de Recursos Hídricos, um órgão federal **fictício**, criado
 para este projeto. Nenhuma unidade, pessoa, outorga ou processo corresponde a
 algo real. Os CPFs têm dígitos verificadores válidos (necessário para o fluxo
 de login funcionar) e usam o prefixo `000`, que não é atribuído a pessoa
-física — ver `hub_identity.cpf`.
+física, ver `hub_identity.cpf`.
 
 ## Por que o histórico é opcional
 
 Sem histórico, a plataforma sobe limpa e cada execução que o visitante dispara
-é visível e isolada — bom para entender o mecanismo. Com histórico, o painel
+é visível e isolada, bom para entender o mecanismo. Com histórico, o painel
 tem o que mostrar: série temporal, taxa de sucesso, automações mais usadas.
 O endereço público roda com `--historico`; quem clona o repositório decide.
 """
@@ -140,7 +140,7 @@ class PessoaSemente:
 
 
 # Uma pessoa por papel, para que a entrada por demonstração encontre alguém
-# com cada um dos seis — ver `hub_identity.servico.autenticar_demonstracao`.
+# com cada um dos seis, ver `hub_identity.servico.autenticar_demonstracao`.
 PESSOAS = (
     PessoaSemente(
         "Helena Vasques Albuquerque",
@@ -233,7 +233,7 @@ MANIFESTOS = (
 async def semear_unidades(sessao: AsyncSession) -> dict[str, Unidade]:
     """Cria as unidades em duas passagens: primeiro todas, depois a hierarquia.
 
-    Em uma passagem só, uma unidade filha precisaria que a mãe já existisse —
+    Em uma passagem só, uma unidade filha precisaria que a mãe já existisse,
     o que obrigaria a ordenar a lista topologicamente à mão. Com duas, a ordem
     da lista é livre e a hierarquia é resolvida no fim.
     """
@@ -372,7 +372,7 @@ async def semear_automacoes(sessao: AsyncSession, admin: Usuario) -> list[str]:
 
     Usa `servico_catalog.importar_manifesto`, a mesma função que a rota de
     importação chama. O seed exercita o caminho real em vez de inserir linhas
-    direto na tabela — se a importação quebrar, o seed quebra, e isso é
+    direto na tabela, se a importação quebrar, o seed quebra, e isso é
     desejável.
     """
     from hub_identity.servico import grupos_de, papeis_efetivos
@@ -416,7 +416,7 @@ async def semear_automacoes(sessao: AsyncSession, admin: Usuario) -> list[str]:
         )
 
     # A que falha fica em homologação: assim o catálogo mostra os dois estados,
-    # e ela não aparece para quem não pode editar — o que também demonstra a
+    # e ela não aparece para quem não pode editar, o que também demonstra a
     # regra de visibilidade por status.
     pendente = (
         await sessao.execute(
@@ -571,7 +571,7 @@ def _log_de_exemplo(slug: str, sucesso: bool) -> list[tuple[str, str]]:
     if slug == "relatorio-outorgas-mensal":
         comum += [
             ("INFO", "lendo outorgas.csv"),
-            ("WARNING", "28 linha(s) rejeitada(s) — ver outorgas-rejeitadas.csv"),
+            ("WARNING", "28 linha(s) rejeitada(s), ver outorgas-rejeitadas.csv"),
             ("INFO", "1256 outorga(s) após os filtros"),
         ]
     elif slug == "monitor-reservatorios":
@@ -588,7 +588,7 @@ def _log_de_exemplo(slug: str, sucesso: bool) -> list[tuple[str, str]]:
     if sucesso:
         comum.append(("INFO", "execução concluída"))
     else:
-        comum.append(("ERROR", "limite de divergências excedido — execução abortada"))
+        comum.append(("ERROR", "limite de divergências excedido, execução abortada"))
     return comum
 
 

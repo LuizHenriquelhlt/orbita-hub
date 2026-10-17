@@ -4,7 +4,7 @@ São poucos e caros, e cada um prova algo que **só** se prova contra o banco:
 o `SKIP LOCKED` da fila sob concorrência, a imutabilidade da auditoria imposta
 por trigger, e o controle de admissão com disparos simultâneos.
 
-Pulados automaticamente sem `DATABASE_URL` — ver `conftest.py`.
+Pulados automaticamente sem `DATABASE_URL`, ver `conftest.py`.
 
     make up                                   # sobe o PostgreSQL
     export DATABASE_URL=postgresql+asyncpg://orbita:orbita_dev@localhost:55432/orbita
@@ -82,7 +82,7 @@ async def test_skip_locked_nunca_entrega_a_mesma_mensagem_duas_vezes(
     fila. Com `SKIP LOCKED`, o `LIMIT` é aplicado à varredura e não às linhas
     efetivamente travadas: um consumidor que pede 2 e encontra uma delas já
     travada devolve 1. Em uma rodada de oito consumidores pedindo 2, costumam
-    vir 8 mensagens, não 16 — comportamento correto, e a razão de
+    vir 8 mensagens, não 16, comportamento correto, e a razão de
     `BrokerPostgres.consumir` prometer "até `limite`".
 
     Sem `SKIP LOCKED` (só com `FOR UPDATE`) os consumidores se serializariam;
@@ -110,7 +110,7 @@ async def test_skip_locked_nunca_entrega_a_mesma_mensagem_duas_vezes(
             await broker.confirmar(mensagem)
 
     assert len(set(vistos)) == len(vistos), (
-        "a mesma mensagem foi entregue a dois consumidores — "
+        "a mesma mensagem foi entregue a dois consumidores, "
         "é o que o SKIP LOCKED existe para impedir"
     )
     assert sorted(indices) == list(range(total)), "alguma mensagem ficou para trás"
@@ -120,7 +120,7 @@ async def test_lote_parcial_sob_concorrencia(settings: Settings, limpar_fila: No
     """Documenta em teste o comportamento do `LIMIT` com `SKIP LOCKED`.
 
     Existe para que ninguém "conserte" `consumir` achando que ele deveria
-    sempre encher o lote — e acabe removendo o `SKIP LOCKED` para consegui-lo.
+    sempre encher o lote, e acabe removendo o `SKIP LOCKED` para consegui-lo.
     """
     del limpar_fila
     broker = _broker(settings)
@@ -257,7 +257,7 @@ async def test_limpeza_respeita_a_retencao(settings: Settings, limpar_fila: None
 
 
 async def test_auditoria_recusa_update_delete_e_truncate(banco: None) -> None:
-    """A garantia tem de sobreviver a um bug na aplicação — por isso é no banco.
+    """A garantia tem de sobreviver a um bug na aplicação, por isso é no banco.
 
     Observe que o teste roda com o **dono** da tabela: o trigger vale mesmo
     para quem tem todos os privilégios, que é o ponto.
@@ -386,7 +386,7 @@ async def test_locks_de_nomes_diferentes_nao_se_bloqueiam(settings: Settings, ba
 
 
 async def test_executor_simulado_reproduz_o_roteiro() -> None:
-    """Não precisa de banco, mas depende do executor completo — fica aqui junto."""
+    """Não precisa de banco, mas depende do executor completo, fica aqui junto."""
     executor = ExecutorSimulado(acelerar=True)
     registradas: list[tuple[str, str]] = []
 
@@ -432,7 +432,7 @@ async def test_executor_simulado_reproduz_o_roteiro() -> None:
 
 
 async def test_executor_simulado_e_deterministico_por_execucao() -> None:
-    """Mesma execução, mesmo artefato — é o que torna o teste estável."""
+    """Mesma execução, mesmo artefato, é o que torna o teste estável."""
     executor = ExecutorSimulado(acelerar=True)
 
     async def nada(_n: str, _m: str) -> None:
@@ -470,7 +470,7 @@ async def test_executor_simulado_e_deterministico_por_execucao() -> None:
 async def test_executor_simulado_reporta_falha_sem_levantar() -> None:
     """Falha de automação é um `ResultadoExecucao`, não uma exceção.
 
-    A distinção é o que o worker usa para decidir entre `ack` e `nack` — ver
+    A distinção é o que o worker usa para decidir entre `ack` e `nack`, ver
     o docstring de `hub_runner.worker`.
     """
     executor = ExecutorSimulado(acelerar=True)

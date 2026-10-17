@@ -1,4 +1,4 @@
-"""SDK de automação do Órbita — conveniência, não requisito.
+"""SDK de automação do Órbita, conveniência, não requisito.
 
 O contrato da plataforma é imprimir linhas no stdout (ver
 `hub_core.executor.base`). Isto funciona como automação completa:
@@ -18,21 +18,21 @@ mão, e para dar nomes às coisas:
         orbita.artefato("relatorio.xlsx", planilha_em_bytes)
         orbita.resumo(f"{len(dados)} registros consolidados")
 
-Um SDK equivalente em Node, Go ou Java tem umas 40 linhas — é só formatar JSON
+Um SDK equivalente em Node, Go ou Java tem umas 40 linhas, é só formatar JSON
 e imprimir. É esse o ponto do contrato por stdout: não é preciso que a
 plataforma suporte uma linguagem, basta que a linguagem saiba imprimir.
 
 ## O que o SDK garante que o `echo` não garante
 
 * **flush imediato.** Sem `flush=True`, o Python armazena a saída em buffer
-  quando o stdout não é um terminal — e é exatamente o caso dentro de um
+  quando o stdout não é um terminal, e é exatamente o caso dentro de um
   container. O log apareceria todo de uma vez no fim, destruindo o
   acompanhamento ao vivo. É o erro mais comum ao escrever a primeira
   automação;
 * **artefato gravado no lugar certo.** O diretório de trabalho vem em
   `ORBITA_DIR_TRABALHO`, e é só de lá que o executor colhe arquivos;
 * **falha reportada.** O `__exit__` captura exceção, emite um log de ERROR com
-  o traceback e sai com código 1 — em vez de o container morrer com um
+  o traceback e sai com código 1, em vez de o container morrer com um
   traceback cru que ninguém correlaciona com a execução.
 """
 
@@ -120,7 +120,7 @@ class Orbita:
 
         Aparece na tela da execução e fica consultável no histórico. Para
         número de negócio ("linhas processadas", "valor glosado"), não para
-        tempo ou memória — esses a plataforma mede sozinha.
+        tempo ou memória, esses a plataforma mede sozinha.
         """
         self._enviar({"tipo": "metrica", "nome": str(nome), "valor": float(valor)})
 
@@ -142,7 +142,7 @@ class Orbita:
 
         Vêm por arquivo, e não por argumento de linha de comando, porque
         argumento de processo é visível em `ps` para qualquer usuário da
-        máquina — e parâmetro de automação pode conter dado sensível.
+        máquina, e parâmetro de automação pode conter dado sensível.
         """
         if self._parametros is None:
             caminho = os.getenv("ORBITA_PARAMETROS")
@@ -158,7 +158,7 @@ class Orbita:
     def exigir(self, nome: str) -> Any:
         """Lê um parâmetro obrigatório, falhando com mensagem útil se faltar.
 
-        Não deveria acontecer — a plataforma valida os obrigatórios antes de
+        Não deveria acontecer, a plataforma valida os obrigatórios antes de
         enfileirar. Existe para o caso de a automação ser rodada à mão, fora
         da plataforma, durante o desenvolvimento.
         """
@@ -175,7 +175,7 @@ class Orbita:
 
         Os dois passos são necessários e o SDK faz os dois: gravar no diretório
         de trabalho e **declarar** o nome. O executor só colhe o que foi
-        declarado — varrer o diretório recolheria arquivo temporário e cache.
+        declarado, varrer o diretório recolheria arquivo temporário e cache.
         """
         destino = self.dir_trabalho / nome
         destino.parent.mkdir(parents=True, exist_ok=True)
@@ -193,7 +193,7 @@ class Orbita:
         """Lê uma variável de ambiente declarada no manifesto.
 
         O valor é injetado pelo runner, a partir do ambiente **dele**, e nunca
-        passou pelo banco nem pela API — ver
+        passou pelo banco nem pela API, ver
         `hub_runner.worker.Worker._resolver_segredos`.
         """
         return os.getenv(nome, padrao)

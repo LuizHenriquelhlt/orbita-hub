@@ -9,7 +9,7 @@ A forma de uso nas rotas:
 
 `exigir` é uma fábrica de dependências: ela devolve a função que o FastAPI vai
 chamar. A vantagem sobre um decorador próprio é que a exigência aparece na
-assinatura — então vai para o OpenAPI, para o `/docs` e para o autocompletar do
+assinatura, então vai para o OpenAPI, para o `/docs` e para o autocompletar do
 editor, em vez de ficar escondida em um `@requires("...")` que só o runtime vê.
 """
 
@@ -72,7 +72,7 @@ def exigir(
 
     Por padrão exige **todas** as informadas. `qualquer=True` exige ao menos
     uma. O padrão é o mais restritivo porque é o que alguém espera ao ler
-    `exigir(A, B)` numa rota — e porque errar para o lado restritivo gera um
+    `exigir(A, B)` numa rota, e porque errar para o lado restritivo gera um
     403 visível, enquanto errar para o permissivo não gera nada.
     """
 
@@ -106,7 +106,7 @@ async def chamador_interno(
 ) -> str:
     """Autentica chamada serviço-a-serviço e devolve o nome do chamador.
 
-    Usada nos endpoints de callback — por onde o `runner-service` reporta
+    Usada nos endpoints de callback, por onde o `runner-service` reporta
     progresso de execução. Esses endpoints alteram estado e não podem aceitar
     token de pessoa: um usuário com token válido não deve conseguir declarar
     que uma execução terminou com sucesso.

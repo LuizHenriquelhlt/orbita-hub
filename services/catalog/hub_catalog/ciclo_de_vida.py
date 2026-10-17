@@ -10,7 +10,7 @@
 A regra "automação em rascunho não pode ir direto para publicada" precisa valer
 em todo caminho que muda status: a rota de aprovação, a importação de
 manifesto, o script de seed e o reprocessamento administrativo. Com `if` em
-cada um, o quarto caminho esquece a regra — e o estado inválido só aparece
+cada um, o quarto caminho esquece a regra, e o estado inválido só aparece
 depois, como uma automação publicada que nunca passou por homologação.
 
 Aqui existe um dicionário. Quem quiser mudar status chama `validar_transicao`,
@@ -18,8 +18,8 @@ e não há outro caminho para a coluna `status`.
 
 ## Por que publicar exige requisitos, e não só permissão
 
-`requisitos_para_publicar` devolve a lista do que falta. A alternativa — um
-booleano — produz a mensagem "não é possível publicar", que faz a pessoa
+`requisitos_para_publicar` devolve a lista do que falta. A alternativa, um
+booleano, produz a mensagem "não é possível publicar", que faz a pessoa
 abrir um chamado. A lista produz "falta README e um responsável técnico", que
 ela resolve sozinha.
 """
@@ -132,7 +132,7 @@ TRANSICOES: tuple[Transicao, ...] = (
         "automacao:publicar",
     ),
     # Permite desfazer uma depreciação feita por engano sem recriar a
-    # automação — e sem passar de novo por homologação, já que a versão
+    # automação, e sem passar de novo por homologação, já que a versão
     # publicada é a mesma que já havia sido aprovada.
     Transicao(
         StatusAutomacao.DEPRECIADA,

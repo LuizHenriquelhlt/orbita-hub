@@ -1,7 +1,7 @@
 """Artefatos em object storage compatível com S3 (MinIO local, S3 em produção).
 
 O `boto3` é síncrono e não tem versão assíncrona oficial. Chamá-lo direto de um
-handler `async` bloquearia o event loop — e com um upload de alguns megabytes
+handler `async` bloquearia o event loop, e com um upload de alguns megabytes
 isso significa parar de responder a *todas* as requisições do processo durante
 a transferência. Cada chamada aqui vai para `asyncio.to_thread`.
 
@@ -167,7 +167,7 @@ class ArtefatoStoreS3(ArtefatoStore):
     async def url_para_download(self, caminho: str, *, validade_segundos: int = 900) -> str | None:
         """URL pré-assinada: o navegador baixa do object storage, não do serviço.
 
-        É a vantagem real deste adaptador sobre o PostgreSQL — uma planilha de
+        É a vantagem real deste adaptador sobre o PostgreSQL, uma planilha de
         50 MB não atravessa o processo da aplicação.
         """
         caminho = validar_caminho(caminho)

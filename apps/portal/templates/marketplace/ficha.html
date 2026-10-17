@@ -71,7 +71,7 @@
         <h2 class="cartao__titulo">Parâmetros de entrada</h2>
         <p class="pequeno tenue">
           Declarados no manifesto. O formulário de execução é gerado a partir
-          desta lista, e o motor valida a entrada contra ela — não existe campo
+          desta lista, e o motor valida a entrada contra ela, não existe campo
           que a tela ofereça e o serviço recuse.
         </p>
         <div class="tabela-envoltorio" style="margin-top: var(--e-3)">
@@ -100,7 +100,7 @@
                       <span class="tenue">não</span>
                     {% endif %}
                   </td>
-                  <td class="mono pequeno">{{ parametro.padrao|default:"—" }}</td>
+                  <td class="mono pequeno">{{ parametro.padrao|default:"-" }}</td>
                 </tr>
               {% endfor %}
             </tbody>
@@ -130,7 +130,7 @@
                       <span class="etiqueta etiqueta--contorno">agendada</span>
                     {% endif %}
                   </td>
-                  <td class="pequeno">{{ execucao.usuario_nome|default:"—" }}</td>
+                  <td class="pequeno">{{ execucao.usuario_nome|default:"-" }}</td>
                   <td>
                     <span class="etiqueta etiqueta--{{ execucao.status|cor_de_status }}">
                       <span class="etiqueta__ponto" aria-hidden="true"></span>
@@ -154,7 +154,7 @@
       <section class="cartao">
         <h2 class="cartao__titulo">Como tem se comportado</h2>
         <p class="pequeno tenue">
-          Estes números vêm do <code>execution-service</code>, não do catálogo —
+          Estes números vêm do <code>execution-service</code>, não do catálogo,
           o catálogo não sabe quantas vezes uma automação rodou.
         </p>
 
@@ -195,7 +195,7 @@
       <dl class="definicoes" style="margin-top: var(--e-4)">
         <div>
           <dt>Imagem</dt>
-          <dd class="mono pequeno quebra-tudo">{{ automacao.imagem|default:"—" }}</dd>
+          <dd class="mono pequeno quebra-tudo">{{ automacao.imagem|default:"-" }}</dd>
         </div>
         <div>
           <dt>Simultâneas</dt>
@@ -236,15 +236,15 @@
       <dl class="definicoes" style="margin-top: var(--e-4)">
         <div>
           <dt>Técnico</dt>
-          <dd>{{ automacao.responsavel_tecnico|default:"—" }}</dd>
+          <dd>{{ automacao.responsavel_tecnico|default:"-" }}</dd>
         </div>
         <div>
           <dt>Negócio</dt>
-          <dd>{{ automacao.responsavel_negocio|default:"—" }}</dd>
+          <dd>{{ automacao.responsavel_negocio|default:"-" }}</dd>
         </div>
         <div>
           <dt>Publicada em</dt>
-          <dd>{{ automacao.publicado_em|default:"—" }}</dd>
+          <dd>{{ automacao.publicado_em|default:"-" }}</dd>
         </div>
       </dl>
     </section>
@@ -295,7 +295,7 @@
         <h2 class="cartao__titulo">Ciclo de vida</h2>
         <p class="pequeno tenue">
           Só aparecem as transições que a sua permissão alcança a partir da
-          situação atual — a lista vem do serviço, já filtrada.
+          situação atual, a lista vem do serviço, já filtrada.
         </p>
         <div class="pilha pilha--apertada" style="margin-top: var(--e-3)">
           {% for acao in automacao.acoes_disponiveis %}

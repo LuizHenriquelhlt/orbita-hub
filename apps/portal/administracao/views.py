@@ -40,7 +40,7 @@ async def pessoas(request: HttpRequest) -> HttpResponse:
     )
 
     # A lista de unidades alimenta um filtro opcional. Se o identity estiver
-    # fora do ar, a tela abre sem o filtro em vez de não abrir — uma página
+    # fora do ar, a tela abre sem o filtro em vez de não abrir, uma página
     # incompleta é melhor do que uma página que não carrega porque um
     # complemento falhou.
     unidades: list[dict[str, Any]] = []
@@ -84,7 +84,7 @@ async def auditoria(request: HttpRequest) -> HttpResponse:
         "paginas": max(1, -(-resultado["total"] // 50)),
         "filtros": {c: v for c, v in filtros.items() if c not in {"pagina", "por_pagina"}},
         # Os prefixos de ação mais comuns, para o filtro rápido. Lista fixa
-        # porque é vocabulário do domínio, não dado — ver `hub_core.events`.
+        # porque é vocabulário do domínio, não dado, ver `hub_core.events`.
         "acoes_comuns": [
             ("login", "Entradas"),
             ("execucao", "Execuções"),
@@ -107,7 +107,7 @@ async def auditoria(request: HttpRequest) -> HttpResponse:
 async def filas(request: HttpRequest) -> HttpResponse:
     """Profundidade das filas e a fila de mensagens mortas.
 
-    A inspeção da DLQ só existe com `BROKER_BACKEND=postgres` — com RabbitMQ,
+    A inspeção da DLQ só existe com `BROKER_BACKEND=postgres`, com RabbitMQ,
     quem faz isso é o painel de gestão dele, e reimplementá-lo aqui seria
     recriar uma ferramenta que já existe e é melhor. A tela diz isso em vez de
     mostrar uma lista vazia sem explicação.

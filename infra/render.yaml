@@ -2,14 +2,14 @@
 #
 # Um serviço só: o gateway em modo monolito, com o portal Django montado na
 # raiz. Os quatro serviços de domínio rodam dentro dele, chamados por
-# `ASGITransport` — sem rede entre eles. É o mesmo código que roda em cinco
+# `ASGITransport`, sem rede entre eles. É o mesmo código que roda em cinco
 # containers no `infra/docker-compose.yml`; o que muda é uma variável de
 # ambiente. Ver `hub_core/clients.py` e docs/adr/0002.
 #
 # O banco **não** está declarado aqui. O PostgreSQL gratuito do Render expira
 # em 30 dias; o do Neon não expira, tem scale-to-zero que religa em cerca de
 # um segundo e dá 0,5 GB. A URL entra como variável secreta no painel do
-# Render — ver docs/implantacao.md.
+# Render, ver docs/implantacao.md.
 #
 #   render.com → New → Blueprint → aponte para este arquivo
 
@@ -59,7 +59,7 @@ services:
       #
       # Use o endpoint **pooled** do Neon (`...-pooler...`): o free tier tem
       # poucas conexões diretas, e o código já desliga o cache de prepared
-      # statements quando detecta o pooler — ver `hub_core/db/engine.py`.
+      # statements quando detecta o pooler, ver `hub_core/db/engine.py`.
       - key: DATABASE_URL
         sync: false
 

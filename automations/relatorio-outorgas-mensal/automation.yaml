@@ -1,5 +1,5 @@
 # Manifesto da automação. Validado contra o contrato publicado em
-# GET /manifestos/schema — aponte o seu editor para lá e ele autocompleta.
+# GET /manifestos/schema, aponte o seu editor para lá e ele autocompleta.
 #
 # Esta é a automação que roda código de verdade: EXECUTOR_BACKEND=subprocess
 # ou =docker. Não tem `roteiro_simulado`, então no executor simulado ela cai no
@@ -23,7 +23,7 @@ metadata:
   responsavel_negocio: Coordenação-Geral de Outorgas
   unidade: CGOUT
   changelog: >-
-    1.4.0 — aba "Por região" passa a listar todas as regiões, inclusive as sem
+    1.4.0, aba "Por região" passa a listar todas as regiões, inclusive as sem
     outorga no período; total do resumo virou fórmula em vez de valor fixo.
 
 spec:
@@ -33,7 +33,7 @@ spec:
 
   modo_visual: false
   # Sem rede: a automação só lê um arquivo local e escreve dois. Padrão
-  # restritivo — ver `hub_core.executor.base.PedidoDeExecucao.rede_habilitada`.
+  # restritivo, ver `hub_core.executor.base.PedidoDeExecucao.rede_habilitada`.
   rede_habilitada: false
 
   recursos:
@@ -85,7 +85,7 @@ spec:
   gatilhos:
     - tipo: manual
 
-    # Todo dia 1º às 6h (fuso America/Sao_Paulo — ver `hub_execution.agenda`).
+    # Todo dia 1º às 6h (fuso America/Sao_Paulo, ver `hub_execution.agenda`).
     # Vai para a fila de lote: é pesado e ninguém está esperando na tela.
     - tipo: cron
       expressao: "0 6 1 * *"
@@ -101,13 +101,13 @@ spec:
   readme: |
     O relatório lê `dados/outorgas.csv` e produz:
 
-    - `outorgas-<competencia>.xlsx` — três abas: **Resumo** (por situação, com
+    - `outorgas-<competencia>.xlsx`, três abas: **Resumo** (por situação, com
       total em fórmula), **Por região** (todas as regiões, inclusive as sem
       dado) e **Detalhe** (uma linha por outorga, com autofiltro).
-    - `outorgas-rejeitadas.csv` — só quando há linha inconsistente. Primeira
+    - `outorgas-rejeitadas.csv`, só quando há linha inconsistente. Primeira
       coluna é o motivo.
 
     **Dados sintéticos.** O INRH é um órgão fictício e nenhuma linha
     corresponde a outorga, processo ou pessoa real. O arquivo é gerado por
     `scripts/gerar_dados.py` a partir de uma semente fixa, com ~2% de linhas
-    defeituosas de propósito — é o que exercita o caminho dos rejeitos.
+    defeituosas de propósito, é o que exercita o caminho dos rejeitos.

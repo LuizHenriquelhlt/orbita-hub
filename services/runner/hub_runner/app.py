@@ -7,13 +7,13 @@ Este é o serviço que tem mais privilégio da plataforma: com
 Docker Engine é efetivamente root na máquina. Daí duas consequências de
 desenho:
 
-* ele **não** tem acesso ao banco de domínio dos outros serviços — reporta
+* ele **não** tem acesso ao banco de domínio dos outros serviços, reporta
   tudo por HTTP, com token de serviço;
 * é o único lugar onde os valores de segredo das automações existem, resolvidos
   do próprio ambiente no momento de montar o container.
 
 Em Kubernetes, é o único Pod que precisaria de `ServiceAccount` com
-permissão para criar Jobs — e por isso o que ele pode fazer deve ser auditado
+permissão para criar Jobs, e por isso o que ele pode fazer deve ser auditado
 com mais cuidado do que o resto.
 """
 
@@ -48,7 +48,7 @@ Suporta três executores, escolhidos por `EXECUTOR_BACKEND`:
 | `subprocess` | ambiente e sistema de arquivos de trabalho | desenvolvimento |
 | `simulated` | nada (reproduz um roteiro) | demonstração pública |
 
-O executor usado é persistido em cada execução e aparece na interface — uma
+O executor usado é persistido em cada execução e aparece na interface, uma
 execução simulada é rotulada como tal.
 """
 
@@ -98,7 +98,7 @@ def construir() -> FastAPI:
     async def ao_encerrar(app: FastAPI) -> None:
         # Sinalizar e esperar: o worker termina a execução em andamento antes
         # de sair. O que não terminar volta à fila pelo *visibility timeout*,
-        # então nada é perdido — mas terminar de forma limpa evita uma
+        # então nada é perdido, mas terminar de forma limpa evita uma
         # execução contada duas vezes.
         parar.set()
         tarefa = getattr(app.state, "tarefa_worker", None)
@@ -119,7 +119,7 @@ def construir() -> FastAPI:
 
     return criar_app(
         nome="runner",
-        titulo="Órbita — Runner de Automações",
+        titulo="Órbita, Runner de Automações",
         descricao=DESCRICAO,
         router=montar(),
         settings=cfg,

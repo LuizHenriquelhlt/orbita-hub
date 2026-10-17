@@ -18,7 +18,7 @@ Catálogo de automações: cadastro, versões, ciclo de vida, gatilhos e permiss
 de acesso.
 
 É a fonte da verdade sobre **o que existe e quem pode usar**. Não sabe nada
-sobre execução — quantas vezes uma automação rodou ou se a última falhou vive
+sobre execução, quantas vezes uma automação rodou ou se a última falhou vive
 em `execution`. O portal compõe as duas coisas na tela.
 
 Também é o dono do contrato de plugin: `GET /manifestos/schema` publica o JSON
@@ -44,7 +44,7 @@ def construir() -> FastAPI:
 
     return criar_app(
         nome="catalog",
-        titulo="Órbita — Catálogo de Automações",
+        titulo="Órbita, Catálogo de Automações",
         descricao=DESCRICAO,
         router=montar(),
         settings=cfg,

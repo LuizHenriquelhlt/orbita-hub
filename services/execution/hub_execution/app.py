@@ -5,7 +5,7 @@
 Além das rotas, este serviço hospeda o **agendador** como tarefa de fundo. Ele
 poderia ser um processo separado, e em uma instalação grande seria; aqui roda
 junto porque o lock distribuído já garante que só uma réplica dispara cada
-agendamento — então rodar o laço em todas as réplicas não causa disparo
+agendamento, então rodar o laço em todas as réplicas não causa disparo
 duplicado, e dispensa um quinto artefato de deploy.
 """
 
@@ -34,7 +34,7 @@ Motor de execução: disparo, fila, controle de admissão, acompanhamento, log a
 vivo, artefatos, reexecução e agendamento.
 
 **Controle de admissão** usa lock distribuído para que o limite de execuções
-simultâneas de uma automação valha com várias réplicas do serviço — contar e
+simultâneas de uma automação valha com várias réplicas do serviço, contar e
 inserir precisam ser atômicos entre processos.
 
 **As rotas sob `/_internos`** são os callbacks do `runner-service` e exigem
@@ -75,7 +75,7 @@ def construir() -> FastAPI:
     async def ao_encerrar(app: FastAPI) -> None:
         # Sinalizar antes de cancelar dá ao laço a chance de terminar a volta
         # atual. Cancelar direto no meio de um disparo deixaria a execução
-        # gravada sem mensagem na fila — recuperável, mas evitável.
+        # gravada sem mensagem na fila, recuperável, mas evitável.
         parar.set()
         tarefa = getattr(app.state, "tarefa_agendador", None)
         if tarefa is not None:
@@ -96,7 +96,7 @@ def construir() -> FastAPI:
 
     return criar_app(
         nome="execution",
-        titulo="Órbita — Motor de Execução",
+        titulo="Órbita, Motor de Execução",
         descricao=DESCRICAO,
         router=montar(),
         settings=cfg,

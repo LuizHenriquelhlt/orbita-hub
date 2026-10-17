@@ -281,7 +281,7 @@ def _recusar_se_demonstracao(quem: Identidade) -> None:
 
     O endereço público é aberto; sem esta trava, o primeiro visitante
     curioso remove o papel de administrador de todo mundo e a demonstração
-    deixa de existir. Leitura e disparo de automação continuam liberados —
+    deixa de existir. Leitura e disparo de automação continuam liberados,
     é o que a demonstração precisa mostrar.
     """
     if quem.demonstracao:
@@ -299,7 +299,7 @@ def montar() -> APIRouter:
 
     Idempotente: no modo monolito, mais de um caminho de importação pode
     chegar aqui, e incluir o mesmo sub-router duas vezes duplica cada rota no
-    OpenAPI — o FastAPI aceita sem reclamar e o `/docs` fica com tudo em
+    OpenAPI, o FastAPI aceita sem reclamar e o `/docs` fica com tudo em
     dobro.
     """
     global _montado

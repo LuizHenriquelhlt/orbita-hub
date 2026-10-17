@@ -5,7 +5,7 @@ limites explícitos:
 
 * teto de tamanho por artefato (`ARTEFATO_TAMANHO_MAXIMO_BYTES`), porque o
   plano gratuito do Neon dá 0,5 GB para *tudo*, dado de domínio incluído;
-* sem URL pré-assinada — o download passa pelo serviço;
+* sem URL pré-assinada, o download passa pelo serviço;
 * `bytea` é lido inteiro na memória do servidor antes de ser transmitido, então
   o `stream` daqui pagina em SQL (`substring`) em vez de pedir a coluna toda e
   fatiar em Python.

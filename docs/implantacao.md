@@ -1,4 +1,4 @@
-# Implantação — Neon + Render
+# Implantação - Neon + Render
 
 Guia para pôr o Órbita no ar de graça, sem cartão de crédito. O resultado é um
 endereço público rodando em modo monolito: um processo, PostgreSQL para tudo,
@@ -10,7 +10,7 @@ Tempo estimado: 15 minutos.
 
 ## Por que esses dois
 
-**Neon** para o banco. PostgreSQL 16 de verdade — não um subconjunto —, free
+**Neon** para o banco. PostgreSQL 16 de verdade, não um subconjunto -, free
 tier permanente com 0,5 GB, e *scale-to-zero* que religa em cerca de um
 segundo. O concorrente óbvio, Supabase, tem um problema que inviabiliza um
 link de portfólio: projeto no free tier **é pausado após cerca de uma semana
@@ -18,7 +18,7 @@ sem acesso** e precisa ser religado à mão. O recrutador que abre o link em um
 mês encontra um erro.
 
 **Render** para a aplicação. Serviço web Docker gratuito, sem cartão. Hiberna
-após 15 minutos sem acesso e acorda em cerca de 50 segundos — é o custo real
+após 15 minutos sem acesso e acorda em cerca de 50 segundos, é o custo real
 do plano, e está declarado na própria tela inicial da demonstração.
 
 O código não depende de nenhum dos dois. `DATABASE_URL` e um runtime que rode
@@ -29,7 +29,7 @@ contêiner é tudo que ele pede.
 ## 1. Banco no Neon
 
 1. Crie uma conta em [neon.tech](https://neon.tech) (entra com GitHub).
-2. **Create project** — região `AWS South America (São Paulo)` se o público
+2. **Create project**, região `AWS South America (São Paulo)` se o público
    for brasileiro; a latência até o Render em Oregon some perto do tempo de
    acordar do container.
 3. Em **Connection string**, copie a URL e **marque "Pooled connection"**.
@@ -59,7 +59,7 @@ caso: manter um pool próprio atrás de um pooler externo são dois níveis
 disputando o mesmo limite.
 
 Os parâmetros `sslmode` e `channel_binding` na URL são sintaxe de libpq e o
-asyncpg não os conhece — `hub_core/settings.py` os remove e reconstrói a
+asyncpg não os conhece, `hub_core/settings.py` os remove e reconstrói a
 intenção de TLS em `connect_args`. **Cole a URL como veio**, sem editar.
 
 ---
@@ -73,7 +73,7 @@ intenção de TLS em `connect_args`. **Cole a URL como veio**, sem editar.
 5. **Apply**.
 
 `JWT_SECRET`, `INTERNAL_SHARED_SECRET` e `DJANGO_SECRET_KEY` são gerados
-automaticamente (`generateValue: true`) e mantidos entre deploys — melhor do
+automaticamente (`generateValue: true`) e mantidos entre deploys, melhor do
 que um valor no arquivo, e melhor do que pedir ao operador que invente um.
 
 As migrações rodam no `preDeployCommand`, antes do processo subir. Em um
@@ -92,7 +92,7 @@ python -m scripts.seed --historico
 ```
 
 Saem 10 unidades, 3 grupos, 10 pessoas, as 3 automações e 60 dias de execuções
-passadas — para o painel ter série temporal, taxa de sucesso e ranking.
+passadas, para o painel ter série temporal, taxa de sucesso e ranking.
 
 O comando imprime os CPFs de entrada. É idempotente: rodar de novo não
 duplica nada.
@@ -124,7 +124,7 @@ Na tela de entrada, **ver a demonstração** entra sem senha assumindo um papel.
 | Lock | Redis | advisory lock |
 | Concorrência do runner | 2 | 1 |
 
-**É o mesmo código.** As diferenças são variáveis de ambiente — ver
+**É o mesmo código.** As diferenças são variáveis de ambiente, ver
 [ADR 0002](adr/0002-adaptadores-plugaveis.md).
 
 ---
@@ -137,14 +137,14 @@ Container hibernado: cerca de 50 segundos. O banco acorda junto, em cerca de
 um segundo. Os acessos seguintes são imediatos. A tela de entrada avisa.
 
 Manter o serviço acordado com um pinger externo é possível e consome a cota de
-750 horas/mês do plano — o que faria o serviço parar antes do fim do mês. Não
+750 horas/mês do plano, o que faria o serviço parar antes do fim do mês. Não
 vale.
 
 ### Teto de armazenamento
 
 `ARTEFATO_TAMANHO_MAXIMO_BYTES` é 1 MB no Render. Os 0,5 GB do Neon são
 compartilhados entre dado de domínio e artefato. Para arquivos maiores,
-`STORAGE_BACKEND=s3` com Cloudflare R2 (10 GB grátis) resolve — e não exige
+`STORAGE_BACKEND=s3` com Cloudflare R2 (10 GB grátis) resolve, e não exige
 nenhuma mudança de código, só três variáveis.
 
 ### Limpeza
@@ -162,7 +162,7 @@ cron apontando para ela.
 
 `LOG_JSON=true` no Render: uma linha JSON por evento, com `trace_id`
 propagado. Para seguir uma requisição que passou por três serviços, filtre
-pelo `trace_id` — ele aparece no cabeçalho `x-trace-id` da resposta e na tela
+pelo `trace_id`, ele aparece no cabeçalho `x-trace-id` da resposta e na tela
 de cada execução.
 
 ---

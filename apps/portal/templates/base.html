@@ -8,7 +8,7 @@
   <meta name="color-scheme" content="light dark">
 
   {% comment %} O tema é aplicado antes do CSS para que não haja um instante de tela
-     clara antes de o escuro entrar — o "flash of incorrect theme". É o único
+     clara antes de o escuro entrar, o "flash of incorrect theme". É o único
      script que precisa ser inline e bloqueante. {% endcomment %}
   <script>
     (function () {
@@ -27,7 +27,7 @@
      põe hash no nome e serve com cache imutável, o que é mais rápido que um
      CDN de terceiro depois do primeiro acesso; e não há requisição a outro
      domínio, que em sistema institucional costuma ser bloqueada por política
-     de rede. O custo é atualizar à mão — aceitável para uma dependência que
+     de rede. O custo é atualizar à mão, aceitável para uma dependência que
      muda de versão poucas vezes por ano. {% endcomment %}
   <script src="{% static 'js/htmx.min.js' %}" defer></script>
   <script src="{% static 'js/orbita.js' %}" defer></script>
@@ -36,7 +36,7 @@
 <body hx-headers='{"x-csrftoken": "{{ csrf_token }}"}'>
 
 {% comment %} O HTMX precisa do token CSRF em toda requisição que altera estado. Declarar
-   em `<body>` com `hx-headers` faz todos os descendentes herdarem — a
+   em `<body>` com `hx-headers` faz todos os descendentes herdarem, a
    alternativa é repetir o token em cada `hx-post` e esquecer em um deles. {% endcomment %}
 
 <div class="aplicacao">
@@ -85,7 +85,7 @@
   </header>
 
   {% comment %} A seção ativa vem da própria rota resolvida pelo Django, não de uma
-     variável que cada view precisa lembrar de passar — e que um dia alguém
+     variável que cada view precisa lembrar de passar, e que um dia alguém
      esquece, deixando o menu sem destaque. `app_name` identifica o grupo e
      `url_name` o item dentro da administração. {% endcomment %}
   {% with app_atual=request.resolver_match.app_name rota_atual=request.resolver_match.url_name %}
@@ -204,7 +204,7 @@
     {% block conteudo %}{% endblock %}
 
     <footer class="rodape">
-      <span><strong>Órbita</strong> — orquestração de automações corporativas</span>
+      <span><strong>Órbita</strong>, orquestração de automações corporativas</span>
       <span class="rodape__separador">·</span>
       <span>Dados sintéticos. O INRH é um órgão fictício.</span>
       <span class="rodape__separador">·</span>

@@ -43,7 +43,7 @@ def normalizar_database_url(url: str) -> str:
        driver síncrono e o processo bloqueia o event loop no primeiro acesso.
     2. Essas URLs vêm com ``?sslmode=require``, que é sintaxe de libpq. O
        asyncpg não conhece o parâmetro e levanta ``TypeError`` na conexão. O
-       equivalente dele é ``ssl=...`` em ``connect_args`` — montado em
+       equivalente dele é ``ssl=...`` em ``connect_args``, montado em
        `hub_core.db.engine`; aqui o parâmetro é apenas retirado da query.
     3. ``channel_binding`` e ``options`` quebram do mesmo jeito, e o Neon
        inclui o primeiro por padrão.
@@ -71,7 +71,7 @@ def url_usa_pooler(url: str) -> bool:
     Importa porque o asyncpg usa *prepared statements* nomeados por padrão, e o
     PgBouncer em modo transação não os suporta: a segunda query da conexão
     falha com ``prepared statement "__asyncpg_stmt_1__" does not exist``. A
-    correção é desligar o cache de statements — feito em `hub_core.db.engine`.
+    correção é desligar o cache de statements, feito em `hub_core.db.engine`.
     """
     host = urlsplit(url).hostname or ""
     return "-pooler." in host
@@ -119,7 +119,7 @@ class Settings(BaseSettings):
     """Teto por artefato quando STORAGE_BACKEND=postgres.
 
     O free tier do Neon dá 0,5 GB. Guardar artefato em `bytea` só é aceitável
-    com um teto explícito — e com ele visível na interface, não escondido.
+    com um teto explícito, e com ele visível na interface, não escondido.
     """
 
     # ── Segurança ────────────────────────────────────────────────────────────
@@ -182,7 +182,7 @@ def carregar_dotenv_no_ambiente(caminho: str = ".env") -> int:
       `os.environ` no momento de montar o container.
 
     Sem esta função, `make up` funciona (o compose injeta as variáveis no
-    container) e rodar `uvicorn` à mão não — um ambiente de desenvolvimento
+    container) e rodar `uvicorn` à mão não, um ambiente de desenvolvimento
     que se comporta diferente do de produção pelo motivo mais bobo possível.
 
     Não sobrescreve: variável já definida no ambiente ganha do arquivo, que é

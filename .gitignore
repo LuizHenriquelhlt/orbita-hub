@@ -13,7 +13,7 @@ venv/
 .coverage
 htmlcov/
 
-# Ambiente — NUNCA comitar segredos reais
+# Ambiente, NUNCA comitar segredos reais
 .env
 .env.local
 *.local.env

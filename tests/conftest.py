@@ -4,9 +4,9 @@
 
 A suíte é dividida por uma linha clara:
 
-* **unitários** — regra pura, sem banco e sem rede. Rodam em milissegundos e
+* **unitários**, regra pura, sem banco e sem rede. Rodam em milissegundos e
   são a maioria. Não precisam de nenhuma fixture daqui;
-* **de integração** (`@pytest.mark.integracao`) — exigem um PostgreSQL de
+* **de integração** (`@pytest.mark.integracao`), exigem um PostgreSQL de
   verdade. Testam o que só se prova contra o banco: o `SKIP LOCKED` da fila, a
   imutabilidade da auditoria, o controle de admissão sob concorrência.
 
@@ -14,12 +14,26 @@ Os de integração são pulados automaticamente quando não há `DATABASE_URL`, 
 vez de falharem. Quem clona o repositório e roda `pytest` vê a suíte unitária
 passar sem precisar subir nada; o CI define a variável e roda tudo.
 
+## Não aponte a suíte para um banco que tem runner rodando
+
+Vale o aviso porque o sintoma engana. Se o `DATABASE_URL` dos testes for o
+mesmo de um ambiente em execução, o worker daquele ambiente **consome as
+mensagens que os testes publicam**: ele está em `BROKER_BACKEND=postgres`,
+fazendo poll na mesma tabela, uma vez por segundo.
+
+O resultado é uma suíte que falha de forma intermitente e em um teste
+diferente a cada rodada, porque a ordem é aleatória (`pytest-randomly`) e a
+mensagem roubada é a de quem estiver publicando na hora. Parece corrida entre
+testes, e não é.
+
+Use um banco só para teste, ou pare o ambiente antes: `make down`.
+
 ## Por que não SQLite nos testes de integração
 
 Seria mais rápido e dispensaria o container. E inútil: `FOR UPDATE SKIP
 LOCKED`, `make_interval`, `gen_random_uuid`, índice parcial, `JSONB` e
 *advisory locks* não existem no SQLite. Um teste que passa no SQLite e falha
-no PostgreSQL é pior do que teste nenhum — dá confiança sem dar garantia.
+no PostgreSQL é pior do que teste nenhum, dá confiança sem dar garantia.
 """
 
 from __future__ import annotations
@@ -43,7 +57,7 @@ def pytest_collection_modifyitems(config: pytest.Config, items: list[pytest.Item
     if _url_de_teste():
         return
     motivo = pytest.mark.skip(
-        reason="sem DATABASE_URL — defina-a para rodar os testes de integração "
+        reason="sem DATABASE_URL, defina-a para rodar os testes de integração "
         "(ver infra/docker-compose.yml)"
     )
     for item in items:
@@ -74,7 +88,7 @@ async def banco(settings: Settings) -> AsyncIterator[None]:
 
     Escopo de função, e não de sessão: cada teste de integração começa com um
     engine novo. É mais lento e evita a classe de falha mais irritante de
-    suíte assíncrona — um engine preso a um event loop que já fechou.
+    suíte assíncrona, um engine preso a um event loop que já fechou.
     """
     from hub_core import db
 

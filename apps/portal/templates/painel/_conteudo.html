@@ -1,7 +1,7 @@
 {% load orbita %}
 {% comment %}
 Conteúdo do painel. Auto-substituível, com o gatilho presente apenas quando há
-execução em andamento — um painel sem atividade não fica consultando o banco a
+execução em andamento, um painel sem atividade não fica consultando o banco a
 cada poucos segundos sem motivo.
 {% endcomment %}
 
@@ -63,13 +63,13 @@ cada poucos segundos sem motivo.
 
   {% comment %} Barras desenhadas com `div` e CSS, sem biblioteca de gráficos. Para uma
      série de 14 pontos, um pacote de gráficos custaria mais bytes do que a
-     página inteira — e o resultado é acessível e imprime bem. {% endcomment %}
+     página inteira, e o resultado é acessível e imprime bem. {% endcomment %}
   <div class="grafico" role="img"
        aria-label="Gráfico de barras com as execuções dos últimos 14 dias, separadas por sucesso e falha">
     {% for dia in serie %}
       {% with total=dia.sucesso|add:dia.falha|add:dia.outras %}
       <div class="grafico__coluna"
-           title="{{ dia.dia }} — {{ dia.sucesso }} sucesso, {{ dia.falha }} falha{% if dia.outras %}, {{ dia.outras }} outras{% endif %}">
+           title="{{ dia.dia }}, {{ dia.sucesso }} sucesso, {{ dia.falha }} falha{% if dia.outras %}, {{ dia.outras }} outras{% endif %}">
         {% if dia.outras %}
           <div class="grafico__barra grafico__barra--outras"
                style="height: {{ dia.outras|barra:maximo_da_serie }}%"></div>

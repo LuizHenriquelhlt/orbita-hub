@@ -6,7 +6,7 @@ versionado junto do próprio código da automação.
 
 ## O formato
 
-O envelope é o de um recurso do Kubernetes — `apiVersion`, `kind`, `metadata`,
+O envelope é o de um recurso do Kubernetes, `apiVersion`, `kind`, `metadata`,
 `spec`. Não por mimetismo: é uma convenção que a maioria de quem opera
 plataforma reconhece de imediato, e que já resolve versionamento de schema
 (`apiVersion`) sem inventar nada.
@@ -42,7 +42,7 @@ schema para autocompletar no editor de quem escreve a automação.
 
 Escrever JSON Schema à mão dá o terceiro e deixa os dois primeiros como código
 duplicado que sai de sincronia. Com Pydantic, a validação é o modelo, e
-`model_json_schema()` gera o JSON Schema — uma fonte, três usos. O schema
+`model_json_schema()` gera o JSON Schema, uma fonte, três usos. O schema
 publicado em `docs/automation-schema.json` é gerado, não mantido.
 """
 
@@ -147,7 +147,7 @@ class VariavelDeAmbiente(BaseModel):
     """Variável que a automação espera receber.
 
     `segredo_ref` é o **nome** do segredo, nunca o valor. O valor é resolvido
-    pelo runner, a partir do ambiente dele, no momento de montar o container —
+    pelo runner, a partir do ambiente dele, no momento de montar o container,
     e nunca passa pelo banco, pela API nem pela interface. Um manifesto com
     valor de segredo é recusado por `_sem_valor_de_segredo`.
     """
@@ -166,7 +166,7 @@ class VariavelDeAmbiente(BaseModel):
     )
     """Declarado como `Any`, e não como `None`, de propósito.
 
-    Com `valor: None`, o Pydantic recusa sozinho — mas com a mensagem genérica
+    Com `valor: None`, o Pydantic recusa sozinho, mas com a mensagem genérica
     "Input should be None", que não diz a quem escreveu o manifesto o que
     fazer. Aceitando `Any` e recusando no validador, a mensagem explica o
     porquê e aponta a alternativa. Vale a troca: esta é a mensagem de erro que
@@ -178,7 +178,7 @@ class VariavelDeAmbiente(BaseModel):
     def _sem_valor_de_segredo(cls, valor: Any) -> None:
         if valor is not None:
             raise ValueError(
-                "o manifesto não aceita 'valor' em variáveis de ambiente — "
+                "o manifesto não aceita 'valor' em variáveis de ambiente, "
                 "use 'segredo_ref' com o nome do segredo e configure o valor "
                 "no ambiente do runner, para que ele não trafegue pela API nem "
                 "fique no banco"
@@ -218,7 +218,7 @@ class GatilhoDeclarado(BaseModel):
                 raise ValueError("gatilho do tipo 'cron' exige 'expressao'")
             # Validação estrutural: cinco campos. A semântica de cada campo
             # fica em `hub_execution.agenda`, que é quem calcula a próxima
-            # ocorrência — duplicar o parser aqui criaria duas definições de
+            # ocorrência, duplicar o parser aqui criaria duas definições de
             # cron que divergiriam.
             if len(self.expressao.split()) != 5:
                 raise ValueError(
@@ -239,7 +239,7 @@ class PermissaoDeclarada(BaseModel):
 
     escopo: Literal["usuario", "equipe", "unidade", "todos"] = "todos"
     identificador: str | None = None
-    """Sigla da unidade ou nome do grupo. Resolvido para id na importação —
+    """Sigla da unidade ou nome do grupo. Resolvido para id na importação,
     manifesto com UUID cravado não sobrevive a um ambiente novo."""
     nivel: Literal["visualizar", "executar", "configurar"] = "executar"
 
@@ -345,7 +345,7 @@ def gerar_json_schema() -> dict[str, Any]:
 
     Publicado em `docs/automation-schema.json` por `scripts/gerar_schema.py`.
     Quem escreve uma automação aponta o editor para ele e ganha
-    autocompletar e validação enquanto digita — sem a plataforma precisar
+    autocompletar e validação enquanto digita, sem a plataforma precisar
     manter um segundo contrato à mão.
     """
     esquema = Manifesto.model_json_schema(mode="validation")

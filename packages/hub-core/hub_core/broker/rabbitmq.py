@@ -8,21 +8,21 @@ Duas decisões de implementação valem explicação:
 
 **Atraso sem plugin.** `atraso_segundos` existe para agendamento e para o
 backoff do retry. O jeito usual é o plugin `rabbitmq_delayed_message_exchange`,
-que não vem na imagem oficial — depender dele tornaria o `docker-compose up`
+que não vem na imagem oficial, depender dele tornaria o `docker-compose up`
 dependente de uma imagem customizada. Em vez disso, usamos o padrão clássico de
 **filas de espera por faixa**: filas com `x-message-ttl` fixo e
 `x-dead-letter-exchange` apontando de volta para a fila de trabalho. A mensagem
 fica parada até o TTL vencer e é então "morta" para o destino real.
 
 A sutileza: TTL *por mensagem* em uma fila compartilhada sofre bloqueio de
-cabeça de fila — uma mensagem com TTL de 10 minutos na frente impede que as de
+cabeça de fila, uma mensagem com TTL de 10 minutos na frente impede que as de
 5 segundos atrás dela sejam encaminhadas, porque o RabbitMQ só examina a
 cabeça. Faixas de TTL fixo eliminam o problema: dentro de cada fila, todas as
 mensagens expiram na mesma ordem em que entraram.
 
 **Visibility timeout é nativo.** No RabbitMQ, mensagem entregue e não confirmada
 volta à fila quando o canal cai. Por isso `recuperar_expiradas` não faz nada
-aqui — a garantia que o adaptador PostgreSQL precisa simular já existe.
+aqui, a garantia que o adaptador PostgreSQL precisa simular já existe.
 """
 
 from __future__ import annotations
@@ -134,7 +134,7 @@ class BrokerRabbitMQ(Broker):
 
     def _exige_canal(self) -> None:
         if self._canal is None:
-            raise RuntimeError("broker não iniciado — chame `await broker.iniciar()`")
+            raise RuntimeError("broker não iniciado, chame `await broker.iniciar()`")
 
     async def publicar(
         self,

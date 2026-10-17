@@ -1,4 +1,4 @@
-/* Órbita — o único JavaScript próprio do portal.
+/* Órbita, o único JavaScript próprio do portal.
  *
  * São ~70 linhas, e isso é a consequência de uma escolha, não um acidente:
  * tudo que normalmente exigiria JavaScript (busca que atualiza a lista, log ao
@@ -56,7 +56,7 @@
 
   /* ── 2. Rolagem do log ───────────────────────────────────────────────────
    * Só rola se a pessoa já estava no fim. Rolar sempre arrancaria a tela do
-   * lugar no momento em que ela subiu para ler uma linha de erro — e é
+   * lugar no momento em que ela subiu para ler uma linha de erro, e é
    * exatamente quando ela mais precisa que a tela fique quieta.
    */
   const MARGEM_DO_FIM = 80;
@@ -84,7 +84,7 @@
   /* ── 3. Falha de rede ────────────────────────────────────────────────────
    * Sem isto, uma requisição HTMX que falha não produz nenhum efeito visível:
    * o botão parece simplesmente não funcionar. O aviso é discreto e some
-   * sozinho — o caso mais comum é o serviço hibernando no free tier, que
+   * sozinho, o caso mais comum é o serviço hibernando no free tier, que
    * responde no segundo clique.
    */
   document.body.addEventListener("htmx:sendError", mostrarFalhaDeRede);

@@ -14,9 +14,9 @@ escopo, por quem e quando. Isso muda todo dia e precisa ser auditável.
 
 ## As duas camadas da decisão
 
-1. **Permissão** — "este papel pode disparar execução?" Responde a matriz
+1. **Permissão**, "este papel pode disparar execução?" Responde a matriz
    abaixo. É RBAC puro.
-2. **Escopo** — "pode disparar *esta* automação?" Depende de a automação estar
+2. **Escopo**, "pode disparar *esta* automação?" Depende de a automação estar
    publicada, de quem é o dono e da unidade de quem pede. É ABAC, e vive no
    `catalog-service`, que é quem conhece a automação.
 

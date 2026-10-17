@@ -8,7 +8,7 @@
   <div>
     <h1 class="pagina__titulo">Pessoas</h1>
     <p class="pagina__descricao">
-      Quem tem acesso à plataforma, com os papéis efetivos — diretos e
+      Quem tem acesso à plataforma, com os papéis efetivos, diretos e
       herdados de grupo.
       {% if not quem.pode_ver_dado_sensivel %}
         CPF e e-mail aparecem mascarados: ver o dado sem máscara é uma
@@ -51,7 +51,7 @@
       <option value="">Todas</option>
       {% for unidade in unidades %}
         <option value="{{ unidade.id }}" {% if filtros.unidade_id == unidade.id|stringformat:"s" %}selected{% endif %}>
-          {{ unidade.sigla }} — {{ unidade.nome|truncatechars:38 }}
+          {{ unidade.sigla }}, {{ unidade.nome|truncatechars:38 }}
         </option>
       {% endfor %}
     </select>

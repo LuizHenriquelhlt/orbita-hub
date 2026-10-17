@@ -20,7 +20,7 @@ metadata:
   descricao: >-
     Sincroniza o cadastro funcional dos servidores a partir do sistema de
     recursos humanos. Esta versão está em homologação e falha de propósito na
-    etapa de conciliação — serve para exercitar o caminho de erro da
+    etapa de conciliação, serve para exercitar o caminho de erro da
     plataforma: nova tentativa com backoff e fila de mensagens mortas.
   tags: [integracao, rh, homologacao, falha-proposital]
   responsavel_tecnico: Núcleo de Integrações
@@ -95,7 +95,7 @@ spec:
     invisível:
 
     1. a execução falha com código de saída 2 e mensagem explicativa;
-    2. a mensagem volta para a fila com backoff exponencial — 5 s, depois 10 s,
+    2. a mensagem volta para a fila com backoff exponencial, 5 s, depois 10 s,
        depois 20 s;
     3. esgotadas as três tentativas, vai para a **fila de mensagens mortas**;
     4. em *Filas → Mensagens mortas*, um administrador pode revivê-la, o que
@@ -103,7 +103,7 @@ spec:
 
     Repare na distinção que o worker faz: isto é **falha de automação**, então a
     execução é finalizada com status de falha e a mensagem recebe `ack`. O
-    `nack` com nova tentativa é para falha de **infraestrutura** — imagem
+    `nack` com nova tentativa é para falha de **infraestrutura**, imagem
     indisponível, Docker fora do ar, motor sem resposta. Reexecutar três vezes
     uma automação que falha de forma determinística só gastaria capacidade.
 

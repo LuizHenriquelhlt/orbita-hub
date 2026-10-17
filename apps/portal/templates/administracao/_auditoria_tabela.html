@@ -29,13 +29,13 @@
               </td>
 
               <td class="pequeno">
-                {{ registro.ator_nome|default:"—" }}
+                {{ registro.ator_nome|default:"-" }}
                 {% if registro.ator_cpf %}
                   <div class="tabela__secundario mono">{{ registro.ator_cpf }}</div>
                 {% endif %}
               </td>
 
-              <td class="mono pequeno quebra-tudo">{{ registro.recurso|default:"—" }}</td>
+              <td class="mono pequeno quebra-tudo">{{ registro.recurso|default:"-" }}</td>
 
               <td>
                 {% if registro.resultado == "sucesso" %}
@@ -55,7 +55,7 @@
                     <pre class="mono pequeno" style="margin: var(--e-2) 0 0; max-width: 42ch; overflow-x: auto">{{ registro.detalhes }}</pre>
                   </details>
                 {% else %}
-                  <span class="tenue">—</span>
+                  <span class="tenue">-</span>
                 {% endif %}
               </td>
             </tr>

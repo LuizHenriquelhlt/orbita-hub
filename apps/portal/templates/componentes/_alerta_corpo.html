@@ -18,7 +18,7 @@
     {% if problemas %}
       <ul class="alerta__lista">
         {% for problema in problemas %}
-          <li><code>{{ problema.campo|default:"—" }}</code> — {{ problema.problema }}</li>
+          <li><code>{{ problema.campo|default:"-" }}</code>, {{ problema.problema }}</li>
         {% endfor %}
       </ul>
     {% endif %}

@@ -1,7 +1,7 @@
-"""Relatório mensal de outorgas de uso de água — automação de verdade.
+"""Relatório mensal de outorgas de uso de água, automação de verdade.
 
 Esta é a automação que roda **código real** na plataforma: lê o cadastro de
-outorgas (CSV), consolida por região e situação, e produz duas saídas — a
+outorgas (CSV), consolida por região e situação, e produz duas saídas, a
 planilha oficial em `.xlsx` e um CSV com as linhas rejeitadas.
 
 Serve de referência para quem vai escrever a primeira automação, e por isso
@@ -12,14 +12,14 @@ de linha inválida sem abortar a execução.
 ## O dado
 
 `dados/outorgas.csv` é sintético, gerado por `scripts/gerar_dados.py` a partir
-de uma semente fixa. O domínio — Instituto Nacional de Recursos Hídricos — é
+de uma semente fixa. O domínio, Instituto Nacional de Recursos Hídricos, é
 fictício. Nenhuma linha corresponde a outorga, processo ou pessoa real.
 
 ## Por que linha inválida não derruba a execução
 
 Um ETL que aborta na primeira linha malformada é um ETL que nunca termina em
 dados reais. Aqui, cada problema é contado, a linha vai para o CSV de rejeitos
-com o motivo, e a execução termina com sucesso — mas com um `WARNING` visível
+com o motivo, e a execução termina com sucesso, mas com um `WARNING` visível
 e a métrica `linhas_rejeitadas`, que é o que faz alguém olhar.
 
 A exceção é a falha estrutural (arquivo ausente, coluna obrigatória faltando):
@@ -52,7 +52,7 @@ COLUNAS_OBRIGATORIAS = {
 
 # Agrupamento por região, na ordem em que aparece no relatório impresso. Lista
 # fixa, e não derivada do dado, porque uma região sem outorga no mês precisa
-# aparecer com zero — e não desaparecer da planilha.
+# aparecer com zero, e não desaparecer da planilha.
 REGIOES = (
     "Norte",
     "Nordeste",
@@ -101,7 +101,7 @@ def main() -> None:
         orbita.metrica("linhas_rejeitadas", len(rejeitos))
 
         if rejeitos:
-            orbita.aviso(f"{len(rejeitos)} linha(s) rejeitada(s) — ver outorgas-rejeitadas.csv")
+            orbita.aviso(f"{len(rejeitos)} linha(s) rejeitada(s), ver outorgas-rejeitadas.csv")
 
         selecionadas = _filtrar(validas, regiao_filtro, incluir_vencidas)
         orbita.info(f"{len(selecionadas)} outorga(s) após os filtros")
@@ -127,7 +127,7 @@ def main() -> None:
         vigentes = sum(1 for o in selecionadas if o.situacao == "vigente")
         orbita.resumo(
             f"{len(selecionadas)} outorgas ({vigentes} vigentes) em "
-            f"{len({o.regiao for o in selecionadas})} regiões — "
+            f"{len({o.regiao for o in selecionadas})} regiões, "
             f"{vazao_total:.2f} m³/s"
         )
 
@@ -143,7 +143,7 @@ def _carregar(orbita: Orbita) -> tuple[list[Outorga], list[dict[str, str]]]:
     rejeitos: list[dict[str, str]] = []
 
     # `utf-8-sig` e não `utf-8`: o Excel grava CSV com BOM, e com `utf-8` o
-    # BOM entra no nome da primeira coluna — que passa a ser `﻿processo`
+    # BOM entra no nome da primeira coluna, que passa a ser `﻿processo`
     # e nunca casa com nada. É o bug mais comum ao ler planilha exportada.
     with ARQUIVO_FONTE.open(encoding="utf-8-sig", newline="") as arquivo:
         leitor = csv.DictReader(arquivo, delimiter=";")
@@ -210,7 +210,7 @@ def _filtrar(outorgas: list[Outorga], regiao: str, incluir_vencidas: bool) -> li
 def _csv_de_rejeitos(rejeitos: list[dict[str, str]]) -> bytes:
     """CSV das linhas rejeitadas, com o motivo na primeira coluna.
 
-    Motivo primeiro porque é a informação que quem recebe o arquivo precisa —
+    Motivo primeiro porque é a informação que quem recebe o arquivo precisa,
     e porque, em uma planilha larga, a última coluna é a que ninguém rola para
     ver.
     """
@@ -283,7 +283,7 @@ def _montar_planilha(outorgas: list[Outorga], competencia: str, orbita: Orbita) 
     resumo["F1"] = "Competência"
     resumo["G1"] = competencia
     resumo["F2"] = "Gerado por"
-    resumo["G2"] = f"Órbita — execução {orbita.execucao_id[:8]}"
+    resumo["G2"] = f"Órbita, execução {orbita.execucao_id[:8]}"
     resumo["F3"] = "Origem dos dados"
     resumo["G3"] = "Sintético (INRH é um órgão fictício)"
     for celula in ("F1", "F2", "F3"):
@@ -337,7 +337,7 @@ def _montar_planilha(outorgas: list[Outorga], competencia: str, orbita: Orbita) 
 
     propriedades = planilha.properties
     propriedades.title = f"Outorgas {competencia}"
-    propriedades.creator = "Órbita — dado sintético"
+    propriedades.creator = "Órbita, dado sintético"
 
     buffer = io.BytesIO()
     planilha.save(buffer)

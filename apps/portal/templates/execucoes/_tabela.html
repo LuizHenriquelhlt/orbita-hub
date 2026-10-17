@@ -2,7 +2,7 @@
 {% comment %}
 Tabela de execuções. Como os outros fragmentos auto-substituíveis, traz o
 próprio invólucro e só carrega o gatilho de atualização quando há execução em
-andamento — uma lista de execuções antigas não fica pedindo atualização.
+andamento, uma lista de execuções antigas não fica pedindo atualização.
 
 `hx-select` é necessário aqui porque a resposta do servidor, quando a
 requisição não vem do HTMX, é a página inteira; mas como a view devolve o
@@ -68,7 +68,7 @@ view e esqueça o fragmento.
                 {% endif %}
               </td>
 
-              <td class="pequeno">{{ execucao.usuario_nome|default:"—" }}</td>
+              <td class="pequeno">{{ execucao.usuario_nome|default:"-" }}</td>
 
               <td>
                 <span class="etiqueta etiqueta--contorno">{{ execucao.origem }}</span>

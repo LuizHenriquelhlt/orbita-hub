@@ -12,7 +12,7 @@ menu "Administração" deve aparecer.
 O ponto importante, e que precisa ficar explícito: **as verificações de
 permissão feitas aqui são cosméticas**. Elas escondem botão e item de menu.
 A autorização de verdade acontece no serviço, que valida o JWT e aplica o
-RBAC — e é o único lugar em que ela conta. Esconder o botão sem barrar o
+RBAC, e é o único lugar em que ela conta. Esconder o botão sem barrar o
 endpoint seria segurança por obscuridade; barrar o endpoint sem esconder o
 botão seria uma interface que oferece o que não funciona. Os dois existem, com
 papéis diferentes.
@@ -67,7 +67,7 @@ class IdentidadeDaSessao:
         """O papel mais amplo, para exibição.
 
         A ordem é a de `hub_core.auth.rbac.Papel`, do mais amplo ao mais
-        restrito — importada aqui para que a lista não seja duplicada.
+        restrito, importada aqui para que a lista não seja duplicada.
         """
         from hub_core.auth.rbac import Papel
 
@@ -81,7 +81,7 @@ class IdentidadeDaSessao:
 
     # Os templates do Django não chamam método com argumento, então cada
     # permissão usada em `{% if %}` ganha uma propriedade. É verboso e é o
-    # preço de não ter lógica no template — a alternativa seria uma tag
+    # preço de não ter lógica no template, a alternativa seria uma tag
     # customizada por permissão, que é a mesma verbosidade em outro arquivo.
     @property
     def pode_disparar(self) -> bool:
@@ -206,8 +206,8 @@ class IdentidadeMiddleware:
     `asyncio.iscoroutinefunction(obj)` devolve **False** para a instância de
     uma classe cujo `__call__` é `async def`: ela não é uma função corrotina,
     é um objeto chamável que devolve uma corrotina. E é exatamente essa
-    verificação que o Django usa — em `convert_exception_to_response` e em
-    `MiddlewareMixin.__init__` — para decidir se o elo seguinte da cadeia é
+    verificação que o Django usa, em `convert_exception_to_response` e em
+    `MiddlewareMixin.__init__`, para decidir se o elo seguinte da cadeia é
     assíncrono.
 
     Sem a marcação, o Django monta a cadeia achando que este middleware é
@@ -218,7 +218,7 @@ class IdentidadeMiddleware:
 
         AttributeError: 'coroutine' object has no attribute 'get'
 
-    apontando para `django/middleware/clickjacking.py` — um arquivo que não
+    apontando para `django/middleware/clickjacking.py`, um arquivo que não
     tem nada a ver com o problema, o que torna o diagnóstico caro. Os
     middlewares do próprio Django fazem essa marcação dentro do
     `MiddlewareMixin`; quem escreve um middleware assíncrono como classe

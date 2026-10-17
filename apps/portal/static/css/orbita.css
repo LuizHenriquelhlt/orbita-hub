@@ -1,4 +1,4 @@
-/* Órbita — folha de estilo única.
+/* Órbita, folha de estilo única.
  *
  * Sem framework de CSS e sem etapa de build. São ~900 linhas de CSS escrito à
  * mão, e a escolha tem uma razão prática: um portal servido por Django com
@@ -23,7 +23,7 @@
 :root {
   /* Paleta institucional: azul-petróleo como primária, com um verde-água de
      apoio. Os tons foram escolhidos para manter contraste AA sobre as
-     superfícies claras e escuras — um azul mais saturado ficaria bonito no
+     superfícies claras e escuras, um azul mais saturado ficaria bonito no
      claro e ilegível no escuro. */
   --azul-900: #0c1b2a;
   --azul-800: #12293f;
@@ -64,7 +64,7 @@
   --cinza-100: #f1f3f5;
   --cinza-050: #f8f9fa;
 
-  /* Semânticos — é por estes que os componentes se referem às cores. Trocar a
+  /* Semânticos, é por estes que os componentes se referem às cores. Trocar a
      paleta inteira é redefinir este bloco. */
   --fundo: var(--cinza-050);
   --fundo-elevado: #ffffff;
@@ -1232,7 +1232,7 @@ textarea.mono {
   line-height: 1.6;
   /* Mantém a rolagem no fim quando linhas novas chegam, sem JavaScript. É uma
      propriedade recente e, onde não há suporte, o comportamento degrada para
-     a rolagem normal — aceitável. */
+     a rolagem normal, aceitável. */
   scroll-behavior: smooth;
   overflow-anchor: none;
 }

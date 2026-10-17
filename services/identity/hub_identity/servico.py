@@ -72,7 +72,7 @@ async def grupos_de(sessao: AsyncSession, usuario_id: uuid.UUID) -> tuple[uuid.U
     """Ids dos grupos da pessoa. Vão nos claims do token.
 
     É o que permite ao `catalog-service` resolver permissão de escopo `equipe`
-    sem consultar este serviço — ver `hub_core.auth.tokens.CLAIM_GRUPOS`.
+    sem consultar este serviço, ver `hub_core.auth.tokens.CLAIM_GRUPOS`.
     """
     resultado = await sessao.execute(
         select(UsuarioGrupo.grupo_id).where(UsuarioGrupo.usuario_id == usuario_id)
@@ -108,7 +108,7 @@ async def autenticar(
 
     **Mensagem única.** "CPF ou senha inválidos", sempre, nunca "este CPF não
     existe". A segunda forma transforma a tela de login em um verificador de
-    cadastro — e, em um sistema cuja chave é CPF, isso é consulta de base de
+    cadastro, e, em um sistema cuja chave é CPF, isso é consulta de base de
     pessoas de graça.
 
     **Tempo constante.** A mensagem igual não basta se a resposta para CPF
@@ -119,7 +119,7 @@ async def autenticar(
 
     **Bloqueio progressivo.** Cinco erros bloqueiam por 15 minutos. O contador
     fica na linha do usuário, não em Redis, para que a proteção exista também
-    no free tier. A contagem é por conta, não por IP — vale contra ataque
+    no free tier. A contagem é por conta, não por IP, vale contra ataque
     distribuído, à custa de permitir que alguém bloqueie a conta de outra
     pessoa de propósito, que é o motivo de o bloqueio expirar sozinho em vez de
     exigir intervenção de administrador.
@@ -197,7 +197,7 @@ async def autenticar(
         raise NaoAutenticado("CPF ou senha inválidos")
 
     # Senha correta. Zera o contador e, se o custo do bcrypt subiu desde que a
-    # senha foi definida, regrava o hash — é o único momento em que a senha em
+    # senha foi definida, regrava o hash, é o único momento em que a senha em
     # texto claro está disponível para isso.
     usuario.tentativas_falhas = 0
     usuario.bloqueado_ate = None
@@ -230,7 +230,7 @@ async def autenticar_demonstracao(
     """Entrada sem senha no modo de demonstração, assumindo um papel.
 
     Existe para que quem visita o endereço público possa ver a plataforma do
-    ponto de vista de cada um dos seis papéis sem precisar de cadastro — é a
+    ponto de vista de cada um dos seis papéis sem precisar de cadastro, é a
     diferença entre "tela de login" e "demonstração".
 
     A identidade devolvida é marcada com `demonstracao=True`, e o token carrega
@@ -416,7 +416,7 @@ async def criar_usuario(
     except IntegrityError as erro:
         await sessao.rollback()
         # A constraint violada diz qual campo colidiu, e essa informação é útil
-        # no formulário — diferente do login, aqui quem chama já tem permissão
+        # no formulário, diferente do login, aqui quem chama já tem permissão
         # de gerenciar usuários, então não há enumeração a proteger.
         texto = str(erro.orig).lower()
         campo = "CPF" if "cpf" in texto else ("e-mail" if "email" in texto else "registro")

@@ -185,7 +185,7 @@ async def baixar_artefato(
     * **com artefato no PostgreSQL** não existe equivalente, então o arquivo é
       transmitido daqui, em pedaços paginados em SQL.
 
-    A verificação de acesso acontece antes, nos dois casos — e é por isso que a
+    A verificação de acesso acontece antes, nos dois casos, e é por isso que a
     URL pré-assinada é gerada aqui, com validade curta, em vez de guardada no
     banco junto do artefato.
     """
@@ -273,7 +273,7 @@ async def mortas(
     broker = request.app.state.broker
     if not isinstance(broker, BrokerPostgres):
         # A inspeção da DLQ é específica do adaptador PostgreSQL. No RabbitMQ,
-        # a fila de mortas é inspecionada pelo painel de gestão dele — e
+        # a fila de mortas é inspecionada pelo painel de gestão dele, e
         # reimplementar isso aqui seria recriar uma ferramenta que já existe.
         raise SemPermissao(
             "a inspeção da DLQ pela API só existe com BROKER_BACKEND=postgres",
@@ -310,7 +310,7 @@ async def reviver(
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Callbacks do runner — token de serviço, não token de pessoa
+# Callbacks do runner, token de serviço, não token de pessoa
 # ─────────────────────────────────────────────────────────────────────────────
 
 

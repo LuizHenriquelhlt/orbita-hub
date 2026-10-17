@@ -15,7 +15,7 @@ async def painel(request: HttpRequest) -> HttpResponse:
 
     Uma chamada só: o `execution-service` já devolve contagens, série
     temporal, automações mais usadas, profundidade das filas e agendamentos em
-    um objeto — porque a tela mostra tudo isso de uma vez, e cinco endpoints
+    um objeto, porque a tela mostra tudo isso de uma vez, e cinco endpoints
     significariam cinco varreduras da mesma tabela.
     """
     indicadores = await bff.de(request).indicadores()
@@ -31,7 +31,7 @@ async def painel(request: HttpRequest) -> HttpResponse:
         "serie": serie,
         "maximo_da_serie": maximo or 1,
         # Se há execução em andamento, o painel se atualiza sozinho. Quando
-        # não há, para de pedir — mesma lógica do acompanhamento de execução.
+        # não há, para de pedir, mesma lógica do acompanhamento de execução.
         "tem_ativa": (indicadores.get("ativas") or 0) > 0,
     }
 

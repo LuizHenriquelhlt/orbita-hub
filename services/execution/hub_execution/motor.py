@@ -8,7 +8,7 @@
     finalizar()       <- runner envia status, métricas e artefatos
 
 As três últimas são chamadas pelo `runner-service` via callback autenticado com
-token de serviço, nunca com token de pessoa — ver
+token de serviço, nunca com token de pessoa, ver
 `hub_core.auth.dependencias.chamador_interno`. Alguém com token de usuário
 válido não deve poder declarar que uma execução terminou com sucesso.
 
@@ -21,10 +21,10 @@ janela de corrida clássica:
     T1: conta 1 ativa, limite 2  -> pode
     T2: conta 1 ativa, limite 2  -> pode     (T1 ainda não inseriu)
     T1: insere                               (2 ativas)
-    T2: insere                               (3 ativas — limite furado)
+    T2: insere                               (3 ativas, limite furado)
 
 Com uma réplica do serviço, um `SELECT ... FOR UPDATE` resolveria. Com várias,
-não há linha comum para travar — a contagem é sobre linhas que ainda não
+não há linha comum para travar, a contagem é sobre linhas que ainda não
 existem. É o caso de uso exato de um lock distribuído: `contar` e `inserir`
 acontecem dentro de `lock.se_obtido(f"admissao:{slug}")`, serializando apenas
 os disparos **da mesma automação**. Disparos de automações diferentes não se
@@ -191,7 +191,7 @@ async def disparar(
     # banco e não a encontra, porque o commit ainda não aconteceu.
     #
     # Assim, a falha possível é uma execução gravada como `enfileirada` sem
-    # mensagem na fila — visível, diagnosticável, e recuperável pelo
+    # mensagem na fila, visível, diagnosticável, e recuperável pelo
     # `recuperar_orfas` abaixo. A solução definitiva é o padrão *outbox*
     # transacional; está em docs/adr/0010 como evolução, não implementado.
     try:
@@ -230,7 +230,7 @@ def _corpo_da_mensagem(execucao: Execucao, preparo: dict[str, Any]) -> dict[str,
     catálogo, e por consequência não precisa de credencial para isso.
 
     O custo é que a mensagem fica maior e congela a configuração no momento do
-    disparo — se o limite de memória da automação mudar entre o enfileiramento
+    disparo, se o limite de memória da automação mudar entre o enfileiramento
     e a execução, vale o antigo. Para uma fila que esvazia em segundos ou
     minutos, isso é aceitável; e, para uma execução reprocessada dias depois,
     é até preferível que ela rode com a configuração sob a qual foi aprovada.
@@ -404,7 +404,7 @@ async def registrar_logs(
     runner acumula e envia em blocos.
 
     A `sequencia` é calculada a partir do máximo atual. Há aqui uma corrida
-    teórica — dois lotes concorrentes lendo o mesmo máximo —, mas na prática
+    teórica, dois lotes concorrentes lendo o mesmo máximo -, mas na prática
     não ocorre: uma execução tem exatamente um runner enviando logs. Se o
     desenho passasse a permitir vários produtores, isto precisaria de uma
     sequência do banco.
@@ -649,7 +649,7 @@ async def listar(
 ) -> tuple[list[ExecucaoCartao], int]:
     consulta = select(Execucao)
 
-    # Quem não pode ver todas vê só as próprias — a restrição é aplicada aqui,
+    # Quem não pode ver todas vê só as próprias, a restrição é aplicada aqui,
     # não deixada para quem chama. Filtro de autorização que depende de o
     # chamador lembrar de passar um parâmetro é filtro que um dia não é
     # passado.
@@ -683,7 +683,7 @@ async def recuperar_orfas(sessao: AsyncSession, *, broker: Broker) -> int:
 
     É a rede de segurança da janela descrita em `disparar`: o commit da
     execução aconteceu e a publicação não. Uma execução `enfileirada` sem
-    `mensagem_id` por mais de um minuto é, por definição, órfã — nenhum runner
+    `mensagem_id` por mais de um minuto é, por definição, órfã, nenhum runner
     jamais vai pegá-la.
 
     Um minuto é folgado de propósito: é tempo mais que suficiente para a

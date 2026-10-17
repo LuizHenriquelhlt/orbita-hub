@@ -1,14 +1,14 @@
 """Agregações do painel.
 
-Tudo aqui é SQL de agregação, deliberadamente. A alternativa — carregar as
-execuções e somar em Python — funciona com mil linhas e para de funcionar com
+Tudo aqui é SQL de agregação, deliberadamente. A alternativa, carregar as
+execuções e somar em Python, funciona com mil linhas e para de funcionar com
 cem mil, e o ponto em que para não é visível em desenvolvimento.
 
 Duas decisões que valem registro:
 
 **`date_trunc` com `generate_series` para a série temporal.** Agrupar por dia
 só devolve os dias que **têm** execução. Um gráfico de 14 dias construído com
-isso mostra 9 barras e desenha uma linha contínua entre dias não adjacentes —
+isso mostra 9 barras e desenha uma linha contínua entre dias não adjacentes,
 escondendo justamente os dias em que nada rodou, que são os que interessam.
 `generate_series` cria todos os dias e o `LEFT JOIN` preenche com zero.
 
@@ -194,7 +194,7 @@ def _descrever(expressao: str) -> str:
 async def resumo_por_automacao(sessao: AsyncSession, slug: str) -> dict[str, Any]:
     """Estatísticas de uma automação, para a ficha dela no catálogo.
 
-    Consumido pelo portal, que compõe isto com os dados do `catalog-service` —
+    Consumido pelo portal, que compõe isto com os dados do `catalog-service`,
     é o lugar onde a separação dos dois serviços cobra a sua chamada extra.
     """
     consulta = text(

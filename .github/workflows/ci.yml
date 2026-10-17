@@ -33,10 +33,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -e ".[dev,portal,rabbitmq,redis,s3,docker]"
 
-      - name: Ruff — regras
+      - name: Ruff, regras
         run: ruff check --output-format=github .
 
-      - name: Ruff — formatação
+      - name: Ruff, formatação
         run: ruff format --check .
 
       - name: Mypy
@@ -46,7 +46,7 @@ jobs:
         continue-on-error: true
         run: mypy packages services gateway sdk
 
-      - name: Django — verificação de configuração
+      - name: Django, verificação de configuração
         env:
           DJANGO_SETTINGS_MODULE: portal.configuracao
           PYTHONPATH: apps/portal
@@ -160,7 +160,7 @@ jobs:
 
       - name: A imagem sobe e responde
         # Build que compila mas não executa não prova nada. Sobe o monolito
-        # sem banco e confere que o processo inicia e responde — o `/saude`
+        # sem banco e confere que o processo inicia e responde, o `/saude`
         # não consulta o banco de propósito, justamente para isto ser possível.
         run: |
           docker run -d --name orbita-ci -p 8000:8000 \

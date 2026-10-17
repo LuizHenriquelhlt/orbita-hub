@@ -1,4 +1,4 @@
-# 0001 — Registrar decisões, e registrá-las curtas
+# 0001 - Registrar decisões, e registrá-las curtas
 
 **Situação:** aceita · **Data:** 2026-10-17
 
@@ -8,7 +8,7 @@ Este repositório existe para mostrar como se decide, não só o que foi
 construído. Código mostra a decisão final; não mostra as alternativas
 consideradas nem o que se perdeu ao escolher.
 
-A forma tradicional — um documento de arquitetura — envelhece sem ninguém
+A forma tradicional, um documento de arquitetura, envelhece sem ninguém
 perceber, porque não está onde o código muda.
 
 ## Decisão
@@ -20,10 +20,10 @@ mexe no código vê o número da ADR; quem lê a ADR sabe onde ela virou código
 
 Formato fixo e enxuto:
 
-- **Contexto** — qual pressão existia;
-- **Decisão** — o que foi feito;
-- **Consequências** — o que se ganhou e, principalmente, **o que se perdeu**;
-- **Alternativas** — o que foi considerado e por que não.
+- **Contexto**, qual pressão existia;
+- **Decisão**, o que foi feito;
+- **Consequências**, o que se ganhou e, principalmente, **o que se perdeu**;
+- **Alternativas**, o que foi considerado e por que não.
 
 A seção de consequências negativas não é opcional. Uma decisão sem custo
 declarado é uma decisão que ninguém examinou de verdade.
@@ -41,7 +41,7 @@ linhas é barato de corrigir; um de 400, ninguém corrige.
 
 - **Documento único de arquitetura.** Foi o ponto de partida deste projeto, e
   é o que gerou a pergunta: qual parágrafo daquele documento ainda vale? Com
-  ADRs numeradas, a resposta é verificável — uma ADR pode ser marcada como
+  ADRs numeradas, a resposta é verificável, uma ADR pode ser marcada como
   substituída por outra.
 - **Só comentários no código.** Funciona para o "como", não para o "em vez
   de quê". A alternativa descartada não tem lugar natural no código que a

@@ -3,7 +3,7 @@
 O navegador conversa **só** com o Django. O Django chama os serviços do lado
 servidor, com o JWT que guarda na sessão. Duas consequências:
 
-* **o token nunca chega ao navegador.** Não há JWT em `localStorage` — o alvo
+* **o token nunca chega ao navegador.** Não há JWT em `localStorage`, o alvo
   preferido de XSS em aplicação com API. O que o navegador tem é um cookie
   `HttpOnly` assinado;
 * **a API interna não precisa ser pública.** Em Kubernetes, os quatro serviços
@@ -13,8 +13,8 @@ servidor, com o JWT que guarda na sessão. Duas consequências:
 
 `nucleo.bff` não implementa HTTP: usa `hub_core.clients.ClienteServico`, o
 mesmo que os serviços usam entre si. Com isso o portal herda de graça a
-tradução de erro HTTP para exceção de domínio, a propagação de `trace_id` e —
-o que mais importa — **o modo monolito**: em `HUB_MODE=monolith` as chamadas
+tradução de erro HTTP para exceção de domínio, a propagação de `trace_id` e,
+o que mais importa, **o modo monolito**: em `HUB_MODE=monolith` as chamadas
 vão por `ASGITransport`, sem rede, com o mesmo código de view.
 
 ## Por que as views são assíncronas
@@ -189,7 +189,7 @@ class Bff:
     async def ficha_completa(self, slug: str) -> tuple[dict[str, Any], dict[str, Any]]:
         """Ficha da automação e estatísticas dela, em paralelo.
 
-        São dois serviços diferentes — `catalog` sabe o que a automação é,
+        São dois serviços diferentes, `catalog` sabe o que a automação é,
         `execution` sabe como ela tem se comportado. É exatamente o custo da
         separação entre serviços, e `gather` faz a página pagar o tempo da
         chamada mais lenta em vez da soma das duas.

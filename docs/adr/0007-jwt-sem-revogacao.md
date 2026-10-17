@@ -1,4 +1,4 @@
-# 0007 — JWT validado localmente, sem consulta ao identity-service
+# 0007 - JWT validado localmente, sem consulta ao identity-service
 
 **Situação:** aceita · **Data:** 2026-10-17
 **Implementa:** `hub_core/auth/tokens.py`
@@ -21,7 +21,7 @@ JWT assinado, validado localmente. Nenhum serviço consulta o
 
 O token carrega o que os serviços precisam para decidir: id, nome, e-mail,
 CPF, papéis, unidade e **grupos**. Os grupos entram porque o `catalog-service`
-precisa deles para resolver permissão de escopo `equipe` — e consultá-los a
+precisa deles para resolver permissão de escopo `equipe`, e consultá-los a
 cada verificação recriaria exatamente a dependência síncrona que este desenho
 evita.
 
@@ -47,20 +47,20 @@ sem estado compartilhado.
 
 **Contra.** **Revogação não é imediata.** Tirar um papel de alguém só tem
 efeito quando o token dela expira. Por isso `JWT_EXPIRE_MINUTES` é 60 e não 24
-horas — e por isso o resumo de usuário guardado na sessão do portal também
+horas, e por isso o resumo de usuário guardado na sessão do portal também
 pode ficar defasado, fazendo um menu aparecer por até uma hora depois de a
 permissão ter sido retirada. O clique então recebe 403 do serviço, com
 mensagem clara.
 
 Para revogação instantânea seria preciso uma lista de bloqueio consultada a
-cada requisição — que é exatamente a chamada síncrona que o desenho evita. O
+cada requisição, que é exatamente a chamada síncrona que o desenho evita. O
 meio-termo usual (lista de bloqueio em cache com TTL curto) traz de volta a
 dependência, só que intermitente.
 
 ## Alternativas
 
 - **Token opaco com cache.** Melhor dos dois mundos no papel; na prática, o
-  cache tem TTL, e dentro do TTL a revogação também não é imediata — com a
+  cache tem TTL, e dentro do TTL a revogação também não é imediata, com a
   dependência do identity de volta.
 - **Expiração de 5 minutos com refresh token.** Reduz a janela e multiplica
   por doze as chamadas ao identity, que é o que se queria evitar.

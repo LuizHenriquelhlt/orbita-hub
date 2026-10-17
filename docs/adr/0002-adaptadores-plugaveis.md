@@ -1,4 +1,4 @@
-# 0002 — Toda dependência de infraestrutura é uma porta com dois adaptadores
+# 0002 - Toda dependência de infraestrutura é uma porta com dois adaptadores
 
 **Situação:** aceita · **Data:** 2026-10-17
 **Implementa:** `hub_core/broker/`, `executor/`, `storage/`, `locks/`
@@ -47,7 +47,7 @@ isoladamente. Trocar RabbitMQ por SQS é escrever uma classe.
 **Contra.** Quatro abstrações a mais para quem lê o código pela primeira vez.
 A interface é o menor denominador comum: quem tem RabbitMQ não acessa
 *delayed exchange* nem *consumer groups* pela porta. E o adaptador menos usado
-é o que menos recebe atenção — por isso os testes de integração rodam contra
+é o que menos recebe atenção, por isso os testes de integração rodam contra
 o adaptador PostgreSQL, que é o que vai para produção na demonstração.
 
 ## Alternativas
@@ -57,5 +57,5 @@ o adaptador PostgreSQL, que é o que vai para produção na demonstração.
 - **Só o stack completo, e demonstração em vídeo.** Um link que o visitante
   clica vale mais do que um vídeo que ele não assiste.
 - **Só o stack mínimo (PostgreSQL para tudo).** Simplificaria, e o projeto
-  deixaria de mostrar que se sabe operar RabbitMQ, Redis e Docker — que é
+  deixaria de mostrar que se sabe operar RabbitMQ, Redis e Docker, que é
   parte do que ele existe para mostrar.

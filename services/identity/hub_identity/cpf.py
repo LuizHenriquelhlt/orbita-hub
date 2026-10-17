@@ -9,12 +9,12 @@ porque é a única parte deste serviço que merece teste exaustivo.
 Todos os CPFs do cenário fictício são gerados por `gerar_cpf_ficticio`, que
 produz números com dígitos verificadores **matematicamente válidos** a partir
 de uma semente conhecida. Isso é necessário para que o fluxo de validação seja
-exercitado de verdade na demonstração — um CPF inválido seria recusado no
+exercitado de verdade na demonstração, um CPF inválido seria recusado no
 login e a tela nunca abriria.
 
 Número válido não significa número de alguém: o espaço de CPFs válidos é de
 ~10^9 e a Receita Federal emitiu uma fração dele. Ainda assim, por precaução, a
-geração usa o prefixo `000`, que não é atribuído a pessoa física real — é o
+geração usa o prefixo `000`, que não é atribuído a pessoa física real, é o
 mesmo motivo pelo qual `000.000.000-00` aparece em manual de sistema.
 """
 
@@ -76,7 +76,7 @@ def gerar_cpf_ficticio(semente: int | str) -> str:
     """CPF com dígitos verificadores válidos, determinístico pela semente.
 
     Prefixo `000` por precaução (ver docstring do módulo). Determinístico para
-    que o `seed` do cenário fictício produza sempre o mesmo conjunto — o que
+    que o `seed` do cenário fictício produza sempre o mesmo conjunto, o que
     torna a demonstração reproduzível e os testes estáveis.
     """
     aleatorio = random.Random(f"orbita-cpf-{semente}")

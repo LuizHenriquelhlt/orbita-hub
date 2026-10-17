@@ -66,13 +66,13 @@ def nivel_de_acesso(automacao: Automacao, quem: Identidade) -> str:
     """O maior nível que esta pessoa tem nesta automação.
 
     Avalia as permissões declaradas da automação contra os atributos de quem
-    pede — id, unidade e grupos, todos vindos dos claims do token. Nenhuma
+    pede, id, unidade e grupos, todos vindos dos claims do token. Nenhuma
     consulta a outro serviço.
 
     O administrador passa por cima da lista. É uma decisão deliberada e com
     contrapartida: simplifica a operação (não é preciso conceder acesso a si
     mesmo para investigar um problema) ao custo de o papel `admin` ser muito
-    poderoso. O que compensa é a auditoria — toda ação de admin fica
+    poderoso. O que compensa é a auditoria, toda ação de admin fica
     registrada, e `admin` é concedido a poucas pessoas.
     """
     if quem.e_admin:
@@ -129,7 +129,7 @@ def pode_executar(automacao: Automacao, quem: Identidade) -> tuple[bool, str]:
     if situacao in {StatusAutomacao.RASCUNHO, StatusAutomacao.HOMOLOGACAO}:
         proprietario = automacao.criado_por_id == quem.id
         if not (proprietario or quem.pode(Permissao.AUTOMACAO_EDITAR)):
-            return False, f"automação em {situacao.rotulo.lower()} — ainda não publicada"
+            return False, f"automação em {situacao.rotulo.lower()}, ainda não publicada"
 
     return True, ""
 
@@ -145,7 +145,7 @@ def validar_parametros(
     """Confere os valores informados contra os parâmetros declarados.
 
     Chamado pelo `execution-service` antes de enfileirar. Fica aqui, e não lá,
-    porque a declaração é do catálogo — e ter a validação junto da declaração
+    porque a declaração é do catálogo, e ter a validação junto da declaração
     é o que impede as duas de divergirem.
 
     Devolve o dicionário **saneado**: só as chaves declaradas, já convertidas
@@ -179,7 +179,7 @@ def validar_parametros(
         raise EntradaInvalida("parâmetros inválidos", campos=problemas, ignorados=nao_declarados)
 
     if nao_declarados:
-        # Não é erro — é ruído de um cliente desatualizado. Registrar permite
+        # Não é erro, é ruído de um cliente desatualizado. Registrar permite
         # perceber que alguém está mandando um parâmetro que a automação
         # deixou de aceitar.
         log.info("catalogo.parametros_ignorados", chaves=nao_declarados)
@@ -334,8 +334,8 @@ async def listar(
     A contrapartida honesta: o `total` conta antes do filtro de escopo, então a
     contagem pode superestimar para quem tem acesso restrito. Em troca, a
     paginação não precisa carregar a tabela inteira para saber o tamanho. Para
-    o uso do catálogo — onde a grande maioria das automações é de escopo
-    `todos` — o desvio é pequeno e preferível a uma consulta que degrada.
+    o uso do catálogo, onde a grande maioria das automações é de escopo
+    `todos`, o desvio é pequeno e preferível a uma consulta que degrada.
     """
     consulta = _consulta_base()
 
@@ -415,7 +415,7 @@ async def obter(sessao: AsyncSession, slug: str, quem: Identidade) -> AutomacaoD
         # existência da automação, que já é informação sobre a organização.
         raise NaoEncontrado("automação não encontrada", slug=slug)
 
-    # Rascunho e homologação só aparecem para quem edita ou para quem criou —
+    # Rascunho e homologação só aparecem para quem edita ou para quem criou,
     # é o ensaio antes de publicar, e não deve constar do catálogo da
     # organização. Também 404, pelo mesmo motivo acima.
     if (
@@ -473,7 +473,7 @@ async def preparar_execucao(
     """Responde ao `execution-service`: pode disparar, e com quais parâmetros?
 
     Devolve, junto com a decisão, tudo que o motor precisa para montar o pedido
-    de execução — imagem, entrypoint, limites, roteiro — e os parâmetros já
+    de execução, imagem, entrypoint, limites, roteiro, e os parâmetros já
     validados e convertidos.
 
     A ordem importa: o acesso é verificado **antes** da validação dos
@@ -776,7 +776,7 @@ async def importar_manifesto(
 
     É o caminho que torna o catálogo extensível sem deploy: o time da
     automação versiona o manifesto junto do código dela e o submete. Idempotente
-    por `slug` — reimportar atualiza em vez de duplicar, que é o que permite o
+    por `slug`, reimportar atualiza em vez de duplicar, que é o que permite o
     pipeline da automação rodar a importação a cada release.
     """
     manifesto = carregar(manifesto_yaml)
@@ -791,7 +791,7 @@ async def importar_manifesto(
         unidade_id = await resolver_unidade(manifesto.metadata.unidade)
         if unidade_id is None:
             avisos.append(
-                f"unidade '{manifesto.metadata.unidade}' não encontrada — "
+                f"unidade '{manifesto.metadata.unidade}' não encontrada, "
                 "a automação ficou sem unidade dona"
             )
 
@@ -816,7 +816,7 @@ async def importar_manifesto(
     await _sincronizar_permissoes(sessao, automacao, manifesto, avisos, resolver_unidade)
 
     # A versão é registrada se ainda não existir. Reimportar o mesmo manifesto
-    # não cria versão duplicada nem falha — apenas atualiza os campos.
+    # não cria versão duplicada nem falha, apenas atualiza os campos.
     ja_tem_versao = (
         await sessao.execute(
             select(AutomacaoVersao.id).where(
@@ -843,7 +843,7 @@ async def importar_manifesto(
 
     if publicar:
         if not autor.pode(Permissao.AUTOMACAO_PUBLICAR):
-            avisos.append("sem permissão para publicar — a automação ficou em rascunho")
+            avisos.append("sem permissão para publicar, a automação ficou em rascunho")
         else:
             await sessao.refresh(automacao, ["versoes"])
             pendentes = requisitos_para_publicar(automacao)
@@ -923,7 +923,7 @@ async def _sincronizar_gatilhos(
     Substituição total, e não merge: o manifesto é a declaração completa do
     estado desejado. Um gatilho removido do arquivo tem de desaparecer, senão
     um agendamento continua disparando depois de ter sido retirado do
-    manifesto — e ninguém acha o motivo.
+    manifesto, e ninguém acha o motivo.
     """
     await sessao.execute(delete(Gatilho).where(Gatilho.automacao_id == automacao.id))
     declarados = manifesto.spec.gatilhos or []
@@ -950,7 +950,7 @@ async def _sincronizar_permissoes(
 ) -> None:
     """Aplica as permissões declaradas, preservando as concedidas na interface.
 
-    Só as de escopo `todos` e `unidade` são substituídas — as que o manifesto
+    Só as de escopo `todos` e `unidade` são substituídas, as que o manifesto
     sabe declarar. Concessões pontuais a pessoa ou equipe, feitas na tela de
     acesso, sobrevivem à reimportação: elas são decisão operacional, e um
     `git push` na automação não deve revogá-las.
@@ -966,12 +966,12 @@ async def _sincronizar_permissoes(
         escopo_id: uuid.UUID | None = None
         if permissao.escopo == "unidade":
             if not permissao.identificador or resolver_unidade is None:
-                avisos.append("permissão de escopo 'unidade' sem identificador — ignorada")
+                avisos.append("permissão de escopo 'unidade' sem identificador, ignorada")
                 continue
             escopo_id = await resolver_unidade(permissao.identificador)
             if escopo_id is None:
                 avisos.append(
-                    f"unidade '{permissao.identificador}' não encontrada — permissão ignorada"
+                    f"unidade '{permissao.identificador}' não encontrada, permissão ignorada"
                 )
                 continue
         elif permissao.escopo != "todos":
@@ -979,7 +979,7 @@ async def _sincronizar_permissoes(
             # existem no ambiente, e manifesto com UUID cravado não é portável.
             avisos.append(
                 f"permissão de escopo '{permissao.escopo}' deve ser concedida pela "
-                "interface, não pelo manifesto — ignorada"
+                "interface, não pelo manifesto, ignorada"
             )
             continue
 
@@ -1034,7 +1034,7 @@ async def listar_gatilhos_cron(sessao: AsyncSession) -> list[dict[str, Any]]:
     """Agendamentos ativos de automações executáveis.
 
     Consumido pelo agendador do `execution-service`. Devolve dicionário simples
-    em vez de modelo para que o motor não precise importar nada do catálogo —
+    em vez de modelo para que o motor não precise importar nada do catálogo,
     a fronteira entre os dois é o contrato HTTP, não a classe.
     """
     consulta = (

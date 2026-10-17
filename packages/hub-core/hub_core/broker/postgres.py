@@ -3,12 +3,12 @@
 É o adaptador padrão e o único que roda no free tier. Não é um atalho: uma fila
 em `SELECT ... FOR UPDATE SKIP LOCKED` é um padrão estabelecido, usado em
 produção por bibliotecas como `que`, `graphile-worker` e `River`. Vale até um
-volume na casa de milhares de mensagens por minuto — ordens de magnitude acima
+volume na casa de milhares de mensagens por minuto, ordens de magnitude acima
 do que esta plataforma precisa.
 
 **Por que `SKIP LOCKED` resolve.** O problema de uma fila em SQL é a corrida
 entre consumidores: dois workers rodam o mesmo `SELECT`, pegam a mesma linha e
-o trabalho roda duas vezes. `FOR UPDATE` sozinho não resolve — ele faz o
+o trabalho roda duas vezes. `FOR UPDATE` sozinho não resolve, ele faz o
 segundo worker *esperar* o primeiro, serializando os consumidores e matando o
 paralelismo. `SKIP LOCKED` manda o segundo worker ignorar as linhas já
 travadas e seguir para a próxima: cada um pega um lote distinto, sem espera e
@@ -16,7 +16,7 @@ sem sobreposição. Foi exatamente para isso que o PostgreSQL 9.5 o introduziu.
 
 **Como o resto é obtido.** `visibility timeout` é a coluna `invisivel_ate` mais
 um recuperador periódico; `retry com backoff` é `disponivel_em` no futuro; DLQ
-é o estado `morta`. Nada disso exige um broker dedicado — exige uma transação e
+é o estado `morta`. Nada disso exige um broker dedicado, exige uma transação e
 um índice parcial.
 
 O que se perde em relação ao RabbitMQ: consumo por *push* (aqui há *poll*, com
@@ -111,7 +111,7 @@ _SQL_REJEITAR = text(
 )
 
 # Rede de segurança para worker que morreu: o que foi entregue e nunca
-# confirmado volta a ficar visível — ou vai para a DLQ se já gastou as
+# confirmado volta a ficar visível, ou vai para a DLQ se já gastou as
 # tentativas.
 _SQL_RECUPERAR = text(
     """
@@ -227,7 +227,7 @@ class BrokerPostgres(Broker):
         return msg_id  # type: ignore[no-any-return]
 
     async def consumir(self, fila: str, *, limite: int = 1) -> list[Mensagem]:
-        """Retira até `limite` mensagens. **Pode devolver menos — até zero.**
+        """Retira até `limite` mensagens. **Pode devolver menos, até zero.**
 
         Não é só o caso óbvio de fila vazia. Com `SKIP LOCKED`, o `LIMIT` é
         aplicado à varredura, não às linhas que o consumidor conseguiu travar:
@@ -236,7 +236,7 @@ class BrokerPostgres(Broker):
         10 pode trazer 3.
 
         É comportamento correto e documentado, e é a razão de `consumir` não
-        prometer um lote cheio. Quem chama precisa tratar o lote parcial — o
+        prometer um lote cheio. Quem chama precisa tratar o lote parcial, o
         `hub_runner.worker` usa `limite=1` e um laço, justamente para não
         depender disso.
 

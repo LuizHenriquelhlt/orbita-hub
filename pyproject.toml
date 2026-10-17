@@ -5,14 +5,14 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "orbita-hub"
 version = "0.1.0"
-description = "Plataforma de orquestração de automações corporativas — catálogo, execução, fila e runners plugáveis"
+description = "Plataforma de orquestração de automações corporativas, catálogo, execução, fila e runners plugáveis"
 readme = "README.md"
 requires-python = ">=3.12"
 license = { text = "MIT" }
 
 # Dependências do núcleo: valem para os quatro serviços e para o gateway.
 # Tudo que é específico de um adaptador (RabbitMQ, Redis, S3, Docker) é extra,
-# porque o free tier roda sem nenhum deles — ver docs/adr/0002.
+# porque o free tier roda sem nenhum deles, ver docs/adr/0002.
 dependencies = [
     "fastapi>=0.115",
     "uvicorn[standard]>=0.32",
@@ -78,7 +78,7 @@ ignore = [
     "RUF003",
     "B008",    # Depends() no default é o idioma do FastAPI
     # N818 exige que toda exceção termine em "Error". A convenção existe para
-    # que o nome diga que a classe é uma exceção — propósito que `ErroOrbita`,
+    # que o nome diga que a classe é uma exceção, propósito que `ErroOrbita`,
     # `SenhaMuitoLonga` e `ExpressaoCronInvalida` cumprem em português. Trocar
     # por `OrbitaError` misturaria dois idiomas no mesmo identificador.
     "N818",
@@ -97,7 +97,7 @@ known-first-party = [
     "hub_runner",
     "hub_gateway",
     "hub_sdk",
-    # Apps do portal Django. Nao sao pacotes instalados — vivem em
+    # Apps do portal Django. Nao sao pacotes instalados, vivem em
     # apps/portal e entram no sys.path pelo manage.py/asgi.
     "nucleo",
     "contas",

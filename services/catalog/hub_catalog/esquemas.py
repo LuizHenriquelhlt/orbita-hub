@@ -22,7 +22,7 @@ class AcaoDisponivel(BaseModel):
 
     O serviço devolve isto já filtrado pelas permissões de quem pediu, em vez
     de a interface recalcular a matriz de transições. Assim o botão que aparece
-    na tela é exatamente o que a API vai aceitar — não existe o caso de um
+    na tela é exatamente o que a API vai aceitar, não existe o caso de um
     botão que devolve 403 ao ser clicado.
     """
 
@@ -152,7 +152,7 @@ class PedidoDeAtualizacao(BaseModel):
 
     `model_fields_set` distingue "campo ausente" de "campo enviado como
     `null`". Sem essa distinção, um PATCH que manda apenas `{"nome": "X"}`
-    apagaria `descricao`, `readme` e todo o resto — o bug clássico de PATCH
+    apagaria `descricao`, `readme` e todo o resto, o bug clássico de PATCH
     implementado como PUT.
     """
 
@@ -223,7 +223,7 @@ class ChecagemDeAcesso(BaseModel):
        acesso a *esta* automação (ver `hub_core.auth.rbac` sobre as duas
        camadas);
     2. **os parâmetros informados são válidos?** A declaração é do catálogo,
-       então a validação também — o motor receber `parametros_saneados` já
+       então a validação também, o motor receber `parametros_saneados` já
        convertidos evita que as duas pontas tenham cada uma a sua ideia do que
        é uma "competência válida".
 

@@ -1,7 +1,7 @@
 """Emissão e validação de JWT.
 
 O `identity-service` emite; os outros três serviços apenas validam. Nenhum
-serviço consulta o `identity-service` para autorizar uma requisição — tudo de
+serviço consulta o `identity-service` para autorizar uma requisição, tudo de
 que precisam está nos *claims* assinados. É o que permite o `catalog-service`
 continuar atendendo quando o `identity-service` está fora do ar.
 
@@ -48,13 +48,13 @@ CLAIM_GRUPOS = f"{NS}/grupos"
 
 Vai no token, e não é consultado no `identity-service` na hora de autorizar,
 porque é disso que o `catalog-service` precisa para resolver a permissão de
-escopo `equipe` — e consultar o identity a cada verificação recriaria
+escopo `equipe`, e consultar o identity a cada verificação recriaria
 exatamente a dependência síncrona que este desenho evita.
 
 O custo é tamanho de token: cada grupo são 36 caracteres. Com os poucos grupos
 por pessoa que o modelo organizacional produz, o JWT fica em torno de 700
 bytes, confortável para um cookie. Se alguém pertencesse a dezenas de grupos, a
-decisão teria de ser revista — e é por isso que o número é limitado em
+decisão teria de ser revista, e é por isso que o número é limitado em
 `MAX_GRUPOS_NO_TOKEN`.
 """
 
@@ -194,7 +194,7 @@ def emitir_token_de_servico(servico: str, settings: Settings) -> str:
     """Token para chamada entre serviços (ex.: runner reportando execução).
 
     Vida curta (5 min) e sem identidade de pessoa: o sujeito é o serviço. A
-    diferença importa na auditoria — "o runner alterou a execução" não é o
+    diferença importa na auditoria, "o runner alterou a execução" não é o
     mesmo registro que "a Maria alterou a execução".
     """
     agora = datetime.now(UTC)

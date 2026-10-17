@@ -68,7 +68,7 @@ async def entrar(request: HttpRequest) -> HttpResponse:
         resposta = await bff.Bff(None).login(cpf, senha)
     except NaoAutenticado as erro:
         # A mensagem vem do serviço, que a mantém igual para CPF inexistente e
-        # senha errada — ver `hub_identity.servico.autenticar`. Repeti-la aqui
+        # senha errada, ver `hub_identity.servico.autenticar`. Repeti-la aqui
         # sem alterar é o que preserva essa propriedade.
         contexto["erro"] = erro.mensagem
         contexto["cpf"] = cpf
@@ -113,7 +113,7 @@ async def sair(request: HttpRequest) -> HttpResponse:
     Aceita GET além de POST, e vale registrar por quê: o correto é só POST,
     porque sair é uma ação com efeito e um GET pode ser disparado por
     *prefetch* do navegador. Aqui o GET é aceito porque a sessão não tem
-    nenhum efeito colateral destrutivo ao ser destruída — e porque um link de
+    nenhum efeito colateral destrutivo ao ser destruída, e porque um link de
     sair que não funciona sem JavaScript é pior. O botão no cabeçalho usa POST
     com CSRF.
     """

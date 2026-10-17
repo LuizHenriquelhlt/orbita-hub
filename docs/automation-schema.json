@@ -469,7 +469,7 @@
     },
     "VariavelDeAmbiente": {
       "additionalProperties": false,
-      "description": "Variável que a automação espera receber.\n\n`segredo_ref` é o **nome** do segredo, nunca o valor. O valor é resolvido\npelo runner, a partir do ambiente dele, no momento de montar o container —\ne nunca passa pelo banco, pela API nem pela interface. Um manifesto com\nvalor de segredo é recusado por `_sem_valor_de_segredo`.",
+      "description": "Variável que a automação espera receber.\n\n`segredo_ref` é o **nome** do segredo, nunca o valor. O valor é resolvido\npelo runner, a partir do ambiente dele, no momento de montar o container,\ne nunca passa pelo banco, pela API nem pela interface. Um manifesto com\nvalor de segredo é recusado por `_sem_valor_de_segredo`.",
       "properties": {
         "descricao": {
           "anyOf": [

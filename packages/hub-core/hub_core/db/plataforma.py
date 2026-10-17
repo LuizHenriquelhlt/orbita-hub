@@ -2,7 +2,7 @@
 
 Não são tabelas de domínio: são o que substitui RabbitMQ e MinIO quando eles
 não existem. Ficam aqui, e não no schema de um serviço, porque pertencem ao
-mecanismo — e porque isso deixa claro que podem ser truncadas sem perder
+mecanismo, e porque isso deixa claro que podem ser truncadas sem perder
 nenhuma informação de negócio.
 """
 
@@ -42,7 +42,7 @@ ESTADOS_MENSAGEM = ("pendente", "processando", "concluida", "morta")
 class MensagemFila(BasePlataforma):  # type: ignore[valid-type, misc]
     """Uma mensagem na fila em PostgreSQL.
 
-    O desenho é o de uma *outbox* consumível: nada é apagado no caminho feliz —
+    O desenho é o de uma *outbox* consumível: nada é apagado no caminho feliz,
     a mensagem muda de estado. Isso mantém o histórico do que rodou, permite
     medir tempo de espera na fila e torna o retry auditável. A limpeza é um job
     separado, com retenção explícita, em vez de um `DELETE` escondido no `ack`.
@@ -128,7 +128,7 @@ class Auditoria(BasePlataforma):  # type: ignore[valid-type, misc]
 
     A migração que cria esta tabela instala `RULE`s que tornam `UPDATE` e
     `DELETE` inócuos e revoga esses privilégios do papel da aplicação. Um
-    registro que o próprio sistema pode reescrever não serve como prova — e o
+    registro que o próprio sistema pode reescrever não serve como prova, e o
     único lugar onde essa garantia sobrevive a um bug na aplicação é o banco.
     """
 
@@ -139,7 +139,7 @@ class Auditoria(BasePlataforma):  # type: ignore[valid-type, misc]
     )
 
     # Sem FK para `identity.usuario`: a auditoria tem de sobreviver à exclusão
-    # do usuário auditado — e FK entre schemas é justamente o que este projeto
+    # do usuário auditado, e FK entre schemas é justamente o que este projeto
     # não faz. Guarda o id e também nome e CPF como estavam no momento da ação,
     # porque "quem era essa pessoa quando isso aconteceu" é a pergunta que a
     # auditoria responde.
@@ -179,7 +179,7 @@ class ArtefatoBlob(BasePlataforma):  # type: ignore[valid-type, misc]
 
     Substitui o MinIO/S3 onde não há object storage. Com teto de tamanho
     (`ARTEFATO_TAMANHO_MAXIMO_BYTES`), porque `bytea` em um plano gratuito de
-    0,5 GB não é lugar para arquivo grande — e porque o PostgreSQL carrega o
+    0,5 GB não é lugar para arquivo grande, e porque o PostgreSQL carrega o
     valor inteiro em memória ao ler, diferente de um `GET` paginado no S3.
     """
 

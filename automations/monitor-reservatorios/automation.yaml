@@ -1,7 +1,7 @@
 # Automação de demonstração: roda no ExecutorSimulado.
 #
 # O `roteiro_simulado` é o que o simulador reproduz. Está aqui, em texto, no
-# repositório — e a plataforma persiste em cada execução qual executor a rodou,
+# repositório, e a plataforma persiste em cada execução qual executor a rodou,
 # que aparece rotulado na interface. Nada é apresentado como real sem ser.
 #
 # Para que ela rode de verdade, bastaria trocar `imagem` por uma imagem
@@ -31,7 +31,7 @@ spec:
 
   modo_visual: false
   # Esta precisa de rede: consulta a API de telemetria. Declarado aqui, e
-  # visível na ficha da automação — é a diferença entre "pode acessar a rede"
+  # visível na ficha da automação, é a diferença entre "pode acessar a rede"
   # como decisão registrada e como padrão invisível.
   rede_habilitada: true
 
@@ -92,7 +92,7 @@ spec:
   # Cada passo pode esperar, registrar log, publicar métrica, gerar artefato
   # ou falhar. Os dados do artefato são gerados por um PRNG semeado pelo id da
   # execução: duas execuções produzem arquivos diferentes, e reexecutar com o
-  # mesmo id produz o mesmo arquivo — o que mantém o teste determinístico.
+  # mesmo id produz o mesmo arquivo, o que mantém o teste determinístico.
   roteiro_simulado:
     - espera_ms: 600
       log: Autenticando na API de telemetria
@@ -106,7 +106,7 @@ spec:
 
     - espera_ms: 500
       nivel: WARNING
-      log: 3 reservatórios sem medição nas últimas 6 h — marcados como indisponíveis
+      log: 3 reservatórios sem medição nas últimas 6 h, marcados como indisponíveis
       metrica: { reservatorios_sem_medicao: 3 }
 
     - espera_ms: 1100
@@ -135,7 +135,7 @@ spec:
 
     **Esta automação roda no executor simulado** no ambiente de demonstração: o
     `roteiro_simulado` do manifesto é reproduzido passo a passo. O mecanismo da
-    plataforma — fila, motor, log ao vivo, métricas, artefatos baixáveis — é
+    plataforma, fila, motor, log ao vivo, métricas, artefatos baixáveis, é
     real; o que está encenado é o trecho que normalmente estaria dentro do
     container de terceiro.
 

@@ -1,4 +1,4 @@
-# 0011 — Uma imagem Docker para os cinco artefatos
+# 0011 - Uma imagem Docker para os cinco artefatos
 
 **Situação:** aceita · **Data:** 2026-10-17
 **Implementa:** `infra/Dockerfile`
@@ -15,7 +15,7 @@ conteúdo.
 
 Os quatro serviços compartilham `hub_core` e praticamente todas as
 dependências. Cinco imagens significariam cinco builds baixando o mesmo
-`sqlalchemy`, cinco caches a invalidar e cinco tags a manter em sincronia —
+`sqlalchemy`, cinco caches a invalidar e cinco tags a manter em sincronia,
 para economizar poucos megabytes de código Python.
 
 Há um ganho adicional que importa no free tier: no modo monolito, o container
@@ -48,5 +48,5 @@ acoplamento de cronograma. Com um time, é o contrário.
   Exige publicar e versionar a imagem base, e o cache de camada só ajuda se
   todos partirem da mesma versão dela.
 - **Imagem distroless.** Reduz bastante a superfície de ataque. Complica o
-  diagnóstico (sem shell no container) e exige mais do build — desproporcional
+  diagnóstico (sem shell no container) e exige mais do build, desproporcional
   neste estágio.

@@ -20,7 +20,7 @@ DESCRICAO = """
 Usuários, unidades organizacionais, grupos, papéis e a trilha de auditoria.
 
 É o único serviço que **emite** JWT. Os outros três apenas validam a assinatura
-e leem os claims, sem consultar este serviço — então o catálogo e as execuções
+e leem os claims, sem consultar este serviço, então o catálogo e as execuções
 continuam funcionando se este serviço cair. A contrapartida é que retirar um
 papel de alguém só tem efeito quando o token dela expira (60 min por padrão).
 """
@@ -29,7 +29,7 @@ papel de alguém só tem efeito quando o token dela expira (60 min por padrão).
 def construir() -> FastAPI:
     aplicacao = criar_app(
         nome="identity",
-        titulo="Órbita — Identidade e Acesso",
+        titulo="Órbita, Identidade e Acesso",
         descricao=DESCRICAO,
         router=montar(),
         ao_iniciar=lambda _app: auditoria.assinar_eventos(
