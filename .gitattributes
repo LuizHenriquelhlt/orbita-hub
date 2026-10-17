@@ -1,0 +1,39 @@
+# Fim de linha, declarado em vez de deixado ao acaso.
+#
+# Sem este arquivo, quem usa Git for Windows (`core.autocrlf=true`) commita
+# tudo convertido para LF e recebe CRLF de volta na cópia de trabalho. Para
+# código-fonte isso é invisível e inofensivo. Para um arquivo cujos **bytes
+# exatos** importam, é um bug que só aparece em outra máquina.
+#
+# Foi o que aconteceu aqui: `outorgas.csv` é gerado com CRLF e BOM de
+# propósito (é o que faz o Excel em português abrir o arquivo com um duplo
+# clique, sem passar pelo assistente de importação). O Git normalizou para LF
+# no commit, e no CI em Linux o gerador reescreveu o arquivo com CRLF — o
+# `git diff --exit-code` que confere o determinismo do dado acusou todas as
+# 1 421 linhas como alteradas.
+
+# Padrão: o Git decide o que é texto, e texto é gravado com LF no repositório.
+* text=auto eol=lf
+
+# Arquivos cujos bytes exatos importam. `-text` desliga qualquer conversão,
+# na entrada e na saída.
+*.csv -text
+*.xlsx -text
+*.png -text
+*.jpg -text
+*.pdf -text
+*.zip -text
+
+# Scripts de shell precisam de LF mesmo em cópia de trabalho no Windows: o
+# `#!/bin/sh` seguido de CR faz o kernel procurar um interpretador chamado
+# `/bin/sh\r`, e o erro é um enigmático "no such file or directory".
+*.sh text eol=lf
+Makefile text eol=lf
+
+# Linguagem detectada pelo GitHub. Sem isto, as 28 mil linhas do projeto
+# aparecem como uma fatia grande de HTML (os templates) e de CSS.
+*.html linguist-language=HTML
+apps/portal/static/js/htmx.min.js linguist-vendored
+docs/automation-schema.json linguist-generated
+automations/relatorio-outorgas-mensal/dados/outorgas.csv linguist-generated
+migrations/versions/* linguist-generated
